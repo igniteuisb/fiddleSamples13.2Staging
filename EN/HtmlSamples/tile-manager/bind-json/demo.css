@@ -1,0 +1,19 @@
+.dashboard {
+            position: relative;
+            width: 100%;
+            height: 500px;
+        }
+
+        #dashboard img {
+			width: 150px;
+			float: left;
+			margin-right: 10px;
+		}
+        #dashboard img.minimized {
+			width: 90%;
+			float: left;
+			margin: 10px;
+		}
+        #dashboard .color {
+            color: blue;
+        }

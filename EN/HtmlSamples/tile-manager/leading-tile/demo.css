@@ -11,6 +11,7 @@ body {
         
         .ui-igtile-maximized .ui-igtile-inner-container {overflow: hidden;}
 
+
         #car-tabs {
             margin: auto;
         }
@@ -31,9 +32,14 @@ body {
 
             .dashboard figcaption {
                 font-size: 1.1em;
-                background-color: #2cbdf9;
+                background-color: #454545;
                 color: #fff;
-                padding: 10px 0 5px 5px;
+                padding: 10px 0 10px 10px;
+            }
+
+            .dashboard .ui-igtile-maximized  figcaption {
+                background-color: #2cbdf9;
+                -webkit-transition:0.5s;
             }
 
                 .dashboard div ul {

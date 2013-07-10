@@ -1,0 +1,76 @@
+<script src="http://igniteuisamples.ja.staging.infragistics.local/13-2/js/modernizr.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.min.js"></script>
+<script src="http://igniteuisamples.ja.staging.infragistics.local/13-2/igniteui13.2/js/modules/infragistics.templating.js"></script>
+<script src="http://igniteuisamples.ja.staging.infragistics.local/13-2/igniteui13.2/js/modules/infragistics.util.js"></script>
+<script src="http://igniteuisamples.ja.staging.infragistics.local/13-2/igniteui13.2/js/modules/infragistics.ext.js"></script>
+<script src="http://igniteuisamples.ja.staging.infragistics.local/13-2/igniteui13.2/js/modules/infragistics.dv.shared.js"></script>
+<script src="http://igniteuisamples.ja.staging.infragistics.local/13-2/igniteui13.2/js/modules/infragistics.bulletgraph.js"></script>
+<script src="http://igniteuisamples.ja.staging.infragistics.local/13-2/igniteui13.2/js/modules/infragistics.ui.bulletgraph.js"></script>
+<link href="http://cdn-na.infragistics.com/jquery/20132/beta/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
+<link href="http://cdn-na.infragistics.com/jquery/20132/beta/css/structure/infragistics.css" rel="stylesheet"></link>
+<link href="http://igniteuisamples.ja.staging.infragistics.local/13-2/css/apiviewer.css" rel="stylesheet" type="text/css"></link>
+<script src="http://cdn-na.infragistics.com/jquery/20132/beta/js/i18n/infragistics-ja.js"></script>
+
+<script id="rangeTooltipTemplate1" type="text/x-jquery-tmpl">
+		<div class='ui-bulletgraph-range-tooltip'  >
+            <div >Name: ${item.name}</div>
+            <div >Start Value: ${item.startValue}</div>
+            <div >End Value: ${item.endValue}</div>
+        </div>
+
+    </script>
+<script id="actualValueTooltipTemplate1" type="text/x-jquery-tmpl">
+		<div class='ui-bulletgraph-actualValue-tooltip'>
+            <div style="color:aqua">Name: ${item.name}</div>
+            <div style="color:red">Start Value: ${item.startValue}</div>
+            <div>End Value: ${item.value}</div>
+        </div>
+    </script>
+<script id="targetValueTooltipTemplate1" type="text/x-jquery-tmpl">
+        <div class='ui-bulletgraph-targetValue-tooltip'>
+            <div>Value: ${item.value}</div>
+        </div>
+    </script>
+<script id="rangeTooltipTemplate2" type="text/x-jquery-tmpl">
+		<div style='background-color:#4b88f7; padding:2px; '>
+                <font color='${itemBrush}' >
+                    ${item.name} <br />
+                    Begins: ${item.startValue}%<br />
+                    Ends: ${item.endValue}%
+                </font>
+		</div>
+    </script>
+<script id="actualValueTooltipTemplate2" type="text/x-jquery-tmpl">
+		<div  style="background-color:white; color:red; font-size:120%; padding:2px;">
+			${item.name} <br />
+            from:  ${item.startValue}% to: ${item.value}%
+		</div>
+    </script>
+<script id="targetValueTooltipTemplate2" type="text/x-jquery-tmpl">
+        <div style="font-size:120%; font-weight:900; background-color:white; padding:2px;" >
+            Target <br />
+            Value  <br />
+            ${item.value}%  
+        </div>
+        
+    </script>
+
+<table>
+        <tr>
+            <td>
+                <div style="width: 100px; float: left; margin-top: 5px; font-weight: bold">$$(DefaultToolTips)</div>
+                <div id="bulletgraph_default" style="float: left"></div>
+            </td>
+            <td rowspan="2">
+                <div style="width: 100px; float: right; margin-top: 5px; margin-left: 25px; font-weight: bold">$$(SemiTemplatedToolTips)</div>
+                <div id="bulletgraph_semiTemplated" style="float: right; margin-left: 25px;"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="width: 100px; float: left; margin-top: 45px; font-weight: bold">$$(TemplatedToolTips)</div>
+                <div id="bulletgraph_templated" style="float: left; margin-top: 40px"></div>
+            </td>
+        </tr>
+    </table>

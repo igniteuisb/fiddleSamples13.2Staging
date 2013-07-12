@@ -7,113 +7,40 @@
 <link href="http://cdn-na.infragistics.com/jquery/20132/beta/css/structure/infragistics.css" rel="stylesheet"></link>
 <script src="http://cdn-na.infragistics.com/jquery/20132/beta/js/i18n/infragistics-ja.js"></script>
 
-<div id="bulletgraph">
+<div style="min-height:50px">
+        <h3>Sunkost: Sales Target of 2008</h3>
     </div>
-
-    
-
-    <fieldset id="graphOptions" style="margin-top: 30px">
-        <legend>オプション</legend>
-        <table>
-            <tr>
-                <td>最小値</td>
-                <td>
-                    <div id="minimumValueSlider" style="width: 100px; margin: 12px"></div>
-                </td>
-                <td>
-                    <label id="minimumValueLabel" class="left-label">0</label>
-                </td>
-
-                <td>最大値</td>
-                <td>
-                    <div id="maximumValueSlider" style="width: 100px; margin: 12px"></div>
-                </td>
-                <td>
-                    <label id="maximumValueLabel">100</label>
-                </td>
-            </tr>
-        </table>
-        <fieldset style="margin-top: 15px">
-            <legend>実際値オプション</legend>
-            <table>
-                <tr>
-                    <td>実際値</td>
-                    <td>
-                        <div id="actualValueSlider" style="width: 100px; margin: 12px"></div>
-                    </td>
-                    <td>
-                        <label id="actualValueLabel" class="left-label">80</label>
-                    </td>
-
-                    <td>実際値ブラシ</td>
-                    <td>
-                        <select id="actualValueBrushSelect" style="width: 100px; margin: 12px">
-                            <option selected="selected">Black</option>
-                            <option>Red</option>
-                            <option>Green</option>
-                            <option>Blue</option>
-                            <option>Orange</option>
-                        </select>
-                    </td>
-                    <td>
-                        
-                    </td>
-                </tr>
-                <tr>
-                    <td>実際値の内部範囲</td>
-                    <td>
-                        <div id="actualValueInnerExtentSlider" style="width: 100px; margin: 12px"></div>
-                    </td>
-                    <td>
-                        <label id="actualValueInnerExtentLabel" class="left-label">0.5</label>
-                    </td>
-
-                    <td>実際値の外部範囲</td>
-                    <td>
-                        <div id="actualValueOuterExtentSlider" style="width: 100px; margin: 12px"></div>
-                    </td>
-                    <td>
-                        <label id="actualValueOuterExtentLabel">0.65</label>
-                    </td>
-                </tr>
-            </table>
-        </fieldset>
-        <fieldset style="margin-top: 15px">
-            <legend>目標値のオプション</legend>
-            <table>
-                <tr>
-                    <td>目標値</td>
-                    <td>
-                        <div id="targetValueSlider" style="width: 100px; margin: 12px"></div>
-                    </td>
-                    <td>
-                        <label id="targetValueLabel" class="left-label">0</label>
-                    </td>
-
-                    <td>目標値のブラシ</td>
-                    <td>
-                        <select id="targetValueBrushSelect" style="width: 100px; margin: 12px">
-                            <option selected="selected">Black</option>
-                            <option>Red</option>
-                            <option>Green</option>
-                            <option>Blue</option>
-                            <option>Orange</option>
-                        </select>
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>目標値の幅</td>
-                    <td>
-                        <div id="targetValueBreadthSlider" style="width: 100px; margin: 12px"></div>
-                    </td>
-                    <td>
-                        <label id="targetValueBreadthLabel">4</label>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-        </fieldset>
-    </fieldset>
+    <br />
+    <div>
+        <div style="width:30%">
+            YTD Revenue
+        </div>
+        <div style="width:70%" id="bulletgraph">
+        </div>
+    </div>
+    <br />
+    <div>
+        <div style="width:30%">
+           Profit
+        </div>
+        <div style="width:70%" id="bulletgraph2">
+        </div>
+    </div>
+    <br />
+    <div>
+        <div style="width:30%">
+            Avg Order
+        </div>
+        <div style="width:70%" id="bulletgraph3">
+        </div>
+    </div>
+    <br />
+    <div>
+        <div style="width:30%">
+            New Customers
+        </div>
+        <div style="width:70%" id="bulletgraph4">
+        </div>
+    </div>
+    <br />
+    The sales totals to date for 2010 (white horizontal line), clearly exceed the total sales for all of 2009 (white vertical line) by close to 4000 K. The 2010 sales numbers suggest that our new marketing campaign is successful, resulting in increased product penetration and a significant sales boost.

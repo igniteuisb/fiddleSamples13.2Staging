@@ -63,6 +63,7 @@
         #shopping-cart {
             line-height: 30px;
             font-size: 18px; 
+            float: right;
         }
         span.promo {
             color: #f00;

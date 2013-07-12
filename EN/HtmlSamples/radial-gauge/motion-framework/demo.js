@@ -1,23 +1,31 @@
 $(function () {
-
+            
             $("#radialgauge").igRadialGauge({
                 width: "500px",
                 height: "500px",
                 transitionDuration: "1500"
             });
 
-            $("#gaugeSettings").change(function (e) {
-                var setting = $(this).val();
+            function ChangeSelection(setting) {                
                 if (setting == "setting1")
                     setting1();
                 else if (setting == "setting2")
                     setting2();
                 else if (setting == "setting3")
                     setting3();
+            }
+
+            $("#gaugeSettings").change(function (e) {
+                var setting = $(this).val();
+                ChangeSelection(setting);
             });
 
-            function setting1() {
-                $("#radialgauge").igRadialGauge({
+            //Apply the setting on initial load
+            var setting = $("#gaugeSettings").val();
+            ChangeSelection(setting);
+
+            function setting1 () {
+                    $("#radialgauge").igRadialGauge({
                     height: "500px",
                     width: "500px",
                     minimumValue: "0",
@@ -35,7 +43,7 @@ $(function () {
                     backingBrush: "rgba(236, 237, 239, 1)",
                     
                     //Needle Settings
-                    needleShape: "needle",
+                        needleShape: "needle",
                     needlePivotShape: "circleOverlay",
                     needleEndExtent: "0.55",
                     needlePointFeatureExtent: "0.3",
@@ -48,11 +56,11 @@ $(function () {
                     //Label Settings
                     labelInterval: "8"
                 });
-                $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range1", remove: true }]);
-                $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range2", remove: true }]);
-                $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range3", remove: true }]);
+                    $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range1", remove: true }]);
+                    $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range2", remove: true }]);
+                    $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range3", remove: true }]);
             }
-
+           
             function setting2() {
                 $("#radialgauge").igRadialGauge({
                     height: "500px",
@@ -113,7 +121,7 @@ $(function () {
                     outerEndExtent: "0.78"
                 }]);
             }
-
+            
             function setting3() {
                 $("#radialgauge").igRadialGauge({
 
@@ -182,5 +190,5 @@ $(function () {
                     $("#radialgauge").igRadialGauge("option", "transitionDuration", ui.value * 1000);
                     $("#transitionDurationLabel").text(ui.value);
                 }
-            });
+        });
         });

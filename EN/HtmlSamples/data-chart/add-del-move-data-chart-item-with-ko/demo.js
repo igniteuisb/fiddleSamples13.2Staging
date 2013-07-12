@@ -119,29 +119,11 @@ $(function () {
             });
 
             function hideButtons() {
-                $(".btn-prev").animate({opacity: 0});
-                $(".btn-next").animate({ opacity: 0 });
-                $(".btn-play").animate({ opacity: 0 });
-                $(".btn-pause").animate({opacity: 1}).animate({ left: "-122px"}, 1000);
-                $(".btn-add-start").animate({ opacity: 0 });
-                $(".btn-rmv-start").animate({ opacity: 0 });
-                $(".btn-add-end").animate({ opacity: 0 });
-                $(".btn-rmv-end").animate({ opacity: 0 });
-                $(".btn-add-curr").animate({ opacity: 0 });
-                $(".btn-rmv-curr").animate({ opacity: 0 });
+                $('.legend-container button:not(.btn-pause)').attr('disabled', 'disabled').animate({opacity: 0.5});
+                $('.legend-container .btn-pause').removeAttr('disabled').animate({ opacity: 1 });
             }
             function showButtons() {
-                $(".btn-prev").animate({ opacity: 1 });
-                $(".btn-next").animate({ opacity: 1 });
-                $(".btn-play").animate({ opacity: 1 });
-                $(".btn-pause").animate({ left: "0px" }, 1000, function () {
-                    $(".btn-pause").animate({ opacity: 0 });
-                });;
-                $(".btn-add-start").animate({ opacity: 1 });
-                $(".btn-rmv-start").animate({ opacity: 1 });
-                $(".btn-add-end").animate({ opacity: 1 });
-                $(".btn-rmv-end").animate({ opacity: 1 });
-                $(".btn-add-curr").animate({ opacity: 1 });
-                $(".btn-rmv-curr").animate({ opacity: 1 });
+                $('.legend-container button:not(.btn-pause)').removeAttr('disabled').animate({ opacity: 1 });
+                $('.legend-container .btn-pause').attr('disabled', 'disabled').animate({ opacity: 0.5 });
             }
         });

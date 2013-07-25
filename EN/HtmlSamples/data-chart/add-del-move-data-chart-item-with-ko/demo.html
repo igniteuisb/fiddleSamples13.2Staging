@@ -43,88 +43,89 @@
                 <span>Pause the simulation</span><div class="clear"></div>
             </div>
         </div>
-        <div id="lineChart" data-bind='igDataChart: {
-            dataSource: data,
-            width: chartWidth,
-            height: chartHeight,
-            legend: { element: "legendLineChart" },
-            axes: [{
-                name: "xAxis",
-                type: "categoryX",
-                label: "label",
-                interval: 1
-            }, {
-                name: "yAxis",
-                type: "numericY",
-                minimumValue: minChartValue,
-                maximumValue: maxChartValue,
+        <div class="sample-chart-container">
+            <div id="lineChart" data-bind='igDataChart: {
+                dataSource: data,
+                width: chartWidth,
+                height: chartHeight,
+                legend: { element: "legendLineChart" },
+                axes: [{
+                    name: "xAxis",
+                    type: "categoryX",
+                    label: "label",
+                    interval: 1
+                }, {
+                    name: "yAxis",
+                    type: "numericY",
+                    minimumValue: minChartValue,
+                    maximumValue: maxChartValue,
 
-            }],
-            series: [{
-                name: "line1",
-                type: "line",
-                title: "Revenue per day (in thousands)",
-                thickness: chartThickness,
-                markerType: "circle",
-                xAxis: "xAxis",
-                yAxis: "yAxis",
-                valueMemberPath: "revenue",
-                transitionDuration: transitionDuration
-            },
-            {
-                name: "line2",
-                type: "line",
-                title: "Expenses per day (in thousands)",
-                thickness: chartThickness,
-                markerType: "circle",
-                xAxis: "xAxis",
-                yAxis: "yAxis",
-                valueMemberPath: "expenses",
-                transitionDuration: transitionDuration,
-                brush: "#d3404b",
-                markerBrush: "#d3404b"
-            }]
-        }'>
-	    </div>
-        <div id="legendLineChart"></div>
-        <div id="barColumnChart" data-bind='igDataChart: {
-            dataSource: data,
-            width: chartWidth,
-            height: chartHeight,
-            legend: { element: "legendBarColumnChart" },
-            axes: [{
-                name: "xAxis",
-                type: "categoryX",
-                label: "label",
-                interval: 1
-            }, {
-                name: "yAxis",
-                type: "numericY",
-                minimumValue: minChartValue,
-                maximumValue: maxChartValue
+                }],
+                series: [{
+                    name: "line1",
+                    type: "line",
+                    title: "Revenue per day (in thousands)",
+                    thickness: chartThickness,
+                    markerType: "circle",
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    valueMemberPath: "revenue",
+                    transitionDuration: transitionDuration
+                },
+                {
+                    name: "line2",
+                    type: "line",
+                    title: "Expenses per day (in thousands)",
+                    thickness: chartThickness,
+                    markerType: "circle",
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    valueMemberPath: "expenses",
+                    transitionDuration: transitionDuration,
+                    brush: "#d3404b",
+                    markerBrush: "#d3404b"
+                }]
+            }'></div>
+            <div id="legendLineChart"></div>
+            <div id="barColumnChart" data-bind='igDataChart: {
+                dataSource: data,
+                width: chartWidth,
+                height: chartHeight,
+                legend: { element: "legendBarColumnChart" },
+                axes: [{
+                    name: "xAxis",
+                    type: "categoryX",
+                    label: "label",
+                    interval: 1
+                }, {
+                    name: "yAxis",
+                    type: "numericY",
+                    minimumValue: minChartValue,
+                    maximumValue: maxChartValue
 
-            }],
-            series: [{
-                name: "column1",
-                type: "column",
-                title: "Revenue per day (in thousands)",
-                thickness: chartThickness,
-                xAxis: "xAxis",
-                yAxis: "yAxis",
-                valueMemberPath: "revenue",
-                transitionDuration: transitionDuration
-            },
-            {
-                name: "column2",
-                type: "column",
-                title: "Expenses per day (in thousands)",
-                thickness: chartThickness,
-                xAxis: "xAxis",
-                yAxis: "yAxis",
-                valueMemberPath: "expenses",
-                transitionDuration: transitionDuration,
-                brush: "#d3404b"
-            }]
-        }'></div>
-        <div id="legendBarColumnChart"></div>
+                }],
+                series: [{
+                    name: "column1",
+                    type: "column",
+                    title: "Revenue per day (in thousands)",
+                    thickness: chartThickness,
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    valueMemberPath: "revenue",
+                    transitionDuration: transitionDuration
+                },
+                {
+                    name: "column2",
+                    type: "column",
+                    title: "Expenses per day (in thousands)",
+                    thickness: chartThickness,
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    valueMemberPath: "expenses",
+                    transitionDuration: transitionDuration,
+                    brush: "#d3404b"
+                }]
+            }'></div>
+            <div id="legendBarColumnChart"></div>
+        </div>
     </div>

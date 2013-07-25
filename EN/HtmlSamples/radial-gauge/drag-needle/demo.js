@@ -1,11 +1,10 @@
 $(function () {
             $("#radialgauge").igRadialGauge({
                 height: "500px",
-                width: "500px",
-                transitionDuration: "1500"
+                width: "100%",
             });
 
-            var isDragging = false;
+            var lastPointX = 0, lastPointY = 0, lastValue = 0, isDragging = false;
             // Start the needle drag only on a mousedown on the needle
             document.getElementById("radialgauge").addEventListener("mousedown", function (e) {
                 isDragging = true;
@@ -24,22 +23,29 @@ $(function () {
 
             // Function that performs the needle drag to the new point
             function dragNeedle(e) {
-                var minimumValue = 0;
-                var maximumValue = 100;
-
-                var startValue = minimumValue <= maximumValue ? minimumValue : maximumValue;
-                var endValue = minimumValue > maximumValue ? minimumValue : maximumValue;
-
+                if (!isDragging) {
+                    return;
+                }
                 var pointX = e.pageX - $("#radialgauge").offset().left;
                 var pointY = e.pageY - $("#radialgauge").offset().top;
                 var value = $("#radialgauge").igRadialGauge("getValueForPoint", pointX, pointY);
+                if (isNaN(value))
+                    return;
+                value = Math.max(Math.min(value, 100), 0);
+                if (Math.abs(value - lastValue) > 50)
+                    return;
+                lastValue = value;
 
                 var isClickPointValid = true;
                 if (!isMobile())
                     isClickPointValid = $("#radialgauge").igRadialGauge("needleContainsPoint", pointX, pointY);
-
-                if (value >= startValue && value <= endValue && isDragging.toString() == "true"
-                    && value && !isNaN(value) && isClickPointValid.toString() == "true")
+                if (isClickPointValid) {
+                    lastPointX = pointX;
+                    lastPointY = pointY;
+                } else {
+                    isClickPointValid = $("#radialgauge").igRadialGauge("needleContainsPoint", (pointX + 4 * lastPointX) / 5, (pointY + 4 * lastPointY) / 5);
+                }
+                if (isClickPointValid)
                     $("#radialgauge").igRadialGauge("option", "value", value);
             }
 
@@ -54,16 +60,4 @@ $(function () {
 						navigator.userAgent.match(/Windows Phone/i) ||
 						navigator.userAgent.match(/ZuneWP7/i) ? true : false;
             }
-
-            // Transiton Duration Slider
-            $("#transitionDurationSlider").slider({
-                min: 0,
-                max: 5,
-                step: 0.01,
-                value: 2,
-                slide: function (event, ui) {
-                    $("#radialgauge").igRadialGauge("option", "transitionDuration", ui.value * 1000);
-                    $("#transitionDurationLabel").text(ui.value);
-                }
-            });
         });

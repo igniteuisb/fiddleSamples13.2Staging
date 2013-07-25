@@ -1,65 +1,63 @@
 $(function () {
-var data = [
-                { "Year": "2000", "Coal": 450, "Oil": 100, "Nuclear": 175 },
-                { "Year": "2010", "Coal": 480, "Oil": 120, "Nuclear": 225 },
-                { "Year": "2020", "Coal": 550, "Oil": 180, "Nuclear": 275 }
-        ];
-
-        $(function () {
-            for (i = 0; i < data.length; i++) {
-                data[i].Total = data[i]["Coal"] + data[i]["Oil"] + data[i]["Nuclear"];
+            for (i = 0; i < everyThreeYears.length; i++) {
+                everyThreeYears[i].Total = (everyThreeYears[i]["China"] + everyThreeYears[i]["UnitedStates"] + everyThreeYears[i]["Russia"]).toFixed(2);
             }
 
             $("#chart").igDataChart({
-                dataSource: data,
+                dataSource: everyThreeYears,
                 crosshairVisibility: Modernizr.touch ? "visible" : "collapsed",
+                title: "Energy Production Per Country",
+                subTitle: "The top three Total Primary Energy producers",
                 axes: [{
                     type: "categoryX",
                     name: "xAxis",
                     label: "Year",
-                    strokeThickness: 5
+                    strokeThickness: 5,
+                    title: "Year"
                 }, {
                     type: "numericY",
                     name: "prodPower",
                     minimumValue: 0,
-                    maximumValue: 800,
-                    strokeThickness: 5
+                    maximumValue: 100,
+                    strokeThickness: 5,
+                    title: "Energy Produced (Quadrillion Btu)"
                 }, {
                     type: "numericY",
                     name: "totalPower",
-                    minimumValue: 400,
-                    maximumValue: 1200,
-                    labelLocation: "outsideRight"
+                    minimumValue: 50,
+                    maximumValue: 250,
+                    labelLocation: "outsideRight",
+                    title: "Total Energy Produced (Quadrillion Btu)",
                 }],
                 series: [{
                     type: "column",
-                    name: "Coal",
-                    title: "Coal",
+                    name: "China",
+                    title: "China",
                     xAxis: "xAxis",
                     yAxis: "prodPower",
-                    valueMemberPath: "Coal",
+                    valueMemberPath: "China",
                     showTooltip: true,
-                    tooltipTemplate: "tooltipCoal",
+                    tooltipTemplate: "tooltipChina",
                     legend: { element: "legend" }
                 }, {
                     type: "column",
-                    name: "Oil",
-                    title: "Oil",
+                    name: "UnitedStates",
+                    title: "US",
                     xAxis: "xAxis",
                     yAxis: "prodPower",
-                    valueMemberPath: "Oil",
+                    valueMemberPath: "UnitedStates",
                     showTooltip: true,
-                    tooltipTemplate: "tooltipOil",
+                    tooltipTemplate: "tooltipUS",
                     legend: { element: "legend" }
                 }, {
                     type: "column",
-                    name: "Nuclear",
-                    title: "Nuclear",
+                    name: "Russia",
+                    title: "Russia",
                     xAxis: "xAxis",
                     yAxis: "prodPower",
-                    valueMemberPath: "Nuclear",
+                    valueMemberPath: "Russia",
                     showTooltip: true,
-                    tooltipTemplate: "tooltipNuclear",
+                    tooltipTemplate: "tooltipRussia",
                     legend: { element: "legend" }
                 }, {
                     type: "line",
@@ -68,6 +66,7 @@ var data = [
                     xAxis: "xAxis",
                     yAxis: "totalPower",
                     valueMemberPath: "Total",
+                    brush: "Orange",
                     showTooltip: true,
                     tooltipTemplate: "tooltipTotal",
                     legend: { element: "legend2" }
@@ -76,4 +75,3 @@ var data = [
                 topMargin: 15
             });
         });
-});

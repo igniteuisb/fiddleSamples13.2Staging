@@ -38,19 +38,29 @@ $(function () {
 
             $("#cellSelectionGrid").igGrid({
                 height: "350px",
-                width: "740px",
+                width: "98%",
                 autoGenerateColumns: false,
                 dataSource: northwindEmployees,
                 responseDataKey: "results",
                 dataSourceType: "json",
                 columns: [
-                    { headerText: "Employee ID", key: "ID", dataType: "number", width: "150px" },
-                    { headerText: "Name", key: "Name", dataType: "string", width: "150px" },
-                    { headerText: "Title", key: "Title", dataType: "string", width: "150px" },
-                    { headerText: "Image", key: "ImageUrl", dataType: "object", width: "110px", template: "<img width='100' height='85' src='${ImageUrl}'></img>" },
-                    { headerText: "Phone", key: "Phone", dataType: "string", width: "100px" }
+                    { headerText: "Employee ID", key: "ID", dataType: "number", width: "100px" },
+                    { headerText: "Name", key: "Name", dataType: "string" },
+                    { headerText: "Title", key: "Title", dataType: "string"},
+                    { headerText: "Image", key: "ImageUrl", dataType: "object", template: "<img width='100' height='85' src='${ImageUrl}'></img>" },
+                    { headerText: "Phone", key: "Phone", dataType: "string" }
                 ],
                 features: [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'ID',
+                                classes: 'hidden-phone'
+                            }                           
+                        ]
+                    },
                     {
                         name: "Selection",
                         mode: "cell",
@@ -73,18 +83,28 @@ $(function () {
   
             $("#rowSelectorsGrid").igGrid({
                 height: "350px",
-                width: "740px",
+                width: "98%",
                 autoGenerateColumns: false,
                 dataSource: northwindEmployees,
                 responseDataKey: "results",
                 dataSourceType: "json",
                 columns: [
-                    { headerText: "Employee ID", key: "ID", dataType: "number", width: "150px" },
-                    { headerText: "Name", key: "Name", dataType: "string", width: "150px" },
-                    { headerText: "Title", key: "Title", dataType: "string", width: "150px" },
-                    { headerText: "Phone", key: "Phone", dataType: "string", width: "100px" }
+                    { headerText: "Employee ID", key: "ID", dataType: "number" },
+                    { headerText: "Name", key: "Name", dataType: "string"},
+                    { headerText: "Title", key: "Title", dataType: "string" },
+                    { headerText: "Phone", key: "Phone", dataType: "string" }
                 ],
                 features: [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'ID',
+                                classes: 'hidden-phone'
+                            }
+                        ]
+                    },
                     {
                         name: "RowSelectors",
                         enableCheckBoxes: enableCheckboxes,

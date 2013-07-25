@@ -1,5 +1,4 @@
 $(function () {
-            $("#grid").igGrid({
-                defaultColumnWidth: 150
+            $("#grid").igGrid({                
             });
         });

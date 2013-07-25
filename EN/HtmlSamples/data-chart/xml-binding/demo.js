@@ -1,25 +1,25 @@
 $(function () {
                         
             //Sample XML Data
-            var xmlDoc = '<DailyPrice>' +
-                '<Day Date="1/1/2010" Open="1000" High="1019.75" Low="967.75" Close="995" />' +
-                '<Day Date="1/2/2010" Open="995" High="1016.75" Low="975" Close="1004" />' +
-                '<Day Date="1/3/2010" Open="925.5" High="1000.25" Low="912.75" Close="999.25" />' +
-                '<Day Date="1/4/2010" Open="940.25" High="1040.25" Low="920.75" Close="975.25" />' +
-                '<Day Date="1/5/2010" Open="1020.5" High="1060.25" Low="999.75" Close="1050.25" />' +
-            '</DailyPrice>';
+            var xmlDoc = '<WorldPopulation>' +
+                '<Country Name="China" Pop1995="1216" Pop2005="1297" Pop2015="1361" Pop2025="1394" />' +
+                '<Country Name="India" Pop1995="920" Pop2005="1090" Pop2015="1251" Pop2025="1396" />' +
+                '<Country Name="United States" Pop1995="266" Pop2005="295" Pop2015="322" Pop2025="351" />' +
+                '<Country Name="Indonesia" Pop1995="197" Pop2005="229" Pop2015="256" Pop2025="277" />' +
+                '<Country Name="Brazil" Pop1995="161" Pop2005="186" Pop2015="204" Pop2025="218" />' +
+            '</WorldPopulation>';
 
             //Binding to XML requires a schema to define data fields
             var xmlSchema = new $.ig.DataSchema("xml",
                 { 
                     //searchField serves as the base node(s) for the XPaths
-                    searchField: "//Day", 
+                    searchField: "//Country", 
                     fields: [
-                        { name: "Date", xpath: "./@Date", type: "date" },
-                        { name: "Open", xpath: "./@Open" },
-                        { name: "Close", xpath: "./@Close" },
-                        { name: "High", xpath: "./@High" },
-                        { name: "Low", xpath: "./@Low" },
+                        { name: "Name", xpath: "./@Name"},
+                        { name: "Pop1995", xpath: "./@Pop1995" },
+                        { name: "Pop2005", xpath: "./@Pop2005" },
+                        { name: "Pop2015", xpath: "./@Pop2015" },
+                        { name: "Pop2025", xpath: "./@Pop2025" },
                     ]
                 }
             );
@@ -34,37 +34,34 @@ $(function () {
             ds.dataBind();
 
             $("#chart").igDataChart({
-                width: "700px",
+                width: "100%",
                 height: "400px",
+                title: "Population per Country",
+                subTitle: "Five largest projected populations for 2015",
                 axes: [
                     {
-                        name: "xAxis",
-                        type: "categoryDateTimeX",
-                        dateTimeMemberPath: "Date",
+                        name: "NameAxis",
+                        type: "categoryX",
+                        label: "Name",
                         dataSource: ds, //$.ig.DataSource defined above
-                        label: "Date",
-                        labelVisibility: "collapsed"
+                        title: "Country"
                     },
                     {
-                        name: "yAxis",
+                        name: "PopulationAxis",
                         type: "numericY",
-                        labelVisibility: "visible"
+                        minimumValue: 0,
+                        maximumValue: 1400,
+                        title: "Projected Population (Millions of People)"
                     }
                 ],
                 series: [
                     {
-                        name: "series",
+                        name: "2015Population",
+                        type: "column",
                         dataSource: ds, //$.ig.DataSource defined above
-                        title: "Price Series",
-                        type: "financial",
-                        xAxis: "xAxis",
-                        yAxis: "yAxis",
-                        openMemberPath: "Open",
-                        highMemberPath: "High",
-                        lowMemberPath: "Low",
-                        closeMemberPath: "Close",
-                        trendLineBrush: "rgba(68, 172, 214, .8)",
-                        trendLineType: "exponentialAverage"
+                        xAxis: "NameAxis",
+                        yAxis: "PopulationAxis",
+                        valueMemberPath: "Pop2015"
                     }
                 ]
             });

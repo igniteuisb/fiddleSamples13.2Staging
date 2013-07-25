@@ -12,6 +12,7 @@ var energyData = [
             $("#chart").igDataChart({
                 dataSource: energyData,
                 title: "Energy Use Per Country",
+					 width: "100%",
                 subTitle: "Results over a two year period",
                 axes: [{
                     type: "categoryX",

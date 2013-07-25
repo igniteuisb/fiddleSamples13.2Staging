@@ -3,8 +3,8 @@ $(function () {
             $("#slNightSky").igSparkline({
                 dataSource: data,
                 displayType: "area",
-                height: "150px",
-                width: "400px",
+                height: "120px",
+                width: "100%",
                 valueMemberPath: 'Change',
                 labelMemberPath: 'Date',
                 brush: "#446185",
@@ -19,8 +19,8 @@ $(function () {
             $("#slSnakeSkin").igSparkline({
                 dataSource: data,
                 displayType: "column",
-                height: "150px",
-                width: "400px",
+                height: "120px",
+                width: "100%",
                 valueMemberPath: 'Change',
                 labelMemberPath: 'Date',
                 negativeBrush: "#cfc8c0",

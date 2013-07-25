@@ -1,12 +1,18 @@
-.main-container { position: relative; }
+.main-container { position: relative; width: 100% }
         .float { float: left; margin: 10px 10px 0 0; }
         .clear { clear: both; }
         .margin-b { margin-bottom: 20px; }
         .btn-container { margin-top: 30px; position: relative; width: 600px; height: 50px; }
         
                 .btn-container .btn-pause:hover { background-position: -96px -50px; }
-        #lineChart, .combo-container { float: left; margin-right: 20px; }
-        .combo-container { width: 200px; float: right }
+        #lineChart {
+            margin-right: 20px;
+            margin-top: 20px;
+        }
+        .combo-container { width: 200px; float: right; margin-right: 20px; }
+        .sample-chart-container {
+            margin-right: 240px;
+        }
         .legend-container {  width: 300px; margin-top: 10px; }
             .legend-container .title { font-weight: bold; font-size: 14px; margin-bottom: 10px; }
             .legend-container .legend { float: left; width: 48px; height: 48px; margin: 2px 5px 5px 0; padding: 0;

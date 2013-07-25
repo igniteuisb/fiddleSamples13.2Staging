@@ -44,8 +44,6 @@ var data = [
                 valueMemberPath: "Budget",
                 innerLabelMemberPath: "Budget",
                 innerLabelVisibility: "visible",
-                outerLabelMemberPath: "Department",
-                outerLabelVisibility: "visible",
                 isInverted: true
             });
         });

@@ -1,23 +1,24 @@
 $(function () {
             $("#grid").igGrid({
                 primaryKey: "EmployeeID",
-                height: 600,
-                width: 700,
+                height: '700px',
+                width: '100%',
                 columns: [
-                    { headerText: "Employee ID", key: "EmployeeID", dataType: "number" },
+                    { headerText: "Employee ID", key: "EmployeeID", dataType: "number", width: "15%" },
                     {
                         headerText: "Employee Names",
                         group: [
-                        { headerText: "First Name", key: "FirstName", dataType: "string" },
-                        { headerText: "Last Name", key: "LastName", dataType: "string" },
-                        { headerText: "Title", key: "Title", dataType: "string" }
+                        { headerText: "First Name", key: "FirstName", dataType: "string", width: "20%" },
+                        { headerText: "Last Name", key: "LastName", dataType: "string", width: "20%"},
+                        { headerText: "Title", key: "Title", dataType: "string", width: "35%" }
                     ]
                     }
                 ],
+                autofitLastColumn: false,
                 autoGenerateColumns: false,
                 dataSource: northwind,
                 responseDataKey: "results",
-                features: [
+                features: [                    
                     {
                         name: "Paging",
                         type: "local",
@@ -45,7 +46,8 @@ $(function () {
                     },
                     {
                         name: "RowSelectors",
-                        enableCheckBoxes: Modernizr.touch
+                        enableCheckBoxes: Modernizr.touch,
+                        rowSelectorColumnWidth: "10%"
                     },
                     {
                         name: "Resizing"

@@ -1,4 +1,18 @@
-.select-editable { position:relative; background-color:white; border:solid grey 1px;  width:60px; height:18px; }
-        .select-editable select { position:absolute; top:0px; left:0px; font-size:14px; width:60px;height:18px; margin:0; }
-        .select-editable input { position:absolute; top:0px; left:0px; width:38px; padding:1px; font-size:12px;height:16px; border:none; }
-        .select-editable select:focus, .select-editable input:focus { outline:none; }
+.apiButton {
+          text-align: center;
+          padding: 0px 0.5em 0px 0.5em;
+          margin: 0.1em !important;
+          display: inline-block;
+          cursor: pointer;
+          background: #f0f0f0;
+          border: 1px solid #a0a0a0;
+       }
+       .apiButton:hover {
+          background: #d0d0f0;
+          border: 1px solid #505090;
+       }
+		 .apiInput {
+          width: 3em;
+          margin: 0.1em;
+          border: 1px solid #a0a0a0;
+		 }

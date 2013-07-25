@@ -35,28 +35,29 @@
     <div id="error-message" style="color: #FF0000; font-weight: bold;"></div>
     
     <table id="gridKO" data-bind="igGrid: {
-            dataSource: data,
-            width: 750,
+            dataSource: data,            
             primaryKey: 'ID',
+            width: '98%',
             autoCommit: true,
-            features: [{
-                name: 'Updating',
-                editMode: 'row',
-                columnSettings: [
-                    {
-                        columnKey: 'ID',
-                        readOnly: true
-                    }
-                ],
-                rowDeleting: function (evt, ui) {
-                    var rowID = ui.rowID;
-                    var selectedRow = $('#gridKO').igGridSelection('selectedRow');
-                    if (selectedRow == null || rowID != selectedRow.id) {
-                        $('#error-message').html('You should select the row before deleting it!').stop(true, true).fadeIn(500).delay(3000).fadeOut(500);
-                        return false;
-                    }
-                }
-            },
+            features: [                
+                 {
+                     name: 'Updating',
+                     editMode: 'row',
+                     columnSettings: [
+                         {
+                             columnKey: 'ID',
+                             readOnly: true
+                         }
+                     ],
+                     rowDeleting: function (evt, ui) {
+                         var rowID = ui.rowID;
+                         var selectedRow = $('#gridKO').igGridSelection('selectedRow');
+                         if (selectedRow == null || rowID != selectedRow.id) {
+                             $('#error-message').html('You should select the row before deleting it!').stop(true, true).fadeIn(500).delay(3000).fadeOut(500);
+                             return false;
+                         }
+                     }
+                 },
                 {
                     name: 'Selection',
                     mode: 'row',
@@ -67,10 +68,10 @@
             ],
             autoGenerateColumns: false,
             columns: [
-                { headerText: 'Customer ID', key: 'ID', dataType: 'string' },
-                { headerText: 'Contact Name', key: 'ContactName', dataType: 'string' },
-                { headerText: 'City', key: 'City', dataType: 'string' },
-                { headerText: 'Country', key: 'Country', dataType: 'string' }
+                { headerText: 'Customer ID', key: 'ID', dataType: 'string', width: '25%' },
+                { headerText: 'Contact Name', key: 'ContactName', dataType: 'string', width: '25%' },
+                { headerText: 'City', key: 'City', dataType: 'string', width: '25%' },
+                { headerText: 'Country', key: 'Country', dataType: 'string', width: '25%' }
             ]
         }">
     </table>

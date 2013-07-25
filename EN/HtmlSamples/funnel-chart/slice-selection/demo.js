@@ -60,7 +60,7 @@ var data = [
 
             //  Instantiate the selected slices grid
             $("#selectedSlicesGrid").igGrid({
-                width: "250px",
+                width: "200px",
                 dataSource: selectedSlices,
                 columns: [
                     { key: "Department", headerText: "Department", width: "130px" },

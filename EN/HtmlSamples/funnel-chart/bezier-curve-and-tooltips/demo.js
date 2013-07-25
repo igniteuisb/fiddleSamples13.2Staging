@@ -17,8 +17,6 @@ var data = [
                 valueMemberPath: "Budget",
                 innerLabelMemberPath: "Budget",
                 innerLabelVisibility: "visible",
-                outerLabelMemberPath: "Department",
-                outerLabelVisibility: "visible",
                 tooltipTemplate: "<span>ID:${Id}<br>Dept:${Department}</span>"
             });
 
@@ -32,8 +30,6 @@ var data = [
                 valueMemberPath: "Budget",
                 innerLabelMemberPath: "Budget",
                 innerLabelVisibility: "visible",
-                outerLabelMemberPath: "Department",
-                outerLabelVisibility: "visible",
                 tooltipTemplate: "<span>ID:${Id}<br>Dept:${Department}</span>",
                 useBezierCurve: true,
                 bezierPoints: "0.1 0.1 0.7 1"

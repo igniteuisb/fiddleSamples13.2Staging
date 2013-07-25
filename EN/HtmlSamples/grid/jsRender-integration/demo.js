@@ -8,13 +8,13 @@ $(function () {
 
             var rowTmpl = "";
             var columnObj = [
-                { headerText: "Employee ID", key: "ID", dataType: "number", width: "90px" },
-                { headerText: "Name", key: "Name", dataType: "string", width: "100px" },
-                { headerText: "Image", key: "ImageUrl", dataType: "object", width: "110px" },
-                { headerText: "Title", key: "Title", dataType: "string", width: "130px" },
-                { headerText: "Phone", key: "Phone", dataType: "string", width: "110px" },
-                { headerText: "Country", key: "Country", dataType: "string", width: "80px" },
-                { headerText: "Birth Date", key: "BirthDate", dataType: "date", width: "100px" }
+                { headerText: "Employee ID", key: "ID", dataType: "number" },
+                { headerText: "Name", key: "Name", dataType: "string" },
+                { headerText: "Image", key: "ImageUrl", dataType: "object" },
+                { headerText: "Title", key: "Title", dataType: "string" },
+                { headerText: "Phone", key: "Phone", dataType: "string" },
+                { headerText: "Country", key: "Country", dataType: "string" },
+                { headerText: "Birth Date", key: "BirthDate", dataType: "date" }
             ];
 
             rowTmpl = getRowTmpl(columnObj);
@@ -74,7 +74,7 @@ $(function () {
             }
 
             $("#grid12").igGrid({
-                width: "740px",
+                width: "98%",
                 height: "600px",
                 rowTemplate: rowTmpl,
                 autoGenerateColumns: false,
@@ -84,6 +84,24 @@ $(function () {
                 primaryKey: "ID",
                 templatingEngine: "jsrender",
                 features: [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'ID',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Phone',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'BirthDate',
+                                classes: 'hidden-phone'
+                            }
+                        ]
+                    },
                     {
                         name: "Selection"
                     },

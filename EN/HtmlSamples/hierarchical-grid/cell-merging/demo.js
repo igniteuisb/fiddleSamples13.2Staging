@@ -45,16 +45,34 @@ $(function () {
                 responseDataKey: "results",
                 dataSourceType: "json",
                 columns: [
-                   { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "100px" },
-                   { key: "LastName", headerText: "First Name", dataType: "string", width: "100px" },
-                   { key: "FirstName", headerText: "Last Name", dataType: "string", width: "100px" },
-                   { key: "Title", headerText: "Title", dataType: "string", width: "150px" },
-                   { key: "Address", headerText: "Address", dataType: "string", width: "150px" },
-                   { key: "City", headerText: "City", dataType: "string", width: "100px" },
-                   { key: "Region", headerText: "Region", dataType: "string", width: "80px" },
-                   { key: "Country", headerText: "Country", dataType: "string", width: "100px" }
+                   { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "10%" },
+                   { key: "LastName", headerText: "First Name", dataType: "string", width: "15%" },
+                   { key: "FirstName", headerText: "Last Name", dataType: "string", width: "15%" },
+                   { key: "Title", headerText: "Title", dataType: "string", width: "10%" },
+                   { key: "Address", headerText: "Address", dataType: "string", width: "15%" },
+                   { key: "City", headerText: "City", dataType: "string", width: "15%" },
+                   { key: "Region", headerText: "Region", dataType: "string", width: "10%" },
+                   { key: "Country", headerText: "Country", dataType: "string", width: "10%" }
                 ],
                 features: [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'EmployeeID',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Address',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Region',
+                                classes: 'hidden-phone'
+                            }
+                        ]
+                    },
                     {
                         name: 'CellMerging',
                         inherit: true,
@@ -76,15 +94,30 @@ $(function () {
                         responseDataKey: "results",
                         autoGenerateColumns: false,
                         primaryKey: "OrderID",
+                        width: "100%",
                         columns: [
-                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "100px" },
-                            { key: "Freight", headerText: "Freight", dataType: "string", width: "100px" },
-                            { key: "ShipName", headerText: "Ship Name", dataType: "string", width: "200px" },
-                            { key: "ShipAddress", headerText: "Ship Address", dataType: "string", width: "200px" },
-                            { key: "ShipCity", headerText: "Ship City", dataType: "string", width: "100px" },
-                            { key: "ShipCountry", headerText: "Ship Country", dataType: "string", width: "100px" }
+                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "10%" },
+                            { key: "Freight", headerText: "Freight", dataType: "string", width: "15%" },
+                            { key: "ShipName", headerText: "Ship Name", dataType: "string", width: "20%" },
+                            { key: "ShipAddress", headerText: "Ship Address", dataType: "string", width: "25%" },
+                            { key: "ShipCity", headerText: "Ship City", dataType: "string", width: "20%" },
+                            { key: "ShipCountry", headerText: "Ship Country", dataType: "string", width: "20%" }
                         ],
                         features: [
+                            {
+                                name: 'Responsive',
+                                enableVerticalRendering: false,
+                                columnSettings: [
+                                    {
+                                        columnKey: 'OrderID',
+                                        classes: 'hidden-phone'
+                                    },
+                                    {
+                                        columnKey: 'ShipName',
+                                        classes: 'hidden-phone'
+                                    }
+                                ]
+                            },
                             {
                                 name: "Paging",
                                 pageSize: 10

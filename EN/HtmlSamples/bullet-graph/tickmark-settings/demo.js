@@ -1,11 +1,7 @@
 $(function () {
-            /*----------------- Instantiation -------------------------*/
-           
-
             var $bulletGraph1 = $("#bulletgraph1");
 
             $bulletGraph1.igBulletGraph({
-                 
                 width: "100%",
                 // The interval to use for the ticks. Default value is calculated, rather than predefined, to show 11 ticks based on the minimum and maximum values (in this case value would equal to 75)
                 //interval: 75,
@@ -84,7 +80,6 @@ $(function () {
                 // Gets or sets the stroke thickness to use when rendering minor ticks.
                 minorTickStrokeThickness: 2,
                 // Gets or sets the brush to use for the minor tickmarks.
-
                 ranges: [
                     {
                         name: 'range1',
@@ -143,7 +138,6 @@ $(function () {
                 ticksPostInitial: 50,
                 // A value to stop adding tickmarks, subtracted from the scale's MaximumValue.
                 ticksPreTerminal: 200,
-
                 ranges: [
                     {
                         name: 'range1',
@@ -175,135 +169,4 @@ $(function () {
                 },
                 transitionDuration: 1000
             });
-
-        
-
-            //// Ticks Interval
-            //$("#intervalSlider").slider({
-            //    min: 1,
-            //    max: 100,
-            //    value: $bulletGraph.igBulletGraph("option", "interval"),
-            //    slide: function (event, ui) {
-            //        $bulletGraph.igBulletGraph("option", "interval", ui.value);
-            //        $("#intervalLabel").text(ui.value);
-            //    }
-            //});
-
-            //// Minor Tick Count
-            //$("#minorTickCountSlider").slider({
-            //    min: 0,
-            //    max: 10,
-            //    value: $bulletGraph.igBulletGraph("option", "minorTickCount"),
-            //    slide: function (event, ui) {
-            //        $bulletGraph.igBulletGraph("option", "minorTickCount", ui.value);
-            //        $("#minorTickCountLabel").text(ui.value);
-            //    }
-            //});
-
-            //// Tick Start Extent
-            //$("#tickStartExtentSlider").slider({
-            //    min: 0,
-            //    max: 1,
-            //    step: 0.01,
-            //    value: $bulletGraph.igBulletGraph("option", "tickStartExtent"),
-            //    slide: function (event, ui) {
-            //        $bulletGraph.igBulletGraph("option", "tickStartExtent", ui.value);
-            //        $("#tickStartExtentLabel").text(ui.value);
-            //    }
-            //});
-
-            //// Tick End Extent
-            //$("#tickEndExtentSlider").slider({
-            //    min: 0,
-            //    max: 1,
-            //    step: 0.01,
-            //    value: $bulletGraph.igBulletGraph("option", "tickEndExtent"),
-            //    slide: function (event, ui) {
-            //        $bulletGraph.igBulletGraph("option", "tickEndExtent", ui.value);
-            //        $("#tickEndExtentLabel").text(ui.value);
-            //    }
-            //});
-
-
-            //// Minor Tick Start Extent
-            //$("#minorTickStartExtentSlider").slider({
-            //    min: 0,
-            //    max: 1,
-            //    step: 0.01,
-            //    value: $bulletGraph.igBulletGraph("option", "minorTickStartExtent"),
-            //    slide: function (event, ui) {
-            //        $bulletGraph.igBulletGraph("option", "minorTickStartExtent", ui.value);
-            //        $("#minorTickStartExtentLabel").text(ui.value);
-            //    }
-            //});
-
-            //// Minor Tick End Extent
-            //$("#minorTickEndExtentSlider").slider({
-            //    min: 0,
-            //    max: 1,
-            //    step: 0.01,
-            //    value: $bulletGraph.igBulletGraph("option", "minorTickEndExtent"),
-            //    slide: function (event, ui) {
-            //        $bulletGraph.igBulletGraph("option", "minorTickEndExtent", ui.value);
-            //        $("#minorTickEndExtentLabel").text(ui.value);
-            //    }
-            //});
-
-            //// Ticks Post Initial
-            //$("#ticksPostInitialSlider").slider({
-            //    min: 0,
-            //    max: 100,
-            //    value: $bulletGraph.igBulletGraph("option", "ticksPostInitial"),
-            //    slide: function (event, ui) {
-            //        $bulletGraph.igBulletGraph("option", "ticksPostInitial", ui.value);
-            //        $("#ticksPostInitialLabel").text(ui.value);
-            //    }
-            //});
-
-            //// Ticks Post Initial
-            //$("#ticksPreTerminalSlider").slider({
-            //    min: 0,
-            //    max: 100,
-            //    value: $bulletGraph.igBulletGraph("option", "ticksPreTerminal"),
-            //    slide: function (event, ui) {
-            //        $bulletGraph.igBulletGraph("option", "ticksPreTerminal", ui.value);
-            //        $("#ticksPreTerminalLabel").text(ui.value);
-            //    }
-            //});
-
-            //// Tick Brush
-            //$("#tickBrushSelect").change(function () {
-            //    var value = $(this).val();
-            //    $bulletGraph.igBulletGraph("option", "tickBrush", value);
-            //    $("#tickBrushLabel").text(value);
-            //});
-
-            //// Tick Brush
-            //$("#minorTickBrushSelect").change(function () {
-            //    var value = $(this).val();
-            //    $bulletGraph.igBulletGraph("option", "minorTickBrush", value);
-            //    $("#minorTickBrushLabel").text(value);
-            //});
-
-            //// Tick Stroke Thickness
-            //$("#tickStrokeThicknessSlider").slider({
-            //    min: 1,
-            //    max: 10,
-            //    value: $bulletGraph.igBulletGraph("option", "tickStrokeThickness"),
-            //    slide: function (event, ui) {
-            //        $bulletGraph.igBulletGraph("option", "tickStrokeThickness", ui.value);
-            //        $("#tickStrokeThicknessLabel").text(ui.value);
-            //    }
-            //});
-
-            //// Minor Tick Stroke Thickness
-            //$("#minorTickStrokeThicknessSlider").slider({
-            //    min: 1,
-            //    max: 10,
-            //    value: $bulletGraph.igBulletGraph("option", "minorTickStrokeThickness"),
-            //    slide: function (event, ui) {
-            //        $bulletGraph.igBulletGraph("option", "minorTickStrokeThickness", ui.value);
-            //        $("#minorTickStrokeThicknessLabel").text(ui.value);
-            //    }
-            //});
         });

@@ -38,22 +38,40 @@ $(function () {
 
             $("#grid").igGrid({
                 height: "100%",
-                width: "100%",
+                width: "98%",
                 autoGenerateColumns: false,
                 dataSource: northwind,
                 responseDataKey: "results",
                 dataSourceType: "json",
                 columns: [
-                   { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "100px" },
-                   { key: "LastName", headerText: "First Name", dataType: "string", width: "100px" },
-                   { key: "FirstName", headerText: "Last Name", dataType: "string", width: "100px" },
-                   { key: "Title", headerText: "Title", dataType: "string", width: "150px" },
-                   { key: "Address", headerText: "Address", dataType: "string", width: "150px" },
-                   { key: "City", headerText: "City", dataType: "string", width: "100px" },
-                   { key: "Region", headerText: "Region", dataType: "string", width: "80px" },
-                   { key: "Country", headerText: "Country", dataType: "string", width: "100px" }
+                   { key: "EmployeeID", headerText: "Employee ID", dataType: "number"},
+                   { key: "LastName", headerText: "First Name", dataType: "string" },
+                   { key: "FirstName", headerText: "Last Name", dataType: "string" },
+                   { key: "Title", headerText: "Title", dataType: "string" },
+                   { key: "Address", headerText: "Address", dataType: "string" },
+                   { key: "City", headerText: "City", dataType: "string"},
+                   { key: "Region", headerText: "Region", dataType: "string" },
+                   { key: "Country", headerText: "Country", dataType: "string" }
                 ],
                 features: [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'EmployeeID',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Address',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'LastName',
+                                classes: 'hidden-phone'
+                            }
+                        ]
+                    },
                     {
                         name: 'CellMerging',
                         initialState: initialState

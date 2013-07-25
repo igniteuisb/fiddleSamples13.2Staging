@@ -4,7 +4,7 @@ $(function () {
             	dataSource: "http://labs.infragistics.com/igniteui/api/invoices?callback=?",
                 responseDataKey: "d.results",
                 height: "100px",
-                width: "300px",
+                width: "100%",
                 valueMemberPath: 'ExtendedPrice',
                 labelMemberPath: 'OrderDate'
             });

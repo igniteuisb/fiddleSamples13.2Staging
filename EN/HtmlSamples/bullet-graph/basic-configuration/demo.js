@@ -1,7 +1,7 @@
 $(function () {
             $("#bulletgraph").igBulletGraph({
                 height: "80px",
-                width: "650px",
+                width: "100%",
                 minimumValue: 0, // default is 0
                 maximumValue: 30, // default is 100
                 actualValue: 26,
@@ -22,6 +22,9 @@ $(function () {
                         startValue: 25,
                         endValue: 30
                     }],
-                transitionDuration: 1000
+                transitionDuration: 1000,
+                formatLabel: function (evt, ui) {
+                        ui.label = ui.label+"K";
+                    }
             });
         });

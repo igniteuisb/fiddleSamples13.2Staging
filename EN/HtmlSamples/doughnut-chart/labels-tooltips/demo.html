@@ -18,55 +18,53 @@
     </script>
 
 <div id="chart"></div>
-    <br />
-     <table class="options">
+
+     <br />
+     
+     <table class="options" style="max-width: 550px; width: 100%;">
         <tr>            
-            <td>Start Angle:</td>
             <td>
-                <div id="angle" class="slider"></div>
+                Start Angle
             </td>
-            <td>Series</td>
-            <td>
-                <select id="angleSeriesName">                    
+            <td class="optionTdWidth">
+                <select id="angleSeriesName" class="optionTdWidth" style="margin-bottom: 7px;">
                     <option value="Budget" selected="selected">Budget</option>
                     <option value="DepartmentSize">Department Size</option>                    
                 </select>
+                <div id="angle" class="slider optionTdWidth"></div>
             </td>
         </tr>
-        <tr>            
+        <tr>
             <td>InnerExtent:</td>
-            <td>
-                <div id="innerExtent" class="slider"></div>
+            <td class="optionTdWidth">
+                <div id="innerExtent" class="slider optionTdWidth"></div>
             </td>
-            <td></td>
-            <td></td>
         </tr>               
         <tr>
             <td>Label Position for the Budget Series:</td>
-            <td>                
-                <select id="labelPosition">                    
+            <td class="optionTdWidth">
+                <select id="labelPosition" class="optionTdWidth">
                     <option value="center" selected="selected">Center</option>
                     <option value="insideEnd">Inside End</option>                    
                     <option value="bestFit">Best Fit</option>
                 </select>               
             </td>
-            <td></td>
-            <td></td>            
         </tr>
          <tr>
             <td>Label Position for the Department Size Series:</td>
-            <td>                
-                <select id="labelPosition2">                    
+            <td class="optionTdWidth">
+                <select id="labelPosition2" class="optionTdWidth">
                     <option value="center" selected="selected">Center</option>
                     <option value="insideEnd">Inside End</option>
                     <option value="outsideEnd">Outside End</option>
                     <option value="bestFit">Best Fit</option>
                 </select>               
             </td>
-            <td>Label Extent</td>
-            <td>
-                <div id="labelExtent" class="slider"></div>
+        </tr>
+        <tr>
+            <td>Label Extent (Outside End)</td>
+            <td class="optionTdWidth">
+                <div id="labelExtent" class="slider optionTdWidth"></div>
             </td>
-            
         </tr>
     </table>

@@ -19,7 +19,7 @@ body {
         .dashboard {
             font-size: 0.85em!important;
             position: relative;
-            height: 630px;
+            height: 660px;
         }
 
             .dashboard img {
@@ -59,6 +59,7 @@ body {
         
         .ui-tabs .ui-tabs-panel, .ui-tabs-nav, .ui-tabs .ui-tabs-nav li.ui-state-default {
             border: none;
+            padding: 0;
         }
 
         .ui-tabs .ui-tabs-nav li.ui-state-active a {
@@ -75,7 +76,7 @@ body {
         }
 
         .ui-tabs-anchor {
-            text-shadow: none!important;
+            text-shadow: none;
             color: #fff!important;
         }
 
@@ -84,7 +85,11 @@ body {
         }
 
         .ui-tabs {
-            border-radius: none!important;
+            border-radius: 0;
+        }
+
+        #sampleContainer {
+            min-width: 470px;
         }
 
         .sample-footer {
@@ -101,7 +106,6 @@ body {
             }
 
         .sample-header {
-
             height: 60px;
             line-height: 75px;
             width: 100%;

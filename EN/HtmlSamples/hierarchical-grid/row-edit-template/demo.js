@@ -3,6 +3,32 @@ $(function () {
             $("#grid2").igHierarchicalGrid({
                 features: [
                     {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'EmployeeID',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Address',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Region',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'PostalCode',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'HomePhone',
+                                classes: 'hidden-phone'
+                            }
+                        ]
+                    },
+                    {                       
                         name: "Updating",
                         enableAddRow: true,
                         inherit: true,
@@ -26,7 +52,7 @@ $(function () {
                     }
                 ],
                 width: "100%",
-                height: "500px",
+                height: "90%",
                 initialDataBindDepth: -1,
                 dataSource: northwind,
                 dataSourceType: "json",
@@ -34,36 +60,51 @@ $(function () {
                 autoGenerateColumns: false,
                 primaryKey: "EmployeeID",
                 columns: [
-                    { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "100px" },
-                    { key: "LastName", headerText: "Last Name", dataType: "string", width: "100px" },
-                    { key: "FirstName", headerText: "First Name", dataType: "string", width: "100px" },
-                    { key: "Title", headerText: "Title", dataType: "string", width: "150px" },
-                    { headerText: "Address", key: "Address", dataType: "string", width: "150px" },
-                    { headerText: "City", key: "City", dataType: "string", width: "100px" },
-                    { headerText: "Postal Code", key: "PostalCode", dataType: "string", width: "100px", hidden: true },
-                    { headerText: "Region", key: "Region", dataType: "string", width: "80px", hidden: true },
-                    { headerText: "Country", key: "Country", dataType: "string", width: "100px", hidden: true },
-                    { headerText: "Home Phone", key: "HomePhone", dataType: "string", width: "150px", hidden: true },
-                    { headerText: "Extension", key: "Extension", dataType: "string", width: "150px", hidden: true }
+                    { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "5%" },
+                    { key: "LastName", headerText: "Last Name", dataType: "string", width: "10%" },
+                    { key: "FirstName", headerText: "First Name", dataType: "string", width: "10%" },
+                    { key: "Title", headerText: "Title", dataType: "string", width: "10%" },
+                    { headerText: "Address", key: "Address", dataType: "string", width: "15%" },
+                    { headerText: "City", key: "City", dataType: "string", width: "10%" },
+                    { headerText: "Postal Code", key: "PostalCode", dataType: "string", width: "10%", hidden: true },
+                    { headerText: "Region", key: "Region", dataType: "string", width: "10%", hidden: true },
+                    { headerText: "Country", key: "Country", dataType: "string", width: "10%", hidden: true },
+                    { headerText: "Home Phone", key: "HomePhone", dataType: "string", width: "10%", hidden: true },
+                    { headerText: "Extension", key: "Extension", dataType: "string", width: "10%", hidden: true }
                 ],
                 childrenDataProperty: "Orders",
-                autoGenerateLayouts: false,
+                autoGenerateLayouts: false,               
                 columnLayouts: [
                     {
                         key: "Orders",
                         responseDataKey: "results",
+                        width: "100%",
                         autoGenerateColumns: false,
                         primaryKey: "OrderID",
                         columns: [
-                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "100px" },
-                            { key: "CustomerID", headerText: "Customer ID", dataType: "string", width: "100px", hidden: true },
-                            { key: "Freight", headerText: "Freight", dataType: "string", width: "100px" },
-                            { key: "ShipName", headerText: "Ship Name", dataType: "string", width: "200px" },
-                            { key: "ShipAddress", headerText: "Ship Address", dataType: "string", width: "200px" },
-                            { key: "ShipCity", headerText: "Ship City", dataType: "string", width: "100px" },
-                            { key: "ShipCountry", headerText: "Ship Country", dataType: "string", width: "100px" }
+                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "10%" },
+                            { key: "CustomerID", headerText: "Customer ID", dataType: "string", width: "10%", hidden: true },
+                            { key: "Freight", headerText: "Freight", dataType: "string", width: "15%" },
+                            { key: "ShipName", headerText: "Ship Name", dataType: "string", width: "20%" },
+                            { key: "ShipAddress", headerText: "Ship Address", dataType: "string", width: "25%" },
+                            { key: "ShipCity", headerText: "Ship City", dataType: "string", width: "20%" },
+                            { key: "ShipCountry", headerText: "Ship Country", dataType: "string", width: "20%" }
                         ],
                         features: [
+                            {
+                                name: 'Responsive',
+                                enableVerticalRendering: false,
+                                columnSettings: [
+                                    {
+                                        columnKey: 'OrderID',
+                                        classes: 'hidden-phone'
+                                    },
+                                    {
+                                        columnKey: 'ShipName',
+                                        classes: 'hidden-phone'
+                                    }
+                                ]
+                            },
                             {
                                 name: "Paging",
                                 pageSize: 10

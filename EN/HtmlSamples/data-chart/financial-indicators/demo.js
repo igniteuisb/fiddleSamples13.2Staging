@@ -1,16 +1,20 @@
 $(function () {
             $("#priceChart").igDataChart({
                 width: "500px",
-                height: "300px",
+                height: "400px",
                 dataSource: data,
+                title: "Microsoft Stock (MSFT)",
+                subTitle: "Data over two months",
                 axes: [{
                     type: "categoryX",
-                    label: "DateString",
+                    label: "Date",
                     name: "xAxis",
-                    labelVisibility: "collapsed"
+                    interval: 10,
+                    title: "Date"
                 }, {
                     type: "numericY",
-                    name: "yAxis"
+                    name: "yAxis",
+                    title: "Price"
                 }],
                 series: [{
                     type: "financial",
@@ -28,16 +32,19 @@ $(function () {
 
             $("#indicatorChart").igDataChart({
                 width: "500px",
-                height: "300px",
+                height: "400px",
                 dataSource: data,
+                title: "Financial Indicator Chart",
                 axes: [{
                     type: "categoryX",
-                    label: "DateString",
+                    label: "Date",
                     name: "xAxis",
-                    labelVisibility: "collapsed"
+                    interval: 10,
+                    title: "Date"
                 }, {
                     type: "numericY",
-                    name: "yAxis"
+                    name: "yAxis",
+                    title: "Price"
                 }],
                 series: [{
                     type: "moneyFlowIndexIndicator",

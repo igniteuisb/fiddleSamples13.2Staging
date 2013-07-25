@@ -1,7 +1,7 @@
 $(function () {
             $("#radialgauge").igRadialGauge({
                 height: "500px",
-                width: "500px",
+                width: "100%",
                 transitionDuration: "1500",
                 value: "10"
             });

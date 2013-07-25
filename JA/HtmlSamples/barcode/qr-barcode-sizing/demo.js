@@ -1,8 +1,8 @@
 $(function () {
             $("#barcode").igQRCodeBarcode({
                 height: "300px",
-                width: "300px",
-                stretch: "none",
+                width: "100%",
+                stretch: 'none',
                 barsFillMode: "fillSpace",
                 xDimension: 0.5,
                 data: "http://www.infragistics.com/products/jquery/help"

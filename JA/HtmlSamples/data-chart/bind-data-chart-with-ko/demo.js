@@ -128,33 +128,17 @@ $(function () {
                 dynamicModel = new ViewModel(generateData());
                 ko.applyBindings(dynamicModel);
             });
-            $(".windows-button").click(function (e) {
-                var animTimeout = 1000,
-                    wind1 = $(".window-container-1"),
-                    wind2 = $(".window-container-2");
-                if (wind1.css("display") === "none") {
-                    wind2.fadeOut(animTimeout);
-                    wind1.fadeIn(animTimeout);
-                    $("#loadHidden").css("display", "block");
-                    $("#loadInitial").css("display", "none");
-                } else {
-                    wind1.fadeOut(animTimeout);
-                    wind2.fadeIn(animTimeout);
-                    $("#loadHidden").css("display", "none");
-                    $("#loadInitial").css("display", "block");
-                }
-            });
             $(".main-container").on("igtexteditortextchanged", "#ed-month", animateMonth);
             $(".main-container").on("ignumericeditortextchanged", "#ed-revenue", animateRevenue);
             $(".main-container").on("ignumericeditortextchanged", "#ed-expenses", animateExpenses);
             $(".main-container").on("ignumericeditortextchanged", "#ed-profit", animateProfit);
             function animateMonth() {
-                animateChartBorder("lineChart"); animateChartBorder("barColumnChart");
-                animateChartBorder("rangeChart"); animateChartBorder("waterfallChart");
+                animateChartBorder("lineChart");
+                animateChartBorder("barColumnChart");
             }
             function animateRevenue() {
-
-                animateChartBorder("polarSplineChartRevenue"); animateChartBorder("polarSplineChartProfit");
+                animateChartBorder("polarSplineChartRevenue");
+                animateChartBorder("polarSplineChartProfit");
             }
             function animateExpenses() {
                 animateAllThree();

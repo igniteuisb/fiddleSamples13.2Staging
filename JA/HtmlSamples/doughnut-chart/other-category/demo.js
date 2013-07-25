@@ -9,7 +9,7 @@ $(function () {
             ];
             
             $("#chart").igDoughnutChart({
-                width: "550px",
+                width: "100%",
                 height: "550px",
                 innerExtent: 20,
                 series:

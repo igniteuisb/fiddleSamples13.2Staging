@@ -13,6 +13,20 @@ $(function () {
                 responseDataKey: 'results',
                 features: [
                     {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'EmployeeID',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'PostalCode',
+                                classes: 'hidden-phone'
+                            }                            
+                        ]
+                    },
+                    {
                         name: 'Filtering',
                         type: "local",
                         mode: "advanced"

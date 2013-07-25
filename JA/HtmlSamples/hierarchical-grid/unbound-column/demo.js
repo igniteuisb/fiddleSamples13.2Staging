@@ -48,6 +48,32 @@ $(function () {
             $("#grid3").igHierarchicalGrid({
                 features: [
                     {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'EmployeeID',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Address',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Region',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'PostalCode',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'HomePhone',
+                                classes: 'hidden-phone'
+                            }
+                        ]
+                    },
+                    {
                         name: "MultiColumnHeaders",
                         inherit: true
                     },
@@ -67,6 +93,7 @@ $(function () {
                     {
                         name: "Paging",
                         type: 'local',
+                        pageSize: 5,
                         inherit: true
                     },
                     {
@@ -117,8 +144,8 @@ $(function () {
                             ]
                     }
                 ],
-                width: "1000px",
-                height: "800px",
+                width: "100%",
+                height: "95%",
                 initialDataBindDepth: -1,
                 loadOnDemand: false,
                 dataSource: northwind,
@@ -127,18 +154,18 @@ $(function () {
                 autoGenerateColumns: false,
                 primaryKey: "EmployeeID",
                 columns: [
-                    { key: "EmployeeID", headerText: "社員 ID", dataType: "number", width: "100px" },
-                    { key: "LastName", headerText: "名字", dataType: "string", width: "100px" },
-                    { key: "FirstName", headerText: "名前", dataType: "string", width: "100px" },
-                    { key: "Title", headerText: "役職", dataType: "string", width: "150px" },
-                    { key: "Address", headerText: "住所", dataType: "string", width: "150px" },
-                    { key: "City", headerText: "市", dataType: "string", width: "100px" },
-                    { key: "PostalCode", headerText: "郵便番号", dataType: "string", width: "100px" },
-                    { key: "IsUSA", headerText: "米国内", unbound: true, dataType: "bool", width: "50px", format: "checkbox" },
-                    { key: "Region", headerText: "領域", dataType: "string", width: "80px" },
-                    { key: "Country", headerText: "国名", dataType: "string", width: "100px" },
+                    { key: "EmployeeID", headerText: "社員 ID", dataType: "number", width: "5%" },
+                    { key: "LastName", headerText: "名字", dataType: "string", width: "10%" },
+                    { key: "FirstName", headerText: "名前", dataType: "string", width: "10%" },
+                    { key: "Title", headerText: "役職", dataType: "string", width: "10%" },
+                    { key: "Address", headerText: "住所", dataType: "string", width: "15%" },
+                    { key: "City", headerText: "市", dataType: "string", width: "10%" },
+                    { key: "PostalCode", headerText: "郵便番号", dataType: "string", width: "10%" },
+                    { key: "IsUSA", headerText: "米国内", unbound: true, dataType: "bool", width: "5%", format: "checkbox" },
+                    { key: "Region", headerText: "領域", dataType: "string", width: "5%" },
+                    { key: "Country", headerText: "国名", dataType: "string", width: "10%" },
                 ],
-                childrenDataProperty: "Orders",
+                childrenDataProperty: "Orders",                
                 autoGenerateLayouts: false,
                 columnLayouts: [
                     {
@@ -146,24 +173,43 @@ $(function () {
                         responseDataKey: "results",
                         autoGenerateColumns: false,
                         primaryKey: "OrderID",
-                        height: "600px",
+                        width: "100%",
+                        height: "95%",
                         columns: [
-                            { key: "OrderID", headerText: "注文 ID", dataType: "number", width: "100px" },
-                            { key: "CustomerID", headerText: "顧客 ID", dataType: "string", width: "100px" },
-                            { key: "Freight", headerText: "輸送", dataType: "string", width: "100px" },
-                            { key: "FreightExpence", headerText: "輸送費", unbound: true, dataType: "number", width: "100px", formula: "CalculateFreightExpence" },
-                            { key: "ShipName", headerText: "出荷名", dataType: "string", width: "200px" },
-                            { key: "ShipAddress", headerText: "配送先住所", dataType: "string", width: "200px" },
-                            { key: "ShipCity", headerText: "配送先市町村", dataType: "string", width: "100px" },
+                            { key: "OrderID", headerText: "注文 ID", dataType: "number", width: "5%" },
+                            { key: "CustomerID", headerText: "顧客 ID", dataType: "string", width: "5%" },
+                            { key: "Freight", headerText: "輸送", dataType: "string", width: "15%" },
+                            { key: "FreightExpence", headerText: "輸送費", unbound: true, dataType: "number", width: "15%", formula: "CalculateFreightExpence" },
+                            { key: "ShipName", headerText: "出荷名", dataType: "string", width: "15%" },
+                            { key: "ShipAddress", headerText: "配送先住所", dataType: "string", width: "15%" },
+                            { key: "ShipCity", headerText: "配送先市町村", dataType: "string", width: "10%" },
                         ],
                         features: [
+                            {
+                                name: 'Responsive',
+                                enableVerticalRendering: false,
+                                columnSettings: [
+                                    {
+                                        columnKey: 'OrderID',
+                                        classes: 'hidden-phone'
+                                    },
+                                    {
+                                        columnKey: 'CustomerID',
+                                        classes: 'hidden-phone'
+                                    },
+                                    {
+                                        columnKey: 'ShipName',
+                                        classes: 'hidden-phone'
+                                    }
+                                ]
+                            },
                             {
                                 name: "MultiColumnHeaders"
                             },
                             {
                                 name: "Paging",
                                 type: 'local',
-                                pageSize: 10
+                                pageSize: 5
                             },
                             {
                                 name: "Updating",

@@ -1,39 +1,30 @@
 $(function () {
-            function generateData() {
-                var num = 10, data = [], curr = 10;
-                for (var i = 0; i < num; i++) {
-                    if (Math.random() > .5) {
-                        curr += Math.random() * 2.0;
-                    } else {
-                        curr -= Math.random() * 2.0;
-                    }
-                    var val1 = Math.round(curr * 1000.0) / 1000.0;
-                    data[i] = { Label: i.toString(), Index: i, Value1: val1 };
-                }
-                return new $.ig.DataSource({ dataSource: data });
-            }
-
-            function createChart(selector, seriesType, dataSource) {
+            function createChart(selector, seriesType, data) {
                 $(selector).igDataChart({
                     width: "400px",
                     height: "400px",
-                    dataSource: dataSource,
+                    dataSource: data,
+                    title: "風速 vs. 風向",
+                    subTitle: "ロサンゼルスの風データ (12 時間)",
                     axes: [{
                         name: "angleAxis",
                         type: "numericAngle"
                     },
                     {
                         name: "radiusAxis",
-                        type: "numericRadius"
+                        type: "numericRadius",
+                        minimumValue: 0,
+                        maximumValue: 10,
+                        interval: 2
                     }],
                     series: [{
                         name: "series1",
-                        title: "$$(Chart_lbl_seriesTitle)",
+                        //title: "$$(Chart_lbl_seriesTitle)",
                         type: seriesType,
                         angleAxis: "angleAxis",
                         radiusAxis: "radiusAxis",
-                        angleMemberPath: "Index",
-                        radiusMemberPath: "Value1"
+                        angleMemberPath: "WindDirection",
+                        radiusMemberPath: "WindSpeed"
                     }],
                     horizontalZoomable: true,
                     verticalZoomable: true,
@@ -41,7 +32,6 @@ $(function () {
                 });
             }
 
-            var data = generateData();
             createChart("#chartScatter", "polarScatter", data);
             createChart("#chartScatterLine", "polarLine", data);
             createChart("#chartScatterArea", "polarArea", data);

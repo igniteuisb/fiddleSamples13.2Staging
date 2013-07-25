@@ -12,6 +12,7 @@ var energyData = [
             $("#chart").igDataChart({
                 dataSource: energyData,
                 title: "国別エネルギー消費量",
+					 width: "100%",
                 subTitle: "2 年間の結果",
                 axes: [{
                     type: "categoryX",

@@ -18,7 +18,7 @@ $(function () {
             ];
 
             $("#hierarchicalGrid").igHierarchicalGrid({
-                width: "600px",
+                width: "100%",
                 dataSource: data, //Array of objects defined above
                 autoGenerateLayouts: true
             });

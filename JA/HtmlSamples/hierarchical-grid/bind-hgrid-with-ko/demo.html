@@ -67,7 +67,7 @@
                    dataSource: Records,
                    responseDataKey: 'results',                 
                    autoCommit: true,
-                   width: 740,
+                   width: '100%',
                    initialDataBindDepth: -1,
                    primaryKey: 'EmployeeID',
                    dataSourceType: 'json',
@@ -75,11 +75,11 @@
                    autoGenerateLayots: false,
                    childrenDataProperty: 'Orders',
                    columns: [
-                       { key: 'EmployeeID', headerText: '社員 ID', width: 100, dataType: 'number' },
-                       { key: 'FirstName', headerText: '名前', width: 150, dataType: 'string' },
-                       { key: 'LastName', headerText: '名字', width: 150, dataType: 'string' },
-                       { key: 'City', headerText: '市', width: 150, dataType: 'string' },
-                       { key: 'Country', headerText: '国名', width: 150, dataType: 'string' }
+                       { key: 'EmployeeID', headerText: '社員 ID', width: '5%', dataType: 'number' },
+                       { key: 'FirstName', headerText: '名前', width: '25%', dataType: 'string' },
+                       { key: 'LastName', headerText: '名字', width: '25%', dataType: 'string' },
+                       { key: 'City', headerText: '市', width: '20%', dataType: 'string' },
+                       { key: 'Country', headerText: '国名', width: '20%', dataType: 'string' }
                    ],
                    columnLayouts: [
                        {
@@ -111,11 +111,11 @@
                                }
                            ],
                            columns: [
-                               { key: 'OrderID', headerText: '注文 ID', width: 100, dataType: 'number' },
-                               { key: 'ShipName', headerText: '出荷名', width: 200, dataType: 'string' },
-                               { key: 'Freight', headerText: '輸送', width: 100, dataType: 'string' },
-                               { key: 'ShipPostalCode', headerText: '郵便番号', width: 100, dataType: 'string' },
-                               { key: 'OrderDate', headerText: '注文日', width: 200, dataType: 'date' }
+                               { key: 'OrderID', headerText: '注文 ID', width: '5%', dataType: 'number' },
+                               { key: 'ShipName', headerText: '出荷名', width: '20%', dataType: 'string' },
+                               { key: 'Freight', headerText: '輸送', width: '20%', dataType: 'string' },
+                               { key: 'ShipPostalCode', headerText: '郵便番号', width: '20%', dataType: 'string' },
+                               { key: 'OrderDate', headerText: '注文日', width: '30%', dataType: 'date' }
                            ]
                        }
                    ],

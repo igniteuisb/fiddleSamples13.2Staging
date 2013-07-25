@@ -1,7 +1,7 @@
 $(function () {
             
             $("#radialgauge").igRadialGauge({
-                width: "500px",
+                width: "100%",
                 height: "500px",
                 transitionDuration: "1500"
             });
@@ -27,7 +27,7 @@ $(function () {
             function setting1 () {
                     $("#radialgauge").igRadialGauge({
                     height: "500px",
-                    width: "500px",
+                    width: "100%",
                     minimumValue: "0",
                     maximumValue: "100",
                     value: "0",
@@ -64,7 +64,7 @@ $(function () {
             function setting2() {
                 $("#radialgauge").igRadialGauge({
                     height: "500px",
-                    width: "500px",
+                    width: "100%",
                     minimumValue: "0",
                     maximumValue: "10",
                     value: "10",
@@ -126,7 +126,7 @@ $(function () {
                 $("#radialgauge").igRadialGauge({
 
                     height: "500px",
-                    width: "500px",
+                    width: "100%",
 
                     minimumValue: "0",
                     maximumValue: "5",

@@ -1,65 +1,63 @@
 $(function () {
-var data = [
-                { "Year": "2000", "Coal": 450, "Oil": 100, "Nuclear": 175 },
-                { "Year": "2010", "Coal": 480, "Oil": 120, "Nuclear": 225 },
-                { "Year": "2020", "Coal": 550, "Oil": 180, "Nuclear": 275 }
-        ];
-
-        $(function () {
-            for (i = 0; i < data.length; i++) {
-                data[i].Total = data[i]["Coal"] + data[i]["Oil"] + data[i]["Nuclear"];
+            for (i = 0; i < everyThreeYears.length; i++) {
+                everyThreeYears[i].Total = (everyThreeYears[i]["China"] + everyThreeYears[i]["UnitedStates"] + everyThreeYears[i]["Russia"]).toFixed(2);
             }
 
             $("#chart").igDataChart({
-                dataSource: data,
+                dataSource: everyThreeYears,
                 crosshairVisibility: Modernizr.touch ? "visible" : "collapsed",
+                title: "国別エネルギー生産量",
+                subTitle: "総一次エネルギー生産国トップ 3",
                 axes: [{
                     type: "categoryX",
                     name: "xAxis",
                     label: "Year",
-                    strokeThickness: 5
+                    strokeThickness: 5,
+                    title: "年"
                 }, {
                     type: "numericY",
                     name: "prodPower",
                     minimumValue: 0,
-                    maximumValue: 800,
-                    strokeThickness: 5
+                    maximumValue: 100,
+                    strokeThickness: 5,
+                    title: "生産されたエネルギー (BTU 40 億単位)"
                 }, {
                     type: "numericY",
                     name: "totalPower",
-                    minimumValue: 400,
-                    maximumValue: 1200,
-                    labelLocation: "outsideRight"
+                    minimumValue: 50,
+                    maximumValue: 250,
+                    labelLocation: "outsideRight",
+                    title: "生産された総エネルギー (BTU 40 億単位)",
                 }],
                 series: [{
                     type: "column",
-                    name: "Coal",
-                    title: "石炭",
+                    name: "China",
+                    title: "中国",
                     xAxis: "xAxis",
                     yAxis: "prodPower",
-                    valueMemberPath: "Coal",
+                    valueMemberPath: "China",
                     showTooltip: true,
-                    tooltipTemplate: "tooltipCoal",
+                    tooltipTemplate: "tooltipChina",
                     legend: { element: "legend" }
                 }, {
                     type: "column",
-                    name: "Oil",
-                    title: "石油",
+                    name: "UnitedStates",
+                    title: "アメリカ",
                     xAxis: "xAxis",
                     yAxis: "prodPower",
-                    valueMemberPath: "Oil",
+                    valueMemberPath: "UnitedStates",
                     showTooltip: true,
-                    tooltipTemplate: "tooltipOil",
+                    tooltipTemplate: "tooltipUS",
                     legend: { element: "legend" }
                 }, {
                     type: "column",
-                    name: "Nuclear",
-                    title: "原子力",
+                    name: "Russia",
+                    title: "ロシア",
                     xAxis: "xAxis",
                     yAxis: "prodPower",
-                    valueMemberPath: "Nuclear",
+                    valueMemberPath: "Russia",
                     showTooltip: true,
-                    tooltipTemplate: "tooltipNuclear",
+                    tooltipTemplate: "tooltipRussia",
                     legend: { element: "legend" }
                 }, {
                     type: "line",
@@ -68,6 +66,7 @@ var data = [
                     xAxis: "xAxis",
                     yAxis: "totalPower",
                     valueMemberPath: "Total",
+                    brush: "Orange",
                     showTooltip: true,
                     tooltipTemplate: "tooltipTotal",
                     legend: { element: "legend2" }
@@ -76,4 +75,3 @@ var data = [
                 topMargin: 15
             });
         });
-});

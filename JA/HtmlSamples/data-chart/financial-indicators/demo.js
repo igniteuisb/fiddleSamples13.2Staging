@@ -1,16 +1,20 @@
 $(function () {
             $("#priceChart").igDataChart({
                 width: "500px",
-                height: "300px",
+                height: "400px",
                 dataSource: data,
+                title: "Microsoft 株 (MSFT)",
+                subTitle: "2 か月間のデータ",
                 axes: [{
                     type: "categoryX",
-                    label: "DateString",
+                    label: "Date",
                     name: "xAxis",
-                    labelVisibility: "collapsed"
+                    interval: 10,
+                    title: "日付"
                 }, {
                     type: "numericY",
-                    name: "yAxis"
+                    name: "yAxis",
+                    title: "価格"
                 }],
                 series: [{
                     type: "financial",
@@ -28,16 +32,19 @@ $(function () {
 
             $("#indicatorChart").igDataChart({
                 width: "500px",
-                height: "300px",
+                height: "400px",
                 dataSource: data,
+                title: "財務指標チャート",
                 axes: [{
                     type: "categoryX",
-                    label: "DateString",
+                    label: "Date",
                     name: "xAxis",
-                    labelVisibility: "collapsed"
+                    interval: 10,
+                    title: "日付"
                 }, {
                     type: "numericY",
-                    name: "yAxis"
+                    name: "yAxis",
+                    title: "価格"
                 }],
                 series: [{
                     type: "moneyFlowIndexIndicator",

@@ -1,44 +1,33 @@
 $(function () {
-            function generateData() {
-                var num = 30, data = [], curr = 10;
-                for (var i = 0; i < num; i++) {
-                    if (Math.random() > .5) {
-                        curr += Math.random() * 2.0;
-                    } else {
-                        curr -= Math.random() * 2.0;
-                    }
-                    var rad = Math.random() * 100.0;
-                    data[i] = {
-                        Label: i.toString(),
-                        Index: i,
-                        Value1: Math.round(curr * 1000.0) / 1000.0,
-                        Value2: rad,
-                        Value3: (rad / 100.0) * 20
-                    };
-                }
-
-                return new $.ig.DataSource({ dataSource: data });
-            }
-
             function createScatterChart(selector, seriesType, dataSource) {
                 $(selector).igDataChart({
                     width: "400px",
                     height: "400px",
                     dataSource: dataSource,
+                    title: "年の米国農業生産",
+                    subTitle: "1961 年 - 2007 年のデータ",
                     axes: [{
                         name: "xAxis",
-                        type: "numericX"
+                        type: "numericX",
+                        interval: 10,
+                        title: "年",
                     }, {
                         name: "yAxis",
-                        type: "numericY"
+                        type: "numericY",
+                        title: "合計農業生産 (USD 10 億単位)",
+                        formatLabel: function (val) {
+                            var bVal = (val / 1000),
+                            rounded = Math.round(bVal * 100) / 100;
+                            return "$"+ rounded;
+                        }
                     }],
                     series: [{
                         name: "scatter",
                         type: seriesType,
                         xAxis: "xAxis",
                         yAxis: "yAxis",
-                        xMemberPath: "Index",
-                        yMemberPath: "Value1"
+                        xMemberPath: "Year",
+                        yMemberPath: "Value"
                     }],
                     horizontalZoomable: true,
                     verticalZoomable: true,
@@ -51,29 +40,44 @@ $(function () {
                     width: "400px",
                     height: "400px",
                     dataSource: dataSource,
+                    title: "年の米国農業生産",
+                    subTitle: "1961 年 - 2007 年のデータ",
                     axes: [{
                         name: "xAxis",
-                        type: "numericX"
+                        type: "numericX",
+                        interval: 10,
+                        title: "年",
                     }, {
                         name: "yAxis",
-                        type: "numericY"
+                        type: "numericY",
+                        title: "合計農業生産 (USD 10 億単位)",
+                        formatLabel: function (val) {
+                            var bVal = (val / 1000),
+                            rounded = Math.round(bVal * 100) / 100;
+                            return "$" + rounded;
+                        }
                     }],
                     series: [{
                         name: "bubble",
                         type: "bubble",
                         xAxis: "xAxis",
                         yAxis: "yAxis",
-                        xMemberPath: "Index",
-                        yMemberPath: "Value1",
-                        radiusMemberPath: "Value2",
-                        fillMemberPath: "Value3",
-                        labelMemberPath: "Value2",
+                        xMemberPath: "Year",
+                        yMemberPath: "Value",
+                        radiusMemberPath: "Population",
+                        fillMemberPath: "Population",
+                        labelMemberPath: "Population",
                         markerType: "circle",
+                        radiusScale: {
+                            minimumValue: "2",
+                            maximumValue: "12",
+                            isLogarithmic: "true"
+                        },
                         fillScale: {
                             type: "value",
-                            brushes: ["red", "blue"],
-                            minimumValue: 0,
-                            maximumValue: 20
+                            brushes: ["red", "orange", "yellow"],
+                            minimumValue: 150,
+                            maximumValue: 400
                         }
                     }],
                     horizontalZoomable: true,
@@ -82,7 +86,7 @@ $(function () {
                 });
             }
 
-            var dataSource = generateData();
+            var dataSource = data;
             createScatterChart("#chartScatter", "scatter", dataSource);
             createScatterChart("#chartScatterLine", "scatterLine", dataSource);
             createBubbleChart("#chartBubble", dataSource);

@@ -1,35 +1,40 @@
 $(function () {
 
             var data = [
-                { "CountryName": "China", "Pop1990": 1141, "Pop2008": 1333, "Pop2025": 1458 },
-                { "CountryName": "India", "Pop1990": 849, "Pop2008": 1140, "Pop2025": 1398 },
-                { "CountryName": "United States", "Pop1990": 250, "Pop2008": 304, "Pop2025": 352 },
-                { "CountryName": "Indonesia", "Pop1990": 178, "Pop2008": 228, "Pop2025": 273 },
-                { "CountryName": "Brazil", "Pop1990": 150, "Pop2008": 192, "Pop2025": 223 }
+                { "CountryName": "China", "Pop1995": 1216, "Pop2005": 1297, "Pop2015": 1361, "Pop2025": 1394 },
+                { "CountryName": "India", "Pop1995": 920, "Pop2005": 1090, "Pop2015": 1251, "Pop2025": 1396 },
+                { "CountryName": "United States", "Pop1995": 266, "Pop2005": 295, "Pop2015": 322, "Pop2025": 351 },
+                { "CountryName": "Indonesia", "Pop1995": 197, "Pop2005": 229, "Pop2015": 256, "Pop2025": 277 },
+                { "CountryName": "Brazil", "Pop1995": 161, "Pop2005": 186, "Pop2015": 204, "Pop2025": 218 }
             ];
 
             $("#chart").igDataChart({
-                width: "300px",
-                height: "200px",
+                width: "100%",
+                height: "400px",
+                title: "国別人口",
+                subTitle: "2015 年推計人口トップ 5",
                 dataSource: data,
                 axes: [
                     {
                         name: "NameAxis",
                         type: "categoryX",
+                        title: "国",
                         label: "CountryName"
                     },
                     {
                         name: "PopulationAxis",
-                        type: "numericY"
+                        type: "numericY",
+                        minimumValue: 0,
+                        title: "予期人口 (百万人単位)",
                     }
                 ],
                 series: [
                     {
-                        name: "1990Population",
+                        name: "2015Population",
                         type: "column",
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
-                        valueMemberPath: "Pop1990"
+                        valueMemberPath: "Pop2015"
                     }
                 ]
             });

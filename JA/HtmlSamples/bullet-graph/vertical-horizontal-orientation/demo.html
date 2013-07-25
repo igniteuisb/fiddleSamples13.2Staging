@@ -7,12 +7,17 @@
 <link href="http://cdn-na.infragistics.com/jquery/20132/beta/css/structure/infragistics.css" rel="stylesheet"></link>
 <script src="http://cdn-na.infragistics.com/jquery/20132/beta/js/i18n/infragistics-ja.js"></script>
 
-<div id="bulletgraph">
+<div>
+        <div style="width: 100px; float: left; margin-top: 5px; font-weight: bold">会計年度の営業目標</div>
+
+        <div id="bulletgraph" style="float:left"></div>
     </div>
 
+    <div style="width: 60%; margin: 100px 10px;float:left">
+        今年の総売上高は、各四半期で昨年の売上高を約 10 % 超えています。売上高は昨年とほぼ同じ曲線をたどり、過去 5 年間に見られる購買動向のパターンを強めています。
+    </div>
     
-
-    <fieldset id="graphOptions" style="margin-top: 30px">
+    <fieldset id="graphOptions" style="margin-top: 30px; float:left">
         <legend>オプション</legend>
         <table>
             <tr>
@@ -21,7 +26,8 @@
                     <button id="orientationButton" style="width: 100px; margin: 12px 40px 12px 12px">水平方向</button>
                 </td>
                 <td>
-                    <label for="isScaleInvertedCheckBox">スケールの反転</label></td>
+                    <label for="isScaleInvertedCheckBox">スケールの反転</label>
+                </td>
                 <td>
                     <input type="checkbox" id="isScaleInvertedCheckBox" style="width: 100px; margin: 12px"></input>
                 </td>

@@ -1,5 +1,4 @@
-$(function () {
-            /*----------------- Instantiation -------------------------*/
+$(function () { 
             var $bulletGraph = $("#bulletgraph");
 
             $bulletGraph.igBulletGraph({

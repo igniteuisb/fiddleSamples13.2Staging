@@ -7,7 +7,7 @@
 <link href="http://cdn-na.infragistics.com/jquery/20132/beta/css/structure/infragistics.css" rel="stylesheet"></link>
 <script src="http://cdn-na.infragistics.com/jquery/20132/beta/js/i18n/infragistics-ja.js"></script>
 
-<div id="radialgauge" style="float: left; width: 500px; height: 500px;"></div>
+<div id="radialgauge"></div>
     
     <div style="clear: both;"></div>
     
@@ -17,7 +17,7 @@
         <legend>オプション</legend>
         <table>
             <tr>
-                <td>設定の選択</td>
+                <td style="padding-right: 3px;">設定の選択</td>
                 <td>
                     <select id="gaugeSettings">
                         <option value="setting1" selected="selected">設定 1</option>
@@ -27,12 +27,10 @@
                 </td>
             </tr>
             <tr>
-                <td>トランジション期間</td>
-                <td>
-                    <div id="transitionDurationSlider" style="width : 100px; margin : 12px"></div>
-                </td>
-                <td style="width : 30px">
-                    <label id="transitionDurationLabel">2</label>
+                <td style="padding-right: 5px;">トランジション期間</td>
+                <td style="width: 90px">
+                    <div id="transitionDurationSlider" style="width: 75px; display: inline-block;"></div>
+						  <label id="transitionDurationLabel" style="margin: 3px 0px 0px 3px; position: absolute; display: inline-block;">2</label>
                 </td>
             </tr>
         </table>

@@ -3,7 +3,7 @@ var activated = [false, false, false, false],
             options = {
                 layoutConfiguration: {
                     gridLayout: {
-                        columnWidth: 230,
+                        columnWidth: 210,
                         columnHeight: 210,
                         marginLeft: 10,
                         marginTop: 10
@@ -22,7 +22,7 @@ var activated = [false, false, false, false],
             };
         $(function () {
             $('#car-tabs').tabs({
-                beforeActivate: function (event, ui) {
+                activate: function (event, ui) {
                     var index = ui.newTab.index();
                     if (!activated[index]) {
                         ui.newPanel.igTileManager(options);

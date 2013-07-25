@@ -28,28 +28,46 @@ $(function () {
                 columns: [{
                     // note: if primaryKey is set and data in primary column contains numbers,
                     // then the dataType: "number" is required, otherwise, dataSource may misbehave
-                    headerText: "従業員 ID", key: "EmployeeID", width: "100px", dataType: "number"
+                    headerText: "従業員 ID", key: "EmployeeID", dataType: "number"
                 }, {
-                    headerText: "名前", key: "FirstName", width: "100px"
+                    headerText: "名前", key: "FirstName"
                 }, {
-                    headerText: "名字", key: "LastName", width: "100px"
+                    headerText: "名字", key: "LastName"
                 }, {
-                    headerText: "役職", key: "Title", width: "130px"
+                    headerText: "役職", key: "Title"
                 }, {
-                    headerText: "生年月日", key: "BirthDate", width: "100px", dataType: "date"
+                    headerText: "生年月日", key: "BirthDate", dataType: "date"
                 }, {
-                    headerText: "郵便番号", key: "PostalCode", width: "100px", dataType: "number"
+                    headerText: "郵便番号", key: "PostalCode", dataType: "number"
                 }, {
-                    headerText: "国", key: "Country", width: "50px", dataType: "string"
+                    headerText: "国", key: "Country", dataType: "string"
                 }
                 ],
                 dataSource: northwind,
                 dataSourceType: "json",
                 responseDataKey: "results",
-                width: "740px",
+                width: "98%",
                 height: "100%",
                 tabIndex: 1,
                 features: [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'EmployeeID',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'PostalCode',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'BirthDate',
+                                classes: 'hidden-phone'
+                            }
+                        ]
+                    },
                     {
                     name: "Selection",
                     mode: "row"

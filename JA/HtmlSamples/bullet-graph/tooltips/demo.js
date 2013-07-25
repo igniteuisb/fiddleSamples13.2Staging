@@ -1,55 +1,133 @@
-$(function () {
-            $("#bulletgraph_default").igBulletGraph({
+$(function () {            
+
+            $("#bulletgraph_task3").igBulletGraph({
                 height: "60px",
-                width: "100%",                
-                showTooltip: true,
+                width: "100%",
+                rangeToolTipTemplate: 'rangeToolTipTemplate1',
+                actualValueToolTipTemplate: 'actualValueToolTipTemplate1',
+                targetValueToolTipTemplate: 'targetValueToolTipTemplate1',
                 ranges: [
                     {
                         name: 'bad',
                         startValue: 0,
-                        endValue: 14
+                        endValue: 50
                     },
                     {
                         name: 'acceptable',
-                        startValue: 14,
-                        endValue: 25
+                        startValue: 50,
+                        endValue: 80
                     },
                     {
                         name: 'good',
-                        startValue: 25,
-                        endValue: 30
-                    }],
-                minimumValue: 0, 
-                maximumValue: 30,
-                actualValueName: 'progress',
-                actualValue: 26,
-                targetValue: 22,
+                        startValue: 80,
+                        endValue: 100
+                    }
+                ],
+                formatLabel: function (evt, ui) {
+                    ui.label = ui.value + "%";
+                },
+                actualValueName: "Research/Preparation",
+                actualValueBrush: 'green',
+                actualValue: 85,
+                targetValueBrush: 'white',
+                targetValueOutline: 'white',
+                targetValue: 90,
+                labelInterval: 20,
+                showToolTip: true,
                 transitionDuration: 500
             });
 
-            $("#bulletgraph_templated").igBulletGraph({
+            $("#bulletgraph_task2").igBulletGraph({
                 height: "60px",
-                width: "100%",
-                showTooltip: true,
-                rangeTooltipTemplate: 'rangeTooltipTemplate2',
-                actualValueTooltipTemplate: 'actualValueTooltipTemplate2',
-                targetValueTooltipTemplate: 'targetValueTooltipTemplate2',
+                width: "100%", 
                 ranges: [
                     {
-                        brush: 'rgba(251, 23, 65, 0.57)',
-                        name: 'Increment 1',
+                        name: 'bad',
+                        startValue: 0,
+                        endValue: 50
+                    },
+                    {
+                        name: 'acceptable',
+                        startValue: 50,
+                        endValue: 80
+                    },
+                    {
+                        name: 'good',
+                        startValue: 80,
+                        endValue: 100
+                    }
+                ],
+                formatLabel: function (evt, ui) {
+                    ui.label = ui.value + "%";
+                },
+                actualValueName: "Research/Preparation",
+                actualValueBrush: 'orange',
+                actualValue: 96,
+                targetValueBrush: 'white',
+                targetValueOutline: 'white',
+                targetValue: 90,
+                labelInterval: 20,
+                showToolTip: true,
+                transitionDuration: 500
+            });
+
+            $("#bulletgraph_task1").igBulletGraph({
+                height: "60px",
+                width: "100%",
+                ranges: [
+                    {
+                        name: 'bad',
+                        startValue: 0,
+                        endValue: 50
+                    },
+                    {
+                        name: 'acceptable',
+                        startValue: 50,
+                        endValue: 80
+                    },
+                    {
+                        name: 'good',
+                        startValue: 80,
+                        endValue: 100
+                    }
+                ],
+                formatLabel: function (evt, ui) {
+                    ui.label = ui.value + "%";
+                },
+                actualValueName: "Research/Preparation",
+                actualValueBrush: 'red',
+                actualValue: 74,
+                targetValueBrush: 'white',
+                targetValueOutline: 'white',
+                targetValue: 90,
+                labelInterval: 20,
+                showToolTip: true,
+                transitionDuration: 500
+            });
+
+            $("#bulletGraph_backLogItem").igBulletGraph({
+                height: "300px",
+                width: "100%",
+                orientation: "vertical",                
+                rangeToolTipTemplate: 'rangeToolTipTemplate2',
+                actualValueToolTipTemplate: 'actualValueToolTipTemplate2',
+                targetValueToolTipTemplate: 'targetValueToolTipTemplate2',
+                ranges: [
+                    {
+                        brush: '#f55',
+                        name: 'Task 1',
                         startValue: 0,
                         endValue: 50
                     },
                     {
                         brush: '#f8fe76',
-                        name: 'Increment 2',
+                        name: 'Task 2',
                         startValue: 50,
                         endValue: 80
                     },
                     {
                         brush: 'b2ff6f',
-                        name: 'Increment 3',
+                        name: 'Task 3',
                         startValue: 80,
                         endValue: 100
                     }
@@ -77,45 +155,14 @@ $(function () {
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "%";
                 },
+                actualValueName: "Research/Preparation",
+                actualValueBrush: 'white',
+                actualValue: 20,
+                targetValueBrush: 'white',
+                targetValueOutline: 'white',
                 targetValue: 90,
                 labelInterval: 20,
-                actualValue: 20, 
-                actualValueName: "Research/Preparation",
-                transitionDuration: 500
-            });
-
-            $("#bulletgraph_semiTemplated").igBulletGraph({
-                height: "200px",
-                width: "100%",
-                orientation: "vertical",
-                showTooltip: true,
-                rangeTooltipTemplate: 'rangeTooltipTemplate1',
-                actualValueTooltipTemplate: 'actualValueTooltipTemplate1',
-                targetValueTooltipTemplate: 'targetValueTooltipTemplate1',
-                ranges: [
-                    {
-
-                        name: 'bad',
-                        startValue: 0,
-                        endValue: 50
-                    },
-                    {
-
-                        name: 'acceptable',
-                        startValue: 50,
-                        endValue: 80
-                    },
-                    {
-
-                        name: 'good',
-                        startValue: 80,
-                        endValue: 100
-                    }
-                ],
-                actualValueName: 'progress',
-                actualValue: 85,
-                targetValue: 77,
-                interval: 10,
+                showToolTip: true,
                 transitionDuration: 500
             });
         });

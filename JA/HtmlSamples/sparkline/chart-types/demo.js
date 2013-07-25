@@ -3,8 +3,8 @@ $(function () {
             $("#lineSparkline").igSparkline({
                 dataSource: data,
                 displayType: "line",
-                height: "150px",
-                width: "400px",
+                height: "100px",
+                width: "100%",
                 valueMemberPath: 'Change',
                 labelMemberPath: 'Date'
             });
@@ -12,8 +12,8 @@ $(function () {
             $("#areaSparkline").igSparkline({
                 dataSource: data,
                 displayType: "area",
-                height: "150px",
-                width: "400px",
+                height: "100px",
+                width: "100%",
                 valueMemberPath: 'Change',
                 labelMemberPath: 'Date'
             });
@@ -21,8 +21,8 @@ $(function () {
             $("#columnSparkline").igSparkline({
                 dataSource: data,
                 displayType: "column",
-                height: "150px",
-                width: "400px",
+                height: "100px",
+                width: "100%",
                 valueMemberPath: 'Change',
                 labelMemberPath: 'Date'
             });
@@ -30,8 +30,8 @@ $(function () {
             $("#winLossSparkline").igSparkline({
                 dataSource: data,
                 displayType: "winLoss",
-                height: "150px",
-                width: "400px",
+                height: "100px",
+                width: "100%",
                 valueMemberPath: 'Change',
                 labelMemberPath: 'Date'
             });

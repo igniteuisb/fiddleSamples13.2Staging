@@ -106,7 +106,7 @@ $(function () {
 
             $("#grid10").igGrid({
                 primaryKey: "ProductID",
-                width: '740px',
+                width: '98%',
                 height: '600px',
                 autoGenerateColumns: false,
                 autoCommit: true,
@@ -131,6 +131,16 @@ $(function () {
                 tabIndex: 1,
                 features:
                 [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'ProductID',
+                                classes: 'hidden-phone'
+                            }
+                        ]
+                    },
                     {
                         name: 'Filtering',
                         mode: 'advanced'

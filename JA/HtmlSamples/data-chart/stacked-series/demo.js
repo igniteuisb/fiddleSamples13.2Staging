@@ -1,33 +1,23 @@
 $(function () {
-
-            var getData = function (num) {
-                var data = [];
-                for (var i = 0; i < num; i++) {
-                    var val1 = Math.round(Math.random() * 100);
-                    var val2 = Math.round(Math.random() * 100);
-                    var val3 = Math.round(Math.random() * 100);
-                    data[i] = { Year: "200" + (i + 1), BMW: val1, Audi: val2, Mazda: val3 };
-                }
-                return data;
-            };
-
-            var data = getData(9);
-
             function generateCategoryYChart(chartType) {
 
                 var selector = "#" + chartType;
 
                 $(selector).igDataChart({
-                    dataSource: data,
+                    dataSource: lastFiveYears,
                     height: "400px",
                     width: "400px",
+                    title: "国別エネルギー生産量",
+                    subTitle: "総一次エネルギー生産国トップ 5 ",
                     axes: [{
                         name: "Year",
                         type: "categoryY",
-                        label: "Year"
+                        label: "Year",
+                        title: "年"
                     }, {
                         name: "Volume",
-                        type: "numericX"
+                        type: "numericX",
+                        title: "生産されたエネルギー (BTU 40 億単位)"
                     }],
                     series: [{
                         name: "parent",
@@ -35,26 +25,40 @@ $(function () {
                         xAxis: "Volume",
                         yAxis: "Year",
                         series: [{
-                            name: "BMW",
-                            title: "BMW",
+                            name: "China",
+                            title: "China",
                             type: "stackedFragment",
                             showTooltip: true,
-                            tooltipTemplate: "BMW",
-                            valueMemberPath: "BMW"
+                            tooltipTemplate: "China",
+                            valueMemberPath: "China"
                         }, {
-                            name: "Audi",
-                            title: "Audi",
+                            name: "United States",
+                            title: "United States",
                             type: "stackedFragment",
                             showTooltip: true,
-                            tooltipTemplate: "Audi",
-                            valueMemberPath: "Audi"
+                            tooltipTemplate: "United States",
+                            valueMemberPath: "United States"
                         }, {
-                            name: "Mazda",
-                            title: "Mazda",
+                            name: "Russia",
+                            title: "Russia",
                             showTooltip: true,
-                            tooltipTemplate: "Mazda",
+                            tooltipTemplate: "Russia",
                             type: "stackedFragment",
-                            valueMemberPath: "Mazda"
+                            valueMemberPath: "Russia"
+                        }, {
+                            name: "Saudi Arabia",
+                            title: "Saudi Arabia",
+                            showTooltip: true,
+                            tooltipTemplate: "Saudi Arabia",
+                            type: "stackedFragment",
+                            valueMemberPath: "Saudi Arabia"
+                        }, {
+                            name: "Canada",
+                            title: "Canada",
+                            showTooltip: true,
+                            tooltipTemplate: "Canada",
+                            type: "stackedFragment",
+                            valueMemberPath: "Canada"
                         }]
                     }],
                     horizontalZoomable: true,
@@ -68,17 +72,21 @@ $(function () {
                 var selector = "#" + chartType;
 
                 $(selector).igDataChart({
-                    dataSource: data,
+                    dataSource: lastFiveYears,
                     height: "400px",
                     width: "400px",
+                    title: "国別エネルギー生産量",
+                    subTitle: "総一次エネルギー生産国トップ 5 ",
                     axes: [{
                         name: "Year",
                         type: "categoryX",
-                        label: "Year"
+                        label: "Year",
+                        title: "年"
                     },
                     {
                         name: "Volume",
-                        type: "numericY"
+                        type: "numericY",
+                        title: "生産されたエネルギー (BTU 40 億単位)"
                     }],
                     series: [{
                         name: "parent",
@@ -86,26 +94,40 @@ $(function () {
                         yAxis: "Volume",
                         type: chartType,
                         series: [{
-                            name: "BMW",
-                            title: "BMW",
+                            name: "China",
+                            title: "China",
                             type: "stackedFragment",
                             showTooltip: true,
-                            tooltipTemplate: "BMW",
-                            valueMemberPath: "BMW"
+                            tooltipTemplate: "China",
+                            valueMemberPath: "China"
                         }, {
-                            name: "Audi",
-                            title: "Audi",
+                            name: "United States",
+                            title: "United States",
                             type: "stackedFragment",
                             showTooltip: true,
-                            tooltipTemplate: "Audi",
-                            valueMemberPath: "Audi"
+                            tooltipTemplate: "United States",
+                            valueMemberPath: "United States"
                         }, {
-                            name: "Mazda",
-                            title: "Mazda",
+                            name: "Russia",
+                            title: "Russia",
                             showTooltip: true,
-                            tooltipTemplate: "Mazda",
+                            tooltipTemplate: "Russia",
                             type: "stackedFragment",
-                            valueMemberPath: "Mazda"
+                            valueMemberPath: "Russia"
+                        }, {
+                            name: "Saudi Arabia",
+                            title: "Saudi Arabia",
+                            showTooltip: true,
+                            tooltipTemplate: "Saudi Arabia",
+                            type: "stackedFragment",
+                            valueMemberPath: "Saudi Arabia"
+                        }, {
+                            name: "Canada",
+                            title: "Canada",
+                            showTooltip: true,
+                            tooltipTemplate: "Canada",
+                            type: "stackedFragment",
+                            valueMemberPath: "Canada"
                         }]
                     }]
                 });

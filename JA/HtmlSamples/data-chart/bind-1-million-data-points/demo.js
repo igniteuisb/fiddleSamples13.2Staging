@@ -25,7 +25,7 @@ var currData, currDataSource, doGeneration, startTime = null;
 
 	    $(function () {
 	        $("#chart").igDataChart({
-	            width: "500px",
+	            width: "100%",
 	            height: "500px",
 	            axes: [{
 	                name: "xAxis",

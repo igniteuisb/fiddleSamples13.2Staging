@@ -1,23 +1,24 @@
 $(function () {
             $("#grid").igGrid({
                 primaryKey: "EmployeeID",
-                height: 600,
-                width: 700,
+                height: '700px',
+                width: '100%',
                 columns: [
-                    { headerText: "従業員 ID", key: "EmployeeID", dataType: "number" },
+                    { headerText: "従業員 ID", key: "EmployeeID", dataType: "number", width: "15%" },
                     {
                         headerText: "従業員名",
                         group: [
-                        { headerText: "名前", key: "FirstName", dataType: "string" },
-                        { headerText: "名字", key: "LastName", dataType: "string" },
-                        { headerText: "役職", key: "Title", dataType: "string" }
+                        { headerText: "名前", key: "FirstName", dataType: "string", width: "20%" },
+                        { headerText: "名字", key: "LastName", dataType: "string", width: "20%"},
+                        { headerText: "役職", key: "Title", dataType: "string", width: "35%" }
                     ]
                     }
                 ],
+                autofitLastColumn: false,
                 autoGenerateColumns: false,
                 dataSource: northwind,
                 responseDataKey: "results",
-                features: [
+                features: [                    
                     {
                         name: "Paging",
                         type: "local",
@@ -45,7 +46,8 @@ $(function () {
                     },
                     {
                         name: "RowSelectors",
-                        enableCheckBoxes: Modernizr.touch
+                        enableCheckBoxes: Modernizr.touch,
+                        rowSelectorColumnWidth: "10%"
                     },
                     {
                         name: "Resizing"

@@ -1,7 +1,7 @@
 $(function() {
             $("#radialgauge").igRadialGauge({
                 height: "500px",
-                width: "500px",
+                width: "100%",
                 transitionDuration: "1500",
                 ranges: [{
                     name: "range1",
@@ -19,7 +19,7 @@ $(function() {
                 min: 0,
                 max: 1,
                 step: 0.01,
-                value: 0,
+                value: 0.5,
                 slide: function (event, ui) {
                     $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range1", innerStartExtent: ui.value }]);
                     $("#innerStartExtentLabel").text(ui.value);
@@ -31,7 +31,7 @@ $(function() {
                 min: 0,
                 max: 1,
                 step: 0.01,
-                value: 0,
+                value: 0.5,
                 slide: function (event, ui) {
                     $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range1", innerEndExtent: ui.value }]);
                     $("#innerEndExtentLabel").text(ui.value);

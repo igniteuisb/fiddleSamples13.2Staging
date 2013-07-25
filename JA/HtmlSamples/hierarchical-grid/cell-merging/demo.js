@@ -45,16 +45,34 @@ $(function () {
                 responseDataKey: "results",
                 dataSourceType: "json",
                 columns: [
-                   { key: "EmployeeID", headerText: "社員 ID", dataType: "number", width: "100px" },
-                   { key: "LastName", headerText: "名前", dataType: "string", width: "100px" },
-                   { key: "FirstName", headerText: "名字", dataType: "string", width: "100px" },
-                   { key: "Title", headerText: "役職", dataType: "string", width: "150px" },
-                   { key: "Address", headerText: "住所", dataType: "string", width: "150px" },
-                   { key: "City", headerText: "市", dataType: "string", width: "100px" },
-                   { key: "Region", headerText: "領域", dataType: "string", width: "80px" },
-                   { key: "Country", headerText: "国名", dataType: "string", width: "100px" }
+                   { key: "EmployeeID", headerText: "社員 ID", dataType: "number", width: "10%" },
+                   { key: "LastName", headerText: "名前", dataType: "string", width: "15%" },
+                   { key: "FirstName", headerText: "名字", dataType: "string", width: "15%" },
+                   { key: "Title", headerText: "役職", dataType: "string", width: "10%" },
+                   { key: "Address", headerText: "住所", dataType: "string", width: "15%" },
+                   { key: "City", headerText: "市", dataType: "string", width: "15%" },
+                   { key: "Region", headerText: "領域", dataType: "string", width: "10%" },
+                   { key: "Country", headerText: "国名", dataType: "string", width: "10%" }
                 ],
                 features: [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'EmployeeID',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Address',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Region',
+                                classes: 'hidden-phone'
+                            }
+                        ]
+                    },
                     {
                         name: 'CellMerging',
                         inherit: true,
@@ -76,15 +94,30 @@ $(function () {
                         responseDataKey: "results",
                         autoGenerateColumns: false,
                         primaryKey: "OrderID",
+                        width: "100%",
                         columns: [
-                            { key: "OrderID", headerText: "注文 ID", dataType: "number", width: "100px" },
-                            { key: "Freight", headerText: "輸送", dataType: "string", width: "100px" },
-                            { key: "ShipName", headerText: "出荷名", dataType: "string", width: "200px" },
-                            { key: "ShipAddress", headerText: "配送先住所", dataType: "string", width: "200px" },
-                            { key: "ShipCity", headerText: "配送先市町村", dataType: "string", width: "100px" },
-                            { key: "ShipCountry", headerText: "配送先の国", dataType: "string", width: "100px" }
+                            { key: "OrderID", headerText: "注文 ID", dataType: "number", width: "10%" },
+                            { key: "Freight", headerText: "輸送", dataType: "string", width: "15%" },
+                            { key: "ShipName", headerText: "出荷名", dataType: "string", width: "20%" },
+                            { key: "ShipAddress", headerText: "配送先住所", dataType: "string", width: "25%" },
+                            { key: "ShipCity", headerText: "配送先市町村", dataType: "string", width: "20%" },
+                            { key: "ShipCountry", headerText: "配送先の国", dataType: "string", width: "20%" }
                         ],
                         features: [
+                            {
+                                name: 'Responsive',
+                                enableVerticalRendering: false,
+                                columnSettings: [
+                                    {
+                                        columnKey: 'OrderID',
+                                        classes: 'hidden-phone'
+                                    },
+                                    {
+                                        columnKey: 'ShipName',
+                                        classes: 'hidden-phone'
+                                    }
+                                ]
+                            },
                             {
                                 name: "Paging",
                                 pageSize: 10

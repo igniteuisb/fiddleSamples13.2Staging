@@ -3,7 +3,7 @@ $(function () {
             $("#sparkline").igSparkline({
                 dataSource: data,
                 height: "100px",
-                width: "300px",
+                width: "100%",
                 displayType: "line",
                 valueMemberPath: 'Change',
                 labelMemberPath: 'Date',

@@ -107,55 +107,75 @@ $(function () {
                 columns: [{
                     // note: if primaryKey is set and data in primary column contains numbers,
                     // then the dataType: "number" is required, otherwise, dataSource may misbehave
-                    headerText: "従業員 ID", key: "EmployeeID", width: "100px", dataType: "number"
+                    headerText: "従業員 ID", key: "EmployeeID", dataType: "number"
                 }, {
-                    headerText: "名前", key: "FirstName", width: "100px"
+                    headerText: "名前", key: "FirstName"
                 }, {
-                    headerText: "名字", key: "LastName", width: "100px"
+                    headerText: "名字", key: "LastName"
                 }, {
-                    headerText: "役職", key: "Title", width: "150px"
+                    headerText: "役職", key: "Title"
                 }, {
-                    headerText: "生年月日", key: "BirthDate", width: "100px", dataType: "date"
+                    headerText: "生年月日", key: "BirthDate", dataType: "date"
                 }, {
-                    headerText: "郵便番号", key: "PostalCode", width: "80px", dataType: "number"
+                    headerText: "郵便番号", key: "PostalCode", dataType: "number"
                 }, {
-                    headerText: "国", key: "Country", width: "100px", dataType: "string"
+                    headerText: "国", key: "Country", dataType: "string"
                 }
                 ],
                 dataSource: northwind,
                 dataSourceType: "json",
                 responseDataKey: "results",
                 height: "500px",
-                width:"740px",
+                width:"98%",
                 tabIndex: 1,
-                features: [{
-                    name: "Selection",
-                    mode: "row"
-                }, {
-                    name: "Updating",
-                    enableAddRow: true,
-                    editMode: "row",
-                    enableDeleteRow: true,
-                    rowEditDialogContainment: "owner",
-                    showReadonlyEditors: false,
-                    enableDataDirtyException: false,
-                    columnSettings: [{
-                        columnKey: "EmployeeID",
-                        readOnly: true
-                    }, {
-                        columnKey: "Title",
-                        editorType: "text"
-                    }, {
-                        columnKey: "Country",
-                        editorType: "text"
+                features: [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'EmployeeID',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'PostalCode',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'BirthDate',
+                                classes: 'hidden-phone'
+                            }
+                        ]
                     },
                     {
-                        columnKey: "BirthDate",
-                        editorType: "datepicker",
-                        validation: true,
-                        editorOptions: { minValue: new Date(1955, 1, 19), maxValue: new Date(), required: true }
+                        name: "Selection",
+                        mode: "row"
+                    },
+                    {
+                        name: "Updating",
+                        enableAddRow: true,
+                        editMode: "row",
+                        enableDeleteRow: true,
+                        rowEditDialogContainment: "owner",
+                        showReadonlyEditors: false,
+                        enableDataDirtyException: false,
+                        columnSettings: [{
+                            columnKey: "EmployeeID",
+                            readOnly: true
+                        }, {
+                            columnKey: "Title",
+                            editorType: "text"
+                        }, {
+                            columnKey: "Country",
+                            editorType: "text"
+                        },
+                        {
+                            columnKey: "BirthDate",
+                            editorType: "datepicker",
+                            validation: true,
+                            editorOptions: { minValue: new Date(1955, 1, 19), maxValue: new Date(), required: true }
+                        }]
                     }]
-                }]
             });
 
             // editors initialization

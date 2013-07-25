@@ -55,7 +55,7 @@ $(function () {
                 autoGenerateColumns: false,
                 dataSource: nwCustomersWithOrders,
                 height: "600px",
-                width: "740px",
+                width: "100%",
                 features: [
                     {
                         name: "Responsive",
@@ -64,7 +64,7 @@ $(function () {
                         propertiesColumnWidth: "40%",
                         valuesColumnWidth: "60%",
                         allowedColumnWidthPerType: {
-                            string: 120,
+                            string: 190,
                             number: 50,
                             bool: 50,
                             date: 80,
@@ -84,5 +84,5 @@ $(function () {
                         name: "Selection"
                     }
                 ]
-            });
+            });            
         });

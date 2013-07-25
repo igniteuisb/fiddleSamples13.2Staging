@@ -7,29 +7,15 @@ $(function () {
             /*----------------- Method & Option Examples -------------------------*/
             
             // process events of buttons
-
-            $("#selectValue").change(function (e) {
-                $("#needleValue").val($(this).val());
-            });
-
             $("#changeNeedleValue").on({
                 click: function (e) {
-                    var needleValue = $("#needleValue").val();
-
-                    var minimumValue = 0;
-                    var maximumValue = 100;
-
-                    if (needleValue >= minimumValue && needleValue <= maximumValue) {
-                        $("#radialGauge").igRadialGauge("option", "value", needleValue);
+                    var needleValue = parseFloat($("#needleValue").val());
+                    if (!needleValue || isNaN(needleValue)) {
+                        needleValue = 0;
                     }
-                    else if (needleValue < minimumValue) {
-                        $("#radialGauge").igRadialGauge("option", "value", 0);
-                        $("#needleValue").val(0);
-                    }
-                    else if (needleValue > maximumValue) {
-                        $("#radialGauge").igRadialGauge("option", "value", 100);
-                        $("#needleValue").val(100);
-                    };
+                    needleValue = Math.min(Math.max(needleValue, 0), 100);
+                    $("#radialGauge").igRadialGauge("option", "value", needleValue);
+                    $("#needleValue").val(needleValue);
                 }
             });
                   
@@ -49,7 +35,7 @@ $(function () {
             $("#radialGauge").igRadialGauge({
                 height: "500px",
                 transitionDuration: "1500",
-                width: "500px"                
+                width: "100%"                
             });
 
             function isAndroid() {
@@ -58,9 +44,4 @@ $(function () {
 
             $("#radialGauge").igRadialGauge("option", "value", 0);
             $("#needleValue").val(0);
-
-            window.onload = function () {
-                if (!isAndroid())
-                    document.getElementById("selectValue").style.border = "none";
-            };
         });

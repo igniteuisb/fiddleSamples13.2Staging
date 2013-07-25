@@ -19,55 +19,53 @@
     </script>
 
 <div id="chart"></div>
-    <br />
-     <table class="options">
+
+     <br />
+     
+     <table class="options" style="max-width: 550px; width: 100%;">
         <tr>            
-            <td>開始角度:</td>
             <td>
-                <div id="angle" class="slider"></div>
+                開始角度
             </td>
-            <td>シリーズ</td>
-            <td>
-                <select id="angleSeriesName">                    
+            <td class="optionTdWidth">
+                <select id="angleSeriesName" class="optionTdWidth" style="margin-bottom: 7px;">
                     <option value="Budget" selected="selected">予算</option>
                     <option value="DepartmentSize">部署サイズ</option>                    
                 </select>
+                <div id="angle" class="slider optionTdWidth"></div>
             </td>
         </tr>
-        <tr>            
+        <tr>
             <td>InnerExtent:</td>
-            <td>
-                <div id="innerExtent" class="slider"></div>
+            <td class="optionTdWidth">
+                <div id="innerExtent" class="slider optionTdWidth"></div>
             </td>
-            <td></td>
-            <td></td>
         </tr>               
         <tr>
             <td>予算シリーズのラベル位置:</td>
-            <td>                
-                <select id="labelPosition">                    
+            <td class="optionTdWidth">
+                <select id="labelPosition" class="optionTdWidth">
                     <option value="center" selected="selected">中央</option>
                     <option value="insideEnd">内部の終了位置</option>                    
                     <option value="bestFit">最適</option>
                 </select>               
             </td>
-            <td></td>
-            <td></td>            
         </tr>
          <tr>
             <td>部署サイズ シリーズのラベル位置:</td>
-            <td>                
-                <select id="labelPosition2">                    
+            <td class="optionTdWidth">
+                <select id="labelPosition2" class="optionTdWidth">
                     <option value="center" selected="selected">中央</option>
                     <option value="insideEnd">内部の終了位置</option>
                     <option value="outsideEnd">外部の終了位置</option>
                     <option value="bestFit">最適</option>
                 </select>               
             </td>
-            <td>ラベルの拡張</td>
-            <td>
-                <div id="labelExtent" class="slider"></div>
+        </tr>
+        <tr>
+            <td>ラベルの拡張 (外部の終了位置)</td>
+            <td class="optionTdWidth">
+                <div id="labelExtent" class="slider optionTdWidth"></div>
             </td>
-            
         </tr>
     </table>

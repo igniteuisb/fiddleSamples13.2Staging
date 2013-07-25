@@ -28,7 +28,7 @@ $(function () {
                 this.data = data;
                 this.minChartValue = 0;
                 this.maxChartValue = 100;
-                this.chartWidth = 500;
+                this.chartWidth = "100%";
                 this.chartHeight = 250;
                 this.chartThickness = 2;
                 this.transitionDuration = 1000;

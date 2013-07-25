@@ -38,19 +38,29 @@ $(function () {
 
             $("#cellSelectionGrid").igGrid({
                 height: "350px",
-                width: "740px",
+                width: "98%",
                 autoGenerateColumns: false,
                 dataSource: northwindEmployees,
                 responseDataKey: "results",
                 dataSourceType: "json",
                 columns: [
-                    { headerText: "社員 ID", key: "ID", dataType: "number", width: "150px" },
-                    { headerText: "名前", key: "Name", dataType: "string", width: "150px" },
-                    { headerText: "役職", key: "Title", dataType: "string", width: "150px" },
-                    { headerText: "画像", key: "ImageUrl", dataType: "object", width: "110px", template: "<img width='100' height='85' src='${ImageUrl}'></img>" },
-                    { headerText: "電話", key: "Phone", dataType: "string", width: "100px" }
+                    { headerText: "社員 ID", key: "ID", dataType: "number", width: "100px" },
+                    { headerText: "名前", key: "Name", dataType: "string" },
+                    { headerText: "役職", key: "Title", dataType: "string"},
+                    { headerText: "画像", key: "ImageUrl", dataType: "object", template: "<img width='100' height='85' src='${ImageUrl}'></img>" },
+                    { headerText: "電話", key: "Phone", dataType: "string" }
                 ],
                 features: [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'ID',
+                                classes: 'hidden-phone'
+                            }                           
+                        ]
+                    },
                     {
                         name: "Selection",
                         mode: "cell",
@@ -73,18 +83,28 @@ $(function () {
   
             $("#rowSelectorsGrid").igGrid({
                 height: "350px",
-                width: "740px",
+                width: "98%",
                 autoGenerateColumns: false,
                 dataSource: northwindEmployees,
                 responseDataKey: "results",
                 dataSourceType: "json",
                 columns: [
-                    { headerText: "社員 ID", key: "ID", dataType: "number", width: "150px" },
-                    { headerText: "名前", key: "Name", dataType: "string", width: "150px" },
-                    { headerText: "役職", key: "Title", dataType: "string", width: "150px" },
-                    { headerText: "電話", key: "Phone", dataType: "string", width: "100px" }
+                    { headerText: "社員 ID", key: "ID", dataType: "number" },
+                    { headerText: "名前", key: "Name", dataType: "string"},
+                    { headerText: "役職", key: "Title", dataType: "string" },
+                    { headerText: "電話", key: "Phone", dataType: "string" }
                 ],
                 features: [
+                    {
+                        name: 'Responsive',
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: 'ID',
+                                classes: 'hidden-phone'
+                            }
+                        ]
+                    },
                     {
                         name: "RowSelectors",
                         enableCheckBoxes: enableCheckboxes,

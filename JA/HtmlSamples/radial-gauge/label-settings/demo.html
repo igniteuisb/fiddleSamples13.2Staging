@@ -8,36 +8,27 @@
 <script src="http://cdn-na.infragistics.com/jquery/20132/beta/js/i18n/infragistics-ja.js"></script>
 
 <div id="radialgauge"></div>
+
     <div>
         <fieldset id="gaugeOptions">
             <legend>オプション</legend>
-            <table>
-                <tr>
-                    <td>ラベル範囲</td>
-                    <td>
-                        <div id="labelExtentSlider" style="width: 100px; margin: 12px"></div>
-                    </td>
-                    <td style="width : 30px">
-                        <label id="labelExtentLabel">0.7</label>
-                    </td>
-
-                    <td>ラベル期間</td>
-                    <td>
-                        <div id="labelIntervalSlider" style="width: 100px; margin: 12px"></div>
-                    </td>
-                    <td style="width : 30px">
-                        <label id="labelIntervalLabel">10</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>トランジション期間</td>
-                    <td>
-                        <div id="transitionDurationSlider" style="width : 100px; margin : 12px"></div>
-                    </td>
-                    <td style="width : 30px">
-                        <label id="transitionDurationLabel">2</label>
-                    </td>
-                </tr>
-            </table>
+				<div class="optionContainer">
+               ラベル範囲
+					<br />
+               <div id="labelExtentSlider" class="sliderBounds"></div>
+               <label id="labelExtentLabel">0.7</label>
+				</div>
+				<div class="optionContainer">
+               ラベル期間
+					<br />
+               <div id="labelIntervalSlider" class="sliderBounds"></div>
+               <label id="labelIntervalLabel">10</label>
+				</div>
+				<div class="optionContainer">
+               トランジション期間
+					<br />
+               <div id="transitionDurationSlider" class="sliderBounds"></div>
+               <label id="transitionDurationLabel">2</label>
+				</div>
         </fieldset>
     </div>

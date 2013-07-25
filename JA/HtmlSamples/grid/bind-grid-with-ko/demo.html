@@ -36,28 +36,29 @@
     <div id="error-message" style="color: #FF0000; font-weight: bold;"></div>
     
     <table id="gridKO" data-bind="igGrid: {
-            dataSource: data,
-            width: 750,
+            dataSource: data,            
             primaryKey: 'ID',
+            width: '98%',
             autoCommit: true,
-            features: [{
-                name: 'Updating',
-                editMode: 'row',
-                columnSettings: [
-                    {
-                        columnKey: 'ID',
-                        readOnly: true
-                    }
-                ],
-                rowDeleting: function (evt, ui) {
-                    var rowID = ui.rowID;
-                    var selectedRow = $('#gridKO').igGridSelection('selectedRow');
-                    if (selectedRow == null || rowID != selectedRow.id) {
-                        $('#error-message').html('行を削除するには、行を選択する必要があります。').stop(true, true).fadeIn(500).delay(3000).fadeOut(500);
-                        return false;
-                    }
-                }
-            },
+            features: [                
+                 {
+                     name: 'Updating',
+                     editMode: 'row',
+                     columnSettings: [
+                         {
+                             columnKey: 'ID',
+                             readOnly: true
+                         }
+                     ],
+                     rowDeleting: function (evt, ui) {
+                         var rowID = ui.rowID;
+                         var selectedRow = $('#gridKO').igGridSelection('selectedRow');
+                         if (selectedRow == null || rowID != selectedRow.id) {
+                             $('#error-message').html('行を削除するには、行を選択する必要があります。').stop(true, true).fadeIn(500).delay(3000).fadeOut(500);
+                             return false;
+                         }
+                     }
+                 },
                 {
                     name: 'Selection',
                     mode: 'row',
@@ -68,10 +69,10 @@
             ],
             autoGenerateColumns: false,
             columns: [
-                { headerText: '顧客 ID', key: 'ID', dataType: 'string' },
-                { headerText: '名前', key: 'ContactName', dataType: 'string' },
-                { headerText: '市', key: 'City', dataType: 'string' },
-                { headerText: '国名', key: 'Country', dataType: 'string' }
+                { headerText: '顧客 ID', key: 'ID', dataType: 'string', width: '25%' },
+                { headerText: '名前', key: 'ContactName', dataType: 'string', width: '25%' },
+                { headerText: '市', key: 'City', dataType: 'string', width: '25%' },
+                { headerText: '国名', key: 'Country', dataType: 'string', width: '25%' }
             ]
         }">
     </table>

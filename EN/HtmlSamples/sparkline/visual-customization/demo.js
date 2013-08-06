@@ -1,12 +1,11 @@
 $(function () {
 
             $("#slNightSky").igSparkline({
-                dataSource: data,
+                dataSource: randomOldData,
                 displayType: "area",
                 height: "120px",
                 width: "100%",
                 valueMemberPath: 'Change',
-                labelMemberPath: 'Date',
                 brush: "#446185",
                 normalRangeVisibility: "visible",
                 trendLineBrush: "#d0d0e0",
@@ -17,12 +16,14 @@ $(function () {
             });
 
             $("#slSnakeSkin").igSparkline({
-                dataSource: data,
+                dataSource: randomOldData,
                 displayType: "column",
                 height: "120px",
                 width: "100%",
                 valueMemberPath: 'Change',
-                labelMemberPath: 'Date',
+                labelMemberPath: 'DateString',
+					 horizontalAxisVisibility: 'visible',
+					 verticalAxisVisibility: 'visible',
                 negativeBrush: "#cfc8c0",
                 negativeMarkerVisibility: "collapsed",
                 brush: "#bdada1",

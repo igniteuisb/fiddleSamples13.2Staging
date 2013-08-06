@@ -13,8 +13,17 @@
     </script>
 
 <div>
-        <label>Refresh time: </label><span id="timeText"></span>
+        <div style="padding: 5px;">
+            <button type="button" onclick="refresh()">Refresh</button>
+            <label>Refresh time: </label><span id="timeText"></span>
+        </div>
+
+        <div style="max-width: 150px; padding: 5px;">
+            <div id="slider"></div>    
+        </div>
+        Data Points: <label id="sliderLabel">50000</label>
     </div>
+
     <div><span class="message">Generating and assigning data...</span></div>
 
    <div style="height: 520px; width: 90%; min-width: 210px;">

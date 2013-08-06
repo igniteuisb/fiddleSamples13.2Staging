@@ -1,8 +1,9 @@
 $(function () {
 var currData, currDataSource, doGeneration, startTime = null;
+	    var sliderValue = 50000;
 
 	    function doGeneration() {
-	        var num = 1000000, data = [], curr = 10;
+	        var num = sliderValue, data = [], curr = 10;
 
 	        for (var i = 0; i < num; i++) {
 	            if (Math.random() > .5) {
@@ -23,7 +24,23 @@ var currData, currDataSource, doGeneration, startTime = null;
 	        });
 	    };
 
+	    function refresh() {
+	        doGeneration();
+	        assignData();
+	    };
+
 	    $(function () {
+	        $("#slider").slider({
+	            min: 50000,
+	            max: 1000000,
+	            step: 50000,
+	            value: 50000,
+	            slide: function (event, ui) {
+	                sliderValue = ui.value;
+	                $("#sliderLabel").text(ui.value);
+	            }
+	        });
+
 	        $("#chart").igDataChart({
 	            width: "100%",
 	            height: "500px",

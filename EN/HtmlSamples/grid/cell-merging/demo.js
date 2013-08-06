@@ -1,40 +1,11 @@
-$(function () {
-
-            // Used to show output in the API Viewer at runtime, 
-            // defined in external script 'apiviewer.js'    
-            var apiViewer = new $.ig.apiViewer();
-
-            /*----------------- Method & Option Examples -------------------------*/
-
-            $("input[name='cellMergingInitialState']").click(function () {
-                $("#grid").igGrid("destroy");
-                createGrid();
-            });
-
-            /*----------------- Event Examples -------------------------*/
-
-            $("#grid").on("iggridcellmergingcellsmerged", function (evt, ui) {
-                var message = "Logging cellsMerged event";
-                apiViewer.log(message);
-                message = "The index of the row the merged group starts in is: " + ui.rowIndex;
-                apiViewer.log(message);
-                message = "The key of the row the merged group starts in is: " + ui.rowKey;
-                apiViewer.log(message);
-                message = "The cells value which is repeated and caused the merged group to be created is: " + ui.value;
-                apiViewer.log(message);
-                message = "The total count of cells that were merged is: " + ui.count;
-                apiViewer.log(message);
-                apiViewer.log('<br/>');
-                return;
-            });
+$(function () {            
 
             /*----------------- Instantiation -------------------------*/
             createGrid();
 
         });
 
-        function createGrid() {
-            var initialState = $('input:radio[name=cellMergingInitialState]:checked').val();
+        function createGrid() {            
 
             $("#grid").igGrid({
                 height: "100%",
@@ -74,7 +45,7 @@ $(function () {
                     },
                     {
                         name: 'CellMerging',
-                        initialState: initialState
+                        initialState: 'merged'
                     },
                     {
                         name: 'Sorting',

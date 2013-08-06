@@ -1,28 +1,26 @@
 $(function () {
-            // Used to show output in the API Viewer at runtime, 
-            // defined in external script 'apiviewer.js'    
-            var apiViewer = new $.ig.apiViewer();
+<tr>
+            <td>{{>ID}}</td>
+            <td>{{>#view.hlp('toFullName')(Name)}}</td>
+            <td><img width='100' height='90' src={{>ImageUrl}}></img></td>
+            <td>{{>Title}}</td>
+            <td>{{>Phone}}</td>
+            <td><img width='20' height='15' src='http://igniteuisamples.staging.infragistics.local/13-2/images/samples/nw/countries/{{>Country}}.gif'></img>{{>Country}}</td>
+            <td>
+                <span style='color:
+                    {{if #view.hlp('toDate')(BirthDate) > #view.hlp('toDate')('1970-01-01T00:00:00.000')}}blue
+                    {{else}}red
+                    {{/if}};'>
+                    {{>BirthDate}}
+                </span>
+            </td>
+        </tr>
+     
+
+        $(function () {            
 
             var titles = ["Sales Representative", "Sales Manager", "Inside Sales Coordinator", "Vice President, Sales"];
-            var countries = ["UK", "USA"];
-
-            var rowTmpl = "";
-            var columnObj = [
-                { headerText: "Employee ID", key: "ID", dataType: "number" },
-                { headerText: "Name", key: "Name", dataType: "string" },
-                { headerText: "Image", key: "ImageUrl", dataType: "object" },
-                { headerText: "Title", key: "Title", dataType: "string" },
-                { headerText: "Phone", key: "Phone", dataType: "string" },
-                { headerText: "Country", key: "Country", dataType: "string" },
-                { headerText: "Birth Date", key: "BirthDate", dataType: "date" }
-            ];
-
-            rowTmpl = getRowTmpl(columnObj);
-            var tmpl = rowTmpl.split(/(<tr>|<\/td>)/);
-
-            $.each(tmpl, function () {
-                $("#tmpl").append($("<div></div>").text(this));
-            });
+            var countries = ["UK", "USA"];                      
 
             $.views.helpers(
             {
@@ -37,48 +35,22 @@ $(function () {
                     var name = val.split(',').reverse().join(" ");
                     return name;
                 }
-            });
-
-            function getRowTmpl(cols) {
-                var tmpl = "<tr>";
-                var imagesroot = "http://igniteuisamples.staging.infragistics.local/13-2/images/samples/nw/countries/";
-
-                $.each(cols, function () {
-                    switch (this.key) {
-                        case 'BirthDate':
-                            tmpl += "<td><span style='color:{{if #view.hlp('toDate')(BirthDate) > #view.hlp('toDate')('1970-01-01T00:00:00.000')}}blue{{else}}red{{/if}};'>" +
-                            "{{>" + this.key + "}}" + "</span></td>";
-                            break;
-                        case 'ImageUrl':
-                            tmpl += "<td><img width='100' height='90' src=" +
-                             "{{>" + this.key + "}}" + "></img></td>";
-                            break;
-                        case 'Country':
-                            tmpl += "<td><img  width='20' height='15' src='" +
-                             imagesroot + "{{>" + this.key + "}}" + ".gif'" +
-                             "></img>" + "{{>" + this.key + "}}" + "</td>";
-                            break;
-                        case 'Name':
-                            tmpl += "<td>" +
-                              "{{> #view.hlp('toFullName')(" + this.key + ")}}" +
-                              "</td>";
-                            break;
-                        default:
-                            tmpl += "<td>{{>" + this.key + "}}</td>";
-                            break;
-                    }
-                });
-
-                tmpl += "</tr>";
-                return tmpl;
-            }
+            });            
 
             $("#grid12").igGrid({
                 width: "98%",
                 height: "600px",
-                rowTemplate: rowTmpl,
+                rowTemplate: $("#theTmpl").html(),
                 autoGenerateColumns: false,
-                columns: columnObj,
+                columns: [
+                        { headerText: "Employee ID", key: "ID", dataType: "number" },
+                        { headerText: "Name", key: "Name", dataType: "string" },
+                        { headerText: "Image", key: "ImageUrl", dataType: "object" },
+                        { headerText: "Title", key: "Title", dataType: "string" },
+                        { headerText: "Phone", key: "Phone", dataType: "string" },
+                        { headerText: "Country", key: "Country", dataType: "string" },
+                        { headerText: "Birth Date", key: "BirthDate", dataType: "date" }
+                    ],
                 dataSource: northwindEmployees,
                 dataSourceType: 'json',
                 primaryKey: "ID",
@@ -97,7 +69,7 @@ $(function () {
                                 classes: 'hidden-phone'
                             },
                             {
-                                columnKey: 'BirthDate',
+                                columnKey: 'Name',
                                 classes: 'hidden-phone'
                             }
                         ]
@@ -164,3 +136,4 @@ $(function () {
                 ]
             });
         });
+});

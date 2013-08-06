@@ -1,69 +1,13 @@
-$(function () {
+$(function () {            
 
-            // Used to show output in the API Viewer at runtime, 
-            // defined in external script 'apiviewer.js'           
-            var apiViewer = new $.ig.apiViewer();
-
-            var _isDataBound = false;
-
-            /*----------------- Method & Option Examples -------------------------*/
-            $("#getUnboundValues").igButton({ labelText: $("#getUnboundValues").val() });
-
-            $("#getUnboundValues").click(function (e) {
-                var columnText = $("#columnText").val();
-                var column = $('#grid10').igGrid("columnByText", $.trim(columnText));
-
-                var unboundValues = $('#grid10').igGrid('getUnboundValues', column.key);
-                message = "The unbound values of the column are: " + unboundValues;
-                apiViewer.log(message);
-            });
-
-            $("#getUnboundColumnByKey").igButton({ labelText: $("#getUnboundColumnByKey").val() });
-
-            $("#getUnboundColumnByKey").click(function (e) {
-
-                var columnText = $("#columnText").val();
-                var column = $('#grid10').igGrid("columnByText", $.trim(columnText));
-                var unboundColumn = $('#grid10').igGrid('getUnboundColumnByKey', column.key);
-
-                var message = "The formula function of the column is: " + unboundColumn.formula;
-                apiViewer.log(message);
-                message = "The format of the column is: " + unboundColumn.format;
-                apiViewer.log(message);
-                message = "The template of the column is: " + unboundColumn.template;
-                apiViewer.log(message);
-                message = "The dataType of the column is: " + unboundColumn.dataType;
-                apiViewer.log(message);
-            });
-
-            $("#setUnboundValues").igButton({ labelText: $("#setUnboundValues").val() });
-
-            $("#setUnboundValues").click(function (e) {
-                var i, vals = [], boolVals = [];
-
-                for (i = 0; i < 10; i++) {
-                    vals.push(new Date());
-                    boolVals.push(false);
-                }
-                $('#grid10').igGrid('setUnboundValues', 'PromotionExpDate', vals);
-                $('#grid10').igGrid('setUnboundValues', 'IsPromotion', boolVals);
-                return;
-            });
+            var _isDataBound = false;            
 
             /*----------------- Event Examples -------------------------*/
 
             $("#grid10").on("iggridupdatingdatadirty", function (event, ui) {
                 $("#grid10").igGrid("saveChanges");
                 return false;
-            });
-
-            $("#grid10").on("iggridcellclick", function (event, ui) {
-                var cell = $('#grid10').igGrid("cellAt", ui.colIndex, ui.rowIndex);
-
-                if (ui.colKey == "Total") {
-                    apiViewer.log("The Total's cell text is " + $(cell).text());
-                }
-            });
+            });            
 
             $("#grid10").on("iggriddatabound", function (event, ui) {
 
@@ -107,7 +51,7 @@ $(function () {
             $("#grid10").igGrid({
                 primaryKey: "ProductID",
                 width: '98%',
-                height: '600px',
+                height: '700px',
                 autoGenerateColumns: false,
                 autoCommit: true,
                 dataSourceType: 'json',

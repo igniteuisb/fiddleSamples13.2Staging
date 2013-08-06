@@ -1,17 +1,17 @@
 $(function () {
             $("#grid").igGrid({
                 columns: [
-                    { headerText: "Customer ID", key: "ID", dataType: "string", width:"100px" },
-                    { headerText: "Company Name", key: "CompanyName", dataType: "string", width: "120px" },
-                    { headerText: "Contact Name", key: "ContactName", dataType: "string", width: "100px" },
-                    { headerText: "Contact Title", key: "ContactTitle", dataType: "string", width: "120px" },
-                    { headerText: "Address", key: "Address", dataType: "string", width: "110px" },
-                    { headerText: "City", key: "City", dataType: "string", width: "100px" },
-                    { headerText: "Country", key: "Country", dataType: "string", width: "60px" }
+                    { headerText: "Customer ID", key: "ID", dataType: "string", width:"10%" },
+                    { headerText: "Company Name", key: "CompanyName", dataType: "string", width: "10%" },
+                    { headerText: "Contact Name", key: "ContactName", dataType: "string", width: "10%" },
+                    { headerText: "Contact Title", key: "ContactTitle", dataType: "string", width: "20%" },
+                    { headerText: "Address", key: "Address", dataType: "string", width: "20%" },
+                    { headerText: "City", key: "City", dataType: "string", width: "10%" },
+                    { headerText: "Country", key: "Country", dataType: "string", width: "15%" }
                 ],
                 autoGenerateColumns: false,                
                 dataSource: nwCustomersWithOrders,
-                width: "740px",
+                width: "100%",
                 height: "100%",
                 features: [
                     {
@@ -96,6 +96,10 @@ $(function () {
                                 maxWidth: Number.MAX_VALUE
                             }
                         }
+                    },
+                    {
+                        name: "Paging",
+                        pageSize: 6
                     }
                 ]
             });

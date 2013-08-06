@@ -14,25 +14,7 @@
 <link href="http://cdn-na.infragistics.com/jquery/20132/beta/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
 <link href="http://cdn-na.infragistics.com/jquery/20132/beta/css/structure/infragistics.css" rel="stylesheet"></link>
 
-<div class="api-explorer">
-       <fieldset>
-           <legend>Edit Selected Row</legend> 
-		    <label><b>Customer ID:</b> </label>
-            <span id="idEditor" data-bind="text: (selectedItemID() > -1 && selectedItemID() < data().length) ? data()[selectedItemID()].ID : data()[0].ID, valueUpdate: 'afterkeydown'"></span>
-            <br />
-		    <label><b>Contact Name:</b> </label>
-            <input id="nameEditor" type="text" data-bind="value:(selectedItemID() > -1 && selectedItemID() < data().length) ? data()[selectedItemID()].ContactName :  data()[0].ContactName, valueUpdate: 'afterkeydown'"></input>
-            <br />
-            <label><b>City:</b> </label>
-            <input id="cityEditor" type="text" data-bind="value:(selectedItemID() > -1 && selectedItemID() < data().length) ? data()[selectedItemID()].City: data()[0].City, valueUpdate: 'afterkeydown'"></input>
-            <br />
-		    <label><b>Country:</b> </label>
-            <input id="countryEditor" type="text" data-bind="value:(selectedItemID() > -1 && selectedItemID() < data().length) ? data()[selectedItemID()].Country : data()[0].Country, valueUpdate: 'afterkeydown'"></input>
-            <br />   
-       </fieldset>     
-	</div>	
-    
-    <div id="error-message" style="color: #FF0000; font-weight: bold;"></div>
+<div id="error-message" style="color: #FF0000; font-weight: bold;"></div>
     
     <table id="gridKO" data-bind="igGrid: {
             dataSource: data,            
@@ -75,3 +57,21 @@
             ]
         }">
     </table>
+    
+    <div class="api-explorer">
+       <fieldset>
+           <legend>Edit Selected Row</legend> 
+		    <label><b>Customer ID:</b> </label>
+            <span id="idEditor" data-bind="text: (selectedItemID() > -1 && selectedItemID() < data().length) ? data()[selectedItemID()].ID : data()[0].ID, valueUpdate: 'afterkeydown'"></span>
+            <br />
+		    <label><b>Contact Name:</b> </label>
+            <input id="nameEditor" type="text" data-bind="value: (selectedItemID() > -1 && selectedItemID() < data().length) ? data()[selectedItemID()].ContactName : data()[0].ContactName, valueUpdate: 'afterkeydown'"></input>
+            <br />
+            <label><b>City:</b> </label>
+            <input id="cityEditor" type="text" data-bind="value: (selectedItemID() > -1 && selectedItemID() < data().length) ? data()[selectedItemID()].City : data()[0].City, valueUpdate: 'afterkeydown'"></input>
+            <br />
+		    <label><b>Country:</b> </label>
+            <input id="countryEditor" type="text" data-bind="value: (selectedItemID() > -1 && selectedItemID() < data().length) ? data()[selectedItemID()].Country : data()[0].Country, valueUpdate: 'afterkeydown'"></input>
+            <br />   
+       </fieldset>     
+	</div>

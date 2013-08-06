@@ -57,3 +57,18 @@
             width: 100%;
             background-color: #44acd6;
         }
+        @media screen and (max-width: 600px) {
+            /* Polar chart container and legend under 600px */
+            .combo-container {
+                width: 100%;
+                float: none;
+            }
+            .sample-chart-container {
+                margin-right: 0;
+            }
+        }
+        @media screen and (max-width: 430px) {
+            #sample > section > * {
+                margin: 0;
+            }
+        }

@@ -5,8 +5,7 @@ $(function () {
                 responseDataKey: "d.results",
                 height: "100px",
                 width: "100%",
-                valueMemberPath: 'ExtendedPrice',
-                labelMemberPath: 'OrderDate'
+                valueMemberPath: 'ExtendedPrice'
             });
 
         });

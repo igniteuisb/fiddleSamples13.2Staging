@@ -2,15 +2,12 @@ $(function () {
             $('#dashboard').igTileManager({
                 layoutConfiguration: {
                     gridLayout: {
-                        columnWidth: '25%',
-                        columnHeight: '50%',
                         marginLeft: 10,
                         marginTop: 10
                     }
                 },
-                wrap: true,
                 rightPanelTilesWidth: 200,
-                rightPanelWidth: 420,
+                rightPanelCols: 2,
                 dataSource: dataSource,
                 maximizedState: '<h3>${name}</h3><img src="${picture}" title="${name}" alt="error" /><p>${text}</p>' +
                 '<div style="clear: both"><span class="color">Skills:</span></div>' +

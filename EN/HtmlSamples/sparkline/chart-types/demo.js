@@ -1,39 +1,35 @@
 $(function () {
 
             $("#lineSparkline").igSparkline({
-                dataSource: data,
+                dataSource: randomOldData,
                 displayType: "line",
                 height: "100px",
                 width: "100%",
-                valueMemberPath: 'Change',
-                labelMemberPath: 'Date'
+                valueMemberPath: 'Change'
             });
 
             $("#areaSparkline").igSparkline({
-                dataSource: data,
+                dataSource: randomOldData,
                 displayType: "area",
                 height: "100px",
                 width: "100%",
-                valueMemberPath: 'Change',
-                labelMemberPath: 'Date'
+                valueMemberPath: 'Change'
             });
 
             $("#columnSparkline").igSparkline({
-                dataSource: data,
+                dataSource: randomOldData,
                 displayType: "column",
                 height: "100px",
                 width: "100%",
-                valueMemberPath: 'Change',
-                labelMemberPath: 'Date'
+                valueMemberPath: 'Change'
             });
 
             $("#winLossSparkline").igSparkline({
-                dataSource: data,
+                dataSource: randomOldData,
                 displayType: "winLoss",
                 height: "100px",
                 width: "100%",
-                valueMemberPath: 'Change',
-                labelMemberPath: 'Date'
+                valueMemberPath: 'Change'
             });
 
         });

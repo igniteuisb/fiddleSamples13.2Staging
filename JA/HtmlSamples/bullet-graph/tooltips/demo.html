@@ -37,7 +37,7 @@
 		</div>
     </script>
 <script id="actualValueToolTipTemplate2" type="text/x-jquery-tmpl">
-		<div  style="background-color:white; border: 1px solid black; color:red; font-size:120%; padding:2px;">
+        <div  style="background-color:white; border: 1px solid black; color:red; font-size:120%; padding:2px;">
 			${item.name} <br />
             from:  ${item.startValue}% to: ${item.value}%
 		</div>
@@ -51,19 +51,19 @@
     </script>
 
 <h3>バックログ項目</h3>
-    <div style="max-width:500px; min-width:100px; font-size: 80%">
+    <div style="min-width:100px; font-size: 80%">
         <div style="width:70%; float: left">
             <div>
                 <div style="width: 70%; margin-top: 5px; font-weight: bold">本島:タスク 3 - 20%</div>
-                <div id="bulletgraph_task3" style="width: 100%;float: left"></div>
+                <div id="bulletgraph_task3"></div>
             </div>
             <div>
                 <div style="width: 70%; margin-top: 5px; font-weight: bold">佐々木:タスク 2 - 30%</div>
-                <div id="bulletgraph_task2" style="width: 100%;float: left; margin-top: 40px"></div>
+                <div id="bulletgraph_task2" style="margin-top: 40px"></div>
             </div>
             <div>
                 <div style="width: 70%; margin-top: 5px; font-weight: bold">原田:タスク 1 - 50%</div>
-                <div id="bulletgraph_task1" style="width: 100%;float: left; margin-top: 40px"></div>
+                <div id="bulletgraph_task1" style="margin-top: 40px"></div>
             </div>
         </div>
 
@@ -74,4 +74,4 @@
     </div>
     <br />
     <br />
-    As the backlog item composes of 3 tasks and the man-hours for them pile up, to form the whole time needed for the backlog item completion, so does the effort and the quality that is delivered.  As the 3 xamBulletGraphs for the different people’s tasks show the level of completion for each task, the rightmost vertical one clarifies, where any unsatisfactory result may be coming from.
+    各バックログ項目には、 3 つのタスクおよびバックログ項目を完了するための全期間を構成するタスクの工数、それによってもたらされる品質や成果が含まれます。各タスクは xamBulletGraph で表示されます。タスクの進行状況を表示します。右の垂直方向ブレット グラフはチームの進行状況を表示します。

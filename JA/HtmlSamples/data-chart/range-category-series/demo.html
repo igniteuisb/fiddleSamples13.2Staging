@@ -3,14 +3,15 @@
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.min.js"></script>
 <script src="http://cdn-na.infragistics.com/jquery/20132/beta/js/infragistics.core.js"></script>
 <script src="http://cdn-na.infragistics.com/jquery/20132/beta/js/infragistics.dv.js"></script>
+<script src="http://igniteuisamples.ja.staging.infragistics.local/13-2/js-data/temperature"></script>
 <link href="http://cdn-na.infragistics.com/jquery/20132/beta/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
 <link href="http://cdn-na.infragistics.com/jquery/20132/beta/css/structure/infragistics.css" rel="stylesheet"></link>
 <script src="http://cdn-na.infragistics.com/jquery/20132/beta/js/i18n/infragistics-ja.js"></script>
 
 <script id="tooltipTemplate" type="text/x-jquery-tmpl">
         <div class="ui-widget-content ui-corner-all">
-            <span id="tooltipValue">高値: ${item.Value2}</span><br />
-            <span id="Span1">安値: ${item.Value1}</span>
+            <span id="tooltipValue">フィラデルフィア: ${item.PhiladelphiaTemp}</span><br />
+            <span id="Span1">ニューヨーク市: ${item.NewYorkCityTemp}</span>
         </div>
     </script>
 
@@ -23,4 +24,9 @@
             <h4>範囲柱状チャート</h4>
             <div id="chartRangeColumn"></div>
         </div>
+    </div>
+
+    <div class="NOAAdata-attribution">
+        天気のデータ ソース:<br />
+        <a href="http://www.noaa.gov/" target="_blank">NOAA</a>
     </div>

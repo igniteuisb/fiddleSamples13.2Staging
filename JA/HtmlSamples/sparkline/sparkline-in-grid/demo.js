@@ -13,8 +13,7 @@ $(function () {
 										 $(this).data("id")).Orders,
 									height: "24px",
 									width: "100%",
-									valueMemberPath: 'TotalPrice',
-									labelMemberPath: 'OrderDate'
+									valueMemberPath: 'TotalPrice'
 							  })
 							  .css("background-color", "transparent");
 						 });

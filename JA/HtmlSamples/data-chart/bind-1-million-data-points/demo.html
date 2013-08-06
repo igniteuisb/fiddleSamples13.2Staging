@@ -14,8 +14,17 @@
     </script>
 
 <div>
-        <label>更新時間: </label><span id="timeText"></span>
+        <div style="padding: 5px;">
+            <button type="button" onclick="refresh()">更新</button>
+            <label>更新時間: </label><span id="timeText"></span>
+        </div>
+
+        <div style="max-width: 150px; padding: 5px;">
+            <div id="slider"></div>    
+        </div>
+        データ ポイント: <label id="sliderLabel">50000</label>
     </div>
+
     <div><span class="message">データの生成と割り当て</span></div>
 
    <div style="height: 520px; width: 90%; min-width: 210px;">

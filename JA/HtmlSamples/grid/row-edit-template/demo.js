@@ -1,23 +1,7 @@
 $(function () {
 
-            // Used to show output in the API Viewer at runtime, 
-            // defined in external script 'apiviewer.js'    
-            var apiViewer = new $.ig.apiViewer();
-
-
             var titles = ["Sales Representative", "Sales Manager", "Inside Sales Coordinator", "Vice President, Sales"];
-            var countries = ["UK", "USA"];
-
-            /*----------------- Event Examples -------------------------*/
-
-            $("#grid").on("iggridupdatingroweditdialogopened", function (evt, ui) {
-                var currDataRow = ui.dialogElement.data('tr');
-                var message = "rowEditDialogOpened イベントが次のセル値と発生しました: ";
-                for (var i = 0; i < currDataRow[0].cells.length; i++) {
-                    message += " <br/>" + $(currDataRow[0].cells[i]).text();
-                }
-                apiViewer.log(message);
-            });
+            var countries = ["UK", "USA"];           
 
             /*----------------- Instantiation -------------------------*/
             $("#grid").igGrid({

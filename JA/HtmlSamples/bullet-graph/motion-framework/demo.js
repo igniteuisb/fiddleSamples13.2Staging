@@ -2,7 +2,7 @@ $(function () {
             var $bulletGraph = $("#bulletgraph");
 
             $bulletGraph.igBulletGraph({
-                width: "400px",
+                width: "100%",
                 height: "90px",
                 targetValueOutline: "transparent",
                 actualValueOutline: "transparent",
@@ -91,8 +91,6 @@ $(function () {
 
             function setting3() {
                 $bulletGraph.igBulletGraph({
-                    width: "400px",
-                    height: "90px",
                     targetValue: 800,
                     actualValue: 700,
                     interval: 200,

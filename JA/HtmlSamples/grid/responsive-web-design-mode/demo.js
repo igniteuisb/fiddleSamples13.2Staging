@@ -1,17 +1,17 @@
 $(function () {
             $("#grid").igGrid({
                 columns: [
-                    { headerText: "顧客 ID", key: "ID", dataType: "string", width:"100px" },
-                    { headerText: "会社名", key: "CompanyName", dataType: "string", width: "120px" },
-                    { headerText: "名前", key: "ContactName", dataType: "string", width: "100px" },
-                    { headerText: "連絡先", key: "ContactTitle", dataType: "string", width: "120px" },
-                    { headerText: "住所", key: "Address", dataType: "string", width: "110px" },
-                    { headerText: "市", key: "City", dataType: "string", width: "100px" },
-                    { headerText: "国名", key: "Country", dataType: "string", width: "60px" }
+                    { headerText: "顧客 ID", key: "ID", dataType: "string", width:"10%" },
+                    { headerText: "会社名", key: "CompanyName", dataType: "string", width: "10%" },
+                    { headerText: "名前", key: "ContactName", dataType: "string", width: "10%" },
+                    { headerText: "連絡先", key: "ContactTitle", dataType: "string", width: "20%" },
+                    { headerText: "住所", key: "Address", dataType: "string", width: "20%" },
+                    { headerText: "市", key: "City", dataType: "string", width: "10%" },
+                    { headerText: "国名", key: "Country", dataType: "string", width: "15%" }
                 ],
                 autoGenerateColumns: false,                
                 dataSource: nwCustomersWithOrders,
-                width: "740px",
+                width: "100%",
                 height: "100%",
                 features: [
                     {
@@ -96,6 +96,10 @@ $(function () {
                                 maxWidth: Number.MAX_VALUE
                             }
                         }
+                    },
+                    {
+                        name: "Paging",
+                        pageSize: 6
                     }
                 ]
             });

@@ -13,7 +13,7 @@ $(function () {
                 //// A value to stop adding labels, subtracted from the scale's MaximumValue.
                 //labelsPreTerminal: 4000,
                 //// Gets or sets the brush to use for the label font.
-                fontBrush: "aqua",
+                fontBrush: "164F6D",
                 //labelExtent: .4,
                 formatLabel: function (evt, ui) { 
                     if (ui.value != 90000000) {
@@ -69,6 +69,7 @@ $(function () {
                 //// Gets or sets the brush to use for the label font.
                 //fontBrush: "aqua",
                 font: "20px Georgia",
+                fontBrush: "white",
                 labelExtent: .4,
                 formatLabel: function (evt, ui) { 
                     if (ui.value != 45000) {

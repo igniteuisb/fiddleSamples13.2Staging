@@ -54,7 +54,7 @@ $(function () {
                     minorTickBrush: "rgba(73, 73, 73, 1)",
 
                     //Label Settings
-                    labelInterval: "8"
+                    labelInterval: 10
                 });
                     $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range1", remove: true }]);
                     $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range2", remove: true }]);
@@ -91,7 +91,7 @@ $(function () {
                     minorTickBrush: "gray",
 
                     //Label Settings
-                    labelInterval: "1"
+                    labelInterval: 1
                 });
 
                 $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range1", remove: true }]);
@@ -152,7 +152,7 @@ $(function () {
                     minorTickBrush: "transparent",
 
                     //Label Settings
-                    labelInterval: "5"
+                    labelInterval: 5
                 });
 
                 $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range1", remove: true }]);

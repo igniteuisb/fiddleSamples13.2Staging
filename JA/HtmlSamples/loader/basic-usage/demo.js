@@ -1,7 +1,7 @@
 $(function () {
 $.ig.loader({
-	        scriptPath: "http://igniteuisamples.staging.infragistics.local/13-2/IgniteUI/js/",
-	        cssPath: "http://igniteuisamples.staging.infragistics.local/13-2/IgniteUI/css/",
+	        scriptPath: "http://staging.igniteui.local/13-2/IgniteUI/js/",
+	        cssPath: "http://staging.igniteui.local/13-2/IgniteUI/css/",
 	        resources: "igGrid.Sorting"
 	    });
 

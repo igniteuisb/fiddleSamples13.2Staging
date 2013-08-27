@@ -14,7 +14,7 @@ var colors = [
         $(function () {
 
             $("#singleSelectCombo").igCombo({
-                width: "300px",
+                width: "270px",
                 dataSource: colors,
                 textKey: "Name",
                 valueKey: "Name",
@@ -22,7 +22,7 @@ var colors = [
             });
 
             $("#multiSelectCombo").igCombo({
-                width: "300px",
+                width: "270px",
                 dataSource: colors,
                 textKey: "Name",
                 valueKey: "Name",
@@ -30,7 +30,7 @@ var colors = [
             });
 
             $("#checkboxSelectCombo").igCombo({
-                width: "300px",
+                width: "270px",
                 dataSource: colors,
                 textKey: "Name",
                 valueKey: "Name",

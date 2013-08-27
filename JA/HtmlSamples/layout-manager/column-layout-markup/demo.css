@@ -39,3 +39,12 @@ body {
 			padding: 0 20px 20px 20px;
 			color: #FFF;
 		}
+	    @media screen and (min-width: 768px) {
+	        #sampleContainer {
+	            margin-left: 0;
+	        }
+	    }
+
+	    .ig-layout-col {
+            padding-left: 0;
+        }

@@ -5,19 +5,19 @@ $(function () {
                 width: "100%",
                 height: "90px",
                 targetValueOutline: "transparent",
-                actualValueOutline: "transparent",
+                valueOutline: "transparent",
                 transitionDuration: 1000
             });
 
             function setting1() {
                 $bulletGraph.igBulletGraph({
                     targetValue: 160,
-                    actualValue: 180,
+                    value: 180,
                     interval: 40,
                     minimumValue: 0,
                     maximumValue: 200,
                     targetValueBrush: "white",
-                    actualValueBrush: "white",
+                    valueBrush: "white",
                     majorTickmarkBrush: "white",
                     tickBrush: "#C1C1C1",
                     fontBrush: "#C1C1C1"
@@ -57,12 +57,12 @@ $(function () {
             function setting2() {
                 $bulletGraph.igBulletGraph({
                     targetValue: 70,
-                    actualValue: 80,
+                    value: 80,
                     interval: 50,
                     minimumValue: 50,
                     maximumValue: 100,
                     targetValueBrush: "#fff7a3",
-                    actualValueBrush: "#fff7a3"
+                    valueBrush: "#fff7a3"
                 });
 
                 $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range1", remove: true }]);
@@ -92,12 +92,12 @@ $(function () {
             function setting3() {
                 $bulletGraph.igBulletGraph({
                     targetValue: 800,
-                    actualValue: 700,
+                    value: 700,
                     interval: 200,
                     minimumValue: 0,
                     maximumValue: 1000,
                     targetValueBrush: null,
-                    actualValueBrush: null,
+                    valueBrush: null,
                     
                 });
 

@@ -3,22 +3,20 @@ $(function () {
             $("#bulletgraph_task3").igBulletGraph({
                 height: "60px",
                 width: "100%",
-                rangeToolTipTemplate: 'rangeToolTipTemplate1',
-                actualValueToolTipTemplate: 'actualValueToolTipTemplate1',
-                targetValueToolTipTemplate: 'targetValueToolTipTemplate1',
+                showToolTip: true,
                 ranges: [
                     {
-                        name: 'bad',
+                        name: '悪い',
                         startValue: 0,
                         endValue: 50
                     },
                     {
-                        name: 'acceptable',
+                        name: '普通 ',
                         startValue: 50,
                         endValue: 80
                     },
                     {
-                        name: 'good',
+                        name: '良い',
                         startValue: 80,
                         endValue: 100
                     }
@@ -26,67 +24,73 @@ $(function () {
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "%";
                 },
-                actualValueName: "Research/Preparation",
-                actualValueBrush: 'green',
-                actualValue: 85,
+                valueName: "タスク 3",
+                valueBrush: 'green',
+                value: 85,
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',
                 targetValue: 90,
                 labelInterval: 20,
-                showToolTip: true,
                 transitionDuration: 500
             });
 
             $("#bulletgraph_task2").igBulletGraph({
                 height: "60px",
-                width: "100%", 
+                width: "100%",
+                showToolTip: true,
+                rangeToolTipTemplate: 'rangeToolTipTemplate2',
+                valueToolTipTemplate: 'valueToolTipTemplate2',
+                targetValueToolTipTemplate: 'targetValueToolTipTemplate2',
                 ranges: [
-                    {
-                        name: 'bad',
-                        startValue: 0,
-                        endValue: 50
-                    },
-                    {
-                        name: 'acceptable',
-                        startValue: 50,
-                        endValue: 80
-                    },
-                    {
-                        name: 'good',
-                        startValue: 80,
-                        endValue: 100
-                    }
+                     {
+                         name: '悪い',
+                         startValue: 0,
+                         endValue: 50
+                     },
+                     {
+                         name: '普通 ',
+                         startValue: 50,
+                         endValue: 80
+                     },
+                     {
+                         name: '良い',
+                         startValue: 80,
+                         endValue: 100
+                     }
                 ],
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "%";
                 },
-                actualValueName: "Research/Preparation",
-                actualValueBrush: 'orange',
-                actualValue: 96,
+                valueName: "タスク 2",
+                valueBrush: 'orange',
+                value: 96,
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',
                 targetValue: 90,
                 labelInterval: 20,
-                showToolTip: true,
                 transitionDuration: 500
             });
 
             $("#bulletgraph_task1").igBulletGraph({
                 height: "60px",
                 width: "100%",
+                showToolTip: true,
+                rangeToolTipTemplate: 'rangeToolTipTemplate1',
+                valueToolTipTemplate: 'valueToolTipTemplate1',
+                targetValueToolTipTemplate: 'targetValueToolTipTemplate1',
                 ranges: [
                     {
-                        name: 'bad',
+                        name: '悪い',
                         startValue: 0,
                         endValue: 50
                     },
                     {
-                        name: 'acceptable',
+                        name: '普通 ',
                         startValue: 50,
                         endValue: 80
                     },
                     {
-                        name: 'good',
+                        name: '良い',
                         startValue: 80,
                         endValue: 100
                     }
@@ -94,70 +98,48 @@ $(function () {
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "%";
                 },
-                actualValueName: "Research/Preparation",
-                actualValueBrush: 'red',
-                actualValue: 74,
+                valueName: "タスク 2",
+                valueBrush: 'red',
+                value: 74,
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',
                 targetValue: 90,
                 labelInterval: 20,
-                showToolTip: true,
-                transitionDuration: 500
+                transitionDuration: 500                
             });
 
             $("#bulletGraph_backLogItem").igBulletGraph({
                 height: "300px",
                 width: "100%",
                 orientation: "vertical",                
-                rangeToolTipTemplate: 'rangeToolTipTemplate2',
-                actualValueToolTipTemplate: 'actualValueToolTipTemplate2',
-                targetValueToolTipTemplate: 'targetValueToolTipTemplate2',
+                rangeToolTipTemplate: 'rangeToolTipTemplateNew',
+                valueToolTipTemplate: 'valueToolTipTemplateNew',
+                targetValueToolTipTemplate: 'targetValueToolTipTemplateNew',
                 ranges: [
                     {
                         brush: '#f55',
-                        name: 'Task 1',
+                        name: 'タスク 1',
                         startValue: 0,
                         endValue: 50
                     },
                     {
                         brush: '#f8fe76',
-                        name: 'Task 2',
+                        name: 'タスク 2',
                         startValue: 50,
                         endValue: 80
                     },
                     {
                         brush: 'b2ff6f',
-                        name: 'Task 3',
+                        name: 'タスク 3',
                         startValue: 80,
                         endValue: 100
                     }
-                ],
-                actualValues: [
-                   {
-                       brush: 'red',
-                       name: 'Steve',
-                       startValue: 10,
-                       value: 37
-                   },
-                   {
-                       brush: 'orange',
-                       name: 'Jim',
-                       startValue: 37,
-                       value: 66
-                   },
-                   {
-                       brush: 'green',
-                       name: 'Bob',
-                       startValue: 66,
-                       value: 83
-                   }
-                ],
+                ],                
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "%";
-                },
-                actualValueName: "Research/Preparation",
-                actualValueBrush: 'white',
-                actualValue: 20,
+                }, 
+                valueBrush: 'white',
+                value: 83,
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',
                 targetValue: 90,

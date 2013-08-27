@@ -1,6 +1,6 @@
 $(function () {
             $("#priceChart").igDataChart({
-                width: "500px",
+                width: "450px",
                 height: "400px",
                 dataSource: data,
                 title: "Microsoft 株 (MSFT)",
@@ -31,7 +31,7 @@ $(function () {
             });
 
             $("#indicatorChart").igDataChart({
-                width: "500px",
+                width: "450px",
                 height: "400px",
                 dataSource: data,
                 title: "財務指標チャート",
@@ -61,7 +61,7 @@ $(function () {
             });
 
             $("#cbxIndicator").igCombo({
-                width: "380px",
+                width: "400px",
                 enableClearButton: false,
                 mode: "dropdown",
                 dataSource: indicators,

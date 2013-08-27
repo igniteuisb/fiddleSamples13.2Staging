@@ -4,11 +4,12 @@ $(function () {
 
             $("#map").igMap({
                 width: "100%",
+                height: "350px",
                 crosshairVisibility: "visible",
                 verticalZoomable: true,
                 horizontalZoomable: true,
                 overviewPlusDetailPaneVisibility: "visible",
-                overviewPlusDetailPaneBackgroundImageUri: "http://igniteuisamples.ja.staging.infragistics.local/13-2/images/samples/maps/world.png",
+                overviewPlusDetailPaneBackgroundImageUri: "http://jp.staging.igniteui.local/13-2/images/samples/maps/world.png",
                 panModifier: "control",
                 backgroundContent: {
                     type: "bing",
@@ -19,8 +20,8 @@ $(function () {
                     name: "worldCountries",
                     markerType: "automatic",
                     shapeMemberPath: "points",
-                    shapefileUri: "http://igniteuisamples.ja.staging.infragistics.local/13-2/data-files/shapes/world.shp",
-                    databaseUri: "http://igniteuisamples.ja.staging.infragistics.local/13-2/data-files/shapes/world.dbf"
+                    shapefileUri: "http://jp.staging.igniteui.local/13-2/data-files/shapes/world.shp",
+                    databaseUri: "http://jp.staging.igniteui.local/13-2/data-files/shapes/world.dbf"
                 }],
                 windowResponse: "immediate",
                 windowRect: {

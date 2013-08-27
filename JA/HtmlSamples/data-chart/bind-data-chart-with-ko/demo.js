@@ -1,9 +1,9 @@
 $(function () {
             var dynamicModel,
                 overallProfit = 0,
-                MTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                MONTHS = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"];
+                MTHS = ["1 月", "2 月", "3 月", "4 月", "5 月", "6 月", "7 月", "8 月", "9 月", "10 月", "11 月", "12 月"],
+                MONTHS = ["1 月", "2 月", "3 月", "4 月", "5 月", "6 月",
+                        "7 月", "8 月", "9 月", "10 月", "11 月", "12 月"];
                 
             // KO related functionallity starts here
             function generateData() {
@@ -137,22 +137,19 @@ $(function () {
                 animateChartBorder("barColumnChart");
             }
             function animateRevenue() {
+                animateAlways();
                 animateChartBorder("polarSplineChartRevenue");
-                animateChartBorder("polarSplineChartProfit");
             }
             function animateExpenses() {
-                animateAllThree();
+                animateAlways();
                 animateChartBorder("polarSplineChartExpenses");
-                animateChartBorder("polarSplineChartProfit");
             }
             function animateProfit() {
-                animateAllThree();
-                animateChartBorder("polarSplineChartProfit");
+                animateAlways();
             }
-            function animateAllThree() {
+            function animateAlways() {
                 animateChartBorder("lineChart"); animateChartBorder("barColumnChart");
-                animateChartBorder("rangeChart"); animateChartBorder("waterfallChart");
-                animateChartBorder("bubbleChart");
+                animateChartBorder("polarSplineChartProfit");
             }
             function animateChartBorder(id) {
                 id = "#" + id + "_chart_container";

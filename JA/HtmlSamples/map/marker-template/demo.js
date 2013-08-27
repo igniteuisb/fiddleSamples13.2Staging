@@ -5,7 +5,7 @@ $(function () {
                 verticalZoomable: true,
                 horizontalZoomable: true,
                 overviewPlusDetailPaneVisibility: "visible",
-                overviewPlusDetailPaneBackgroundImageUri: "http://igniteuisamples.ja.staging.infragistics.local/13-2/images/samples/maps/world.png",
+                overviewPlusDetailPaneBackgroundImageUri: "http://jp.staging.igniteui.local/13-2/images/samples/maps/world.png",
                 backgroundContent: {
                     type: "openStreet"
                 },

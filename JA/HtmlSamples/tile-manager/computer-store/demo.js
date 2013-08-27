@@ -25,10 +25,10 @@ $(function () {
                     '<div class="gallery" class="dashboard">{{each ${pictures} }}<div><img src=\'${pictures.src}\' /></div>{{/each}}</div>' +
                     '<ul><li>割引: <span class="promo">${discount}%</span></li><li>価格: <span class="price">$${price}</span></li><li>画面サイズ: ${specs.screenSize}</li><li>プロセッサ: ${specs.processor}</li><li>メモリ: ${specs.memory}</li>' +
                     '<li>ハード ドライブ: ${specs.hardDrive}</li><li>ビデオ カード: ${specs.videoCard}</li></ul>' + 
-                    '<button id="btn-add" value="Add to cart"><img class="cart-icon-small" src="http://igniteuisamples.ja.staging.infragistics.local/13-2/images/samples/tile-manager/computer-store/cart.png" />Add to cart</button>',
+                    '<button id="btn-add" value="Add to cart"><img class="cart-icon-small" src="http://jp.staging.igniteui.local/13-2/images/samples/tile-manager/computer-store/cart.png" />Add to cart</button>',
                 minimizedState: '<h4 class="name">${name}</h4><img src="${featuredPicture}" class="minimized" title="${name}" alt="error" />' +
                     '{{if ${discount} != 0 }}<div class="discount">- ${discount}%</div> {{/if}}' +
-                    '<div>価格: <span class="price">$${price}</span><a href="#"></a><img title="Add to cart" class="cart-icon" src="http://igniteuisamples.ja.staging.infragistics.local/13-2/images/samples/tile-manager/computer-store/cart.png" /></div>',
+                    '<div>価格: <span class="price">$${price}</span><a href="#"></a><img title="Add to cart" class="cart-icon" src="http://jp.staging.igniteui.local/13-2/images/samples/tile-manager/computer-store/cart.png" /></div>',
                     
                 rendered: function (event, ui) {
                     

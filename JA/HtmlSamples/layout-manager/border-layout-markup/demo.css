@@ -29,3 +29,7 @@ body {
    div#layout .header {background-color: #2CBDF9;}
 
    div#layout .footer {background-color: #2CBDF9;}
+
+    #sampleContainer {
+        height: 370px;
+    }

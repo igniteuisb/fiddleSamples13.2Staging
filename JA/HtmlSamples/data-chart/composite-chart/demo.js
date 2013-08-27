@@ -5,6 +5,8 @@ $(function () {
 
             $("#chart").igDataChart({
                 dataSource: everyThreeYears,
+                width: "450px",
+                height: "450px",
                 crosshairVisibility: Modernizr.touch ? "visible" : "collapsed",
                 title: "国別エネルギー生産量",
                 subTitle: "総一次エネルギー生産国トップ 3",

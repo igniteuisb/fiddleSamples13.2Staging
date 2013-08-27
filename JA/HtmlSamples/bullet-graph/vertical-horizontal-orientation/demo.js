@@ -8,7 +8,7 @@ $(function () {
                 orientation: "vertical",
                 minimumValue: 0, // default is 0
                 maximumValue: 30, // default is 100
-                actualValue: 26,
+                value: 26,
                 targetValue: 22,
                 ranges: [
                     {

@@ -17,18 +17,3 @@
         #dashboard .color {
             color: blue;
         }
-        @media screen and (max-width: 430px) {
-            #sampleContainer {
-                padding: 0;
-                margin: 0;
-            }
-
-            .outline {
-                padding: 0;
-                margin: 0;
-            }
-
-            #sample > section > * {
-                margin: 0;
-            }
-        }

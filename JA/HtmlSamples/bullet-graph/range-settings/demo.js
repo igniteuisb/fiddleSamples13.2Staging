@@ -59,7 +59,7 @@ $(function () {
                        name: 'Very well done',
                        startValue: 7,
                        endValue: 10,
-                       brush: '#black'
+                       brush: 'black'
                    },
                 ],
                 showToolTip: true,
@@ -67,9 +67,9 @@ $(function () {
                 targetValue: 4.8,
                 targetValueBrush: 'white',
                 targetValueOutline: 'red',
-                actualValueOutline: 'red',
-                actualValue: 4.5,
-                actualValueBrush: 'white',
+                valueOutline: 'red',
+                value: 4.5,
+                valueBrush: 'white',
                 formatLabel: function (evt, ui) {
                     if (ui.value==ui.actualMinimumValue) {
                         ui.label = ui.value + "\n分/片面";

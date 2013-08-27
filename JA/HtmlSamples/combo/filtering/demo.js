@@ -1,7 +1,7 @@
 $(function () {
 
             $("#autoCompleteCombo").igCombo({
-                width: "300px",
+                width: "270px",
                 textKey: "ProductName",
                 valueKey: "ProductID",
                 dataSource: northwindProducts,
@@ -11,7 +11,7 @@ $(function () {
             });
 
             $("#filterContainsCombo").igCombo({
-                width: "300px",
+                width: "270px",
                 textKey: "ProductName",
                 valueKey: "ProductID",
                 dataSource: northwindProducts,
@@ -21,7 +21,7 @@ $(function () {
             });
 
             $("#caseSensitiveCombo").igCombo({
-                width: "300px",
+                width: "270px",
                 textKey: "ProductName",
                 valueKey: "ProductID",
                 dataSource: northwindProducts,

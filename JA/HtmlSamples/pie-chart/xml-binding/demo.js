@@ -30,7 +30,7 @@ $(function () {
             });
 
             $("#chart2").igPieChart({
-                width: "450px",
+                width: "430px",
                 height: "400px",
                 dataSource: ds, //$.ig.DataSource defined above
                 valueMemberPath: "Population",

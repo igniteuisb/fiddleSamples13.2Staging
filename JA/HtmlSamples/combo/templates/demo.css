@@ -29,7 +29,7 @@
         {
             float: left;
             padding: 5px;            
-            width: 215px;
+            width: 195px;
         }
         .empName
         {
@@ -37,6 +37,6 @@
         }
         .comboItemContainer
         {
-            width: 290px;
+            width: 270px;
             white-space: normal;
         }

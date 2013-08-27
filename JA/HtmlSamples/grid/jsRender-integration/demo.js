@@ -5,7 +5,7 @@ $(function () {
             <td><img width='100' height='90' src={{>ImageUrl}}></img></td>
             <td>{{>Title}}</td>
             <td>{{>Phone}}</td>
-            <td><img width='20' height='15' src='http://igniteuisamples.ja.staging.infragistics.local/13-2/images/samples/nw/countries/{{>Country}}.gif'></img>{{>Country}}</td>
+            <td><img width='20' height='15' src='http://jp.staging.igniteui.local/13-2/images/samples/nw/countries/{{>Country}}.gif'></img>{{>Country}}</td>
             <td>
                 <span style='color:
                     {{if #view.hlp('toDate')(BirthDate) > #view.hlp('toDate')('1970-01-01T00:00:00.000')}}blue

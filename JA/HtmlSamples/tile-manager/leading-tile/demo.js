@@ -40,45 +40,25 @@ var activated = [false, false, false, false],
                 maximizedTileIndex: 0,
                 minimizedState: ':not(ul)'
             },
-            wide;
+            options;
         $(function () {
             $('#car-tabs').tabs({
                 activate: function (event, ui) {
                     var index = ui.newTab.index();
                     if (!activated[index]) {
-                        if ($(window).width() > 430) {
-                            ui.newPanel.igTileManager(optionsWide);
-                        } else {
-                            ui.newPanel.igTileManager(optionsPhone);
-                        }
+                        ui.newPanel.igTileManager($.extend(true, {}, options));
                         activated[index] = true;
+                    } else {
+                        ui.newPanel.igTileManager('reflow');
                     }
                 }
             });
             if ($(window).width() > 430) {
-                $('#mercedes').igTileManager(optionsWide);
-                wide = true;
+                options = optionsWide;
             } else {
-                $('#mercedes').igTileManager(optionsPhone);
-                wide = false;
+                options = optionsPhone;
             }
+            $('#mercedes').igTileManager($.extend(true, {}, options));
             activated[0] = true;
-            $(window).on('resize', function (event) {
-                if ($(window).width() <= 430 && wide) {
-                    wide = false;
-                    $('.dashboard').each(function (index, element) {
-                        if (activated[index]) {
-                            $(this).igTileManager('option', 'layoutConfiguration', optionsPhone.layoutConfiguration);
-                        }
-                    });
-                } else if ($(window).width() > 430 && !wide) {
-                    wide = true;
-                    $('.dashboard').each(function (index, element) {
-                        if (activated[index]) {
-                            $(this).igTileManager('option', 'layoutConfiguration', optionsWide.layoutConfiguration);
-                        }
-                    });
-                }
-            });
         });
 });

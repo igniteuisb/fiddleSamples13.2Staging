@@ -43,13 +43,13 @@ $(function () {
                 autoGenerateColumns: false,
                 primaryKey: "ID",
                 autoCommit: true,
-                width: "100%",
-                height: 360,
+                width: "750px",
+                height: "360px",
                 columns: [
                     { headerText: "", key: "ID", dataType: "number", width: "30px" },
-                    { headerText: "名前", key: "Name", dataType: "string", width: "190px" },
-                    { headerText: "説明", key: "Description", dataType: "string", width: "300px" },
-                    { headerText: "カテゴリ", key: "CategoryID", dataType: "number", width: "190px", formatter: formatCategoryCombo }
+                    { headerText: "名前", key: "Name", dataType: "string", width: "120px" },
+                    { headerText: "説明", key: "Description", dataType: "string", width: "350px" },
+                    { headerText: "カテゴリ", key: "CategoryID", dataType: "number", width: "80px", formatter: formatCategoryCombo }
                 ],
                 features: [
                     {

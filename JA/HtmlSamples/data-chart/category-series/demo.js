@@ -9,14 +9,14 @@ $(function () {
                     name: "xAxis",
                     type: "categoryX",
                     label: "Date",
-                    isInverted: "true",
+                    isInverted: true,
                     interval: 2,
                     title: "年"
                 },
                 {
                     name: "yAxis",
                     type: "numericY",
-                    title: "人口 (百万人単位)"
+                    title: "$$(NumericAxis_title_ukfrance)"
                 }],
                 series: [{
                     name: "ukPop",

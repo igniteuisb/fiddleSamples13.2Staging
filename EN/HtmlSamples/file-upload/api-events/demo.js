@@ -38,7 +38,7 @@ $(function () {
 
             $("#igUpload1").igUpload({
                 mode: 'multiple',
-                progressUrl: "http://igniteuisamples.staging.infragistics.local/13-2/IGUploadStatusHandler.ashx",
+                progressUrl: "http://staging.igniteui.local/13-2/IGUploadStatusHandler.ashx",
                 controlId: "serverID1"
             });
 

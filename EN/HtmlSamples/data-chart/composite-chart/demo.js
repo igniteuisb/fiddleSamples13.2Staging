@@ -5,6 +5,8 @@ $(function () {
 
             $("#chart").igDataChart({
                 dataSource: everyThreeYears,
+                width: "450px",
+                height: "450px",
                 crosshairVisibility: Modernizr.touch ? "visible" : "collapsed",
                 title: "Energy Production Per Country",
                 subTitle: "The top three Total Primary Energy producers",

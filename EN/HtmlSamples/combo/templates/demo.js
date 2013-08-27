@@ -5,7 +5,7 @@ $(function () {
                 renderMatchItems: "contains",
                 responseDataKey: "d.results",
                 valueKey: "Name",
-                width: "300px",
+                width: "270px",
                 dataSource: "http://labs.infragistics.com/igniteui/api/employees?callback=?",
                 headerTemplate: "<div id='comboHeaderTemplate' class='comboTemplates'>Employees</div>",
                 footerTemplate: "<div id='comboFooterTemplate' class='comboTemplates'>More information at <a href='http://www.infragistics.com' target='_blank'>www.infragistics.com</div>",

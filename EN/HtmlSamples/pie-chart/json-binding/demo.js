@@ -9,7 +9,7 @@ $(function () {
             ];
 
             $("#chart").igPieChart({
-                width: "450px",
+                width: "440px",
                 height: "400px",
                 dataSource: data, //JSON data defined above
                 valueMemberPath: "Pop2008",

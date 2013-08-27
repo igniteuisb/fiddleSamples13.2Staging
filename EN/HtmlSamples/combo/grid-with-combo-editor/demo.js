@@ -43,13 +43,13 @@ $(function () {
                 autoGenerateColumns: false,
                 primaryKey: "ID",
                 autoCommit: true,
-                width: "100%",
-                height: 360,
+                width: "750px",
+                height: "360px",
                 columns: [
                     { headerText: "", key: "ID", dataType: "number", width: "30px" },
-                    { headerText: "Name", key: "Name", dataType: "string", width: "190px" },
-                    { headerText: "Description", key: "Description", dataType: "string", width: "300px" },
-                    { headerText: "Category", key: "CategoryID", dataType: "number", width: "190px", formatter: formatCategoryCombo }
+                    { headerText: "Name", key: "Name", dataType: "string", width: "120px" },
+                    { headerText: "Description", key: "Description", dataType: "string", width: "350px" },
+                    { headerText: "Category", key: "CategoryID", dataType: "number", width: "80px", formatter: formatCategoryCombo }
                 ],
                 features: [
                     {

@@ -1,28 +1,22 @@
-$(function () {            
-
-            /*----------------- Instantiation -------------------------*/
-            createGrid();
-
-        });
-
-        function createGrid() {            
+$(function () {
 
             $("#grid").igGrid({
-                height: "100%",
-                width: "98%",
+                width: "100%",
                 autoGenerateColumns: false,
                 dataSource: northwind,
                 responseDataKey: "results",
                 dataSourceType: "json",
                 columns: [
-                   { key: "EmployeeID", headerText: "Employee ID", dataType: "number"},
+                   { key: "EmployeeID", headerText: "Employee ID", dataType: "number" },
                    { key: "LastName", headerText: "First Name", dataType: "string" },
                    { key: "FirstName", headerText: "Last Name", dataType: "string" },
                    { key: "Title", headerText: "Title", dataType: "string" },
                    { key: "Address", headerText: "Address", dataType: "string" },
-                   { key: "City", headerText: "City", dataType: "string"},
+                   { key: "Address", headerText: "Address", dataType: "string" },
+                   { key: "City", headerText: "City", dataType: "string" },
                    { key: "Region", headerText: "Region", dataType: "string" },
-                   { key: "Country", headerText: "Country", dataType: "string" }
+                   { key: "Country", headerText: "Country", dataType: "string" },
+                   { key: "PostalCode", headerText: "Postal Code", dataType: "string" }
                 ],
                 features: [
                     {
@@ -40,6 +34,18 @@ $(function () {
                             {
                                 columnKey: 'LastName',
                                 classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Region',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'Country',
+                                classes: 'hidden-phone'
+                            },
+                            {
+                                columnKey: 'PostalCode',
+                                classes: 'visible-phone'
                             }
                         ]
                     },
@@ -54,4 +60,4 @@ $(function () {
                     }
                 ]
             });
-        }
+        });

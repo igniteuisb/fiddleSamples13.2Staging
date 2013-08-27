@@ -50,7 +50,7 @@ $(function () {
                 maximumValue: 100000000,
                 targetValue: 45000000,
                 targetValueBrush: 'white',
-                actualValue: 48000000,
+                value: 48000000,
                 transitionDuration: 500
             });
 
@@ -106,7 +106,7 @@ $(function () {
                 maximumValue: 100000,
                 targetValue: 74000,
                 targetValueBrush: 'white',
-                actualValue: 78000,
+                value: 78000,
                 transitionDuration: 500
             });
 
@@ -161,7 +161,7 @@ $(function () {
                 maximumValue: 50000,
                 targetValue: 34000,
                 targetValueBrush: 'white',
-                actualValue: 38000,
+                value: 38000,
                 transitionDuration: 500
             });
            

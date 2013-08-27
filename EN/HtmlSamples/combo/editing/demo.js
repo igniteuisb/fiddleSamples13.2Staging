@@ -1,7 +1,7 @@
 $(function () {
 
             $("#editableCombo").igCombo({
-                width: "300px",
+                width: "270px",
                 textKey: "ProductName",
                 valueKey: "ProductID",
                 dataSource: northwindProducts,
@@ -11,7 +11,7 @@ $(function () {
             });
 
             $("#dropdownCombo").igCombo({
-                width: "300px",
+                width: "270px",
                 textKey: "ProductName",
                 valueKey: "ProductID",
                 dataSource: northwindProducts,
@@ -20,7 +20,7 @@ $(function () {
             });
 
             $("#readonlylistCombo").igCombo({
-                width: "300px",
+                width: "270px",
                 textKey: "ProductName",
                 valueKey: "ProductID",
                 dataSource: northwindProducts,
@@ -28,7 +28,7 @@ $(function () {
             });
 
             $("#readonlyCombo").igCombo({
-                width: "300px",
+                width: "270px",
                 textKey: "ProductName",
                 valueKey: "ProductID",
                 dataSource: northwindProducts,

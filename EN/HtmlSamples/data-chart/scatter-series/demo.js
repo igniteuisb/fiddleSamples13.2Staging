@@ -69,9 +69,9 @@ $(function () {
                         labelMemberPath: "Population",
                         markerType: "circle",
                         radiusScale: {
-                            minimumValue: "2",
-                            maximumValue: "12",
-                            isLogarithmic: "true"
+                            minimumValue: 2,
+                            maximumValue: 12,
+                            isLogarithmic: true
                         },
                         fillScale: {
                             type: "value",

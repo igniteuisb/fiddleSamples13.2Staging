@@ -6,8 +6,8 @@ $(function () {
 
             $('#chart1').igPieChart({
                 dataSource: data,
-                width: '500px',
-                height: '500px',
+                width: '430px',
+                height: '430px',
                 valueMemberPath: 'Budget',
                 labelMemberPath: 'Label',
                 explodedSlices: [0, 1],

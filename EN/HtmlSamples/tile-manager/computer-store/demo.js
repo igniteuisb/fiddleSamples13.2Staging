@@ -25,10 +25,10 @@ $(function () {
                     '<div class="gallery" class="dashboard">{{each ${pictures} }}<div><img src=\'${pictures.src}\' /></div>{{/each}}</div>' +
                     '<ul><li>Discount: <span class="promo">${discount}%</span></li><li>Price: <span class="price">$${price}</span></li><li>Screen Size: ${specs.screenSize}</li><li>Processor: ${specs.processor}</li><li>Memory: ${specs.memory}</li>' +
                     '<li>Hard Drive: ${specs.hardDrive}</li><li>Video Card: ${specs.videoCard}</li></ul>' + 
-                    '<button id="btn-add" value="Add to cart"><img class="cart-icon-small" src="http://igniteuisamples.staging.infragistics.local/13-2/images/samples/tile-manager/computer-store/cart.png" />Add to cart</button>',
+                    '<button id="btn-add" value="Add to cart"><img class="cart-icon-small" src="http://staging.igniteui.local/13-2/images/samples/tile-manager/computer-store/cart.png" />Add to cart</button>',
                 minimizedState: '<h4 class="name">${name}</h4><img src="${featuredPicture}" class="minimized" title="${name}" alt="error" />' +
                     '{{if ${discount} != 0 }}<div class="discount">- ${discount}%</div> {{/if}}' +
-                    '<div>Price: <span class="price">$${price}</span><a href="#"></a><img title="Add to cart" class="cart-icon" src="http://igniteuisamples.staging.infragistics.local/13-2/images/samples/tile-manager/computer-store/cart.png" /></div>',
+                    '<div>Price: <span class="price">$${price}</span><a href="#"></a><img title="Add to cart" class="cart-icon" src="http://staging.igniteui.local/13-2/images/samples/tile-manager/computer-store/cart.png" /></div>',
                     
                 rendered: function (event, ui) {
                     

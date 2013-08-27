@@ -64,6 +64,6 @@ $(function () {
             $("#pivotGrid").igPivotGrid({
                 dataSource: dataSource,
                 height: "565px",
-                width: "680px"
+                width: "720px"
             });
         });

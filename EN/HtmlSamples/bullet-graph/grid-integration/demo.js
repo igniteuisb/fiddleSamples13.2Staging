@@ -24,10 +24,12 @@ var data = [
                         $(this).igBulletGraph({
                             height: "80px",
                             width: "450px",
+                            backingBrush: 'transparent',
+                            backingOutline: 'transparent',
                             minimumValue: item.min,
                             maximumValue: item.max,
                             targetValue: item.target,
-                            actualValue: item.value,
+                            value: item.value,
                             interval: 150,
                             minorTickCount: 4,
                             ranges: $.map(item.ranges, function (el, index) {
@@ -66,7 +68,7 @@ var data = [
                             }
                         ],
                         editCellEnded: function (evt, ui) {
-                            $(".bullet-graph").eq(ui.rowID).igBulletGraph("option", "actualValue", ui.value);
+                            $(".bullet-graph").eq(ui.rowID).igBulletGraph("option", "value", ui.value);
                         }
                     }],
                 caption: "Energy Source"

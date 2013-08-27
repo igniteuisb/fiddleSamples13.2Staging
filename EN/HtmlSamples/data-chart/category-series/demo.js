@@ -9,14 +9,14 @@ $(function () {
                     name: "xAxis",
                     type: "categoryX",
                     label: "Date",
-                    isInverted: "true",
+                    isInverted: true,
                     interval: 2,
                     title: "Year"
                 },
                 {
                     name: "yAxis",
                     type: "numericY",
-                    title: "Population (Millions of People)"
+                    title: "$$(NumericAxis_title_ukfrance)"
                 }],
                 series: [{
                     name: "ukPop",

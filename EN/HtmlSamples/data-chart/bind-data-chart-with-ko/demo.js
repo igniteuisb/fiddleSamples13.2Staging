@@ -137,22 +137,19 @@ $(function () {
                 animateChartBorder("barColumnChart");
             }
             function animateRevenue() {
+                animateAlways();
                 animateChartBorder("polarSplineChartRevenue");
-                animateChartBorder("polarSplineChartProfit");
             }
             function animateExpenses() {
-                animateAllThree();
+                animateAlways();
                 animateChartBorder("polarSplineChartExpenses");
-                animateChartBorder("polarSplineChartProfit");
             }
             function animateProfit() {
-                animateAllThree();
-                animateChartBorder("polarSplineChartProfit");
+                animateAlways();
             }
-            function animateAllThree() {
+            function animateAlways() {
                 animateChartBorder("lineChart"); animateChartBorder("barColumnChart");
-                animateChartBorder("rangeChart"); animateChartBorder("waterfallChart");
-                animateChartBorder("bubbleChart");
+                animateChartBorder("polarSplineChartProfit");
             }
             function animateChartBorder(id) {
                 id = "#" + id + "_chart_container";

@@ -93,17 +93,6 @@ $(function () {
                 primaryKey: "name",
                 width: '100%',
                 columns: [
-                    //{ headerText: "Name", key: "name", dataType: "string", width: "12%" },
-                    //{ headerText: "Team", key: "team", dataType: "string", width: "15%" },
-                    //{ headerText: "Age", key: "age", dataType: "number", width: "7%" },
-                    //{ headerText: "No.", key: "number", dataType: "number", width: "7%" },
-                    //{ headerText: "Pos.", key: "position", dataType: "string", width: "8%" },
-                    //{ headerText: "Goals", key: "goals", dataType: "number", width: "10%" },
-                    //{ headerText: "Assists", key: "assists", dataType: "number", width: "10%" },
-                    //{ headerText: "Yellow C.", key: "yellow", dataType: "number", width: "10%" },
-                    //{ headerText: "Red C.", key: "red", dataType: "number", width: "7%" },
-                    //{ headerText: "Salary", key: "salary", format: "currency", width: "8%" }
-
                     { headerText: "Name", key: "name", dataType: "string", width: "12%" },
                     { headerText: "Team", key: "team", dataType: "string", width: "15%" },
                     { headerText: "Age", key: "age", dataType: "number", width: "7%" },

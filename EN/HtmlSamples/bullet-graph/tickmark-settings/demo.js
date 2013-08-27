@@ -55,8 +55,8 @@ $(function () {
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',
                 //     labelInterval: 150,
-                actualValue: 555,
-                actualValueBrush: 'white',
+                value: 555,
+                valueBrush: 'white',
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "K";
                 },
@@ -104,8 +104,8 @@ $(function () {
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',
                 labelInterval: 150,
-                actualValue: 555,
-                actualValueBrush: 'white',
+                value: 555,
+                valueBrush: 'white',
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "K";
                 },
@@ -162,8 +162,8 @@ $(function () {
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',
                 labelInterval: 100,
-                actualValue: 650,
-                actualValueBrush: 'white',
+                value: 650,
+                valueBrush: 'white',
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "K";
                 },

@@ -5,7 +5,7 @@ $(function () {
                     height: "400px",
                     dataSource: dataSource,
                     title: "年の米国農業生産",
-                    subTitle: "1961 年 - 2007 年のデータ",
+                    subtitle: "1961 年 - 2007 年のデータ",
                     axes: [{
                         name: "xAxis",
                         type: "numericX",

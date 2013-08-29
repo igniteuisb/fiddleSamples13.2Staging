@@ -5,7 +5,7 @@ $(function () {
                     height: "400px",
                     dataSource: data,
                     title: "風速 vs. 風向",
-                    subTitle: "ロサンゼルスの風データ (12 時間)",
+                    subtitle: "ロサンゼルスの風データ (12 時間)",
                     axes: [{
                         name: "angleAxis",
                         type: "numericAngle"
@@ -21,6 +21,7 @@ $(function () {
                         name: "series1",
                         //title: "$$(Chart_lbl_seriesTitle)",
                         type: seriesType,
+                        isTransitionInEnabled: true,
                         angleAxis: "angleAxis",
                         radiusAxis: "radiusAxis",
                         angleMemberPath: "WindDirection",

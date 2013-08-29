@@ -12,7 +12,7 @@ $(function () {
                 width: "100%",
                 height: "400px",
                 title: "国別人口",
-                subTitle: "1995 年と 2005 年の人口の比較",
+                subtitle: "1995 年と 2005 年の人口の比較",
                 dataSource: data,
                 axes: [
                     {

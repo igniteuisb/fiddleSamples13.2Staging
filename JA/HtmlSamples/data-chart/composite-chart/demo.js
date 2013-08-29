@@ -9,7 +9,7 @@ $(function () {
                 height: "450px",
                 crosshairVisibility: Modernizr.touch ? "visible" : "collapsed",
                 title: "国別エネルギー生産量",
-                subTitle: "総一次エネルギー生産国トップ 3",
+                subtitle: "総一次エネルギー生産国トップ 3",
                 axes: [{
                     type: "categoryX",
                     name: "xAxis",
@@ -33,6 +33,8 @@ $(function () {
                 }],
                 series: [{
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     name: "China",
                     title: "中国",
                     xAxis: "xAxis",
@@ -43,6 +45,8 @@ $(function () {
                     legend: { element: "legend" }
                 }, {
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     name: "UnitedStates",
                     title: "アメリカ",
                     xAxis: "xAxis",
@@ -53,6 +57,8 @@ $(function () {
                     legend: { element: "legend" }
                 }, {
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     name: "Russia",
                     title: "ロシア",
                     xAxis: "xAxis",
@@ -63,6 +69,8 @@ $(function () {
                     legend: { element: "legend" }
                 }, {
                     type: "line",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     name: "Total",
                     title: "総エネルギー",
                     xAxis: "xAxis",

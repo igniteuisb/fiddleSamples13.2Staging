@@ -12,7 +12,7 @@ $(function () {
                 width: "100%",
                 height: "400px",
                 title: "国別人口",
-                subTitle: "2015 年推計人口トップ 5",
+                subtitle: "2015 年推計人口トップ 5",
                 dataSource: data,
                 axes: [
                     {
@@ -32,6 +32,8 @@ $(function () {
                     {
                         name: "2015Population",
                         type: "column",
+                        isHighlightingEnabled: true,
+                        isTransitionInEnabled: true,
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2015"

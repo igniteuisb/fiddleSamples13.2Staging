@@ -113,7 +113,7 @@ $(function () {
                 if (ui.owner.text() === "") {
                     ui.owner.selectedIndex(globalIndex);
                     if (ui.owner.text() === "") {
-                        ui.owner.selectedIndex(globalIndex - 2);
+                        ui.owner.selectedIndex(globalIndex - 1);
                     }
                 }
             });

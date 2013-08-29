@@ -8,7 +8,7 @@ $(function () {
                     height: "400px",
                     width: "400px",
                     title: "Energy Production Per Country",
-                    subTitle: "The top five Total Primary Energy producers",
+                    subtitle: "The top five Total Primary Energy producers",
                     axes: [{
                         name: "Year",
                         type: "categoryY",
@@ -28,6 +28,7 @@ $(function () {
                             name: "China",
                             title: "China",
                             type: "stackedFragment",
+                            isTransitionInEnabled: true,
                             showTooltip: true,
                             tooltipTemplate: "China",
                             valueMemberPath: "China"
@@ -35,6 +36,7 @@ $(function () {
                             name: "United States",
                             title: "United States",
                             type: "stackedFragment",
+                            isTransitionInEnabled: true,
                             showTooltip: true,
                             tooltipTemplate: "United States",
                             valueMemberPath: "United States"
@@ -44,6 +46,7 @@ $(function () {
                             showTooltip: true,
                             tooltipTemplate: "Russia",
                             type: "stackedFragment",
+                            isTransitionInEnabled: true,
                             valueMemberPath: "Russia"
                         }, {
                             name: "Saudi Arabia",
@@ -51,6 +54,7 @@ $(function () {
                             showTooltip: true,
                             tooltipTemplate: "Saudi Arabia",
                             type: "stackedFragment",
+                            isTransitionInEnabled: true,
                             valueMemberPath: "Saudi Arabia"
                         }, {
                             name: "Canada",
@@ -58,6 +62,7 @@ $(function () {
                             showTooltip: true,
                             tooltipTemplate: "Canada",
                             type: "stackedFragment",
+                            isTransitionInEnabled: true,
                             valueMemberPath: "Canada"
                         }]
                     }],

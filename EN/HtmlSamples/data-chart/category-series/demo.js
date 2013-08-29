@@ -4,7 +4,7 @@ $(function () {
                 height: "400px",
                 dataSource: data,
                 title: "U.K. vs. France",
-                subTitle: "A comparison of populations over time",
+                subtitle: "A comparison of populations over time",
                 axes: [{
                     name: "xAxis",
                     type: "categoryX",
@@ -16,11 +16,12 @@ $(function () {
                 {
                     name: "yAxis",
                     type: "numericY",
-                    title: "$$(NumericAxis_title_ukfrance)"
+                    title: "Population (Millions of People)"
                 }],
                 series: [{
                     name: "ukPop",
                     type: "line",
+                    isHighlightingEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "ukPopulation",
@@ -30,6 +31,7 @@ $(function () {
                 }, {
                     name: "frPop",
                     type: "line",
+                    isHighlightingEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "francePopulation",
@@ -62,6 +64,7 @@ $(function () {
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "ukPopulation",
+                    isHighlightingEnabled: true,
                     showTooltip: true,
                     tooltipTemplate: "tooltipTemplate1",
                     thickness: thickness
@@ -72,6 +75,7 @@ $(function () {
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "francePopulation",
+                    isHighlightingEnabled: true,
                     showTooltip: true,
                     tooltipTemplate: "tooltipTemplate2",
                     thickness: thickness

@@ -9,7 +9,7 @@ $(function () {
                 height: "450px",
                 crosshairVisibility: Modernizr.touch ? "visible" : "collapsed",
                 title: "Energy Production Per Country",
-                subTitle: "The top three Total Primary Energy producers",
+                subtitle: "The top three Total Primary Energy producers",
                 axes: [{
                     type: "categoryX",
                     name: "xAxis",
@@ -33,6 +33,8 @@ $(function () {
                 }],
                 series: [{
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     name: "China",
                     title: "China",
                     xAxis: "xAxis",
@@ -43,6 +45,8 @@ $(function () {
                     legend: { element: "legend" }
                 }, {
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     name: "UnitedStates",
                     title: "US",
                     xAxis: "xAxis",
@@ -53,6 +57,8 @@ $(function () {
                     legend: { element: "legend" }
                 }, {
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     name: "Russia",
                     title: "Russia",
                     xAxis: "xAxis",
@@ -63,6 +69,8 @@ $(function () {
                     legend: { element: "legend" }
                 }, {
                     type: "line",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     name: "Total",
                     title: "Total Energy",
                     xAxis: "xAxis",

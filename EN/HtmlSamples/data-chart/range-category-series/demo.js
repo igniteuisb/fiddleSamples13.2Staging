@@ -5,7 +5,7 @@ $(function () {
                     height: "400px",
                     dataSource: data,
                     title: "New York City vs. Philadelphia",
-                    subTitle: "A comparison of daily temperatures",
+                    subtitle: "A comparison of daily temperatures",
                     axes: [{
                         name: "xAxis",
                         type: "categoryX",
@@ -21,6 +21,8 @@ $(function () {
                         name: "series1",
                         title: "$$(Chart_lbl_testSeries)",
                         type: seriesType,
+                        isHighlightingEnabled: true,
+                        isTransitionInEnabled: true,
                         xAxis: "xAxis",
                         yAxis: "yAxis",
                         lowMemberPath: "NewYorkCityTemp",

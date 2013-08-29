@@ -37,7 +37,7 @@ $(function () {
                 width: "100%",
                 height: "400px",
                 title: "Population per Country",
-                subTitle: "Five largest projected populations for 2015",
+                subtitle: "Five largest projected populations for 2015",
                 axes: [
                     {
                         name: "NameAxis",
@@ -58,6 +58,8 @@ $(function () {
                     {
                         name: "2015Population",
                         type: "column",
+                        isHighlightingEnabled: true,
+                        isTransitionInEnabled: true,
                         dataSource: ds, //$.ig.DataSource defined above
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",

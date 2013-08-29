@@ -12,7 +12,7 @@ $(function () {
                 width: "100%",
                 height: "400px",
                 title: "Population per Country",
-                subTitle: "A comparison of population in 1995 and 2005",
+                subtitle: "A comparison of population in 1995 and 2005",
                 dataSource: data,
                 axes: [
                     {

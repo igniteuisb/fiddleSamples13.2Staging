@@ -5,7 +5,7 @@ $(function () {
                     height: "400px",
                     dataSource: dataSource,
                     title: "U.S. Agricultural Production Per Year",
-                    subTitle: "Data from 1961-2007",
+                    subtitle: "Data from 1961-2007",
                     axes: [{
                         name: "xAxis",
                         type: "numericX",

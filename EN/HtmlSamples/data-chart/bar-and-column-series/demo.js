@@ -4,7 +4,7 @@ $(function () {
                 height: "400px",
                 dataSource: lastFiveYears,
                 title: "Energy Production Per Country",
-                subTitle: "The top five Total Primary Energy producers",
+                subtitle: "The top five Total Primary Energy producers",
                 axes: [{
                     name: "xAxis",
                     type: "categoryX",
@@ -19,6 +19,8 @@ $(function () {
                     name: "series1",
                     title: "Canada",
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "Canada"
@@ -26,6 +28,8 @@ $(function () {
                     name: "series2",
                     title: "Saudi Arabia",
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "Saudi Arabia"
@@ -33,6 +37,8 @@ $(function () {
                     name: "series3",
                     title: "Russia",
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "Russia"
@@ -41,6 +47,8 @@ $(function () {
                     name: "series4",
                     title: "United States",
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "United States"
@@ -49,6 +57,8 @@ $(function () {
                     name: "series5",
                     title: "China",
                     type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "China"
@@ -60,7 +70,7 @@ $(function () {
                 height: "400px",
                 dataSource: lastFiveYears,
                 title: "Energy Production Per Country",
-                subTitle: "The top five Total Primary Energy producers",
+                subtitle: "The top five Total Primary Energy producers",
                 legend: { element: "barLegend" },
                 axes: [{
                     name: "xAxis",
@@ -76,6 +86,7 @@ $(function () {
                     name: "series1",
                     title: "Canada",
                     type: "bar",
+                    isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "Canada"
@@ -83,6 +94,7 @@ $(function () {
                     name: "series2",
                     title: "Saudi Arabia",
                     type: "bar",
+                    isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "Saudi Arabia"
@@ -90,6 +102,7 @@ $(function () {
                     name: "series3",
                     title: "Russia",
                     type: "bar",
+                    isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "Russia"
@@ -97,6 +110,7 @@ $(function () {
                     name: "series4",
                     title: "United States",
                     type: "bar",
+                    isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "United States"
@@ -104,6 +118,7 @@ $(function () {
                     name: "series5",
                     title: "China",
                     type: "bar",
+                    isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     valueMemberPath: "China"

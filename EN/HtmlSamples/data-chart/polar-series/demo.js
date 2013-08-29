@@ -5,7 +5,7 @@ $(function () {
                     height: "400px",
                     dataSource: data,
                     title: "Wind Speed vs. Wind Direction",
-                    subTitle: "Los Angeles wind data over twelve hours",
+                    subtitle: "Los Angeles wind data over twelve hours",
                     axes: [{
                         name: "angleAxis",
                         type: "numericAngle"
@@ -21,6 +21,7 @@ $(function () {
                         name: "series1",
                         //title: "$$(Chart_lbl_seriesTitle)",
                         type: seriesType,
+                        isTransitionInEnabled: true,
                         angleAxis: "angleAxis",
                         radiusAxis: "radiusAxis",
                         angleMemberPath: "WindDirection",

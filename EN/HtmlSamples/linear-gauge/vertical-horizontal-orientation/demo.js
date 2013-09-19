@@ -29,20 +29,27 @@ $(function () {
                  
                 formatLabel: function (evt, ui) {
                     ui.label = ui.label + "K";
-                }
-        });
+                },
+                transitionDuration: 200
+            });
 
             // Orientation
             $("#orientationButton").click(function () {
-                var value = linearGauge.igLinearGauge("option", "orientation") == "vertical" ? "horizontal" : "vertical",
-                    displayValue = value == "horizontal" ? "Vertical" : "Horizontal",
-                    width = linearGauge.igLinearGauge("option", "height"),
-                    height = linearGauge.igLinearGauge("option", "width");
-                linearGauge.igLinearGauge("option", "orientation", value);
-                linearGauge.igLinearGauge("option", "width", width);
-                linearGauge.igLinearGauge("option", "height", height); 
+                
 
-                $("#orientationButton").text(displayValue);
+                var orientation = linearGauge.igLinearGauge("option", "orientation") == "vertical" ? "horizontal" : "vertical";
+                linearGauge.igLinearGauge("option", "orientation", orientation);
+
+                if (orientation == "horizontal") {
+                    linearGauge.igLinearGauge("option", "width", "100%");
+                    linearGauge.igLinearGauge("option", "height", 60);
+                }
+                else {
+                    linearGauge.igLinearGauge("option", "width", 60);
+                    linearGauge.igLinearGauge("option", "height", 300);
+                }
+
+                $("#orientationButton").text(orientation == "horizontal" ? "Vertical" : "Horizontal");
             });
 
             // Scale Inversion

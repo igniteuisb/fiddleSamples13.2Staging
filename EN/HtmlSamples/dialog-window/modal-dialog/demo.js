@@ -9,7 +9,7 @@ $(function () {
                 modal: true,
                 draggable: false,
                 resizable: false,
-                height: "330px",
+                height: "350px",
                 width: "290px"
             });
 

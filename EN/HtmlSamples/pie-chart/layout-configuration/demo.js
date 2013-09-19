@@ -10,8 +10,11 @@ $(function () {
                 height: '430px',
                 valueMemberPath: 'Budget',
                 labelMemberPath: 'Label',
-                explodedSlices: [0, 1],
-                radiusFactor: .8,
+                explodedSlices: [2, 3],
+                radiusFactor: .6,
+                labelsPosition: "outsideEnd",
+                leaderLineType: "simpleCurve",
+                labelExtent: 40,
                 legend: { element: 'legend', type: "item" }
             });
 
@@ -29,7 +32,7 @@ $(function () {
                 },
                 min: 0,
                 max: 1000,
-                value: 800
+                value: 600
             });
 
             $("#labelExtent").slider({
@@ -38,11 +41,9 @@ $(function () {
                 },
                 min: 0,
                 max: 50,
-                value: 10
+                value: 40
             });
-            //  jQuery UI 1.7 does not apply disabled styles on initialization
-            $("#labelExtent").slider("option", "disabled", true);
-
+            
             $("#explodedRadius").slider({
                 slide: function (event, ui) {
                     $("#chart1").igPieChart("option", "explodedRadius", ui.value / 100);
@@ -59,6 +60,17 @@ $(function () {
                     if ($.isArray(ui.items) && ui.items[0] != undefined) {
                         $("#chart1").igPieChart("option", "labelsPosition", ui.items[0].value);
                         $("#labelExtent").slider("option", "disabled", ui.items[0].value != "outsideEnd");
+                        $("#leaderLine").igCombo("option", "disabled", ui.items[0].value != "outsideEnd");
+                    }
+                }
+            });
+            
+            $("#leaderLine").igCombo({
+                enableClearButton: false,
+                mode: "dropdown",
+                selectionChanged: function (evt, ui) {
+                    if ($.isArray(ui.items) && ui.items[0] != undefined) {
+                        $("#chart1").igPieChart("option", "leaderLineType", ui.items[0].value);
                     }
                 }
             });

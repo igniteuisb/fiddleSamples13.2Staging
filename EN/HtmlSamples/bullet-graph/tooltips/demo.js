@@ -139,6 +139,7 @@ $(function () {
                     ui.label = ui.value + "%";
                 }, 
                 valueBrush: 'white',
+                valueOutline: 'white',
                 value: 83,
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',

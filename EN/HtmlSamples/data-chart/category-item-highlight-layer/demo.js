@@ -25,13 +25,14 @@ $(function () {
                         name: "PopulationAxis",
                         type: "numericY",
                         minimumValue: 0,
-                        title: "Population (Millions of People)",
+                        title: "Millions of People",
                     }
                 ],
                 series: [
                     {
                         name: "2005Population",
                         type: "column",
+                        isTransitionInEnabled: true,
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2005"
@@ -39,6 +40,7 @@ $(function () {
                     {
                         name: "1995Population",
                         type: "line",
+                        isTransitionInEnabled: true,
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995"

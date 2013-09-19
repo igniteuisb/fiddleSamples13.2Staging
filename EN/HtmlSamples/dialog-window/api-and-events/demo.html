@@ -10,7 +10,7 @@
 
 <div id="dialog" class="sb-min-tablet-portrait">
         <p>
-            <img src="http://staging.igniteui.local/13-2/images/samples/dialog-window/content.jpg"></img>
+            <img style="width: 300px" src="http://staging.igniteui.local/13-2/images/samples/dialog-window/content.jpg"></img>
         </p>
         <button id="closeDialog"></button>
 	</div>
@@ -36,14 +36,14 @@
                 </button>
                 <br />
                 <label>Positioning</label>
-		        <select id="position" class="recreate">
+		        <select id="position" disabled="disabled">
 			        <option selected="selected"></option>
-			        <option>[400, 200]</option>
-			        <option>[10, 450]</option>
-			        <option>[300, 10]</option>
-			        <option>my:'center',at:'center',of:window</option>
-			        <option>offset:'50 50',of:window,my:'left top',at:'left top'</option>
-			        <option>offset:'-100 -100',my:'center',at:'center',of:window</option>
+			        <option>my:'left+50 top+50',at:'left top'</option>
+			        <option>my:'left top',at:'left+200 top+100'</option>
+			        <option>my:'left top',at:'left+10 top+250'</option>
+			        <option>my:'left top',at:'left+200 top+10'</option>
+			        <option>my:'center',at:'center'</option>
+			        <option>my:'center-100 center-100',at:'center'</option>
 		        </select>
         </fieldset>
     </div>

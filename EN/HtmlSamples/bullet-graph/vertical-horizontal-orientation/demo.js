@@ -26,23 +26,27 @@ $(function () {
                         startValue: 25,
                         endValue: 30
                     }],
-                transitionDuration: 500,
+                transitionDuration: 200,
                 formatLabel: function (evt, ui) {
                     ui.label = ui.label + "K";
                 }
-        });
+            });
 
             // Orientation
             $("#orientationButton").click(function () {
-                var value = $bulletGraph.igBulletGraph("option", "orientation") == "vertical" ? "horizontal" : "vertical",
-                    displayValue = value == "horizontal" ? "Vertical" : "Horizontal",
-                    width = $bulletGraph.igBulletGraph("option", "height"),
-                    height = $bulletGraph.igBulletGraph("option", "width");
-                $bulletGraph.igBulletGraph("option", "orientation", value);
-                $bulletGraph.igBulletGraph("option", "width", width);
-                $bulletGraph.igBulletGraph("option", "height", height);
+                var orientation = $bulletGraph.igBulletGraph("option", "orientation") == "vertical" ? "horizontal" : "vertical";
+                $bulletGraph.igBulletGraph("option", "orientation", orientation);
 
-                $("#orientationButton").text(displayValue);
+                if (orientation == "horizontal") {
+                    $bulletGraph.igBulletGraph("option", "width", "100%");
+                    $bulletGraph.igBulletGraph("option", "height", 60);
+                }
+                else {
+                    $bulletGraph.igBulletGraph("option", "width", 60);
+                    $bulletGraph.igBulletGraph("option", "height", 300);
+                }
+                
+                $("#orientationButton").text(orientation == "horizontal" ? "Vertical" : "Horizontal");
             });
 
             // Scale Inversion

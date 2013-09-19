@@ -4,7 +4,7 @@ $(function () {
                 width: "100%",
                 stretch: 'none',
                 barsFillMode: "fillSpace",
-                xDimension: 0.5,
+                xDimension: 0.75,
                 data: "http://www.infragistics.com/products/jquery/help"
             });
 
@@ -19,14 +19,15 @@ $(function () {
             });
 
             $("#xDimensionSlider").slider({
-                min: 0,
+                min: 0.55,
                 max: 2,
                 step: 0.01,
-                value: $("#barcode").igQRCodeBarcode("option", "xDimension"),
+                value: 0.75,
                 slide: function (event, ui) {
+                    $("#barcode").igQRCodeBarcode("option", "xDimension", ui.value);
+
                     $("#stretchNone").prop("checked", true);
                     $("#barcode").igQRCodeBarcode("option", "stretch", "none");
-                    $("#barcode").igQRCodeBarcode("option", "xDimension", ui.value);
                     $("#xDimensionLabel").text(ui.value);
                 }
             });

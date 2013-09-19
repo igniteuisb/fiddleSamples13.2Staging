@@ -10,11 +10,9 @@
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/extensions/infragistics.ui.combo.knockout-extensions.js"></script>
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/structure/infragistics.css" rel="stylesheet"></link>
+<link href="http://staging.igniteui.local/13-2/IgniteUI/css/structure/modules/infragistics.ui.chart.new.css" rel="stylesheet"></link>
 
-<div class="sample-header">
-        <h1>Daily expense-revenue simulation</h1>
-    </div>
-    <div class="main-container">
+<div class="main-container">
         <div class="combo-container">
             <label for="combo1">Select Day</label>
             <div class="clear"></div>
@@ -48,12 +46,13 @@
                 dataSource: data,
                 width: chartWidth,
                 height: chartHeight,
+                title: "Expense VS Revenue Per Day",
                 legend: { element: "legendLineChart" },
                 axes: [{
                     name: "xAxis",
                     type: "categoryX",
                     label: "label",
-                    interval: 1
+                    interval: 1,
                 }, {
                     name: "yAxis",
                     type: "numericY",
@@ -95,18 +94,18 @@
                 dataSource: data,
                 width: chartWidth,
                 height: chartHeight,
+                title: "Expense VS Revenue Per Day",
                 legend: { element: "legendBarColumnChart" },
                 axes: [{
                     name: "xAxis",
                     type: "categoryX",
                     label: "label",
-                    interval: 1
+                    interval: 1,
                 }, {
                     name: "yAxis",
                     type: "numericY",
                     minimumValue: minChartValue,
                     maximumValue: maxChartValue
-
                 }],
                 series: [{
                     name: "column1",

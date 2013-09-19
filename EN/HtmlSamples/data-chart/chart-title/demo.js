@@ -36,7 +36,7 @@ $(function () {
                     isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
-                    valueMemberPath: "Saudi Arabia",
+                    valueMemberPath: "SaudiArabia",
                     tooltipTemplate: "Saudi Arabia",
                     showTooltip: true
                 }, {
@@ -59,7 +59,7 @@ $(function () {
                     isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
-                    valueMemberPath: "United States",
+                    valueMemberPath: "UnitedStates",
                     tooltipTemplate: "United States",
                     showTooltip: true
                 },

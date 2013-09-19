@@ -11,6 +11,7 @@
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/extensions/infragistics.ui.datachart.knockout-extensions.js"></script>
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/structure/infragistics.css" rel="stylesheet"></link>
+<link href="http://staging.igniteui.local/13-2/IgniteUI/css/structure/modules/infragistics.ui.chart.new.css" rel="stylesheet"></link>
 
 <div class="main-container">
         <div class="editor-container">
@@ -83,6 +84,7 @@
                     dataSource: data,
                     width: "99%",
                     height: 200,
+                    title: "Yearly Profit",
                     leftMargin: 5,
                     legend: { element: "legendLineChart" },
                     axes: [{
@@ -147,6 +149,7 @@
                     width: "97%",
                     height: 275,
                     dataSource: data,
+                    title: "Revenue",
                     legend: { element: "legendPolarChartRevenue" },
                     axes: [{
                         name: "angleAxis",
@@ -178,6 +181,7 @@
                     width: "97%",
                     height: 275,
                     dataSource: data,
+                    title: "Expenses",
                     legend: { element: "legendPolarChartExpenses" },
                     axes: [{
                         name: "angleAxis",
@@ -208,6 +212,7 @@
                 <div id="polarSplineChartProfit" data-bind='igDataChart: {
                     width: "97%",
                     height: 275,
+                    title: "Profit",
                     dataSource: data,
                     legend: { element: "legendPolarChartProfit" },
                     axes: [{
@@ -240,6 +245,7 @@
                     dataSource: data,
                     width: "99%",
                     height: 220,
+                    title: "Yearly Profit",
                     leftMargin: 5,
                     legend: { element: "legendBarColumnChart" },
                     axes: [{

@@ -25,7 +25,7 @@ $(function () {
                         name: "PopulationAxis",
                         type: "numericY",
                         minimumValue: 0,
-                        title: "Population (Millions of People)",
+                        title: "Millions of People",
                     }
                 ],
                 series: [

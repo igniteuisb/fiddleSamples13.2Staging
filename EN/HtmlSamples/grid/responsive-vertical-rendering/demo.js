@@ -27,20 +27,6 @@ $(function () {
                 }
             });
 
-            $('#propertiesEditor').igPercentEditor({
-                displayFactor: 1,
-                minValue: 20,
-                maxValue: 80,
-                symbol: "%",
-                dataMode: 'sbyte',
-                button: 'spin',
-                width: 220,
-                nullText: "propertiesColumnWidth",
-                valueChanged: function (evt, ui) {
-                    $('#grid7').igGridResponsive('option', 'propertiesColumnWidth', ui.value);
-                }
-            });
-
             $("#grid7").igGrid({
                 columns: [
                     { headerText: "Customer ID", key: "ID", dataType: "number", hidden: true },

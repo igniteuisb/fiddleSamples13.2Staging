@@ -12,7 +12,6 @@ $(function () {
             $("#minimizeDialog").igButton({ labelText: "Minimize Dialog", disabled: true });
             $("#pinDialog").igButton({ labelText: "Pin Dialog", disabled: true });
             $("#unpinDialog").igButton({ labelText: "Unpin Dialog", disabled: true });
-
             /*----------------- Method & Option Examples -------------------------*/
 
             // process events of buttons
@@ -70,11 +69,11 @@ $(function () {
                         showMinimizeButton: true,
                         showMaximizeButton: true,
                         showPinButton: true,
-                        height: 540,
-                        minHeight: 340,
+                        height: 460,
+                        minHeight: 240,
                         maxHeight: 600,
-                        width: 500,
-                        minWidth: 300,
+                        width: 330,
+                        minWidth: 200,
                         maxWidth: 600,
                         headerText: "This is my header text.",
                         showFooter: true,
@@ -93,6 +92,7 @@ $(function () {
                     $("#minimizeDialog").igButton({ disabled: false });
                     $("#pinDialog").igButton({ disabled: false });
                     $("#unpinDialog").igButton({ disabled: false });
+                    $("#position").attr("disabled", false);
                 }
             });
 
@@ -181,106 +181,18 @@ $(function () {
 
             // Helper function, which convert selected option from string into valid position for the igDialog
             function getPosition() {
-                var i, pair, position, val = $("#position").val();
-
-                if (!val) {
-                    return null;
-                }
-
-                if (val.charAt(0) === "[") {
-                    return eval(val);
-                }
-
-                val = val.split(",");
-                i = val.length;
-                position = {};
+                var pair, position = {}, val = $("#position").val().split(","), i = val.length;
                 while (i-- > 0) {
                     pair = val[i].split(":");
                     position[pair[0]] = eval(pair[1]);
                 }
-
                 return position;
             }
 
-            // Recreate the igDialog, when the option in the select has changed
-            $(".recreate").on({
-                change: function () {
-                    // Destroy the igDialog
-                    $("#dialog").igDialog("destroy");
-
-                    // Initialize the igDialog
-                    $("#dialog").igDialog({
-                        stateChanging: function (evt, ui) {
-                            // Check the igDialog state  
-                            if (ui.action === "close") {
-                                $("#openDialog").igButton({ disabled: false });
-                                $("#closeDialog").igButton({ disabled: true });
-                            }
-
-                            // Check the igDialog state
-                            if (ui.action === "pin") {
-                                $("#pinDialog").igButton({ disabled: true });
-                                $("#unpinDialog").igButton({ disabled: false });
-                            }
-
-                            // Check the igDialog state
-                            if (ui.action === "unpin") {
-                                $("#pinDialog").igButton({ disabled: false });
-                                $("#unpinDialog").igButton({ disabled: true });
-                            }
-
-                            // Check the igDialog state
-                            if (ui.action === "minimize") {
-                                $("#minimizeDialog").igButton({ disabled: true });
-                                $("#openDialog").igButton({ disabled: true });
-                                $("#closeDialog").igButton({ disabled: false });
-                            }
-
-                            // Check the igDialog state
-                            if (ui.action === "maximize") {
-                                $("#maximizeDialog").igButton({ disabled: true });
-                                $("#openDialog").igButton({ disabled: true });
-                                $("#closeDialog").igButton({ disabled: false });
-                                $("#pinDialog").igButton({ disabled: false });
-					            $("#unpinDialog").igButton({ disabled: true });
-                            }
-
-                            // Check the igDialog state
-                            if (ui.action === "restore") {
-                                $("#minimizeDialog").igButton({ disabled: false });
-                                $("#maximizeDialog").igButton({ disabled: false });
-                            }
-                        },
-                        closeButtonTitle: "Close Dialog Window",
-                        minimizeButtonTitle: "Minimize Dialog Window",
-                        maximizeButtonTitle: "Maximize Dialog Window",
-                        pinButtonTitle: "Pin Dialog Window",
-                        unpinButtonTitle: "Unpin Dialog Window",
-                        restoreButtonTitle: "Restore Dialog Window",
-                        showMinimizeButton: true,
-                        showMaximizeButton: true,
-                        showPinButton: true,
-                        height: 540,
-                        minHeight: 340,
-                        maxHeight: 600,
-                        width: 500,
-                        minWidth: 300,
-                        maxWidth: 600,
-                        headerText: "This is my header text.",
-                        showFooter: true,
-                        footerText: "This is my footer text.",
-                        openAnimation: "fade",
-                        closeAnimation: "fade",
-                        position: getPosition()
-                    });
-
-                    // Disable the create button
-                    $("#createDialog").igButton({ disabled: true });
-
-                    // Enable buttons for destroy and close
-                    $("#destroyDialog").igButton({ disabled: false });
-                    $("#closeDialog").igButton({ disabled: false });
-                }
+            // process option to change position of dialog
+            $("#position").change(function () {
+               // Destroy the igDialog
+               $("#dialog").igDialog("option", "position", getPosition());
             });
 
             /*----------------- Event Examples -------------------------*/

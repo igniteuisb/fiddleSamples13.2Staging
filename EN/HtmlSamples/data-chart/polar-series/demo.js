@@ -21,7 +21,6 @@ $(function () {
                         name: "series1",
                         //title: "$$(Chart_lbl_seriesTitle)",
                         type: seriesType,
-                        isTransitionInEnabled: true,
                         angleAxis: "angleAxis",
                         radiusAxis: "radiusAxis",
                         angleMemberPath: "WindDirection",

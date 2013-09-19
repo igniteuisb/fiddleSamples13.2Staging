@@ -1,28 +1,45 @@
 $(function () {
-            var grid = $("#grid");
+            var grid = $("#grid"),
+                manualStateChange = false;
+            if (window.History && window.History.Adapter) {
             window.History.Adapter.bind(window, 'statechange', function (e, args) {
-                var state = window.History.getState().data,
-                    prevState = window.History;
+                var state, prevState;
+                if (manualStateChange == true) { // Fired only when called externally from browser buttons
+                    state = window.History.getState().data,
+                    historyStates = window.History.savedStates,
+                    prevState = historyStates[historyStates.length - 2].data;
 
-                switch (state.key) {
-                    case "page": if (grid.igGridPaging("pageIndex") !== state.value - 1) grid.igGridPaging("pageIndex", state.value - 1); break;
-                    case "sort": if (grid.data('igGrid').dataSource.settings.sorting.expressions[0].fieldName !== state.value[0]) grid.igGridSorting("sortColumn", state.value[0], state.value[1]); break;
-                    case "resize": grid.igGridResizing("resize", state.value[0], state.value[1]); break;
-                    case "move": grid.igGridColumnMoving("groupByColumn", state.value); break;
-                    case "group":
-                        grid.igGridGroupBy("ungroupAll");
-                        if (!grid.igGridGroupBy("checkColumnIsGrouped")) grid.igGridGroupBy("groupByColumn", state.value);
-                        break;
-                    case "hide": 
-                        if (state.value.split("_")[1]) {
-                            grid.igGridHiding("hideColumn", state[0]);
-                        } else {
-                            grid.igGridHiding("showColumn", state[0]);
-                        }
-                        break;
-                    case "filter": grid.igGridFiltering("filter", ([{ fieldName: state.value[0], expr: state.value[2], cond: state.value[1] }])); break;
+                    if (state.key !== undefined) { // If there is at least one gird state in the browser history
+                        switch (state.key) { // Load current state
+                        case "page": grid.igGridPaging("pageIndex", state.value - 1); break;
+                        case "sort": grid.igGridSorting("sortColumn", state.value[0], state.value[1]); break;
+                        case "resize": grid.igGridResizing("resize", state.value[0], state.value[1]); break;
+                        case "group":
+                            grid.igGridGroupBy("ungroupAll");
+                            if (!grid.igGridGroupBy("checkColumnIsGrouped")) grid.igGridGroupBy("groupByColumn", state.value);
+                            break;
+                        case "hide":
+                            if (state.value.split("_")[1]) {
+                                grid.igGridHiding("hideColumn", state[0]);
+                            } else {
+                                grid.igGridHiding("showColumn", state[0]);
+                            }
+                            break;
+                        case "filter": grid.igGridFiltering("filter", ([{ fieldName: state.value[0], expr: state.value[2], cond: state.value[1] }])); break;
+                    }
                 }
+
+                    if (prevState.key !== state.key) {
+                        switch (prevState.key) { // Unload previous state
+                            case "filter": grid.igGridFiltering("filter", ([])); break;
+                            case "sort": grid.igGridSorting("unsortColumn", state.value[0], state.value[1]); break;
+                            default: break;
+                        }
+                    }
+                }
+                manualStateChange = true;
             });
+            }
 
             function loadInitialStateFromUrl() {
                 var params = window.location.search, index, arrKeyValue;
@@ -40,7 +57,6 @@ $(function () {
                     case "page": grid.igGridPaging("pageIndex", value - 1); break;
                     case "sort": grid.igGridSorting("sortColumn", value.split("_")[0], value.split("_")[1]); break;
                     case "resize": grid.igGridResizing("resize", value.split("_")[0], value.split("_")[1]); break;
-                    case "move": grid.igGridColumnMoving("moveColumn", value.split("_")[0], value.split("_")[1], true, true); break;
                     case "group": grid.igGridGroupBy("groupByColumn", value); break;
                     case "hide":
                         if (value.split("_")[1]) {
@@ -53,22 +69,39 @@ $(function () {
                 }
             }
 
-            $("#prev").click(function () { window.History.back(); });
-            $("#next").click(function () { window.History.forward(); });
-            $("#copy").click(function () { window.prompt("Use this URL and send it", window.location); });
+            $("#back").igButton().click(function () { window.History.back(); });
+            $("#forward").igButton().click(function () { window.History.forward(); });
+            $("#copy").igButton().click(function () { window.prompt("Copy URL and open it in a new tab or browser", window.location); });
+            $("#mail").igButton().click(function () {
+                var link = "mailto: "
+                         + "&subject=" + escape("List with Footballers")
+                         + "&body=" + escape("Custom List with footballers can be found here: " +  window.location);
+                window.location.href = link;
+            });
 
             function pushToBrowserHistory(state, title, url) {
-                window.History.pushState(state, title, url);
+                manualStateChange = false;
+                $(state).extend({ "manualStateChange" : false });
+                window.History? window.History.pushState(state, title, url): "";
             }
 
             function formURL(key, value, multiple) {
                 var params = window.location.search,
                     urlValue = value, urlIndex;
 
+                if (isEmptyValue(value)) { // remove parameters encoded in the URL
+                    urlIndex = params.indexOf(key + "=");
+                    params = params.replace(key + "=" + extractURLValue(key), "");
+                    if (params === "?") {
+                        params = "";
+                    } else {
+                        params = params.substring(0, urlIndex - 1) + params.substring(urlIndex, params.length);
+                    }
+                } else { // add parameters encoded in the URL
                 if (value instanceof Array) {
                     urlValue = value[0];
                     for (urlIndex = 1; urlIndex < value.length; urlIndex++) {
-                        urlValue +=  "_" + value[urlIndex];
+                            urlValue += "_" + value[urlIndex];
                     }
                 }
                 if (params === "") {
@@ -77,6 +110,7 @@ $(function () {
                     params = params + "&" + key + "=" + urlValue;
                 } else {
                     params = params.replace(key + "=" + extractURLValue(key), key + "=" + urlValue);
+                }
                 }
                 return params;
             }
@@ -87,6 +121,10 @@ $(function () {
                 value = params.substring(params.indexOf(key), params.length);
                 value = value.substring(key.length + 1, (value.indexOf("&") > -1) ? value.indexOf("&") : value.length);
                 return value;
+            }
+
+            function isEmptyValue(value) {
+                return value.length === 0;
             }
 
             grid.igGrid({
@@ -138,8 +176,14 @@ $(function () {
                             var columnKey = args.columnKey,
                                 expr = args.owner.grid.dataSource.settings.filtering.expressions[0],
                                 title = "Filtering",
-                                state = { key: "filter", value: [columnKey, expr.cond, expr.expr] };
-                            pushToBrowserHistory(state, title, formURL("filter", [columnKey, expr.cond, expr.expr]));
+                                state, settings;
+                            if (expr === undefined) {
+                                settings = [];
+                            } else {
+                                settings = [columnKey, expr.cond, expr.expr];
+                            }
+                            state = { key: "filter", value: settings };
+                            pushToBrowserHistory(state, title, formURL("filter", settings));
                         }
                     },
                     {
@@ -174,17 +218,6 @@ $(function () {
                                state = { key: "group", value: columnKey },
                                title = "GroupBy";
                             pushToBrowserHistory(state, title, formURL("group", columnKey));
-                        }
-                    },
-                    {
-                        name: "ColumnMoving",
-                        columnMoved: function (e, args) {
-                            var columnKey = args.columnKey,
-                               newIndex = args.oldIndex,
-                               oldIndex = args.newIndex,
-                               state = { key: "move", value: [columnKey, newIndex, oldIndex] },
-                               title = "Moving";
-                            pushToBrowserHistory(state, title, formURL("move", [columnKey, newIndex, oldIndex]));
                         }
                     }
                 ],

@@ -13,8 +13,8 @@ $(function () {
                 showMinimizeButton: true,
                 showMaximizeButton: true,
                 showPinButton: true,
-                height: "460px",
-                width: "460px"
+                height: "360px",
+                width: "340px"
             });
 
             $('#openDialog').on({

@@ -24,15 +24,15 @@
             </td>
         </tr>
         <tr>
-            <td>Label Extent</td>
-            <td>
-                <div id="labelExtent" class="slider"></div>
-            </td>
-        </tr>
-        <tr>
             <td>Exploded Radius</td>
             <td>
                 <div id="explodedRadius" class="slider"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Label Extent</td>
+            <td>
+                <div id="labelExtent" class="slider"></div>
             </td>
         </tr>
         <tr>
@@ -41,10 +41,22 @@
                 <div class="comboContainer">
                     <select id="labelPosition">
                         <option value="none">None</option>
-                        <option value="center" selected="selected">Center</option>
+                        <option value="center">Center</option>
                         <option value="insideEnd">Inside End</option>
-                        <option value="outsideEnd">Outside End</option>
+                        <option value="outsideEnd" selected="selected">Outside End</option>
                         <option value="bestFit">Best Fit</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Leader Line:</td>
+            <td>
+                <div class="comboContainer">
+                    <select id="leaderLine">
+                        <option value="straightLine">Straight Line</option>
+                        <option value="simpleCurve" selected="selected">Simple Curve</option>
+                        <option value="radialCurve">Radial Curve</option>
                     </select>
                 </div>
             </td>

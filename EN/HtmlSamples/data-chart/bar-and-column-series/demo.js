@@ -3,12 +3,14 @@ $(function () {
                 width: "98%",
                 height: "400px",
                 dataSource: lastFiveYears,
+                legend: { element: "columnLegend" },
                 title: "Energy Production Per Country",
                 subtitle: "The top five Total Primary Energy producers",
                 axes: [{
                     name: "xAxis",
                     type: "categoryX",
                     label: "Year",
+                    labelTopMargin: 5,
                     title: "Year"
                 }, {
                     name: "yAxis",
@@ -32,7 +34,7 @@ $(function () {
                     isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
-                    valueMemberPath: "Saudi Arabia"
+                    valueMemberPath: "SaudiArabia"
                 }, {
                     name: "series3",
                     title: "Russia",
@@ -51,7 +53,7 @@ $(function () {
                     isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
-                    valueMemberPath: "United States"
+                    valueMemberPath: "UnitedStates"
                 },
                 {
                     name: "series5",
@@ -86,6 +88,7 @@ $(function () {
                     name: "series1",
                     title: "Canada",
                     type: "bar",
+                    isHighlightingEnabled: true,
                     isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
@@ -94,14 +97,16 @@ $(function () {
                     name: "series2",
                     title: "Saudi Arabia",
                     type: "bar",
+                    isHighlightingEnabled: true,
                     isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
-                    valueMemberPath: "Saudi Arabia"
+                    valueMemberPath: "SaudiArabia"
                 }, {
                     name: "series3",
                     title: "Russia",
                     type: "bar",
+                    isHighlightingEnabled: true,
                     isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
@@ -110,14 +115,16 @@ $(function () {
                     name: "series4",
                     title: "United States",
                     type: "bar",
+                    isHighlightingEnabled: true,
                     isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
-                    valueMemberPath: "United States"
+                    valueMemberPath: "UnitedStates"
                 }, {
                     name: "series5",
                     title: "China",
                     type: "bar",
+                    isHighlightingEnabled: true,
                     isTransitionInEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",

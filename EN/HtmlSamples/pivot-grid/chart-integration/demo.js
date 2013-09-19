@@ -109,10 +109,10 @@ $(function () {
                     var value;
                     for (columnHeaderIndex = 0; columnHeaderIndex < columnCount; columnHeaderIndex++) {
                         if (transpose) {
-                            value = getCellData(columnHeaderIndex, rowHeaderIndex, rowCount, cells, transpose)
+                            value = getCellData(columnHeaderIndex, rowHeaderIndex, rowCount, cells, transpose);
                         }
                         else {
-                            value = getCellData(rowHeaderIndex, columnHeaderIndex, columnCount, cells, transpose)
+                            value = getCellData(rowHeaderIndex, columnHeaderIndex, columnCount, cells, transpose);
                         }
                         data["col" + columnHeaderIndex] = value;
                     }

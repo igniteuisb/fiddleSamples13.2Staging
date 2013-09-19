@@ -4,8 +4,7 @@ $(function () {
             createGrid();
         });
 
-        function createGrid() {           
-
+        function createGrid() {
             $("#grid2").igGrid({
                 columns: [
                     { headerText: "Customer ID", key: "ID", dataType: "string", width: "10%" },
@@ -20,7 +19,7 @@ $(function () {
                 dataSource: nwCustomersWithOrders,
                 width: '98%',
                 height: "400px",
-                features: [                    
+                features: [
                     {
                         name: "ColumnFixing",
                         fixingDirection: 'left',

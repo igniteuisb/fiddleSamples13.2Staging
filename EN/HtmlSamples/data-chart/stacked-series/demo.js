@@ -18,7 +18,7 @@ $(function () {
                     }, {
                         name: "Volume",
                         type: "numericX",
-                        title: "Energy Produced (Quadrillion Btu)"
+                        title: "Quadrillion Btu"
                     }],
                     series: [{
                         name: "parent",
@@ -91,7 +91,7 @@ $(function () {
                         {
                             name: "Volume",
                             type: "numericY",
-                            title: "Energy Produced (Quadrillion Btu)"
+                            title: "Quadrillion Btu"
                         }],
                     series: [function () { // a self executing function to create the series initialization object
                         var seriesObj = {

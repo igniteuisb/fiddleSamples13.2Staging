@@ -1,8 +1,4 @@
 $(function () {
-            // Used to show output in the API Viewer at runtime, 
-            // defined in external script 'apiviewer.js'    
-            var apiViewer = new $.ig.apiViewer();
-
             var data = [
                     { "columnKey": "CompanyName", "columnHeader": "Company Name" },
                     { "columnKey": "ContactName", "columnHeader": "Contact Name" },
@@ -15,15 +11,20 @@ $(function () {
                 dataSource: data, //JSON Array defined above         
                 valueKey: "columnKey",
                 textKey: "columnHeader",
-                width: "300px"
+                width: "300px",
+                mode: "dropdown",
+                selectedItems: [{index: 0}]
             });
 
             $("#igButtonSort").igButton({ labelText: $("#igButtonSort").val() });
 
             $("#igButtonSort").on({
                 click: function (e) {
-                    var columnKey = $("#gridColumns").igCombo("value");
-                    $('#grid7').igGridSorting('sortColumn', columnKey, 'ascending');
+                    var columnKey = $( "#gridColumns" ).igCombo( "value" );
+                    if ( columnKey )
+                    {
+                        $( '#grid7' ).igGridSorting( 'sortColumn', columnKey, 'ascending' );
+                    }
                 }
             });
 
@@ -46,14 +47,15 @@ $(function () {
                     {
                         name: "Responsive",
                         enableVerticalRendering: true,
+                        reactOnContainerWidthChanges: true,                   
                         windowWidthToRenderVertically: null,
                         propertiesColumnWidth: "40%",
                         valuesColumnWidth: "60%",
                         allowedColumnWidthPerType: {
-                            string: 190,
-                            number: 50,
-                            bool: 50,
-                            date: 80,
+                            string: 300,
+                            number: 100,
+                            bool: 100,
+                            date: 100,
                             object: 150
                         }
                     },

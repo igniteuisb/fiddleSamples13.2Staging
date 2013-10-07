@@ -4,6 +4,7 @@ $(function () {
             <td>{{>#view.hlp('toFullName')(Name)}}</td>
             <td><img width='100' height='90' src={{>ImageUrl}}></img></td>
             <td>{{>Title}}</td>
+            <td>{{for Languages}}<div>{{:name}}</div>{{/for}}</td>
             <td>{{>Phone}}</td>
             <td><img width='20' height='15' src='http://staging.igniteui.local/13-2/images/samples/nw/countries/{{>Country}}.gif'></img>{{>Country}}</td>
             <td>
@@ -17,10 +18,10 @@ $(function () {
         </tr>
      
 
-        $(function () {            
+        $(function () {
 
             var titles = ["Sales Representative", "Sales Manager", "Inside Sales Coordinator", "Vice President, Sales"];
-            var countries = ["UK", "USA"];                      
+            var countries = ["UK", "USA"];
 
             $.views.helpers(
             {
@@ -35,24 +36,25 @@ $(function () {
                     var name = val.split(',').reverse().join(" ");
                     return name;
                 }
-            });            
+            });
 
             $("#grid12").igGrid({
-                width: "98%",
+                width: "100%",
                 height: "600px",
                 rowTemplate: $("#theTmpl").html(),
                 autoGenerateColumns: false,
+                autoCommit:true,
                 columns: [
                         { headerText: "Employee ID", key: "ID", dataType: "number" },
                         { headerText: "Name", key: "Name", dataType: "string" },
                         { headerText: "Image", key: "ImageUrl", dataType: "object" },
                         { headerText: "Title", key: "Title", dataType: "string" },
+                        { headerText: "Languages", key: "Languages", dataType: "object" },
                         { headerText: "Phone", key: "Phone", dataType: "string" },
                         { headerText: "Country", key: "Country", dataType: "string" },
                         { headerText: "Birth Date", key: "BirthDate", dataType: "date" }
                     ],
                 dataSource: northwindEmployees,
-                dataSourceType: 'json',
                 primaryKey: "ID",
                 templatingEngine: "jsrender",
                 features: [
@@ -62,74 +64,15 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'ID',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Phone',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Name',
-                                classes: 'hidden-phone'
-                            }
-                        ]
-                    },
-                    {
-                        name: "Selection"
-                    },
-                    {
-                        name: "Filtering",
-                        type: "local",
-                        mode: "advanced",
-                        filterDropDownItemIcons: false,
-                        filterDropDownWidth: 200
-                    },
-                    {
-                        name: "Updating",
-                        enableAddRow: false,
-                        editMode: "rowedittemplate",
-                        rowEditDialogWidth: 350,
-                        rowEditDialogHeight: '430',
-                        rowEditDialogContentHeight: 300,
-                        rowEditDialogFieldWidth: 150,
-                        rowEditDialogOkCancelButtonWidth: 110,
-                        rowEditDialogContainment: "owner",
-                        showReadonlyEditors: false,
-                        columnSettings: [
-                            {
-                                columnKey: "ImageUrl",
-                                readOnly: true
-                            },
-                            {
-                                columnKey: "EmployeeID",
-                                readOnly: true
-                            },
-                            {
-                                columnKey: "Title",
-                                editorType: "text",
-                                editorOptions: {
-                                    button: "dropdown",
-                                    listItems: titles,
-                                    readOnly: true,
-                                    dropDownOnReadOnly: true
-                                }
-                            },
-                            {
-                                columnKey: "Country",
-                                editorType: "text",
-                                editorOptions: {
-                                    button: "dropdown",
-                                    listItems: countries,
-                                    readOnly: true,
-                                    dropDownOnReadOnly: true
-                                }
-                            },
-                            {
-                                columnKey: "BirthDate",
-                                editorType: "datepicker",
-                                validation: true,
-                                editorOptions: { minValue: new Date(1955, 1, 19), maxValue: new Date(), required: true },
-                                validatorOptions: { bodyAsParent: false }
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     }

@@ -55,12 +55,13 @@ var currData, currDataSource, doGeneration, startTime = null;
                 }],
 	            series: [{
 	                name: "series1",
-	                title: "$$(Chart_lbl_testSeries)",
+	                title: "Test Series",
 	                type: "line",
 	                xAxis: "xAxis",
 	                yAxis: "yAxis",
 	                valueMemberPath: "Value",
 	                showTooltip: true,
+	                tooltipTemplate: "tooltipTemplate"
 	            }],
 	            horizontalZoomable: true,
 	            verticalZoomable: true,

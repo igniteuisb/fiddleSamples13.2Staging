@@ -118,3 +118,9 @@
 .tile12.ui-igtile-inner-container { /*igdarkpurple*/
     background-color: #793BAC;
 }
+
+@media all and (max-width: 420px) {
+        .ui-igtile h3 {
+            margin: 0;
+        }
+}

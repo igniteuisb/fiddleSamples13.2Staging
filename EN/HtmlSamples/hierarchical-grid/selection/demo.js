@@ -1,40 +1,11 @@
 $(function () {
-
-            $("#rowSelectorColumnWidthEditor").igNumericEditor(
-                 {
-                     width: 60,
-                     minValue: 0,
-                     maxValue: 60,
-                     nullText: "default"
-                 });
-
-            /*----------------- Method & Option Examples -------------------------*/
-
-            $("#applyRowSelectors").click(function (e) {
-                $("#rowSelectorsGrid").igHierarchicalGrid("destroy");
-                $("#rowSelectorsGrid").remove();
-                createRowSelectorsGrid();
-            });
-
-            $("#applyCellSelection").click(function (e) {
-                $("#cellSelectionGrid").igHierarchicalGrid("destroy");
-                $("#cellSelectionGrid").remove();
-                createCellSelectionGrid();
-            });
-
             /*----------------- Instantiation -------------------------*/
-
             createCellSelectionGrid();
-            createRowSelectorsGrid();
+            createRowSelectionGrid();
         });
 
-        function createCellSelectionGrid() {
-            var multipleSelection = $("#multipleCellSelection").is(":checked") ? true : false;
-            var multipleCellSelectOnClick = $("#multipleCellSelectOnClick").is(":checked") ? true : false;
-            var touchDragSelect = $("#touchDragSelect").is(":checked") ? true : false;
-
-            $("<table id='cellSelectionGrid'></table>").appendTo(".cellSelectionContainer").igHierarchicalGrid({
-                height: "95%",
+        function createCellSelectionGrid() {  
+            $( "#cellSelectionGrid" ).igHierarchicalGrid( {
                 width: "100%",
                 autoGenerateColumns: false,
                 dataSource: northwind,
@@ -43,47 +14,30 @@ $(function () {
                 responseDataKey: "results",
                 dataSourceType: "json",
                 features: [
-                    {
-                        name: 'Responsive',
-                        enableVerticalRendering: false,
-                        columnSettings: [
-                            {
-                                columnKey: 'EmployeeID',
-                                classes: 'hidden-phone'
-                            },
-                            {
-                                columnKey: 'Address',
-                                classes: 'hidden-phone'
-                            },
-                            {
-                                columnKey: 'Region',
-                                classes: 'hidden-phone'
-                            },
-                            {
-                                columnKey: 'PostalCode',
-                                classes: 'hidden-phone'
-                            },
-                            {
-                                columnKey: 'HomePhone',
-                                classes: 'hidden-phone'
-                            }
-                        ]
-                    },
+                        {
+                            name: "Responsive",
+                            enableVerticalRendering: false,
+                            columnSettings: [
+                                {
+                                    columnKey: "Title",
+                                    classes: "ui-hidden-tablet"
+                                },
+                                {
+                                    columnKey: "Address",
+                                    classes: "ui-hidden-tablet"
+                                }
+                            ]
+                        }
                     ],
                 columns: [
-                  { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "5%" },
+                  { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "5%", hidden: true },
                   { key: "LastName", headerText: "Last Name", dataType: "string", width: "10%" },
                   { key: "FirstName", headerText: "First Name", dataType: "string", width: "10%" },
                   { key: "Title", headerText: "Title", dataType: "string", width: "20%" },
-                  { headerText: "Address", key: "Address", dataType: "string", width: "25%" },
-                  { headerText: "City", key: "City", dataType: "string", width: "10%" },
-                  { headerText: "Postal Code", key: "PostalCode", dataType: "string", width: "10%", hidden: true },
-                  { headerText: "Region", key: "Region", dataType: "string", width: "5%", hidden: true },
-                  { headerText: "Country", key: "Country", dataType: "string", width: "15%", hidden: false },
-                  { headerText: "Home Phone", key: "HomePhone", dataType: "string", width: "10%", hidden: true },
-                  { headerText: "Extension", key: "Extension", dataType: "string", width: "10%", hidden: true }
+                  { key: "Address", headerText: "Address", dataType: "string", width: "20%" },
+                  { key: "City", headerText: "City", dataType: "string", width: "10%" }
                 ],
-                childrenDataProperty: "Orders",                
+                childrenDataProperty: "Orders",
                 autoGenerateLayouts: false,
                 columnLayouts: [
                     {
@@ -93,8 +47,7 @@ $(function () {
                         width: "100%",
                         primaryKey: "OrderID",
                         columns: [
-                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "5%" },
-                            { key: "CustomerID", headerText: "Customer ID", dataType: "string", width: "5%", hidden: true },
+                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "5%", hidden: true },
                             { key: "Freight", headerText: "Freight", dataType: "string", width: "15%" },
                             { key: "ShipName", headerText: "Ship Name", dataType: "string", width: "20%" },
                             { key: "ShipAddress", headerText: "Ship Address", dataType: "string", width: "20%" },
@@ -105,25 +58,25 @@ $(function () {
                 ],
                 features: [
                     {
-                        name: 'Responsive',
+                        name: "Responsive",
                         enableVerticalRendering: false,
                         columnSettings: [
                             {
-                                columnKey: 'OrderID',
-                                classes: 'hidden-phone'
+                                columnKey: "ShipAddress",
+                                classes: "ui-hidden-tablet"
                             },
                             {
-                                columnKey: 'ShipName',
-                                classes: 'hidden-phone'
+                                columnKey: "ShipName",
+                                classes: "ui-hidden-tablet"
                             }
                         ]
                     },
                     {
                         name: "Selection",
                         mode: "cell",
-                        multipleSelection: multipleSelection,
-                        touchDragSelect: touchDragSelect, // this is true by default
-                        multipleCellSelectOnClick: multipleCellSelectOnClick
+                        multipleSelection: false,
+                        touchDragSelect: false, // this is true by default
+                        multipleCellSelectOnClick: false
                     },
                     {
                         name: "Paging",
@@ -135,17 +88,9 @@ $(function () {
             });
         }
 
-        function createRowSelectorsGrid() {
-            var rowNumbering = $("#enableRowNumberingchkb").is(":checked") ? true : false;
-            var enableCheckboxes = $("#enableCheckboxeschkb").is(":checked") ? true : false;
-            var selectorWidth = $("#rowSelectorColumnWidthEditor").igNumericEditor("option", "value");
-            selectorWidth = typeof (selectorWidth) === "number" ? selectorWidth : null;
-
-            var selectionMode = $('#selectionMode').val();
-            var multipleSelection = $("#multipleSelection").is(":checked") ? true : false;
-
-            $("<table id='rowSelectorsGrid'></table>").appendTo(".rowSelectorsContainer").igHierarchicalGrid({
-                height: "95%",
+        function createRowSelectionGrid()
+        {
+            $( "#rowSelectionGrid" ).igHierarchicalGrid( {
                 width: "100%",
                 autoGenerateColumns: false,
                 dataSource: northwind,
@@ -155,57 +100,39 @@ $(function () {
                 dataSourceType: "json",
                 features: [
                     {
-                        name: 'Responsive',
+                        name: "Responsive",
                         enableVerticalRendering: false,
                         columnSettings: [
                             {
-                                columnKey: 'EmployeeID',
-                                classes: 'hidden-phone'
+                                columnKey: "Title",
+                                classes: "ui-hidden-tablet"
                             },
                             {
-                                columnKey: 'Address',
-                                classes: 'hidden-phone'
-                            },
-                            {
-                                columnKey: 'Region',
-                                classes: 'hidden-phone'
-                            },
-                            {
-                                columnKey: 'PostalCode',
-                                classes: 'hidden-phone'
-                            },
-                            {
-                                columnKey: 'HomePhone',
-                                classes: 'hidden-phone'
+                                columnKey: "Address",
+                                classes: "ui-hidden-tablet"
                             }
                         ]
                     },
                 ],
                 columns: [
-                   { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "5%" },
-                   { key: "LastName", headerText: "Last Name", dataType: "string", width: "10%" },
-                   { key: "FirstName", headerText: "First Name", dataType: "string", width: "10%" },
-                   { key: "Title", headerText: "Title", dataType: "string", width: "15%" },
-                   { headerText: "Address", key: "Address", dataType: "string", width: "25%" },
-                   { headerText: "City", key: "City", dataType: "string", width: "10%" },
-                   { headerText: "Postal Code", key: "PostalCode", dataType: "string", width: "10%", hidden: true },
-                   { headerText: "Region", key: "Region", dataType: "string", width: "5%", hidden: true },
-                   { headerText: "Country", key: "Country", dataType: "string", width: "10%", hidden: false },
-                   { headerText: "Home Phone", key: "HomePhone", dataType: "string", width: "5%", hidden: true },
-                   { headerText: "Extension", key: "Extension", dataType: "string", width: "5%", hidden: true }
+                  { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "5%", hidden: true },
+                  { key: "LastName", headerText: "Last Name", dataType: "string", width: "10%" },
+                  { key: "FirstName", headerText: "First Name", dataType: "string", width: "10%" },
+                  { key: "Title", headerText: "Title", dataType: "string", width: "20%" },
+                  { key: "Address", headerText: "Address", dataType: "string", width: "20%" },
+                  { key: "City", headerText: "City", dataType: "string", width: "10%" }
                 ],
-                childrenDataProperty: "Orders",                
+                childrenDataProperty: "Orders",
                 autoGenerateLayouts: false,
                 columnLayouts: [
                     {
                         key: "Orders",
                         responseDataKey: "results",
-                        width: "100%",
                         autoGenerateColumns: false,
+                        width: "100%",
                         primaryKey: "OrderID",
                         columns: [
-                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "5%" },
-                            { key: "CustomerID", headerText: "Customer ID", dataType: "string", width: "5%", hidden: true },
+                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "5%", hidden: true },
                             { key: "Freight", headerText: "Freight", dataType: "string", width: "15%" },
                             { key: "ShipName", headerText: "Ship Name", dataType: "string", width: "20%" },
                             { key: "ShipAddress", headerText: "Ship Address", dataType: "string", width: "20%" },
@@ -215,31 +142,24 @@ $(function () {
                     }
                 ],
                 features: [
-                     {
-                         name: 'Responsive',
-                         enableVerticalRendering: false,
-                         columnSettings: [
-                             {
-                                 columnKey: 'OrderID',
-                                 classes: 'hidden-phone'
-                             },
-                             {
-                                 columnKey: 'ShipName',
-                                 classes: 'hidden-phone'
-                             }
-                         ]
-                     },
                     {
-                        name: "RowSelectors",
-                        inherit: true,
-                        enableCheckBoxes: enableCheckboxes,
-                        enableRowNumbering: rowNumbering,
-                        rowSelectorColumnWidth: selectorWidth
+                        name: "Responsive",
+                        enableVerticalRendering: false,
+                        columnSettings: [
+                            {
+                                columnKey: "ShipAddress",
+                                classes: "ui-hidden-tablet"
+                            },
+                            {
+                                columnKey: "ShipName",
+                                classes: "ui-hidden-tablet"
+                            }
+                        ]
                     },
                     {
                         name: "Selection",
-                        mode: selectionMode,
-                        multipleSelection: multipleSelection
+                        mode: "row",
+                        multipleSelection: true
                     },
                     {
                         name: "Paging",
@@ -248,5 +168,5 @@ $(function () {
                         inherit: true
                     }
                 ]
-            });
+            } );
         }

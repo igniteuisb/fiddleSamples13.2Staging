@@ -32,16 +32,20 @@ $(function () {
                     {
                         name: "2005Population",
                         type: "column",
+                        title: "2005 Population",
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
-                        valueMemberPath: "Pop2005"
+                        valueMemberPath: "Pop2005",
+                        showTooltip: true
                     },
                     {
                         name: "1995Population",
-                        type: "line",
+                        type: "column",
+                        title: "1995 Population",
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
-                        valueMemberPath: "Pop1995"
+                        valueMemberPath: "Pop1995",
+                        showTooltip: true
                     },
                     {
                         name: "crosshairLayer",
@@ -54,6 +58,13 @@ $(function () {
                         name: "catItemHighlightLayer",
                         title: "categoryItemHighlight",
                         type: "categoryItemHighlightLayer",
+                        useInterpolation: false,
+                        transitionDuration: 500
+                    },
+                    {
+                        name: "categoryToolTipLayer",
+                        title: "categoryToolTip",
+                        type: "categoryToolTipLayer",
                         useInterpolation: false,
                         transitionDuration: 500
                     }]

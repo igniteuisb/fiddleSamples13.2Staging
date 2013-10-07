@@ -32,20 +32,20 @@ $(function () {
                     {
                         name: "2005Population",
                         type: "column",
+                        title: "2005 Population",
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2005",
-                        showTooltip: true,
-                        tooltipTemplate: "tooltipTemplate1"
+                        showTooltip: true
                     },
                     {
                         name: "1995Population",
-                        type: "line",
+                        type: "column",
+                        title: "1995 Population",
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995",
-                        showTooltip: true,
-                        tooltipTemplate: "tooltipTemplate2"
+                        showTooltip: true
                     },
                     {
                         name: "itemToolTipLayer",

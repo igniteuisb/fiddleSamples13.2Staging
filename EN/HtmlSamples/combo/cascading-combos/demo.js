@@ -77,11 +77,11 @@ var dsCountry, dsCascTowns, dsCountryCascading,
                 dataSource: dsCountry,
                 selectionChanged: function (e, args) {
                     if (args.owner.selectedIndex() === 0) {
-                        $("#state").css("display", "inline");
+                        $("#state").css("display", "block");
                         $("#district").css("display", "none");
                     } else {
                         $("#state").css("display", "none");
-                        $("#district").css("display", "inline");
+                        $("#district").css("display", "block");
                     }
                 }
             });
@@ -109,11 +109,11 @@ var dsCountry, dsCascTowns, dsCountryCascading,
                 dataSource: dsCountryCascading,
                 selectionChanged: function (e, args) {
                     if (args.owner.selectedIndex() === 0) {
-                        $("#stateCascading").css("display", "inline");
+                        $("#stateCascading").css("display", "block");
                         $("#districtCascading").css("display", "none");
                     } else {
                         $("#stateCascading").css("display", "none");
-                        $("#districtCascading").css("display", "inline");
+                        $("#districtCascading").css("display", "block");
                     }
                 }
             });

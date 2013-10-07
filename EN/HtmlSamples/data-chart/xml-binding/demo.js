@@ -51,7 +51,7 @@ $(function () {
                         type: "numericY",
                         minimumValue: 0,
                         maximumValue: 1400,
-                        title: "Projected Population (Millions of People)"
+                        title: "Millions of People"
                     }
                 ],
                 series: [

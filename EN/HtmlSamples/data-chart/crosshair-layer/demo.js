@@ -38,7 +38,7 @@ $(function () {
                     },
                     {
                         name: "1995Population",
-                        type: "line",
+                        type: "column",
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995"
@@ -74,8 +74,9 @@ $(function () {
             // Opacity
             $("#opacitySlider").slider({
                 min: 0,
-                max: 100,
-                value: 50,
+                max: 1,
+                step: 0.1,
+                value: 0.5,
                 slide: function (event, ui) {
                     $("#chart").igDataChart("option", "series", [{ name: "crosshairLayer", opacity: ui.value }]);
                     $("#opacityLabel").text(ui.value);
@@ -86,7 +87,7 @@ $(function () {
             $("#transitionDurationSlider").slider({
                 min: 0,
                 max: 1000,
-                value: 500,
+                value: 0,
                 slide: function (event, ui) {
                     $("#chart").igDataChart("option", "series", [{ name: "crosshairLayer", transitionDuration: ui.value }]);
                     $("#transitionDurationLabel").text(ui.value);

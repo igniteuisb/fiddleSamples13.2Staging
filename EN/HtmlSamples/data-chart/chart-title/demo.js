@@ -14,7 +14,7 @@ $(function () {
                 }, {
                     name: "yAxis",
                     type: "numericY",
-                    title: "Energy Produced (Quadrillion Btu)",
+                    title: "Quadrillion Btu",
                 }],
                 series: [{
                     name: "series1",

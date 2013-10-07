@@ -69,15 +69,26 @@ var viewModel;
 
         $(function () {
             $(document).on("igtreeselectionchanged", "#tree", function (evt, ui) {
-                if (ui.newNodes.length > 0) {
-                    var parentElement = $("#tree").igTree("parentNode", ui.newNodes[0].element);
-                    //  Set selected Category to be the category of the selected product
-                    if (parentElement) {
-                        var parentNode = $("#tree").igTree("nodeFromElement", parentElement);
-                        viewModel.SetSelected(parentNode.data);
-                    }
-                    viewModel.SetSelected(ui.newNodes[0].data);
-                }
+            	if (ui.newNodes.length > 0) {
+            		var parentElement = $("#tree").igTree("parentNode", ui.newNodes[0].element);
+            		//  Set selected Category to be the category of the selected product
+            		if (parentElement) {
+            			var parentNode = $("#tree").igTree("nodeFromElement", parentElement);
+            			viewModel.SetSelected(parentNode.data);
+            			setTimeout(function () {
+            				if ($(window).width() < 600) {
+            					$("#productEditorsContainer").focus();
+            				}
+            			}, 0);
+            		} else {
+            			setTimeout(function () {
+            				if ($(window).width() < 600) {
+            					$("#categoryEditorsContainer").focus();
+            				}
+            			}, 0);
+            		}
+            		viewModel.SetSelected(ui.newNodes[0].data);
+            	}
             });
         });
 });

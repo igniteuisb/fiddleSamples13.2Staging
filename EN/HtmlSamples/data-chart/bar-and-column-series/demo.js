@@ -10,12 +10,11 @@ $(function () {
                     name: "xAxis",
                     type: "categoryX",
                     label: "Year",
-                    labelTopMargin: 5,
-                    title: "Year"
+                    labelTopMargin: 5
                 }, {
                     name: "yAxis",
                     type: "numericY",
-                    title: "Energy Produced (Quadrillion Btu)",
+                    title: "Quadrillion Btu",
                 }],
                 series: [{
                     name: "series1",
@@ -77,12 +76,11 @@ $(function () {
                 axes: [{
                     name: "xAxis",
                     type: "numericX",
-                    title: "Energy Produced (Quadrillion Btu)"
+                    title: "Quadrillion Btu"
                 }, {
                     name: "yAxis",
                     type: "categoryY",
-                    label: "Year",
-                    title: "Year"
+                    label: "Year"
                 }],
                 series: [{
                     name: "series1",

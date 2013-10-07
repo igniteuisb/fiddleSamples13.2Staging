@@ -56,23 +56,23 @@ $(function () {
             /*----------------- Event Examples -------------------------*/
 
             $("#tree").on("igtreeselectionchanged", function (e, ui) {
-                apiViewer.log("igtreeselectionchanged: [ " + "Selection Changed: " + ui.newNodes[0].data.Text + "]");
+            	apiViewer.log("igtreeselectionchanged: [ " + "Selection Changed: " + ui.newNodes[0].data.Text + "]"); focusOnMobile();
             });
 
             $("#tree").on("igtreenodeclick", function (evt, ui) {
-                apiViewer.log("igtreenodeclick: [ " + "Node Clicked: " + ui.node.data.Text + "]");
+            	apiViewer.log("igtreenodeclick: [ " + "Node Clicked: " + ui.node.data.Text + "]"); focusOnMobile();
             });
 
             $("#tree").on("igtreedragstart", function (evt, ui) {
-                apiViewer.log("igtreedragstart: [ " + "Node Drag Start: " + ui.data.Text + "]");
+            	apiViewer.log("igtreedragstart: [ " + "Node Drag Start: " + ui.data.Text + "]"); focusOnMobile();
             });
 
             $("#tree").on("igtreedragstop", function (evt, ui) {
-                apiViewer.log("igtreedragstop");
+            	apiViewer.log("igtreedragstop"); focusOnMobile();
             });
 
             $("#tree").on("igtreenodedropped", function (evt, ui) {
-                apiViewer.log("igtreenodedropped");
+            	apiViewer.log("igtreenodedropped"); focusOnMobile();
             });
 
             /*----------------- Instantiation -------------------------*/
@@ -88,5 +88,13 @@ $(function () {
                     childDataProperty: "Nodes"
                 }
             });
+
+            function focusOnMobile() {
+            	setTimeout(function () {
+            		if ($(window).width() < 600) {
+            			$(".api-viewer").focus();
+            		}
+            	}, 0);
+            }
 
         });

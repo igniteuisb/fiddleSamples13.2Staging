@@ -2,7 +2,7 @@ $(function () {
 
             // --------- en-US ----------
             $("#enUsDatePicker").igDatePicker({
-                width: "270px",
+                width: "260px",
                 value: new Date(),
                 readOnly: true,
                 dropDownOnReadOnly: true,
@@ -27,7 +27,7 @@ $(function () {
 
             // --------- ja ----------
             $("#jaDatePicker").igDatePicker({
-                width: "270px",
+                width: "260px",
                 value: new Date(),
                 readOnly: true,
                 dropDownOnReadOnly: true,
@@ -51,7 +51,7 @@ $(function () {
 
             // --------- ta ----------
             $("#taDatePicker").igDatePicker({
-                width: "270px",
+                width: "260px",
                 value: new Date(),
                 readOnly: true,
                 dropDownOnReadOnly: true,

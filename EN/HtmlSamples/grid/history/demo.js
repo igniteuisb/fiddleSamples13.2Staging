@@ -1,46 +1,220 @@
 $(function () {
             var grid = $("#grid"),
+                manualStateChange = false, // true: fired by history go() and back() methods; false: fired when state is added to the history object.
+                reverseState = [],
+                stateCount = window.History.storedStates.length;
+                tempParams = "";
+
+
+            //--> Save igGrid state in the browser history object
+            function pushToBrowserHistory(state, title, url) {
                 manualStateChange = false;
-            if (window.History && window.History.Adapter) {
-            window.History.Adapter.bind(window, 'statechange', function (e, args) {
-                var state, prevState;
-                if (manualStateChange == true) { // Fired only when called externally from browser buttons
-                    state = window.History.getState().data,
-                    historyStates = window.History.savedStates,
-                    prevState = historyStates[historyStates.length - 2].data;
-
-                    if (state.key !== undefined) { // If there is at least one gird state in the browser history
-                        switch (state.key) { // Load current state
-                        case "page": grid.igGridPaging("pageIndex", state.value - 1); break;
-                        case "sort": grid.igGridSorting("sortColumn", state.value[0], state.value[1]); break;
-                        case "resize": grid.igGridResizing("resize", state.value[0], state.value[1]); break;
-                        case "group":
-                            grid.igGridGroupBy("ungroupAll");
-                            if (!grid.igGridGroupBy("checkColumnIsGrouped")) grid.igGridGroupBy("groupByColumn", state.value);
-                            break;
-                        case "hide":
-                            if (state.value.split("_")[1]) {
-                                grid.igGridHiding("hideColumn", state[0]);
-                            } else {
-                                grid.igGridHiding("showColumn", state[0]);
-                            }
-                            break;
-                        case "filter": grid.igGridFiltering("filter", ([{ fieldName: state.value[0], expr: state.value[2], cond: state.value[1] }])); break;
-                    }
-                }
-
-                    if (prevState.key !== state.key) {
-                        switch (prevState.key) { // Unload previous state
-                            case "filter": grid.igGridFiltering("filter", ([])); break;
-                            case "sort": grid.igGridSorting("unsortColumn", state.value[0], state.value[1]); break;
-                            default: break;
-                        }
-                    }
-                }
-                manualStateChange = true;
-            });
+                $(state).extend({ "manualStateChange": false });
+                window.History ? window.History.pushState(state, title, url) : "";
             }
 
+            (function initGrid() {
+                grid.igGrid({
+                    primaryKey: "name",
+                    width: '100%',
+                    columns: [
+                        { headerText: "Name", key: "name", dataType: "string", width: "12%" },
+                        { headerText: "Team", key: "team", dataType: "string", width: "15%" },
+                        { headerText: "Age", key: "age", dataType: "number", width: "7%" },
+                        { headerText: "No.", key: "number", dataType: "number", width: "7%" },
+                        { headerText: "Pos.", key: "position", dataType: "string", width: "8%" },
+                        { headerText: "Goals", key: "goals", dataType: "number", width: "10%" },
+                        { headerText: "Assists", key: "assists", dataType: "number", width: "10%" },
+                        { headerText: "Yellow C.", key: "yellow", dataType: "number", width: "10%" },
+                        { headerText: "Red C.", key: "red", dataType: "number", width: "7%" },
+                        { headerText: "Salary", key: "salary", format: "currency", width: "8%" }
+                    ],
+                    autofitLastColumn: false,
+                    autoGenerateColumns: false,
+                    dataSource: dataSource,
+                    features: [
+                        {
+                            name: "Paging",
+                            type: "local",
+                            pageSize: 10,
+                            showPageSizeDropDown: false,
+                            pageIndexChanging: function (e, args) {
+                                fillReverseState("page", null, args.currentPageIndex);
+                            },
+                            pageIndexChanged: function (e, args) {
+                                var pageIndex = args.pageIndex + 1,
+                                    state = { key: "page", value: pageIndex };
+                                pushToBrowserHistory(state, null, formURL("page", pageIndex));
+                            }
+                        },
+                        {
+                            name: "Sorting",
+                            type: "local",
+                            mode: "multi",
+                            columnSorting: function (e, args) {
+                                fillReverseState("sort", args.columnKey, args.direction === "ascending" ? "descending" : "ascending");
+                            },
+                            columnSorted: function (e, args) {
+                                var columnKey = args.columnKey,
+                                    dir = args.direction,
+                                    state = { key: "sort", value: [columnKey, dir] };
+                                if (!isEmptyValue(columnKey) && !isEmptyValue(dir)) {
+                                    pushToBrowserHistory(state, null, formURL("sort", [columnKey, dir]));
+                                }
+                            }
+                        },
+                        {
+                            name: "Filtering",
+                            type: "local",
+                            dataFiltered: function (e, args) {
+                                var columnKey = args.columnKey,
+                                    expr = args.owner.grid.dataSource.settings.filtering.expressions[0],
+                                    state, settings;
+                                if (expr === undefined) {
+                                    settings = [];
+                                } else {
+                                    settings = [columnKey, expr.cond, expr.expr];
+                                }
+                                state = { key: "filter", value: settings };
+                                pushToBrowserHistory(state, null, formURL("filter", settings));
+                            }
+                        },
+                        {
+                            name: "Resizing",
+                            columnResized: function (e, args) {
+                                var columnKey = args.columnKey,
+                                   width = args.originalWidth,
+                                   state = { key: "resize", value: [columnKey, width] };
+                                pushToBrowserHistory(state, null, formURL("resize", [columnKey, width]));
+                            }
+                        },
+                        {
+                            name: "Hiding",
+                            columnHidden: function (e, args) {
+                                var columnKey = args.columnKey,
+                                   state = { key: "hide", value: columnKey };
+                                pushToBrowserHistory(state, null, formURL("hide", [columnKey, true]));
+                            },
+                            columnShown: function (e, args) {
+                                var columnKey = args.columnKey,
+                                   state = { key: "hide", value: columnKey };
+                                pushToBrowserHistory(state, null, formURL("hide", [columnKey, false]));
+                            }
+                        },
+                        {
+                            name: "GroupBy",
+                            groupedColumnsChanged: function (e, args) {
+                                var columnKey = args.key;
+                                state = { key: "group", value: columnKey };
+                                pushToBrowserHistory(state, null, formURL("group", columnKey));
+                            }
+                        }
+                    ],
+                    rendered: function (e, args) {
+                        args.owner.element.find("tr td").css("text-align", "center");
+                        args.owner.element.find("tr td:first-child").css("text-align", "left");
+                        args.owner.element.find("tr td:last-child").css("text-align", "right");
+                    }
+                });
+            })();
+
+            function fillReverseState(feature, column, oldValue) {
+                var index = window.History.savedStates.length, pos;
+                if (reverseState.length === 0) for (index = 0; index < window.History.savedStates.length; index++) reverseState[index] = null;
+                pos = previousPosition(feature, column);
+                if (pos < 0) {
+                    reverseState[index] = oldValue;
+                } else if (pos === 0) {
+                    reverseState[index] = null;
+                } else {
+                    reverseState[index] = pos.data.value;
+                }
+            }
+
+            function previousPosition(feature, column) {
+                var states = window.History.savedStates,
+                    length = states.length,
+                    index;
+                for (index = length - 1; index >= 0; index--) {
+                    if (states[index].data.key === feature &&
+                        (column === null || column !== null && states[index].value.indexOf(column) > -1)) {
+                        if (index = length - 1) {
+                            return 0;
+                        } else {
+                            return states[index];
+                        }
+                    } else {
+                        return -1;
+                    }
+                }
+            }
+            //<-- Save igGrid state in the browser history object
+
+            //--> Recover igGrid state from the browser history object
+            if (window.History && window.History.Adapter) {
+                window.History.Adapter.bind(window, 'statechange', function (e, args) {
+                    var currState, state, prevState, stateOccurances;
+                    if (manualStateChange == true) { // Fired only when called externally from browser buttons
+                        currState = window.History.getState()
+                        state = currState.data,
+                        isBack,
+                        lastOccurence = getLastOccurance(state),
+                        stateOccurances = getStateOccurances(currState.id);
+
+                        isBack = (window.History.storedStates.length - stateCount) === 1;
+                        stateCount = window.History.storedStates.length;
+                        if (!isBack) {
+                            switch (state.key) { // Load current state
+                                case "page": grid.igGridPaging("pageIndex", state.value - 1); break;
+                                case "sort": grid.igGridSorting("sortColumn", state.value[0], state.value[1]); break;
+                                case "resize": grid.igGridResizing("resize", state.value[0], state.value[1]); break;
+                                case "group":
+                                    grid.igGridGroupBy("ungroupAll");
+                                    if (!grid.igGridGroupBy("checkColumnIsGrouped")) grid.igGridGroupBy("groupByColumn", state.value);
+                                    break;
+                                case "hide":
+                                    if (state.value.split("_")[1]) {
+                                        grid.igGridHiding("hideColumn", state[0]);
+                                    } else {
+                                        grid.igGridHiding("showColumn", state[0]);
+                                    }
+                                    break;
+                                case "filter": grid.igGridFiltering("filter", ([{ fieldName: state.value[0], expr: state.value[2], cond: state.value[1] }])); break;
+                            }
+                        } else { // Unload previous state
+                            prevState = window.History.savedStates[window.History.savedStates.length - 2].data;
+                            if(prevState.key )
+                            switch (prevState.key) {
+                                case "page": grid.igGridPaging("pageIndex", 0);
+                                case "filter": grid.igGridFiltering("filter", ([])); break;
+                                case "sort": grid.igGridSorting("unsortColumn", prevState.value[0]); break;
+                                default: break;
+                            }
+                        }
+                    }
+                    manualStateChange = true;
+
+                    if (window.location.search === "" & tempParams !== "") {
+                        window.History.pushState(null, null, tempParams);
+                        tempParams = "";
+                    }
+                });
+            }
+
+            function getStateOccurances(id) {
+                var historyStates = window.History.savedStates, index, count = 0;
+                for (index = 0; index < historyStates.length - 1; index++) {
+                    if (historyStates[index].id === id) count++;
+                }
+                return count;
+            }
+
+            function getLastOccurance(state) {
+                var historyStates = window.History.savedStates, index;
+            }
+            //<-- Recover igGrid state from the browser history object
+
+            //--> Load igGrid state from the browser URL
             function loadInitialStateFromUrl() {
                 var params = window.location.search, index, arrKeyValue;
                 if (params !== "") {
@@ -51,11 +225,13 @@ $(function () {
                     }
                 }
             };
+            //<-- Load igGrid state from the browser URL
 
+            //--> Load individual igGrid features
             function loadGridState(key, value) {
                 switch (key) {
-                    case "page": grid.igGridPaging("pageIndex", value - 1); break;
-                    case "sort": grid.igGridSorting("sortColumn", value.split("_")[0], value.split("_")[1]); break;
+                    case "page": loadPagingState(key, value); break;
+                    case "sort": loadSortingState(key, value); break;
                     case "resize": grid.igGridResizing("resize", value.split("_")[0], value.split("_")[1]); break;
                     case "group": grid.igGridGroupBy("groupByColumn", value); break;
                     case "hide":
@@ -69,25 +245,22 @@ $(function () {
                 }
             }
 
-            $("#back").igButton().click(function () { window.History.back(); });
-            $("#forward").igButton().click(function () { window.History.forward(); });
-            $("#copy").igButton().click(function () { window.prompt("Copy URL and open it in a new tab or browser", window.location); });
-            $("#mail").igButton().click(function () {
-                var link = "mailto: "
-                         + "&subject=" + escape("List with Footballers")
-                         + "&body=" + escape("Custom List with footballers can be found here: " +  window.location);
-                window.location.href = link;
-            });
-
-            function pushToBrowserHistory(state, title, url) {
-                manualStateChange = false;
-                $(state).extend({ "manualStateChange" : false });
-                window.History? window.History.pushState(state, title, url): "";
+            function loadPagingState(key, value) {
+                grid.igGridPaging("pageIndex", value - 1);
             }
 
+            function loadSortingState(key, value) {
+                var columns = value.split(";"), i;
+                for (i = 0; i < columns.length; i++) {
+                    grid.igGridSorting("sortColumn", columns[i].split("_")[0], columns[i].split("_")[1]);
+                }
+            }
+            //<-- Load individual igGrid features
+
+            //--> Create URL 
             function formURL(key, value, multiple) {
                 var params = window.location.search,
-                    urlValue = value, urlIndex;
+                    urlValue = value, urlIndex, currentUrl, currentColumnState;
 
                 if (isEmptyValue(value)) { // remove parameters encoded in the URL
                     urlIndex = params.indexOf(key + "=");
@@ -98,19 +271,29 @@ $(function () {
                         params = params.substring(0, urlIndex - 1) + params.substring(urlIndex, params.length);
                     }
                 } else { // add parameters encoded in the URL
-                if (value instanceof Array) {
-                    urlValue = value[0];
-                    for (urlIndex = 1; urlIndex < value.length; urlIndex++) {
-                            urlValue += "_" + value[urlIndex];
+                    if (value instanceof Array) {
+                        urlValue = value[0];
+                        for (urlIndex = 1; urlIndex < value.length; urlIndex++) {
+                                urlValue += "_" + value[urlIndex];
+                        }
                     }
-                }
-                if (params === "") {
-                    params = "?" + key + "=" + urlValue;
-                } else if (params.indexOf(key + "=") === -1) {
-                    params = params + "&" + key + "=" + urlValue;
-                } else {
-                    params = params.replace(key + "=" + extractURLValue(key), key + "=" + urlValue);
-                }
+                    if (params === "") {
+                        params = "?" + key + "=" + urlValue;
+                    } else if (params.indexOf(key + "=") === -1) {
+                        params = params + "&" + key + "=" + urlValue;
+                    } else {
+                        currentUrl = key + "=" + extractURLValue(key);
+                        if (key === "page") {
+                            params = params.replace(currentUrl, key + "=" + urlValue);
+                        } else {
+                            currentColumnState = value[0] + "_";
+                            if (currentUrl.indexOf(currentColumnState) > -1) {
+                                params = params.replace(getColumnState(currentUrl, currentColumnState), urlValue);
+                            } else {
+                                params = params.replace(currentUrl, currentUrl + ";" + urlValue);
+                            }
+                        }
+                    }
                 }
                 return params;
             }
@@ -123,111 +306,33 @@ $(function () {
                 return value;
             }
 
+            function getColumnState(featureUrl, column) {
+                var state, columnStartIndex, columnEndIndex;
+                columnStartIndex = featureUrl.indexOf(column);
+                state = featureUrl.substring(columnStartIndex, featureUrl.length);
+                columnEndIndex = state.indexOf("&") > -1 ? state.indexOf("&") : state.length;
+                state = state.substring(0, columnEndIndex);
+                columnEndIndex = state.indexOf(";") > -1 ? state.indexOf(";") : state.length;
+                state = state.substring(0, columnEndIndex);
+                return state;
+            }
+            //<-- Create URL
+
             function isEmptyValue(value) {
-                return value.length === 0;
+                return value === undefined || value === null || value.length === 0;
             }
 
-            grid.igGrid({
-                primaryKey: "name",
-                width: '100%',
-                columns: [
-                    { headerText: "Name", key: "name", dataType: "string", width: "12%" },
-                    { headerText: "Team", key: "team", dataType: "string", width: "15%" },
-                    { headerText: "Age", key: "age", dataType: "number", width: "7%" },
-                    { headerText: "No.", key: "number", dataType: "number", width: "7%" },
-                    { headerText: "Pos.", key: "position", dataType: "string", width: "8%" },
-                    { headerText: "Goals", key: "goals", dataType: "number", width: "10%" },
-                    { headerText: "Assists", key: "assists", dataType: "number", width: "10%" },
-                    { headerText: "Yellow C.", key: "yellow", dataType: "number", width: "10%" },
-                    { headerText: "Red C.", key: "red", dataType: "number", width: "7%" },
-                    { headerText: "Salary", key: "salary", format: "currency", width: "8%" }
-                ],
-                autofitLastColumn: false,
-                autoGenerateColumns: false,
-                dataSource: dataSource,
-                features: [
-                    {
-                        name: "Paging",
-                        type: "local",
-                        pageSize: 10,
-                        showPageSizeDropDown: false,
-                        pageIndexChanged: function (e, args) {
-                            var pageIndex = args.pageIndex + 1,
-                                state = { key: "page", value: pageIndex },
-                                title = "Paging";
-                            pushToBrowserHistory(state, title, formURL("page", pageIndex));
-                        }
-                    },
-                    {
-                        name: "Sorting",
-                        type: "local",
-                        columnSorted: function (e, args) {
-                            var columnKey = args.columnKey,
-                                dir = args.direction,
-                                state = { key: "sort", value: [columnKey, dir] },
-                                title = "Sorting";
-                            pushToBrowserHistory(state, title, formURL("sort", [columnKey, dir]));
-                        }
-                    },
-                    {
-                        name: "Filtering",
-                        type: "local",
-                        dataFiltered: function (e, args) {
-                            var columnKey = args.columnKey,
-                                expr = args.owner.grid.dataSource.settings.filtering.expressions[0],
-                                title = "Filtering",
-                                state, settings;
-                            if (expr === undefined) {
-                                settings = [];
-                            } else {
-                                settings = [columnKey, expr.cond, expr.expr];
-                            }
-                            state = { key: "filter", value: settings };
-                            pushToBrowserHistory(state, title, formURL("filter", settings));
-                        }
-                    },
-                    {
-                        name: "Resizing",
-                        columnResized: function (e, args) {
-                            var columnKey = args.columnKey,
-                               width = args.originalWidth,
-                               state = { key: "resize", value: [columnKey, width] },
-                               title = "Resizing";
-                            pushToBrowserHistory(state, title, formURL("resize", [columnKey, width]));
-                        }
-                    },
-                    {
-                        name: "Hiding",
-                        columnHidden: function (e, args) {
-                            var columnKey = args.columnKey,
-                               state = { key: "hide", value: columnKey },
-                               title = "Hiding";
-                            pushToBrowserHistory(state, title, formURL("hide", [columnKey, true]));
-                        },
-                        columnShown: function (e, args) {
-                            var columnKey = args.columnKey,
-                               state = { key: "hide", value: columnKey },
-                               title = "Hiding";
-                            pushToBrowserHistory(state, title, formURL("hide", [columnKey, false]));
-                        }
-                    },
-                    {
-                        name: "GroupBy",
-                        groupedColumnsChanged: function (e, args) {
-                            var columnKey = args.key;
-                               state = { key: "group", value: columnKey },
-                               title = "GroupBy";
-                            pushToBrowserHistory(state, title, formURL("group", columnKey));
-                        }
-                    }
-                ],
-                rendered: function (e, args) {
-                    args.owner.element.find("tr td").css("text-align", "center");
-                    args.owner.element.find("tr td:first-child").css("text-align", "left");
-                    args.owner.element.find("tr td:last-child").css("text-align", "right");
-                }
+            $("#back").igButton().click(function () { window.History.back(); });
+            $("#forward").igButton().click(function () { window.History.forward(); });
+            $("#copy").igButton().click(function () { window.prompt("Copy URL and open it in a new tab or browser", window.location); });
+            $("#mail").igButton().click(function () {
+                var link = "mailto: "
+                         + "&subject=" + escape("List with Footballers")
+                         + "&body=" + escape("Custom List with footballers can be found here: " + window.location);
+                window.location.href = link;
             });
-            if (window.location.search !== "") {
+
+            if ((tempParams = window.location.search) !== "") {
                 loadInitialStateFromUrl();
             }
         });

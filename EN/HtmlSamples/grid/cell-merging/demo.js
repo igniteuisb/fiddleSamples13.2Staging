@@ -1,5 +1,4 @@
 $(function () {
-
             $("#grid").igGrid({
                 width: "100%",
                 autoGenerateColumns: false,
@@ -11,7 +10,6 @@ $(function () {
                    { key: "LastName", headerText: "First Name", dataType: "string" },
                    { key: "FirstName", headerText: "Last Name", dataType: "string" },
                    { key: "Title", headerText: "Title", dataType: "string" },
-                   { key: "Address", headerText: "Address", dataType: "string" },
                    { key: "Address", headerText: "Address", dataType: "string" },
                    { key: "City", headerText: "City", dataType: "string" },
                    { key: "Region", headerText: "Region", dataType: "string" },
@@ -25,27 +23,27 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'EmployeeID',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Address',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'LastName',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Region',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Country',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'PostalCode',
-                                classes: 'visible-phone'
+                                classes: 'ui-visible-phone'
                             }
                         ]
                     },

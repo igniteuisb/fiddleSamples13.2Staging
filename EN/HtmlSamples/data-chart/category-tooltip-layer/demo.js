@@ -32,20 +32,20 @@ $(function () {
                     {
                         name: "2005Population",
                         type: "column",
+                        title: "2005 Population",
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2005",
-                        showTooltip: true,
-                        tooltipTemplate: "tooltipTemplate1"
+                        showTooltip: true
                     },
                     {
                         name: "1995Population",
                         type: "column",
+                        title: "1995 Population",
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995",
-                        showTooltip: true,
-                        tooltipTemplate: "tooltipTemplate2"
+                        showTooltip: true
                     },
                     {
                         name: "categorySeries",
@@ -58,7 +58,7 @@ $(function () {
             $("#transitionDurationSlider").slider({
                 min: 0,
                 max: 1000,
-                value: 500,
+                value: 0,
                 slide: function (event, ui) {
                     $("#chart").igDataChart("option", "series", [{ name: "categorySeries", transitionDuration: ui.value }]);
                     $("#transitionDurationLabel").text(ui.value);
@@ -73,7 +73,7 @@ $(function () {
             
             $("#tooltipPos").change(function (e) {
                var position = $(this).val();
-               $("#chart").igDataChart("option", "series", [{ name: "categorySeries", tooltipPosition: position }]);
+               $("#chart").igDataChart("option", "series", [{ name: "categorySeries", toolTipPosition: position }]);
                 
             });
             

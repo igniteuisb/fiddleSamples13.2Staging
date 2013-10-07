@@ -78,14 +78,14 @@ $(function () {
                 if (seriesType == "bar") {
                     $("#chart").igDataChart("option", "axes", [{
                         name: "NameAxis",
-                        type: "numericX",
-                        label: "CountryName"
+                        type: "numericX"
                     }]);
                     $("#chart").igDataChart("option", "axes", [{
                         name: "PopulationAxis",
                         type: "categoryY",
                         minimumValue: 0,
-                        title: "Millions of People",
+                        label: "CountryName",
+                        title: "Millions of People"
                     }]);
                     
                     $("#chart").igDataChart("option", "series", [{
@@ -100,7 +100,7 @@ $(function () {
                         thickness: thickness,
                         transitionInMode: transMode,
                         transitionInSpeedType: transType,
-                        transitionEasingFunction: transEasingFunc
+                        transitionInEasingFunction: transEasingFunc
                     }]);
                     $("#chart").igDataChart("option", "series", [{
                         type: seriesType,
@@ -114,7 +114,7 @@ $(function () {
                         thickness: thickness,
                         transitionInMode: transMode,
                         transitionInSpeedType: transType,
-                        transitionEasingFunction: transEasingFunc
+                        transitionInEasingFunction: transEasingFunc
                     }]);
                 } else {
                     $("#chart").igDataChart("option", "axes", [{
@@ -143,7 +143,7 @@ $(function () {
                             thickness: thickness,
                             transitionInMode: transMode,
                             transitionInSpeedType: transType,
-                            transitionEasingFunction: transEasingFunc
+                            transitionInEasingFunction: transEasingFunc
                         }]);
 
                     } else {
@@ -159,7 +159,7 @@ $(function () {
                             thickness: thickness,
                             transitionInMode: transMode,
                             transitionInSpeedType: transType,
-                            transitionEasingFunction: transEasingFunc
+                            transitionInEasingFunction: transEasingFunc
                         }]);
                         $("#chart").igDataChart("option", "series", [{
                             type: seriesType,
@@ -173,7 +173,7 @@ $(function () {
                             thickness: thickness,
                             transitionInMode: transMode,
                             transitionInSpeedType: transType,
-                            transitionEasingFunction: transEasingFunc
+                            transitionInEasingFunction: transEasingFunc
                         }]);
                     }
                 }

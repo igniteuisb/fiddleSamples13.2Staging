@@ -4,7 +4,7 @@ $(function () {
                 width: "100%",
                 height: "400px",
                 columns: [
-                    { headerText: "Product ID", key: "ProductID", dataType: "number", width: "25%" },
+                    { headerText: "Product ID", key: "ProductID", dataType: "number", width: "20%" },
                     { headerText: "Product Name", key: "Name", dataType: "string", width: "30%" },
                     { headerText: "Product Number", key: "ProductNumber", dataType: "string", width: "20%" },
                     { headerText: "Make Flag", key: "MakeFlag", dataType: "bool", width: "25%" }
@@ -13,7 +13,6 @@ $(function () {
                 features: [
                     {
                         name: 'GroupBy',
-                        initialExpand: false,
                         columnSettings: [
                             {
                                 columnKey: "Name",

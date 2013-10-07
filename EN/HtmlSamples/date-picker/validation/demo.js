@@ -2,7 +2,8 @@ $(function () {
 
             // Used to show output in the API Viewer at runtime, 
             // defined in external script 'apiviewer.js'           
-            var apiViewer = new $.ig.apiViewer();
+            var apiViewer = new $.ig.apiViewer(),
+                width = ($(window).width() > 320) ? 280 : 200 ;
             
             /*----------------- Method & Option Examples -------------------------*/
 
@@ -18,7 +19,7 @@ $(function () {
             /*----------------- Instantiation -------------------------*/
 
             $('#datePicker').igDatePicker({
-                width: 280,
+                width: width,
                 dateInputFormat: 'dateTime',
                 required: true,
                 validatorOptions: {
@@ -32,7 +33,7 @@ $(function () {
             });
 
             $('#datePicker2').igDatePicker({
-                width: 280,
+                width: width,
                 dateInputFormat: 'dateTime',
                 required: true,
                 validatorOptions: {

@@ -1,40 +1,41 @@
 $(function () {
-            /*----------------- Instantiation -------------------------*/
+//jsRender helper function which formats the string date
+        $.views.helpers(
+        {
+            formatDate: function (val) {
+                var date = new Date(val);
+                if (!isNaN(date) && ($.type(date) === "date")) {
+                    return $.ig.formatter(date, "date", "dateTime");
+                }
+                return val;
+            }
+        });
+
+        $(function () {
             createAutoGrid();
             createButtonGrid();
-            createPullGrid();
         });
 
         function createAutoGrid()
         {
             $( "#autoLoadOnDemand" ).igGrid( {
-                width: "98%",
-                autoGenerateColumns: false,             
-                primaryKey: "DinnerID",
-                dataSource: "http://www.nerddinner.com/Services/OData.svc/Dinners?$format=json&$callback=?",            
-                responseDataKey: "d.results",
-                generateCompactJSONResponse: false,
-                enableUTCDates: true,
-                height: "400px",
+                width: "100%",
+                autoGenerateColumns: false,
+                dataSource: infragisticsTweets,
+                localSchemaTransform: false,
+                templatingEngine: "jsrender",
+                height: "300px",
                 columns: [
-                    { headerText: "DinnerID", key: "DinnerID", dataType: "number" },
-                    { headerText: "Title", key: "Title", dataType: "string" },
-                    { headerText: "Description", key: "Description", dataType: "string" },
-                    { headerText: "Address", key: "Address", dataType: "string" },
-                    { headerText: "EventDate", key: "EventDate", dataType: "date" },
-                    { headerText: "HostedBy", key: "HostedBy", dataType: "string" }
+                    {
+                        key: 'Tweets',
+                        dataType: 'string',
+                        headerText: 'Infragistics Tweets',
+                        unbound: true,
+                        width: "100%",
+                        template: "<div style='float:left'><img src='http://staging.igniteui.local/13-2/images/ig_twitter_logo.png' ></img></div><div class='tweet'><p style='height:20px'><span class='tweet-user'>{{>user.name}}</span><span class='tweet-screen-name'>@{{>user.screen_name}}</span><span class='tweet-date'>{{>#view.hlp('formatDate')(created_at)}}</span></p><p class='tweet-text'>{{>text}}</p></div>"
+                    }
                 ],
                 features: [
-                    {
-                        name: 'Responsive',
-                        enableVerticalRendering: false,
-                        columnSettings: [
-                            {
-                                columnKey: 'Description',
-                                classes: 'hidden-phone'
-                            }
-                        ]
-                    },
                     {
                         name: 'LoadOnDemand',
                         chunkSize: 10,
@@ -47,30 +48,23 @@ $(function () {
         function createButtonGrid()
         {
             $( "#buttonLoadOnDemand" ).igGrid( {
-                width: "98%",
+                width: "100%",
                 autoGenerateColumns: false,
-                primaryKey: "DinnerID",
-                dataSource: "http://www.nerddinner.com/Services/OData.svc/Dinners?$format=json&$callback=?",
-                responseDataKey: "d.results",
+                dataSource: infragisticsTweets,
+                localSchemaTransform: false,
+                templatingEngine: "jsrender",
+                height: "300px",
                 columns: [
-                    { headerText: "DinnerID", key: "DinnerID", dataType: "number" },
-                    { headerText: "Title", key: "Title", dataType: "string" },
-                    { headerText: "Description", key: "Description", dataType: "string" },
-                    { headerText: "Address", key: "Address", dataType: "string" },
-                    { headerText: "EventDate", key: "EventDate", dataType: "date" },
-                    { headerText: "HostedBy", key: "HostedBy", dataType: "string" }
+                    {
+                        key: 'Tweets',
+                        dataType: 'string',
+                        headerText: 'Infragistics Tweets',
+                        unbound: true,
+                        width: "100%",
+                        template: "<div style='float:left'><img src='http://staging.igniteui.local/13-2/images/ig_twitter_logo.png' ></img></div><div class='tweet'><p style='height:20px'><span class='tweet-user'>{{>user.name}}</span><span class='tweet-screen-name'>@{{>user.screen_name}}</span><span class='tweet-date'>{{>#view.hlp('formatDate')(created_at)}}</span></p><p class='tweet-text'>{{>text}}</p></div>"
+                    }
                 ],
                 features: [
-                    {
-                        name: 'Responsive',
-                        enableVerticalRendering: false,
-                        columnSettings: [
-                            {
-                                columnKey: 'Description',
-                                classes: 'hidden-phone'
-                            }
-                        ]
-                    },
                     {
                         name: 'LoadOnDemand',
                         chunkSize: 10,
@@ -79,38 +73,4 @@ $(function () {
                 ]
             });
         }
-
-        function createPullGrid()
-        {
-            $( "#pullLoadOnDemand" ).igGrid( {
-                width: "98%",
-                autoGenerateColumns: false,
-                dataSource: "http://www.nerddinner.com/Services/OData.svc/Dinners?$format=json&$callback=?",
-                responseDataKey: "d.results",
-                columns: [
-                   { headerText: "Dinner ID", key: "DinnerID", dataType: "number" },
-                   { headerText: "Title", key: "Title", dataType: "string" },
-                   { headerText: "Description", key: "Description", dataType: "string" },
-                   { headerText: "Address", key: "Address", dataType: "string" },
-                   { headerText: "Event Date", key: "EventDate", dataType: "date" },
-                   { headerText: "Hosted By", key: "HostedBy", dataType: "string" }
-                ],
-                features: [
-                    {
-                        name: "Responsive",
-                        enableVerticalRendering: false,
-                        columnSettings: [
-                            {
-                                columnKey: 'Description',
-                                classes: 'hidden-phone'
-                            }
-                        ]
-                    },
-                    {
-                        name: 'LoadOnDemand',
-                        chunkSize: 10,
-                        loadTrigger: "pull"
-                    }
-                ]
-            });
-        }
+});

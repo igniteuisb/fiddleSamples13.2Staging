@@ -1,42 +1,34 @@
 $(function () {
 var activated = [false, false, false, false],
             optionsWide = {
-                layoutConfiguration: {
-                    gridLayout: {
-                        columnWidth: 210,
-                        columnHeight: 210,
-                        marginLeft: 10,
-                        marginTop: 10
-                    },
-                    items: [
-                        { rowIndex: 0, colIndex: 0, rowSpan: 2, colSpan: 2 },
-                        { rowIndex: 0, colIndex: 2, rowSpan: 1, colSpan: 1 },
-                        { rowIndex: 1, colIndex: 2, rowSpan: 1, colSpan: 1 },
-                        { rowIndex: 2, colIndex: 0, rowSpan: 1, colSpan: 1 },
-                        { rowIndex: 2, colIndex: 1, rowSpan: 1, colSpan: 1 },
-                        { rowIndex: 2, colIndex: 2, rowSpan: 1, colSpan: 1 }
-                    ]
-                },
+                columnWidth: 210,
+                columnHeight: 210,
+                marginLeft: 10,
+                marginTop: 10,
+                items: [
+                    { rowIndex: 0, colIndex: 0, rowSpan: 2, colSpan: 2 },
+                    { rowIndex: 0, colIndex: 2, rowSpan: 1, colSpan: 1 },
+                    { rowIndex: 1, colIndex: 2, rowSpan: 1, colSpan: 1 },
+                    { rowIndex: 2, colIndex: 0, rowSpan: 1, colSpan: 1 },
+                    { rowIndex: 2, colIndex: 1, rowSpan: 1, colSpan: 1 },
+                    { rowIndex: 2, colIndex: 2, rowSpan: 1, colSpan: 1 }
+                ],
                 maximizedTileIndex: 0,
                 minimizedState: ':not(ul)'
             },
             optionsPhone = {
-                layoutConfiguration: {
-                    gridLayout: {
-                        columnWidth: 160,
-                        columnHeight: 160,
-                        marginLeft: 10,
-                        marginTop: 10
-                    },
-                    items: [
-                        { rowIndex: 0, colIndex: 0, rowSpan: 2, colSpan: 2 },
-                        { rowIndex: 0, colIndex: 2, rowSpan: 1, colSpan: 1 },
-                        { rowIndex: 1, colIndex: 2, rowSpan: 1, colSpan: 1 },
-                        { rowIndex: 2, colIndex: 0, rowSpan: 1, colSpan: 1 },
-                        { rowIndex: 2, colIndex: 1, rowSpan: 1, colSpan: 1 },
-                        { rowIndex: 2, colIndex: 2, rowSpan: 1, colSpan: 1 }
-                    ]
-                },
+                columnWidth: 125,
+                columnHeight: 160,
+                marginLeft: 5,
+                marginTop: 5,
+                items: [
+                    { rowIndex: 0, colIndex: 0, rowSpan: 2, colSpan: 2 },
+                    { rowIndex: 0, colIndex: 2, rowSpan: 1, colSpan: 1 },
+                    { rowIndex: 1, colIndex: 2, rowSpan: 1, colSpan: 1 },
+                    { rowIndex: 2, colIndex: 0, rowSpan: 1, colSpan: 1 },
+                    { rowIndex: 2, colIndex: 1, rowSpan: 1, colSpan: 1 },
+                    { rowIndex: 2, colIndex: 2, rowSpan: 1, colSpan: 1 }
+                ],
                 maximizedTileIndex: 0,
                 minimizedState: ':not(ul)'
             },
@@ -46,7 +38,7 @@ var activated = [false, false, false, false],
                 activate: function (event, ui) {
                     var index = ui.newTab.index();
                     if (!activated[index]) {
-                        ui.newPanel.igTileManager($.extend(true, {}, options));
+                        ui.newPanel.igTileManager(options);
                         activated[index] = true;
                     } else {
                         ui.newPanel.igTileManager('reflow');
@@ -58,7 +50,7 @@ var activated = [false, false, false, false],
             } else {
                 options = optionsPhone;
             }
-            $('#mercedes').igTileManager($.extend(true, {}, options));
+            $('#magarcedes').igTileManager(options);
             activated[0] = true;
         });
 });

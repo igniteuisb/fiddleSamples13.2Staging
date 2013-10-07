@@ -56,7 +56,7 @@ $(function () {
                     transitionInDuration: 1500,
                     transitionInMode: transMode,
                     transitionInType: transType,
-                    transitionEasingFunction: transEasingFunc,
+                    transitionInEasingFunction: transEasingFunc,
                     displayType: seriesType
                 }]);
             } else {
@@ -75,7 +75,7 @@ $(function () {
                     transitionInDuration: 1500,
                     transitionInMode: transMode,
                     transitionInType: transType,
-                    transitionEasingFunction: transEasingFunc
+                    transitionInEasingFunction: transEasingFunc
                 }]);
             }
         };

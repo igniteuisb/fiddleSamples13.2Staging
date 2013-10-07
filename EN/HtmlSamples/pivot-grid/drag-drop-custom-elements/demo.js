@@ -25,23 +25,23 @@ $.support.cors = true;
                             {
                                 caption: "Location", name: "Location", hierarchies: [{
                                     caption: "Location", name: "Location", levels: [
-                                             { name: "AllLocations", levelCaption: "All Locations", memberProvider: function (item) { return "All Locations"; } },
-                                             { name: "Country", levelCaption: "Country", memberProvider: function (item) { return item.Country; } },
-                                             { name: "City", levelCaption: "City", memberProvider: function (item) { return item.City; } }]
+                                        { name: "AllLocations", levelCaption: "All Locations", memberProvider: function (item) { return "All Locations"; } },
+                                        { name: "Country", levelCaption: "Country", memberProvider: function (item) { return item.Country; } },
+                                        { name: "City", levelCaption: "City", memberProvider: function (item) { return item.City; } }]
                                 }]
                             },
                             {
                                 caption: "Product", name: "Product", hierarchies: [{
                                     caption: "Product", name: "Product", levels: [
-                                    { name: "AllProducts", levelCaption: "All Products", memberProvider: function (item) { return "All Products"; } },
-                                    { name: "ProductCategory", levelCaption: "Category", memberProvider: function (item) { return item.ProductCategory; } }]
+                                        { name: "AllProducts", levelCaption: "All Products", memberProvider: function (item) { return "All Products"; } },
+                                        { name: "ProductCategory", levelCaption: "Category", memberProvider: function (item) { return item.ProductCategory; } }]
                                 }]
                             },
                             {
                                 caption: "Seller", name: "Seller", hierarchies: [{
                                     caption: "Seller", name: "Seller", levels: [
-                                     { name: "AllSellers", levelCaption: "All Sellers", memberProvider: function (item) { return "All Sellers"; } },
-                                     { name: "SellerName", levelCaption: "Seller", memberProvider: function (item) { return item.SellerName; } }]
+                                        { name: "AllSellers", levelCaption: "All Sellers", memberProvider: function (item) { return "All Sellers"; } },
+                                        { name: "SellerName", levelCaption: "Seller", memberProvider: function (item) { return item.SellerName; } }]
                                 }]
                             }
                         ]
@@ -63,21 +63,15 @@ $.support.cors = true;
                 width: "660px"
             });
 
-            $("#customDraggables > li").draggable({
+            $(".custom-draggable").draggable({
                 // You must set this option in a similar manner, because the pointer is used when 
                 // calculating the drop position and its top should not be blocked by the dragged element
                 cursorAt: {
                     top: -10,
                     left: 10
                 },
-                cursor: 'pointer',
-                revert: true,
-                revertDuration: 0,
-                stop: function (evt, ui) {
-                    var $this = $(this);
-                    $this.hide();
-                    $this.fadeIn(500);
-                }
+                helper: "clone",
+                cursor: 'pointer'
             });
         });
 });

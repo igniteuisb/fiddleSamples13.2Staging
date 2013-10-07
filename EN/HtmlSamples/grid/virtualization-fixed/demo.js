@@ -4,7 +4,9 @@ $(function () {
                 renderCheckboxes: true,
                 width: "100%",
                 height: "500px",
+                virtualization: true,
                 virtualizationMode: "fixed",
+                avgRowHeight: "30px",
                 columns: [
                     { headerText: "Product ID", key: "ProductID", dataType: "number", width: "15%" },
                     { headerText: "Product Name", key: "Name", dataType: "string", width: "40%" },

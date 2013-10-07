@@ -7,17 +7,6 @@
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/structure/infragistics.css" rel="stylesheet"></link>
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/structure/modules/infragistics.ui.chart.new.css" rel="stylesheet"></link>
 
-<script id="tooltipTemplate1" type="text/x-jquery-tmpl">
-        <div>
-            <span>${item.Pop2005}</span>
-        </div>
-    </script>
-<script id="tooltipTemplate2" type="text/x-jquery-tmpl">
-        <div>
-            <span>${item.Pop1995}</span>
-        </div>
-    </script>
-
 <div id="chart"></div>
     <br/>
     
@@ -28,16 +17,15 @@
 
             <div class="optionContainer">
                 Transition Duration
-                <br />
                 <div id="transitionDurationSlider" class="sliderBounds"></div>
-                <label id="transitionDurationLabel">500</label>
+                <label id="transitionDurationLabel">0</label>
             </div>
             
             <div class="optionContainer">
-                <input type="checkbox" checked="checked" id="useInterpolationCheckBox"></input>Use Interpolation<br />
+                <input type="checkbox" checked="checked" id="useInterpolationCheckBox"></input>Use Interpolation
             </div>
             
-            <div class="selectionOptions">
+            <div class="optionContainer">
                 Tooltip Position:
                 <select id="tooltipPos">
                     <option value="auto" selected="selected">auto</option>

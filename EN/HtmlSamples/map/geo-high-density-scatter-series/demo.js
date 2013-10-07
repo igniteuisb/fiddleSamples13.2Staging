@@ -1,6 +1,7 @@
 $(function () {
             $("#map").igMap({
                 width: "700px",
+                height: "500px",
                 verticalZoomable: true,
                 horizontalZoomable: true,
                 backgroundContent: {
@@ -12,15 +13,14 @@ $(function () {
                     dataSource: placeData,
                     latitudeMemberPath: "lat",
                     longitudeMemberPath: "lon",
+                    heatMinimum: 0,
+                    heatMaximum: 5,
+                    heatMinimumColor: "black",
+                    heatMaximumColor: "orange",
                     mouseOverEnabled: true,
                     showTooltip: true,
-                    tooltipTemplate: "cityTemplate",
-                    progressiveLoad: true,
-                    progressiveLoadStatusChanged: function (evt, ui) {
-                        alert("here");
-                    }
+                    tooltipTemplate: "cityTemplate"
                 }],
-                windowResponse: "immediate",
                 windowRect: {
                     left: 0.7,
                     top: 0.52,
@@ -43,33 +43,22 @@ $(function () {
         // Minimum Heat Value
         $("#minimumHeatValueSlider").slider({
             min: 0,
-            max: 100,
+            max: 5,
             value: 0,
             slide: function (event, ui) {
-                $("#map").igMap("option", "series", [{ name: "australiaMap", minimumHeat: ui.value}]);
+                $("#map").igMap("option", "series", [{ name: "australiaMap", heatMinimum: ui.value }]);
                 $("#minimumHeatValueLabel").text(ui.value);
             }
         });
 
         // Maximum Heat Value
         $("#maximumHeatValueSlider").slider({
-            min: 0,
-            max: 100,
-            value: 50,
+            min: 5,
+            max: 10,
+            value: 10,
             slide: function (event, ui) {
-                $("#map").igMap("option", "series", [{ name: "australiaMap", maximumHeat: ui.value}]);
+                $("#map").igMap("option", "series", [{ name: "australiaMap", heatMaximum: ui.value }]);
                 $("#maximumHeatValueLabel").text(ui.value);
-            }
-        });
-
-        // Point Extent
-        $("#pointExtentSlider").slider({
-            min: 0,
-            max: 20,
-            value: 1,
-            slide: function (event, ui) {
-                $("#map").igMap("option", "series", [{ name: "australiaMap", pointExtent: ui.value}]);
-                $("#pointExtentLabel").text(ui.value);
             }
         });
 
@@ -77,7 +66,7 @@ $(function () {
         $("#minimumHeatColorDropDown").on({
             change: function (e) {
                 var minColor = $(this).val();
-                $("#map").igMap("option", "series", [{ name: "australiaMap", heatMinimumColor: minColor}]);
+                $("#map").igMap("option", "series", [{ name: "australiaMap", heatMinimumColor: minColor }]);
             }
         });
 
@@ -85,9 +74,20 @@ $(function () {
         $("#maximumHeatColorDropDown").on({
             change: function (e) {
                 var maxColor = $(this).val();
-                $("#map").igMap("option", "series", [{ name: "australiaMap", heatMaximumColor: maxColor}]);
+                $("#map").igMap("option", "series", [{ name: "australiaMap", heatMaximumColor: maxColor }]);
             }
         });
+        // Point Extent
+        $("#pointExtentSlider").slider({
+            min: 1,
+            max: 5,
+            value: 1,
+            slide: function (event, ui) {
+                $("#map").igMap("option", "series", [{ name: "australiaMap", pointExtent: ui.value}]);
+                $("#pointExtentLabel").text(ui.value);
+            }
+        });
+
 
         // Enable Mouse Over
         $("#enableMouseOverCheckBox").click(function (e) {
@@ -101,16 +101,4 @@ $(function () {
             $("#map").igMap("option", "series", [{ name: "australiaMap", useBruteForce: useBruteForceSeries }]);
         });
 
-        // Progress Bar 
-        $(function () { $("#seriesLoadingProgressBar").progressbar({ value: 37 }); });
-            
-        // Generate Data Button
-        $("#generateDataButton").click(function (e) {
-            $("#map").igMap("option", "series", [{ name: "australiaMap", dataSource: null }]);
-            $("#map").igMap("option", "series", [{ name: "australiaMap", dataSource: placeData }]);
-        });
-
-        // Zoom into Australia 
-        //var zoom = $("#map").igMap("getZoomFromGeographic", { top: (-45), left: (110), width: 50, height: 40 });
-        // $("#map").igMap("option", "windowRect", zoom);
         });

@@ -9,7 +9,7 @@ $(function () {
                     { headerText: "Product Number", key: "ProductNumber", dataType: "string", width: "30%" },
                     { headerText: "Make Flag", key: "MakeFlag", dataType: "bool", width: "15%" }
                 ],
-                dataSource: adventureWorks,
+                dataSource: adventureWorks.slice(0, 100),
                 features: [
                     {
                         name: "Resizing"

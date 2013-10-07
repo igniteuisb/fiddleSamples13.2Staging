@@ -36,7 +36,6 @@ $(function () {
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2005",
-                        isTransitionInEnabled: true,
                         isHighlightingEnabled: true,
                         thickness: 5
                     },
@@ -47,7 +46,6 @@ $(function () {
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995",
-                        isTransitionInEnabled: true,
                         isHighlightingEnabled: true,
                         thickness: 5
                     }
@@ -62,34 +60,104 @@ $(function () {
                     seriesType == "splineArea" ||
                     seriesType == "column" ||
                     seriesType == "waterfall" ||
-                    seriesType == "stepArea") {
+                    seriesType == "stepArea" ||
+                    seriesType == "rangeColumn" ||
+                    seriesType == "bar" ||
+                    seriesType == "rangeArea") {
                     thickness = 1;
                 }
 
                 $("#chart").igDataChart("option", "series", [{ name: "2005Population", remove: true }]);
                 $("#chart").igDataChart("option", "series", [{ name: "1995Population", remove: true }]);
-                $("#chart").igDataChart("option", "series", [{
-                    type: $(this).val(),
-                    name: "2005Population",
-                    title: "2005",
-                    xAxis: "NameAxis",
-                    yAxis: "PopulationAxis",
-                    valueMemberPath: "Pop2005",
-                    isTransitionInEnabled: true,
-                    isHighlightingEnabled: true,
-                    thickness: thickness
-                }]);
-                $("#chart").igDataChart("option", "series", [{
-                    type: $(this).val(),
-                    name: "1995Population",
-                    title: "1995",
-                    xAxis: "NameAxis",
-                    yAxis: "PopulationAxis",
-                    valueMemberPath: "Pop1995",
-                    isTransitionInEnabled: true,
-                    isHighlightingEnabled: true,
-                    thickness: thickness
-                }]);
+                $("#chart").igDataChart("option", "axes", [{ name: "PopulationAxis", remove: true }]);
+                $("#chart").igDataChart("option", "axes", [{ name: "NameAxis", remove: true }]);
+
+                if (seriesType == "bar") {
+                    $("#chart").igDataChart("option", "axes", [{
+                        name: "NameAxis",
+                        type: "numericX"
+                    }]);
+                    $("#chart").igDataChart("option", "axes", [{
+                        name: "PopulationAxis",
+                        type: "categoryY",
+                        minimumValue: 0,
+                        label: "CountryName",
+                        title: "Millions of People"
+                    }]);
+
+                    $("#chart").igDataChart("option", "series", [{
+                        type: seriesType,
+                        name: "2005Population",
+                        title: "2005",
+                        xAxis: "NameAxis",
+                        yAxis: "PopulationAxis",
+                        valueMemberPath: "Pop2005",
+                        isTransitionInEnabled: true,
+                        isHighlightingEnabled: true,
+                        thickness: thickness
+                    }]);
+                    $("#chart").igDataChart("option", "series", [{
+                        type: seriesType,
+                        name: "1995Population",
+                        title: "1995",
+                        xAxis: "NameAxis",
+                        yAxis: "PopulationAxis",
+                        valueMemberPath: "Pop1995",
+                        isTransitionInEnabled: true,
+                        isHighlightingEnabled: true,
+                        thickness: thickness
+                    }]);
+                } else {
+                    $("#chart").igDataChart("option", "axes", [{
+                        name: "NameAxis",
+                        type: "categoryX",
+                        label: "CountryName"
+                    }]);
+                    $("#chart").igDataChart("option", "axes", [{
+                        name: "PopulationAxis",
+                        type: "numericY",
+                        minimumValue: 0,
+                        title: "Millions of People",
+                    }]);
+
+                    if (seriesType == "rangeColumn" || seriesType == "rangeArea") {
+                        $("#chart").igDataChart("option", "series", [{
+                            type: seriesType,
+                            name: "2005Population",
+                            title: "2005",
+                            highMemberPath: "Pop2005",
+                            lowMemberPath: "Pop1995",
+                            xAxis: "NameAxis",
+                            yAxis: "PopulationAxis",
+                            isTransitionInEnabled: true,
+                            isHighlightingEnabled: true,
+                            thickness: thickness,
+                        }]);
+                    } else {
+                        $("#chart").igDataChart("option", "series", [{
+                            type: $(this).val(),
+                            name: "2005Population",
+                            title: "2005",
+                            xAxis: "NameAxis",
+                            yAxis: "PopulationAxis",
+                            valueMemberPath: "Pop2005",
+                            isTransitionInEnabled: true,
+                            isHighlightingEnabled: true,
+                            thickness: thickness
+                        }]);
+                        $("#chart").igDataChart("option", "series", [{
+                            type: $(this).val(),
+                            name: "1995Population",
+                            title: "1995",
+                            xAxis: "NameAxis",
+                            yAxis: "PopulationAxis",
+                            valueMemberPath: "Pop1995",
+                            isTransitionInEnabled: true,
+                            isHighlightingEnabled: true,
+                            thickness: thickness
+                        }]);
+                    }
+                }
             });
       
             

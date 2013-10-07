@@ -76,8 +76,10 @@ $(function () {
             });
             $(".btn-rmv-curr").click(function () {
                 var index = $("#combo1").igCombo("value");
-                globalIndex = getCurrentItemState(index).index;
-                data.splice(globalIndex, 1);
+                if (index !== null) {
+                	globalIndex = getCurrentItemState(index).index;
+                	data.splice(globalIndex, 1);
+                }
 
             });
             function moveItem(step, currentIndex) {

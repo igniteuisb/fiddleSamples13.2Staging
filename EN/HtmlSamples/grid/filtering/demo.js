@@ -10,24 +10,24 @@ $(function () {
                     { headerText: "Postal Code", key: "PostalCode", dataType: "number" }
                 ],
                 dataSource: northwind,
-                responseDataKey: 'results',
+                responseDataKey: "results",
                 features: [
                     {
-                        name: 'Responsive',
+                        name: "Responsive",
                         enableVerticalRendering: false,
                         columnSettings: [
                             {
-                                columnKey: 'EmployeeID',
-                                classes: 'hidden-phone'
+                                columnKey: "EmployeeID",
+                                classes: "ui-hidden-phone"
                             },
                             {
-                                columnKey: 'PostalCode',
-                                classes: 'hidden-phone'
-                            }                            
+                                columnKey: "PostalCode",
+                                classes: "ui-hidden-phone"
+                            }
                         ]
                     },
                     {
-                        name: 'Filtering',
+                        name: "Filtering",
                         type: "local",
                         mode: "advanced"
                     }

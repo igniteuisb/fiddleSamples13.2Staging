@@ -3,10 +3,10 @@ $(function () {
                 autoGenerateColumns: false,
                 width: "100%",
                 columns: [
-                    { headerText: "Product ID", key: "ProductID", dataType: "number", width: "15%" },
                     { headerText: "Product Name", key: "Name", dataType: "string", width: "40%" },
-                    { headerText: "Product Number", key: "ProductNumber", dataType: "string", width: "30%" },
-                    { headerText: "Make Flag", key: "MakeFlag", dataType: "bool", width: "15%" }
+                    { headerText: "Product Number", key: "ProductNumber", dataType: "string", width: "20%" },
+                    { headerText: "List Price", key: "ListPrice", dataType: "number", width: "20%" },
+                    { headerText: "Standard Cost", key: "StandardCost", dataType: "number", width: "20%" }
                 ],
                 dataSource: adventureWorks,
                 features: [

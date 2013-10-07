@@ -109,11 +109,11 @@ $(function () {
                     // then the dataType: "number" is required, otherwise, dataSource may misbehave
                     headerText: "Employee ID", key: "EmployeeID", dataType: "number"
                 }, {
-                    headerText: "First Name", key: "FirstName"
+                    headerText: "First Name", key: "FirstName", dataType: "string"
                 }, {
-                    headerText: "Last Name", key: "LastName"
+                    headerText: "Last Name", key: "LastName", dataType: "string"
                 }, {
-                    headerText: "Title", key: "Title"
+                    headerText: "Title", key: "Title", dataType: "string"
                 }, {
                     headerText: "Birth Date", key: "BirthDate", dataType: "date"
                 }, {
@@ -126,7 +126,7 @@ $(function () {
                 dataSourceType: "json",
                 responseDataKey: "results",
                 height: "500px",
-                width:"98%",
+                width:"100%",
                 tabIndex: 1,
                 features: [
                     {
@@ -135,15 +135,15 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'EmployeeID',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'PostalCode',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'BirthDate',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     },

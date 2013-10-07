@@ -13,7 +13,7 @@ $(function () {
                 }, {
                     name: "yAxis",
                     type: "numericY",
-                    title: "Gross Agricultural Production (Billions of USD)",
+                    title: "Billions of USD",
                     maximumValue: 200000,
 
                     formatLabel: function (val) {

@@ -1,13 +1,12 @@
 .demo-section {
-            width: 320px;           
+            width: 320px;
         }
 
         #bodyParts {
             position: relative;
-            width:320px;
-            height:470px;
+            width: 320px;
+            height: 470px;
             margin: 0 auto;
-            border:dotted;
             background: url('http://staging.igniteui.local/13-2/images/samples/popover/BodyParts.png') no-repeat 0 0;
         }
 

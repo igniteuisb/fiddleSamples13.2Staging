@@ -7,24 +7,12 @@ $(function () {
                         enableVerticalRendering: false,
                         columnSettings: [
                             {
-                                columnKey: 'EmployeeID',
-                                classes: 'hidden-phone'
+                                columnKey: 'Title',
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Address',
-                                classes: 'hidden-phone'
-                            },
-                            {
-                                columnKey: 'Region',
-                                classes: 'hidden-phone'
-                            },
-                            {
-                                columnKey: 'PostalCode',
-                                classes: 'hidden-phone'
-                            },
-                            {
-                                columnKey: 'HomePhone',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     },
@@ -37,9 +25,11 @@ $(function () {
                         showReadonlyEditors: false,
                         enableDeleteRow: true,
                         enableDataDirtyException: false,
-                        rowEditDialogRowTemplateID: "rowEditDialogRowTemplate1",
-                        rowEditDialogWidth: 600,
-                        rowEditDialogHeight: 400,
+                        rowEditDialogWidth: 350,
+                        rowEditDialogHeight: '400',
+                        rowEditDialogContentHeight: 300,
+                        rowEditDialogFieldWidth: 200,
+                        rowEditDialogOkCancelButtonWidth: 110,
                         columnSettings:
                             [{
                                 columnKey: "EmployeeID",
@@ -52,7 +42,7 @@ $(function () {
                     }
                 ],
                 width: "100%",
-                height: "90%",
+                autoCommit:true,
                 initialDataBindDepth: -1,
                 dataSource: northwind,
                 dataSourceType: "json",
@@ -60,17 +50,12 @@ $(function () {
                 autoGenerateColumns: false,
                 primaryKey: "EmployeeID",
                 columns: [
-                    { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "5%" },
+                    { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "15%" },
                     { key: "LastName", headerText: "Last Name", dataType: "string", width: "10%" },
                     { key: "FirstName", headerText: "First Name", dataType: "string", width: "10%" },
-                    { key: "Title", headerText: "Title", dataType: "string", width: "10%" },
-                    { headerText: "Address", key: "Address", dataType: "string", width: "15%" },
-                    { headerText: "City", key: "City", dataType: "string", width: "10%" },
-                    { headerText: "Postal Code", key: "PostalCode", dataType: "string", width: "10%", hidden: true },
-                    { headerText: "Region", key: "Region", dataType: "string", width: "10%", hidden: true },
-                    { headerText: "Country", key: "Country", dataType: "string", width: "10%", hidden: true },
-                    { headerText: "Home Phone", key: "HomePhone", dataType: "string", width: "10%", hidden: true },
-                    { headerText: "Extension", key: "Extension", dataType: "string", width: "10%", hidden: true }
+                    { key: "Title", headerText: "Title", dataType: "string", width: "20%" },
+                    { key: "Address", headerText: "Address", dataType: "string", width: "20%" },
+                    { key: "City", headerText: "City", dataType: "string", width: "10%" }
                 ],
                 childrenDataProperty: "Orders",
                 autoGenerateLayouts: false,               
@@ -82,7 +67,7 @@ $(function () {
                         autoGenerateColumns: false,
                         primaryKey: "OrderID",
                         columns: [
-                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "10%" },
+                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "10%", hidden: true },
                             { key: "CustomerID", headerText: "Customer ID", dataType: "string", width: "10%", hidden: true },
                             { key: "Freight", headerText: "Freight", dataType: "string", width: "15%" },
                             { key: "ShipName", headerText: "Ship Name", dataType: "string", width: "20%" },
@@ -96,12 +81,12 @@ $(function () {
                                 enableVerticalRendering: false,
                                 columnSettings: [
                                     {
-                                        columnKey: 'OrderID',
-                                        classes: 'hidden-phone'
+                                        columnKey: 'ShipAddress',
+                                        classes: 'ui-hidden-phone'
                                     },
                                     {
                                         columnKey: 'ShipName',
-                                        classes: 'hidden-phone'
+                                        classes: 'ui-hidden-phone'
                                     }
                                 ]
                             },
@@ -111,15 +96,17 @@ $(function () {
                             },
                             {
                                 name: "Updating",
-                                enableAddRow: true,
+                                enableAddRow: false,
                                 rowEditDialogContainment: "owner",
                                 editMode: "rowedittemplate",
                                 showReadonlyEditors: false,
                                 enableDeleteRow: true,
                                 enableDataDirtyException: false,
-                                rowEditDialogRowTemplateID: "rowEditDialogRowTemplate1",
-                                rowEditDialogWidth: 600,
-                                rowEditDialogHeight: 400,
+                                rowEditDialogWidth: 350,
+                                rowEditDialogHeight: '400',
+                                rowEditDialogContentHeight: 300,
+                                rowEditDialogFieldWidth: 200,
+                                rowEditDialogOkCancelButtonWidth: 110,
                                 columnSettings:
                                 [
                                     {

@@ -1,6 +1,13 @@
 body { font-family: Arial; }
         label { display: inline-block; }
 
+        .order-container {
+            position: relative;
+            width: 450px;
+            margin-left: -225px;
+            left: 50%;
+        }
+
         .row { margin: 2px 0px 2px 0px; }
         .heading-row
         {
@@ -13,8 +20,22 @@ body { font-family: Arial; }
             width: 200px;
             margin: 0px 5px 0px 5px;
         }
-         .date-row-control 
-        {
-            width: 200px;
-            margin: 10px 0px 0px 15px;
+
+        .ui-igedit {
+                margin: 0px 5px 0px 5px;
+        }
+
+        @media all and (max-width: 520px) {
+            .ui-datepicker {
+                width: 250px;
+            }
+
+            .order-container {
+                width: 280px;
+                margin-left: -140px;
+            }
+
+            .ui-igedit {
+                margin-bottom: 5px;
+            }
         }

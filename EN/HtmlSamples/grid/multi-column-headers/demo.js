@@ -46,23 +46,23 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'CustomerID',
-                                classes: 'hidden-phone hidden-tablet'
+                                classes: 'ui-hidden-phone ui-hidden-tablet'
                             },
                             {
                                 columnKey: 'ContactTitle',
-                                classes: 'hidden-phone hidden-tablet'
+                                classes: 'ui-hidden-phone ui-hidden-tablet'
                             },
                             {
                                 columnKey: 'PostalCode',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Phone',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Fax',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     },

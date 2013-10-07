@@ -6,31 +6,35 @@
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/structure/infragistics.css" rel="stylesheet"></link>
 
-<div class="group-container">
-        <span class="group-title">Individual Data Sources</span>
-        <div class="label-container">
-            <span>Country</span>
-            <span id="state">State</span>
-            <span id="district">District</span>
-            <span>Town</span>
-        </div>
-        <div class="clear-floating"></div>
-        <div>
-            <span id="comboCountry"></span>
-            <span id="comboDistrict"></span>
-            <span id="comboTown"></span>
+<div class="group-container overHidden">
+        <div class="group-title">Individual Data Sources</div>
+        <div class="overHidden">
+            <div class="comboGroup">
+                <div>Country</div>
+                <span id="comboCountry"></span>
+            </div>
+            <div class="comboGroup">
+                <div id="state">State</div>
+                <div id="district">District</div>
+                <span id="comboDistrict"></span>
+            </div>
+            <div class="comboGroup">
+                <div>Town</div>
+                <span id="comboTown"></span>
+            </div>
         </div>
     </div>
-    <div class="group-container">
-        <span class="group-title">Cascading Data Sources</span>
-        <div class="label-container">
-            <span>Country</span>
-            <span id="stateCascading">State</span>
-            <span id="districtCascading">District</span>
-        </div>
-        <div class="clear-floating"></div>
-        <div>
-            <span id="comboCountryCascading"></span>
-            <span id="comboDistrictCascading"></span>
+    <div class="group-container overHidden">
+        <div class="group-title">Cascading Data Sources</div>
+        <div class="overHidden">
+            <div class="comboGroup">
+                <div>Country</div>
+                <span id="comboCountryCascading"></span>
+            </div>
+            <div class="comboGroup">
+                <div id="stateCascading">State</div>
+                <div id="districtCascading">District</div>
+                <span id="comboDistrictCascading"></span>
+            </div>
         </div>
     </div>

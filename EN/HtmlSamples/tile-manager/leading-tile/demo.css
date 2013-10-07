@@ -107,3 +107,21 @@ body {
             width: 100%;
             background-color: #44acd6;
         }
+
+        h1.hOne {
+            margin: 0;
+            clear: none;
+            float: none;
+            font-size: 2em;
+        }
+
+        @media all and (max-width: 430px) {
+            .ui-tabs-nav li {
+                font-size: 16px;
+            }
+
+            .sample-page #sample {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }

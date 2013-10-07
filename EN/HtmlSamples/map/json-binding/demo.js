@@ -14,18 +14,31 @@ $(function () {
                     { Name: "Shanghai", Country: "China", Latitude: 31.2244, Longitude: 121.4759 },
                     { Name: "Mexico City", Country: "Mexico", Latitude: 19.4270, Longitude: -99.1276 },
                     { Name: "New York", Country: "United States", Latitude: 40.7561, Longitude: -73.9870 },
-                    { Name: "Sao Paulo", Country: "Brasil", Latitude: -23.5489, Longitude: -46.6388 },
+                    { Name: "Sao Paulo", Country: "Brazil", Latitude: -23.5489, Longitude: -46.6388 },
                     { Name: "Los Angeles", Country: "United States", Latitude: 34.0522, Longitude: -118.2434 },
                     { Name: "Sofia", Country: "Bulgaria", Latitude: 42.697845, Longitude: 23.321925 }
             ];
 
             $("#map").igMap({
+                width: "700px",
+                height: "500px",
+                windowRect: { left: 0.225, top: 0.1, height: 0.6, width: 0.6 },
+                verticalZoomable: true,
+                horizontalZoomable: true,
                 series: [{
                     type: "geographicSymbol",
                     name: "worldCities",
+                    verticalZoomable: true,
+                    horizontalZoomable: true,
                     dataSource: data, //JSON Array defined above     
                     latitudeMemberPath: "Latitude",
-                    longitudeMemberPath: "Longitude"
-                }]
+                    longitudeMemberPath: "Longitude",
+                    markerOutline: "#28b51c",
+                    markerBrush: "#28b51c",
+                    showTooltip: true,
+                    tooltipTemplate: "tooltipTemplate"
+
+                }],
+                
             });
         });

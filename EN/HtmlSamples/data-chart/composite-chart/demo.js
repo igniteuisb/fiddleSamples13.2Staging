@@ -22,14 +22,14 @@ $(function () {
                     minimumValue: 0,
                     maximumValue: 100,
                     strokeThickness: 5,
-                    title: "Energy Produced (Quadrillion Btu)"
+                    title: "Quadrillion Btu"
                 }, {
                     type: "numericY",
                     name: "totalPower",
                     minimumValue: 50,
                     maximumValue: 250,
                     labelLocation: "outsideRight",
-                    title: "Total Energy Produced (Quadrillion Btu)",
+                    title: "Quadrillion Btu",
                 }],
                 series: [{
                     type: "column",

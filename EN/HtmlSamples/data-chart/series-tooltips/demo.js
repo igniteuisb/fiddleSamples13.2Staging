@@ -14,7 +14,7 @@ $(function () {
                 }, {
                     name: "Volume",
                     type: "numericY",
-                    title: "Energy Produced (Quadrillion Btu)"
+                    title: "Quadrillion Btu"
                 }],
                 series: [{
                     // showTooltip: true enables the default tooltips

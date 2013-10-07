@@ -11,8 +11,8 @@ var data = [
             $("#grid").igGrid({
                 //width: 400,
                 columns: [
-                    { headerText: "Month", key: "month", dataType: "string", width: 150 },
-                    { headerText: "Value", key: "value", dataType: "number", width: 90 },
+                    { headerText: "Month", key: "month", dataType: "string", width: 100 },
+                    { headerText: "Value (TWh)", key: "value", dataType: "number", width: 120 },
                     { headerText: "Graph", key: "graph", width: 470 }
                 ],
                 rowTemplate: "<tr><td>${month}</td><td>${value}</td><td><div class='bullet-graph'></div></td></tr>",
@@ -39,6 +39,10 @@ var data = [
                                     endValue: el.end
                                 };
                             }),
+                            formatLabel: function (evt, ui) {
+                                ui.label += "TWh";
+                            },
+                            scaleEndExtent: 0.9,
                             transitionDuration: 1200
                         });
                     });

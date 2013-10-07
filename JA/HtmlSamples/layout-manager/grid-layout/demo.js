@@ -6,21 +6,17 @@ $(document).ready(function () {
                 if (args.itemData.colSpan == 2 && args.itemData.rowSpan == 2) {
                     args.item.css("background-color", "#eee");
                     args.item.css("color", "#555");
-                    args.item.css("font-size", "20px");
                 } else if (args.itemData.rowSpan == 1 && args.itemData.colSpan == 1) {
                     if (args.itemData.rowIndex == 0) {
                         args.item.css("background-color", "#2CBDF9");
                         args.item.css("color", "#FFF");
-                        args.item.css("font-size", "20px");
                     } else {
                         args.item.css("background-color", "#FFA72D");
                         args.item.css("color", "#FFF");
-                        args.item.css("font-size", "20px");
                     }
                 } else {
                     args.item.css("background-color", "#2CBDF9");
                     args.item.css("color", "#FFF");
-                    args.item.css("font-size", "20px");
                 }
             });
             $('#layout').igLayoutManager({

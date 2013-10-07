@@ -9,7 +9,7 @@ $(function () {
 
         function createDefaultSelectorsGrid() {
             $("#defaultRowSelectors").igGrid({
-                width: "98%",
+                width: "100%",
                 autoGenerateColumns: false,
                 dataSource: northwindEmployees,
                 responseDataKey: "results",
@@ -27,7 +27,7 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'ID',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     },
@@ -45,7 +45,7 @@ $(function () {
 
         function createCboxSelectorsGrid() {
             $("#cbRowSelectors").igGrid({
-                width: "98%",
+                width: "100%",
                 autoGenerateColumns: false,
                 dataSource: northwindEmployees,
                 responseDataKey: "results",
@@ -63,7 +63,7 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'ID',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     },
@@ -82,7 +82,7 @@ $(function () {
 
         function createRowNumberingGrid() {
             $("#rowNumbering").igGrid({
-                width: "98%",
+                width: "100%",
                 autoGenerateColumns: false,
                 dataSource: northwindEmployees,
                 responseDataKey: "results",
@@ -100,7 +100,7 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'ID',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     },

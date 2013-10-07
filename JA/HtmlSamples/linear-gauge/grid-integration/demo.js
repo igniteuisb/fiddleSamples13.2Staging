@@ -1,47 +1,41 @@
 $(function () {
-var data = [
-            { month: "1 月", min: 0, max: 750, value: 555, target: 550, ranges: [{ start: 0, end: 500 }, { start: 500, end: 640 }, { start: 640, end: 750 }] },
-            { month: "2 月", min: 0, max: 750, value: 670, target: 620, ranges: [{ start: 0, end: 333 }, { start: 333, end: 567 }, { start: 567, end: 750 }] },
-            { month: "3 月", min: 0, max: 750, value: 670, target: 700, ranges: [{ start: 0, end: 320 }, { start: 320, end: 567 }, { start: 567, end: 750 }] },
-            { month: "4 月", min: 0, max: 750, value: 610, target: 666, ranges: [{ start: 0, end: 320 }, { start: 320, end: 567 }, { start: 567, end: 750 }] }
-        ];
-
-        $(function () {
 
             $("#grid").igGrid({
-                //width: 400,
+                height: 500,
                 columns: [
-                    { headerText: "月", key: "month", dataType: "string", width: 150 },
-                    { headerText: "値", key: "value", dataType: "number", width: 90 },
-                    { headerText: "グラフ", key: "graph", width: 470 }
+                    { headerText: "時間", key: "Time", dataType: "string", width: 80 },
+                    { headerText: "風速 (mph)", key: "WindSpeed", dataType: "number", width: 160 },
+                    { headerText: "グラフ", key: "graph", width: 370 }
                 ],
-                rowTemplate: "<tr><td>${month}</td><td>${value}</td><td><div class='linear-gauge'></div></td></tr>",
+                rowTemplate: "<tr><td>${Time}</td><td>${WindSpeed}</td><td><div class='linear-gauge' ></div></td></tr>",
                 dataSource: data,
                 autoGenerateColumns: false,
                 rowsRendered: function (evt, ui) {
                     $(".linear-gauge").each(function (i) {
                         var item = data[i];
                         $(this).igLinearGauge({
-                            height: "80px",
-                            width: "450px",
+                            height: "80px", 
                             backingBrush: "transparent",
                             backingOutline: "transparent",
-                            minimumValue: item.min,
-                            maximumValue: item.max,
-                            targetValue: item.target,
-                            value: item.value,
+                            minimumValue: 0,
+                            maximumValue: 9,
+                            scaleEndExtent: 0.9,
+                            labelsPostInitial: 1, 
+                            value: item.WindSpeed,
                             needleBrush: "white",
-                            needleOutline: "#2582a9",
-                            interval: 150,
-                            minorTickCount: 4,
-                            ranges: $.map(item.ranges, function (el, index) {
-                                return {
-                                    name: item.month + index,
-                                    startValue: el.start,
-                                    endValue: el.end
-                                };
-                            }),
-                            transitionDuration: 1200
+                            needleOutline: "#2582a9",  
+                            ranges: [
+                                { name: "calm", startValue: 0, endValue: 1 },
+                                { name: "lightAir", startValue: 1, endValue: 4 },
+                                { name: "lightBreeze", startValue: 4, endValue: 7 },
+                                { name: "gentleBreeze", startValue: 7, endValue: 9, brush: "gray" }
+                            ],
+                            transitionDuration: 1200, 
+                            labelInterval: 2,
+                            interval: 1,
+                            formatLabel: function (evt, ui) {
+                                ui.label += "(mph)";
+                            },
                         });
                     });
                 },
@@ -55,13 +49,13 @@ var data = [
                         enableDataDirtyException: false,
                         columnSettings: [
                             {
-                                columnKey: "value",
+                                columnKey: "WindSpeed",
                                 editorType: "numeric",
                                 validation: true,
-                                editorOptions: { minValue: 0, maxValue: 750, required: true }
+                                editorOptions: { minValue: 0, maxValue: 10, required: true }
                             },
                             {
-                                columnKey: "month",
+                                columnKey: "Time",
                                 readOnly: true
                             },
                             {
@@ -70,10 +64,10 @@ var data = [
                             }
                         ],
                         editCellEnded: function (evt, ui) {
-                            $(".linear-gauge").eq(ui.rowID).igBulletGraph("option", "value", ui.value);
+                            $(".linear-gauge").eq(ui.rowID).igLinearGauge("option", "value", ui.value);
                         }
+
                     }],
-                caption: "エネルギー源"
+                caption: "NOAA からの生データ。ロサンゼルス観測所からの風情報 (2013/07/16)。"
             });
         });
-});

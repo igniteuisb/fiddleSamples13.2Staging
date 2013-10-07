@@ -31,7 +31,7 @@ var itemsModel, db = nwCustomersWithOrders;
                 else {
                     self.selectedItemID(0);
                 }
-            };           
+            };
         }
         
         $(function () {

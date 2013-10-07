@@ -1,12 +1,10 @@
 $(function () {
             $("#map").igMap({
                 width: "700px",
-                crosshairVisibility: "visible",
+                height: "500px",
+                windowRect: { left: 0.1, top: 0.1, height: 0.7, width: 0.7 },
                 verticalZoomable: true,
                 horizontalZoomable: true,
-                overviewPlusDetailPaneVisibility: "visible",
-                overviewPlusDetailPaneBackgroundImageUri: "http://jp.staging.igniteui.local/13-2/images/samples/maps/world.png",
-                panModifier: "control",
                 backgroundContent: {
                     type: "openStreet"
                 },
@@ -18,17 +16,11 @@ $(function () {
                     longitudeMemberPath: "Longitude",
                     markerType: "automatic",
                     markerCollisionAvoidance: "fade",
-                    markerBrush: "#1B559D",
-                    markerOutline: "black",
+                    markerOutline: "#1142a6",
+                    markerBrush: "#7197e5",
                     showTooltip: true,
-                    tooltipTemplate: "cityTemplate"
+                    tooltipTemplate: "customTooltip"
                 }],
-                windowResponse: "immediate",
-                windowRect: {
-                    left: 0.27,
-                    top: 0.20,
-                    height: 0.45,
-                    width: 0.45
-                }
+                
             });
         });

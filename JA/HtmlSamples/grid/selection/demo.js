@@ -5,7 +5,7 @@ $(function () {
 
         function createCellSelectionGrid() {
             $("#cellSelectionGrid").igGrid({
-                width: "98%",
+                width: "100%",
                 autoGenerateColumns: false,
                 dataSource: northwindEmployees,
                 responseDataKey: "results",
@@ -23,7 +23,7 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'ID',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     },
@@ -40,7 +40,7 @@ $(function () {
 
         function createRowSelectionGrid() {
             $("#rowSelectionGrid").igGrid({
-                width: "98%",
+                width: "100%",
                 autoGenerateColumns: false,
                 dataSource: northwindEmployees,
                 responseDataKey: "results",
@@ -58,7 +58,7 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'ID',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     },

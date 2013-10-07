@@ -1,11 +1,9 @@
-#chart
-        {
-            position: relative;
-            float: left;
-            margin-right: 10px;
-        }
-        
-        .selectionOptions
+.selectionOptions
         {
             margin-bottom: 10px;   
+        }
+
+        td { vertical-align: top; }
+        .chartElement {
+            padding-bottom: 20px;
         }

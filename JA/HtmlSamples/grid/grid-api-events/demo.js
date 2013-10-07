@@ -111,11 +111,11 @@ $(function () {
                     // then the dataType: "number" is required, otherwise, dataSource may misbehave
                     headerText: "従業員 ID", key: "EmployeeID", dataType: "number"
                 }, {
-                    headerText: "名前", key: "FirstName"
+                    headerText: "名前", key: "FirstName", dataType: "string"
                 }, {
-                    headerText: "名字", key: "LastName"
+                    headerText: "名字", key: "LastName", dataType: "string"
                 }, {
-                    headerText: "役職", key: "Title"
+                    headerText: "役職", key: "Title", dataType: "string"
                 }, {
                     headerText: "生年月日", key: "BirthDate", dataType: "date"
                 }, {
@@ -128,7 +128,7 @@ $(function () {
                 dataSourceType: "json",
                 responseDataKey: "results",
                 height: "500px",
-                width: "98%",
+                width: "100%",
                 tabIndex: 1,
                 features: [
                     {
@@ -137,15 +137,15 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'EmployeeID',
-                                classes: 'hidden-tablet hidden-phone'
+                                classes: 'ui-hidden-tablet ui-hidden-phone'
                             },
                             {
                                 columnKey: 'PostalCode',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'BirthDate',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     },

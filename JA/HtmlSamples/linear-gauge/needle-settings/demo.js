@@ -32,7 +32,10 @@ $(function () {
                 needleShape:"rectangle",
                 needleBrush:"orange",
                 needleOutline:"#803e01",
-                needleStrokeThickness:2, 
+                needleStrokeThickness: 2,
+                formatLabel: function (evt, ui) {
+                    ui.label += "K";
+                }
             });
 
             var $linearGauge2 = $("#lineargauge2");
@@ -67,7 +70,10 @@ $(function () {
                 needleShape: "trapezoid",
                 needleBrush: "#fff7a3",
                 needleOutline:"#566509",
-                needleStrokeThickness:2                
+                needleStrokeThickness: 2,
+                formatLabel: function (evt, ui) {
+                    ui.label += "K";
+                }
             });
 
 
@@ -103,7 +109,10 @@ $(function () {
                 needleShape:"triangle",
                 needleBrush:"#fff7a3",
                 needleOutline:"#566509",
-                needleStrokeThickness:2
+                needleStrokeThickness: 2,
+                formatLabel: function (evt, ui) {
+                    ui.label += "K";
+                }
             });
 
 

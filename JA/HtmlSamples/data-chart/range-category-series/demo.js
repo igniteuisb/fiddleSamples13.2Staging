@@ -9,8 +9,7 @@ $(function () {
                     axes: [{
                         name: "xAxis",
                         type: "categoryX",
-                        label: "Time",
-                        title: "時間"
+                        label: "Time"
                     },
                     {
                         name: "yAxis",
@@ -19,7 +18,7 @@ $(function () {
                     }],
                     series: [{
                         name: "series1",
-                        title: "$$(Chart_lbl_testSeries)",
+                        title: "テスト系列",
                         type: seriesType,
                         isHighlightingEnabled: true,
                         isTransitionInEnabled: true,

@@ -50,7 +50,7 @@ $(function () {
 
             $("#grid10").igGrid({
                 primaryKey: "ProductID",
-                width: '98%',
+                width: '100%',
                 height: '700px',
                 autoGenerateColumns: false,
                 autoCommit: true,
@@ -81,7 +81,7 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'ProductID',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             }
                         ]
                     },

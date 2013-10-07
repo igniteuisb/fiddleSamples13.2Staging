@@ -57,6 +57,7 @@ $(function () {
                 //     labelInterval: 150,
                 value: 555,
                 valueBrush: 'white',
+                valueOutline: 'white',
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "K";
                 },
@@ -84,28 +85,29 @@ $(function () {
                     {
                         name: 'range1',
                         startValue: 0,
-                        endValue: 500,
+                        endValue: 333,
                         brush: '#DF8929'
                     },
                     {
                         name: 'range2',
-                        startValue: 500,
-                        endValue: 640,
+                        startValue: 333,
+                        endValue: 567,
                         brush: '#BF6716'
                     },
                     {
                         name: 'range3',
-                        startValue: 640,
+                        startValue: 567,
                         endValue: 750
                     }
                 ],
                 maximumValue: 750,
-                targetValue: 550,
+                targetValue: 620,
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',
                 labelInterval: 150,
-                value: 555,
+                value: 670,
                 valueBrush: 'white',
+                valueOutline: 'white',
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "K";
                 },
@@ -158,12 +160,13 @@ $(function () {
                     }
                 ],
                 maximumValue: 750,
-                targetValue: 620,
+                targetValue: 700,
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',
                 labelInterval: 100,
-                value: 650,
+                value: 670,
                 valueBrush: 'white',
+                valueOutline: 'white',
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "K";
                 },

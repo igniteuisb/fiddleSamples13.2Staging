@@ -10,16 +10,16 @@ var customerOrdersModel, modifiedDataSource = {}, Records = [], db = northwind.r
                 currentItem["LastName"] = db[i].LastName;
                 currentItem["City"] = db[i].City;
                 currentItem["Country"] = db[i].Country;
-                var orders = db[i].Orders;
-                for (var j = 0; j < orders.length; j++) {
-                    orders[j].OrderDate = normalizeDate(orders.results[j].OrderDate);
+                var orders = db[i].Orders.results.splice(0,10);
+                for (var j = 0; j < 10; j++) {
+                    orders[j].RecordsOrderDate = normalizeDate( orders[j].OrderDate );
                 }
                 currentItem["Orders"] = orders;
                 Records.push(currentItem);
             }
 
             modifiedDataSource["Records"] = Records;
-            customerOrdersModel = ko.mapping.fromJS(modifiedDataSource);
+            customerOrdersModel = ko.mapping.fromJS( modifiedDataSource );
             ko.applyBindings(customerOrdersModel);
         });
 

@@ -18,7 +18,8 @@ $(function () {
                     {
                         name: '良い',
                         startValue: 80,
-                        endValue: 100
+                        endValue: 100,
+                        brush: "darkgray"
                     }
                 ],
                 formatLabel: function (evt, ui) {
@@ -55,7 +56,8 @@ $(function () {
                      {
                          name: '良い',
                          startValue: 80,
-                         endValue: 100
+                         endValue: 100,
+                         brush: "darkgray"
                      }
                 ],
                 formatLabel: function (evt, ui) {
@@ -92,7 +94,8 @@ $(function () {
                     {
                         name: '良い',
                         startValue: 80,
-                        endValue: 100
+                        endValue: 100,
+                        brush:"darkgray"
                     }
                 ],
                 formatLabel: function (evt, ui) {
@@ -139,6 +142,7 @@ $(function () {
                     ui.label = ui.value + "%";
                 }, 
                 valueBrush: 'white',
+                valueOutline: 'white',
                 value: 83,
                 targetValueBrush: 'white',
                 targetValueOutline: 'white',

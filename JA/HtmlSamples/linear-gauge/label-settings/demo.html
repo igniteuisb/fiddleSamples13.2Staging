@@ -8,26 +8,48 @@
 <link href="http://jp.staging.igniteui.local/13-2/css/apiviewer.css" rel="stylesheet" type="text/css"></link>
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/i18n/infragistics-ja.js"></script>
 
-<div id="lineargauge" style="width: 90%;"></div>
-    
-    <br />
+<h3 style="color:red">体温</h3>
 
-    <div style="width: 90%; position:relative; height:100px ">
+    <div style="width: 90%; position:relative; height: 100px">   
+        <div style="position:absolute; width: 100%; height: 60px">     
+            <div id="lineargauge" style="margin-left:40px"></div>
+        </div>
+        <div style="position:absolute; margin-top:35px; margin-left:15px">F&deg;</div>
+    </div> 
+
+    <div style="color:red">
+        体温が通常範囲より高い場合は熱があります。標準体温は 98.6 F (37 C) ですが、個人差があります。103 F (39.4 C) ～ 106 F (41.1 C) は高温の範囲です。すみやかに医療機関へご相談ください。
+    </div>
+    
+    <div style="width: 90%; position:relative; height:200px">    
         <div style="position:absolute; width: 100%; height: 100px">
-            <div id="lineargaugef" style="margin-left:40px; background: linear-gradient(to right, #345F9C 60%, #37B0E4)"></div>
+            <div id="lineargaugeLabelsOnly" style="margin-left:40px; margin-top:20px; height: 60px"></div>
+        </div>
+            
+        <div style="position:absolute;   width: 100%; height: 60px">
+            <div id="lineargaugeBase" style="margin-left:40px; margin-top:20px; height: 60px"></div>
+        </div>
+       
+        <div style="position:absolute;margin-top:100px">C&deg;</div>
+    </div>
+    
+
+    <h3 style="color:#345F9C">
+        水温
+    </h3>
+    
+    <div style="width: 90%; position:relative; height:120px">
+        <div style="position:absolute">C&deg;</div>
+        <div style="position:absolute; width: 100%; height: 100px">
+            <div id="lineargaugef" style="margin-left:40px; background-color:#37B0E4; background-image: linear-gradient(to right, #345F9C 60%, #37B0E4)"></div>
         </div>
         
         <div style="position:absolute; width: 100%; height: 100px">
             <div id="lineargaugec" style="margin-left:40px"></div>
         </div>
+        <div style="position:absolute;margin-top:85px">F&deg;</div>
     </div>
-
-     <div style="width: 90%; position:relative; height:200px ">
-        <div style="position:absolute;   width: 100%; height: 60px">
-            <div id="lineargaugeBase" style="margin-left:40px; margin-top:20px; height: 60px"></div>
-        </div>
-        
-        <div style="position:absolute; width: 100%; height: 100px">
-            <div id="lineargaugeLabelsOnly" style="margin-left:40px; margin-top:20px; height: 60px"></div>
-        </div>
+    
+    <div style="color:#345F9C">
+        今年のニュー ジャージー沿岸の夏は、日差しは強いですが、水温は冷たくなります。西南の風が海辺から温水を押し出し、海の下から海岸に冷たい水が入ってきます。このプロセスは、「アップウェリング」と呼ばれています。水温は標準水温より約 15 F (8.4 C) 低くなります。2012/06/12 (木) の午後は、Atlantic City の Steel Pier の水温は 55 F (12.8 C) でした。この日付の平均水温は 69 F (20.6) です。
     </div>

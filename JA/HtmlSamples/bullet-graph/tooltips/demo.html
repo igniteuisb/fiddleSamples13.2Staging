@@ -39,9 +39,9 @@
     </script>
 <script id="targetValueToolTipTemplate1" type="text/x-jquery-tmpl">
         <div class='ui-bulletgraph-targetValue-tooltip' >
-            <font color='${itemBrush}'>
+            <!--<font color='${itemBrush}'>-->
                 ${item.value}%
-            </font>
+            <!--</font>-->
         </div>
     </script>
 <script id="rangeToolTipTemplateNew" type="text/x-jquery-tmpl">
@@ -54,10 +54,11 @@
 		</div>
     </script>
 <script id="valueToolTipTemplateNew" type="text/x-jquery-tmpl">
-        <div  style="background-color:white; border: 1px solid black; color:red; font-size:120%; padding:2px;">
-            タスク 3:32% <br />
-            タスク 2:35% <br />
-            タスク 1:21% <br />
+        <div  style="background-color:white; border: 1px solid black; color:red; font-size:120%; padding:3px;-moz-border-radius: 1em 4em 1em 4em;
+border-radius: 1em 4em 1em 4em;">
+            <div>タスク 3: 32%</div>
+            <div style="text-indent:10px">タスク 2: 35%</div>
+            <div style="text-indent:22px">タスク 1: 21%</div>
 		</div>
     </script>
 <script id="targetValueToolTipTemplateNew" type="text/x-jquery-tmpl">
@@ -91,5 +92,5 @@
                 <div style="width: 80%" id="bulletGraph_backLogItem"></div>
             </div>
         </div>
-        <div style="float:left">各バックログ項目には、 3 つのタスクおよびバックログ項目を完了するための全期間を構成するタスクの工数、それによってもたらされる品質や成果が含まれます。各タスクは xamBulletGraph で表示されます。タスクの進行状況を表示します。右の垂直方向ブレット グラフはチームの進行状況を表示します。</div>
+        <div style="float:left">各バックログ項目には、 3 つのタスクおよびバックログ項目を完了するための全期間を構成するタスクの工数、それによってもたらされる品質や成果が含まれます。各タスクは igBulletGraph で表示されます。タスクの進行状況を表示します。右の垂直方向ブレット グラフはチームの進行状況を表示します。</div>
     </div>

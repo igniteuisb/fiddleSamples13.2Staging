@@ -44,6 +44,7 @@ var currData, currDataSource, doGeneration, startTime = null;
 	        $("#chart").igDataChart({
 	            width: "100%",
 	            height: "500px",
+	            title: "ランダムに生成されたデータ",
 	            axes: [{
 	                name: "xAxis",
 	                type: "categoryX",
@@ -54,7 +55,7 @@ var currData, currDataSource, doGeneration, startTime = null;
                 }],
 	            series: [{
 	                name: "series1",
-	                title: "$$(Chart_lbl_testSeries)",
+	                title: "テスト系列",
 	                type: "line",
 	                xAxis: "xAxis",
 	                yAxis: "yAxis",

@@ -25,15 +25,15 @@
             </td>
         </tr>
         <tr>
-            <td>ラベルの拡張</td>
-            <td>
-                <div id="labelExtent" class="slider"></div>
-            </td>
-        </tr>
-        <tr>
             <td>分解半径</td>
             <td>
                 <div id="explodedRadius" class="slider"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>ラベルの拡張</td>
+            <td>
+                <div id="labelExtent" class="slider"></div>
             </td>
         </tr>
         <tr>
@@ -42,10 +42,22 @@
                 <div class="comboContainer">
                     <select id="labelPosition">
                         <option value="none">なし</option>
-                        <option value="center" selected="selected">中央</option>
+                        <option value="center">中央</option>
                         <option value="insideEnd">内部の終了位置</option>
-                        <option value="outsideEnd">外部の終了位置</option>
+                        <option value="outsideEnd" selected="selected">外部の終了位置</option>
                         <option value="bestFit">最適</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>引き出し線:</td>
+            <td>
+                <div class="comboContainer">
+                    <select id="leaderLine">
+                        <option value="straightLine">直線</option>
+                        <option value="simpleCurve" selected="selected">簡易曲線</option>
+                        <option value="radialCurve">ラジアル曲線</option>
                     </select>
                 </div>
             </td>

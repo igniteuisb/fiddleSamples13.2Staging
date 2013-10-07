@@ -32,13 +32,15 @@ $(function () {
                     {
                         name: "2005Population",
                         type: "column",
+                        isTransitionInEnabled: true,
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2005"
                     },
                     {
                         name: "1995Population",
-                        type: "line",
+                        type: "column",
+                        isTransitionInEnabled: true,
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995"
@@ -47,8 +49,12 @@ $(function () {
                         name: "catHighlightLayer",
                         title: "categoryHighlight",
                         type: "categoryHighlightLayer",
-                        useInterpolation: false,
-                        transitionDuration: 500
+                        useInterpolation: true,
+                        transitionDuration: 500,
+                        brush: "black",
+                        outline: "black",
+                        thickness: 1,
+                        opacity: 1
                     }]
             });
 
@@ -94,7 +100,7 @@ $(function () {
             // Transiton Duration Slider
             $("#transitionDurationSlider").slider({
                 min: 0,
-                max: 100,
+                max: 1000,
                 value: 500,
                 slide: function (event, ui) {
                     $("#chart").igDataChart("option", "series", [{ name: "catHighlightLayer", transitionDuration: ui.value }]);

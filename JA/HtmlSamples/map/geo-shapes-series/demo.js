@@ -1,31 +1,33 @@
 $(function () {
+             
+             mapHelper();
+             
             $("#map").igMap({
                 width: "700px",
                 height: "500px",
-                crosshairVisibility: "visible",
+                windowRect: { left: 0.1, top: 0.1, height: 0.7, width: 0.7 },
                 verticalZoomable: true,
                 horizontalZoomable: true,
                 overviewPlusDetailPaneVisibility: "visible",
                 overviewPlusDetailPaneBackgroundImageUri: "http://jp.staging.igniteui.local/13-2/images/samples/maps/world.png",
                 backgroundContent: {
-                    type: "openStreet"
+                    type: "bing",
+                    key: bingData,
+                    imagerySet: "AerialWithLabels",
                 },
                 series: [{
                     type: "geographicShape",
-                    name: "indianLands",
-                    markerType: "automatic",
+                    name: "worldCountries",
+                    markerType: "none",
                     shapeMemberPath: "points",
-                    shapeDataSource: 'http://jp.staging.igniteui.local/13-2/data-files/shapes/indlanp020.shp',
-                    databaseSource: 'http://jp.staging.igniteui.local/13-2/data-files/shapes/indlanp020.dbf',
-                    brush: "rgba(68,138,223,.6)",
-                    outline: "rgba(34,108,200,1)"
+                    shapeDataSource: 'http://jp.staging.igniteui.local/13-2/data-files/shapes/world_countries_reg.shp',
+                    databaseSource: 'http://jp.staging.igniteui.local/13-2/data-files/shapes/world_countries_reg.dbf',
+                    brush: "rgba(200,200,200,0.35)",
+                    outline: "rgba(45,130,200,0.6)",
+                    outlineThickness: 0.25,
+                    showTooltip: true,
+                    tooltipTemplate: "geoShapeTooltip"
                 }],
-                windowResponse: "immediate",
-                windowRect: {
-                    left: 0.2470,
-                    top: 0.3143,
-                    width: 0.127,
-                    height: 0.127
-                }
+
             });
         });

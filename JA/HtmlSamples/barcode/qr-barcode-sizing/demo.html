@@ -9,6 +9,8 @@
 
 <div id="barcode"></div>
 
+    
+
     <fieldset id="barcodeOptions">
         <legend>オプション</legend>
         <table>
@@ -18,20 +20,24 @@
                     <div id="xDimensionSlider" style="width: 100px; margin: 12px"></div>
                 </td>
                 <td>
-                    <label id="xDimensionLabel">0.5</label>
+                    <label id="xDimensionLabel">0.75</label>
                 </td>
             </tr>
             <tr>
                 <td>バー塗りつぶしモード</td>
-                <td colspan="2">
+                <td>
                     <input type="radio" name="barsFillMode" value="fillSpace" checked="checked" style="margin: 12px"></input>fillSpace
+                </td>
+                <td>
                     <input type="radio" name="barsFillMode" value="ensureEqualSize" style="margin: 12px"></input>ensureEqualSize
                 </td>
             </tr>
             <tr>
                 <td>引き伸ばし</td>
-                <td colspan="2">
+                <td>
                     <input type="radio" name="stretch" value="none" checked="checked" style="margin: 12px" id="stretchNone"></input>none
+                </td>
+                <td>
                     <input type="radio" name="stretch" value="uniform" style="margin: 12px"></input>uniform
                 </td>
             </tr>

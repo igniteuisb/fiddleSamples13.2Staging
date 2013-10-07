@@ -2,17 +2,6 @@
             margin: 5px 0;
         }
 
-            .label-container span {
-                display: block;
-                float: left;
-                width: 170px;
-                margin-bottom: 5px;
-            }
-
-        .clear-floating {
-            clear: both;
-        }
-
         span[id^="combo"] {
             margin-right: 15px;
         }
@@ -21,15 +10,20 @@
             display: none;
         }
 
-        {
-            display: none;
-        }
-
         .group-container {
             padding: 10px;
             margin-bottom: 10px;
+            clear: both;
         }
 
         .group-title {
             font-weight: bold;
+        }
+
+        .comboGroup {
+            float: left;
+        }
+
+        .overHidden {
+            overflow: hidden;
         }

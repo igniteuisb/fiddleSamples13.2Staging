@@ -32,13 +32,15 @@ $(function () {
                     {
                         name: "2005Population",
                         type: "column",
+                        isTransitionInEnabled: true,
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2005"
                     },
                     {
                         name: "1995Population",
-                        type: "line",
+                        type: "column",
+                        isTransitionInEnabled: true,
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995"
@@ -72,7 +74,7 @@ $(function () {
             $("#thicknessSlider").slider({
                 min: 0,
                 max: 10,
-                value: 6,
+                value: 0,
                 slide: function (event, ui) {
                     $("#chart").igDataChart("option", "series", [{ name: "catItemHighlightLayer", thickness: ui.value }]);
                     $("#thicknessLabel").text(ui.value);
@@ -94,8 +96,8 @@ $(function () {
             // Transiton Duration Slider
             $("#transitionDurationSlider").slider({
                 min: 0,
-                max: 5,
-                value: 2,
+                max: 1000,
+                value: 0,
                 slide: function (event, ui) {
                     $("#chart").igDataChart("option", "series", [{ name: "catItemHighlightLayer", transitionDuration: ui.value }]);
                     $("#transitionDurationLabel").text(ui.value);

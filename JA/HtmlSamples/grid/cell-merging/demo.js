@@ -1,5 +1,4 @@
 $(function () {
-
             $("#grid").igGrid({
                 width: "100%",
                 autoGenerateColumns: false,
@@ -11,7 +10,6 @@ $(function () {
                    { key: "LastName", headerText: "名前", dataType: "string" },
                    { key: "FirstName", headerText: "名字", dataType: "string" },
                    { key: "Title", headerText: "役職", dataType: "string" },
-                   { key: "Address", headerText: "住所", dataType: "string" },
                    { key: "Address", headerText: "住所", dataType: "string" },
                    { key: "City", headerText: "市", dataType: "string" },
                    { key: "Region", headerText: "州", dataType: "string" },
@@ -25,27 +23,27 @@ $(function () {
                         columnSettings: [
                             {
                                 columnKey: 'EmployeeID',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Address',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'LastName',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Region',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'Country',
-                                classes: 'hidden-phone'
+                                classes: 'ui-hidden-phone'
                             },
                             {
                                 columnKey: 'PostalCode',
-                                classes: 'visible-phone'
+                                classes: 'ui-visible-phone'
                             }
                         ]
                     },

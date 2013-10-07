@@ -1,7 +1,7 @@
 $(function () {
             var buttonLabel = $.ig.Upload.locale.labelUploadButton;
             if (Modernizr.input.multiple) {
-                buttonLabel = "ここにファイルをドラッグ アンド ドロップするか、<br/> クリックしてダイアログから選択します";
+                buttonLabel = "ここにファイルをドラッグ アンド ドロップまたは<br/>クリックしてダイアログから選択";
             }
             $("#igUpload1").igUpload({
                 mode: 'multiple',

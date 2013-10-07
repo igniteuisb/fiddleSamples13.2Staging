@@ -1,29 +1,22 @@
 $(function () {
-
-            /*----------------- Instantiation -------------------------*/
-            createGrid();
-        });
-
-        function createGrid() {           
-
-            $("#grid2").igGrid({
+            $("#grid").igGrid({
                 columns: [
-                    { headerText: "顧客 ID", key: "ID", dataType: "string", width: "10%" },
-                    { headerText: "会社名", key: "CompanyName", dataType: "string", width: "15%" },
-                    { headerText: "名前", key: "ContactName", dataType: "string", width: "15%" },
-                    { headerText: "連絡先", key: "ContactTitle", dataType: "string", width: "15%" },
-                    { headerText: "住所", key: "Address", dataType: "string", width: "15%" },
-                    { headerText: "市", key: "City", dataType: "string", width: "15%" },
-                    { headerText: "国名", key: "Country", dataType: "string", width: "15%" }
+                    { headerText: "顧客 ID", key: "ID", dataType: "string", width: "150px" },
+                    { headerText: "会社名", key: "CompanyName", dataType: "string", width: "200px" },
+                    { headerText: "名前", key: "ContactName", dataType: "string", width: "200px" },
+                    { headerText: "連絡先", key: "ContactTitle", dataType: "string", width: "200px" },
+                    { headerText: "住所", key: "Address", dataType: "string", width: "200px" },
+                    { headerText: "市", key: "City", dataType: "string", width: "150px" },
+                    { headerText: "国名", key: "Country", dataType: "string", width: "150px" }
                 ],
                 autoGenerateColumns: false,
                 dataSource: nwCustomersWithOrders,
-                width: '98%',
+                width: "800px",
                 height: "400px",
-                features: [                    
+                features: [
                     {
                         name: "ColumnFixing",
-                        fixingDirection: 'left',
+                        fixingDirection: "left",
                         columnSettings: [
                             {
                                 columnKey: "CompanyName",
@@ -42,4 +35,4 @@ $(function () {
                     }
                 ]
             });
-        }
+        });

@@ -25,23 +25,23 @@ $.support.cors = true;
                             {
                                 caption: "位置", name: "Location", hierarchies: [{
                                     caption: "位置", name: "Location", levels: [
-                                             { name: "AllLocations", levelCaption: "すべての場所", memberProvider: function (item) { return "すべての場所"; } },
-                                             { name: "Country", levelCaption: "国", memberProvider: function (item) { return item.Country; } },
-                                             { name: "City", levelCaption: "市", memberProvider: function (item) { return item.City; } }]
+                                        { name: "AllLocations", levelCaption: "すべての場所", memberProvider: function (item) { return "すべての場所"; } },
+                                        { name: "Country", levelCaption: "国", memberProvider: function (item) { return item.Country; } },
+                                        { name: "City", levelCaption: "市", memberProvider: function (item) { return item.City; } }]
                                 }]
                             },
                             {
                                 caption: "製品", name: "Product", hierarchies: [{
                                     caption: "製品", name: "Product", levels: [
-                                    { name: "AllProducts", levelCaption: "すべての製品", memberProvider: function (item) { return "すべての製品"; } },
-                                    { name: "ProductCategory", levelCaption: "カテゴリ", memberProvider: function (item) { return item.ProductCategory; } }]
+                                        { name: "AllProducts", levelCaption: "すべての製品", memberProvider: function (item) { return "すべての製品"; } },
+                                        { name: "ProductCategory", levelCaption: "カテゴリ", memberProvider: function (item) { return item.ProductCategory; } }]
                                 }]
                             },
                             {
                                 caption: "販売員", name: "Seller", hierarchies: [{
                                     caption: "販売員", name: "Seller", levels: [
-                                     { name: "AllSellers", levelCaption: "すべての販売員", memberProvider: function (item) { return "すべての販売員"; } },
-                                     { name: "SellerName", levelCaption: "販売員", memberProvider: function (item) { return item.SellerName; } }]
+                                        { name: "AllSellers", levelCaption: "すべての販売員", memberProvider: function (item) { return "すべての販売員"; } },
+                                        { name: "SellerName", levelCaption: "販売員", memberProvider: function (item) { return item.SellerName; } }]
                                 }]
                             }
                         ]
@@ -63,21 +63,15 @@ $.support.cors = true;
                 width: "660px"
             });
 
-            $("#customDraggables > li").draggable({
+            $(".custom-draggable").draggable({
                 // You must set this option in a similar manner, because the pointer is used when 
                 // calculating the drop position and its top should not be blocked by the dragged element
                 cursorAt: {
                     top: -10,
                     left: 10
                 },
-                cursor: 'pointer',
-                revert: true,
-                revertDuration: 0,
-                stop: function (evt, ui) {
-                    var $this = $(this);
-                    $this.hide();
-                    $this.fadeIn(500);
-                }
+                helper: "clone",
+                cursor: 'pointer'
             });
         });
 });

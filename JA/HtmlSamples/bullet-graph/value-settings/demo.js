@@ -37,7 +37,10 @@ $(function () {
                 targetValueBreadth: 4,
                 targetValueStrokeThickness: 0,
                 targetValueBrush: 'white',
-                targetValueOutline: 'transparent'
+                targetValueOutline: 'transparent',
+                formatLabel: function (evt, ui) {
+                    ui.label += "K";
+                }
             });
 
             var $bulletGraph2 = $("#bulletgraph2");
@@ -77,7 +80,10 @@ $(function () {
                 targetValueBreadth: 12,
                 targetValueStrokeThickness: 0,
                 targetValueBrush: 'white',
-                targetValueOutline: 'transparent'
+                targetValueOutline: 'transparent',
+                formatLabel: function (evt, ui) {
+                    ui.label += "K";
+                }
             });
 
 
@@ -118,7 +124,10 @@ $(function () {
                 targetValueBreadth: 4,
                 targetValueStrokeThickness: 0,
                 targetValueBrush: 'white',
-                targetValueOutline: 'transparent'
+                targetValueOutline: 'transparent',
+                formatLabel: function (evt, ui) {
+                    ui.label += "K";
+                }
             });
 
 

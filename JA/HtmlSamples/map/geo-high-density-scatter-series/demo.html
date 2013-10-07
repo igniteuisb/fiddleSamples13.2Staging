@@ -28,6 +28,22 @@
                 <div id="resolutionSlider" class="sliderBounds"></div>
                 <label id="resolutionLabel">0</label>
             </div>
+           
+           <div class="optionContainer">
+                ヒートの最小値
+                <br />
+                <div id="minimumHeatValueSlider" class="sliderBounds"></div>
+                <label id="minimumHeatValueLabel">0</label>
+            </div>
+            <div class="optionContainer">
+                ヒートの最大値
+                <br />
+                <div id="maximumHeatValueSlider" class="sliderBounds"></div>
+                <label id="maximumHeatValueLabel">5</label>
+            </div>
+
+            <br />
+
             <div class="optionContainer">
                 ポイント範囲
                 <br />
@@ -35,21 +51,6 @@
                  <label id="pointExtentLabel">1</label>
             </div>
             
-           <div class="optionContainer">
-                ヒートの最小値
-                <br />
-                <div id="minimumHeatValueSlider" class="sliderBounds"></div>
-                <label id="minimumHeatValueLabel">0</label>
-            </div>
-            <br />
-
-            <div class="optionContainer">
-                ヒートの最大値
-                <br />
-                <div id="maximumHeatValueSlider" class="sliderBounds"></div>
-                <label id="maximumHeatValueLabel">5</label>
-            </div>
-             
             <div class="optionContainer">
                 ヒートの最小色
                 <br />
@@ -74,17 +75,12 @@
             </div>
              <br />
             <div class="optionContainer">
-                <input type="checkbox" checked="checked" id="enableMouseOverCheckBox"></input>マウス オーバーの有効化<br />
+                <input type="checkbox" id="enableMouseOverCheckBox" checked="checked"></input>マウス オーバーの有効化<br />
             </div>
              <div class="optionContainer">
-                        <input type="checkbox" checked="checked" id="useBruteForceCheckBox"></input>ブルート フォースの使用<br />
+                <input type="checkbox" id="useBruteForceCheckBox"></input>ブルート フォースの使用<br />
              </div>  
-            <div class="optionContainer">
-                        <input type="button" id="generateDataButton" value=" データの生成"></input>
-             
-                <div id="seriesLoadingProgressBar" style="width: 150px; margin: 15px"></div>
-            </div>
-
+            
         </fieldset>
     </div>
     <br />

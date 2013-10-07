@@ -6,32 +6,21 @@
 <script src="http://jp.staging.igniteui.local/13-2/js-data/financial-data"></script>
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/structure/infragistics.css" rel="stylesheet"></link>
+<link href="http://staging.igniteui.local/13-2/IgniteUI/css/structure/modules/infragistics.ui.chart.new.css" rel="stylesheet"></link>
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/i18n/infragistics-ja.js"></script>
 
-<script id="tooltipTemplate" type="text/x-jquery-tmpl">
-        <div id="tooltip" class="ui-widget-content ui-corner-all">
-            <span id="tooltipValue">始値: ${item.Open}</span><br/>
-            <span id="Span1">高値: ${item.High}</span><br/>
-            <span id="Span2">安値: ${item.Low}</span><br/>
-            <span id="Span3">終値: ${item.Close}</span><br/>
+<div id="charts">
+        <div class="chart-container">
+            <h3>ローソク足チャート</h3>
+            <div id="candlestickChart" class="chartElement"></div>
         </div>
-    </script>
+        <div class="chart-container">
+            <h3>OHLC</h3>
+            <div id="ohlcChart" class="chartElement"></div>
+        </div>
 
-<table>
-        <tr>
-            <th>ローソク足チャート</th><th>OHLC</th>
-        </tr>
-        <tr>
-            <td>
-                <div id="candlestickChart" class="chartElement"></div>
-            </td>
-            <td>
-                <div id="ohlcChart" class="chartElement"></div>
-            </td>
-        </tr>
-    </table>
-
-    <div class="Quandldata-attribution">
-    株価のデータ ソース:<br />
-    <a href="http://www.quandl.com/" target="_blank">Quandl</a>
+        <div class="Quandldata-attribution">
+            株価のデータ ソース:<br />
+            <a href="http://www.quandl.com/" target="_blank">Quandl</a>
+        </div>
     </div>

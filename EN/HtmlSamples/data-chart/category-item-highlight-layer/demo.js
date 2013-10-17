@@ -49,8 +49,10 @@ $(function () {
                         name: "catItemHighlightLayer",
                         title: "categoryItemHighlight",
                         type: "categoryItemHighlightLayer",
-                        useInterpolation: false,
-                        transitionDuration: 500
+                        opacity: 0.5,
+                        thickness: 1,
+                        useInterpolation: true,
+                        transitionDuration: 150
                     }]
             });
             
@@ -72,9 +74,10 @@ $(function () {
             
             // Thickness 
             $("#thicknessSlider").slider({
-                min: 0,
-                max: 10,
-                value: 0,
+                min: 1,
+                max: 4,
+                value: 1,
+                step: 1,
                 slide: function (event, ui) {
                     $("#chart").igDataChart("option", "series", [{ name: "catItemHighlightLayer", thickness: ui.value }]);
                     $("#thicknessLabel").text(ui.value);
@@ -93,11 +96,12 @@ $(function () {
                 }
             });
 
-            // Transiton Duration Slider
+            // Transition Duration Slider
             $("#transitionDurationSlider").slider({
                 min: 0,
                 max: 1000,
-                value: 0,
+                value: 150,
+                step: 50,
                 slide: function (event, ui) {
                     $("#chart").igDataChart("option", "series", [{ name: "catItemHighlightLayer", transitionDuration: ui.value }]);
                     $("#transitionDurationLabel").text(ui.value);

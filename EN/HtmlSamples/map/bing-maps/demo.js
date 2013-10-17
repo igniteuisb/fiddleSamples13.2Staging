@@ -1,7 +1,5 @@
 $(function () {
 
-            mapHelper();
-
             $("#map").igMap({
                 width: "700px",
                 height: "500px",
@@ -11,7 +9,7 @@ $(function () {
                 // specifies imagery tiles from BingMaps
                 backgroundContent: {
                     type: "bing",
-                    key: bingData,
+                    key: mapHelper.bingData(),
                     imagerySet: "AerialWithLabels", // alternative: "Road" | "Aerial"
                 },
                 series: [{

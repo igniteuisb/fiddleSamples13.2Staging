@@ -1,7 +1,6 @@
 $(function () {
 
             var data = [
-                { "CountryName": "China", "Pop1995": 1216, "Pop2005": 1297, "Pop2015": 1361, "Pop2025": 1394 },
                 { "CountryName": "India", "Pop1995": 920, "Pop2005": 1090, "Pop2015": 1251, "Pop2025": 1396 },
                 { "CountryName": "United States", "Pop1995": 266, "Pop2005": 295, "Pop2015": 322, "Pop2025": 351 },
                 { "CountryName": "Indonesia", "Pop1995": 197, "Pop2005": 229, "Pop2015": 256, "Pop2025": 277 },
@@ -13,6 +12,8 @@ $(function () {
                 height: "400px",
                 title: "Population per Country",
                 subtitle: "A comparison of population in 1995 and 2005",
+                horizontalZoomable: true,
+                verticalZoomable: true,
                 dataSource: data,
                 axes: [
                     {
@@ -36,6 +37,8 @@ $(function () {
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2005",
+                        isHighlightingEnabled: true,
+                        isTransitionInEnabled: true,
                         showTooltip: true
                     },
                     {
@@ -45,6 +48,8 @@ $(function () {
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995",
+                        isHighlightingEnabled: true,
+                        isTransitionInEnabled: true,
                         showTooltip: true
                     },
                     {

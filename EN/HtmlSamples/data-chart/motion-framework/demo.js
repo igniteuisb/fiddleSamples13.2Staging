@@ -322,7 +322,7 @@ $(function () {
                         label: "Genre",
                         interval: 1,
                         labelExtent: 115,
-                        labelAngle: 75
+                        labelAngle: 90
                     },
                     {
                         name: "yAxis",

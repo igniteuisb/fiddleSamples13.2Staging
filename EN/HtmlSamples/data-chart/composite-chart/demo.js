@@ -10,6 +10,8 @@ $(function () {
                 crosshairVisibility: Modernizr.touch ? "visible" : "collapsed",
                 title: "Energy Production Per Country",
                 subtitle: "The top three Total Primary Energy producers",
+                horizontalZoomable: true,
+                verticalZoomable: true,
                 axes: [{
                     type: "categoryX",
                     name: "xAxis",

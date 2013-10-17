@@ -5,6 +5,8 @@ $(function () {
                 dataSource: lastFiveYears,
                 title: "Energy Production Per Country",
                 subtitle: "The top five Total Primary Energy producers",
+                horizontalZoomable: true,
+                verticalZoomable: true,
                 legend: { element: "columnLegend" },
                 axes: [{
                     name: "xAxis",

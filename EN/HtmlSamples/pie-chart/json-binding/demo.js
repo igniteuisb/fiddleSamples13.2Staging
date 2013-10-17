@@ -9,8 +9,8 @@ $(function () {
             ];
 
             $("#chart").igPieChart({
-                width: "440px",
-                height: "400px",
+                width: "435px",
+                height: "435px",
                 dataSource: data, //JSON data defined above
                 valueMemberPath: "Pop2008",
                 labelMemberPath: "CountryName",

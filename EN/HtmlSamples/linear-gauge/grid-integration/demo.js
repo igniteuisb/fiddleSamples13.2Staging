@@ -33,8 +33,9 @@ $(function () {
                             transitionDuration: 1200, 
                             labelInterval: 2,
                             interval: 1,
+                            font: "8px Georgia",
                             formatLabel: function (evt, ui) {
-                                ui.label += "(mph)";
+                                ui.label += "mph";
                             },
                         });
                     });

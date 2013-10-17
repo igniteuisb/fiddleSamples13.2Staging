@@ -13,7 +13,7 @@ $(function () {
                 explodedSlices: [2, 3],
                 radiusFactor: .6,
                 labelsPosition: "outsideEnd",
-                leaderLineType: "simpleCurve",
+                leaderLineType: "arc",
                 labelExtent: 40,
                 legend: { element: 'legend', type: "item" }
             });

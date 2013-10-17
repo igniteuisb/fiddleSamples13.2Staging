@@ -13,7 +13,9 @@
 <div class="selectionOptions">
         Series type:
         <select id="seriesType">
-            <option value="absoluteVolumeOscillatorIndicator" selected="selected">Absolute Volume Oscillator</option>
+            <option value="candlestick" selected="selected">Candlestick</option>
+            <option value="ohlc">OHLC</option>
+            <option value="absoluteVolumeOscillatorIndicator">Absolute Volume Oscillator</option>
             <option value="averageTrueRangeIndicator">Average True Range</option>
             <option value="accumulationDistributionIndicator">Accumulation Distribution</option>
             <option value="averageDirectionalIndexIndicator">Average Directional Index</option>
@@ -49,9 +51,7 @@
             <option value="ultimateOscillatorIndicator">Ultimate Oscillator</option>
             <option value="weightedCloseIndicator">Weighted Close</option>
             <option value="williamsPercentRIndicator">Williams Percent R</option>
-            <option value="ohlc">OHLC</option>
-            <option value="candlestick">Candlestick</option>
-        </select>
+         </select>
     </div>
     <div id="chart" class="chartElement"></div>
    <div style="float: left">
@@ -61,7 +61,7 @@
                 Transition Duration
                 <br />
                 <div id="transitionDurationSlider" class="sliderBounds"></div>
-                <label id="transitionDurationLabel">2</label>
+                <label id="transitionDurationLabel">1000</label>
             </div>
         </fieldset>    
     </div>

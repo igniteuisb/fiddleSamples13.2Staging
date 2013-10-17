@@ -39,11 +39,12 @@ var data = [
                                     endValue: el.end
                                 };
                             }),
+                            font: "8px Georgia",
                             formatLabel: function (evt, ui) {
                                 ui.label += "TWh";
                             },
-                            scaleEndExtent: 0.9,
-                            transitionDuration: 1200
+                            font: "8px Georgia",
+                            scaleEndExtent: 0.9 
                         });
                     });
                 },

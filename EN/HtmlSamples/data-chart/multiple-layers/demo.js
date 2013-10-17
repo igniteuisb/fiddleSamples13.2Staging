@@ -14,6 +14,8 @@ $(function () {
                 title: "Population per Country",
                 subtitle: "A comparison of population in 1995 and 2005",
                 dataSource: data,
+                horizontalZoomable: true,
+                verticalZoomable: true,
                 axes: [
                     {
                         name: "NameAxis",
@@ -36,6 +38,8 @@ $(function () {
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2005",
+                        isTransitionInEnabled: true,
+                        isHighlightingEnabled: true,
                         showTooltip: true
                     },
                     {
@@ -45,6 +49,8 @@ $(function () {
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995",
+                        isTransitionInEnabled: true,
+                        isHighlightingEnabled: true,
                         showTooltip: true
                     },
                     {
@@ -52,21 +58,21 @@ $(function () {
                         title: "crosshair",
                         type: "crosshairLayer",
                         useInterpolation: false,
-                        transitionDuration: 500
+                        transitionDuration: 250
                     },
                     {
                         name: "catItemHighlightLayer",
                         title: "categoryItemHighlight",
                         type: "categoryItemHighlightLayer",
                         useInterpolation: false,
-                        transitionDuration: 500
+                        transitionDuration: 250
                     },
                     {
                         name: "categoryToolTipLayer",
                         title: "categoryToolTip",
                         type: "categoryToolTipLayer",
                         useInterpolation: false,
-                        transitionDuration: 500
+                        transitionDuration: 250
                     }]
             });
         });

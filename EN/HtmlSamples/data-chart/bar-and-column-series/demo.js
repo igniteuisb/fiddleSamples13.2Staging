@@ -1,7 +1,7 @@
 $(function () {
             $("#columnChart").igDataChart({
                 width: "98%",
-                height: "400px",
+                height: "350px",
                 dataSource: lastFiveYears,
                 legend: { element: "columnLegend" },
                 title: "Energy Production Per Country",
@@ -68,7 +68,7 @@ $(function () {
 
             $("#barChart").igDataChart({
                 width: "98%",
-                height: "400px",
+                height: "550px",
                 dataSource: lastFiveYears,
                 title: "Energy Production Per Country",
                 subtitle: "The top five Total Primary Energy producers",

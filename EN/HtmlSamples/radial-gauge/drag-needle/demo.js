@@ -2,62 +2,98 @@ $(function () {
             $("#radialgauge").igRadialGauge({
                 height: "500px",
                 width: "100%",
+                maximumValue: 100
             });
 
             var lastPointX = 0, lastPointY = 0, lastValue = 0, isDragging = false;
+
             // Start the needle drag only on a mousedown on the needle
             document.getElementById("radialgauge").addEventListener("mousedown", function (e) {
-                isDragging = true;
+                dragNeedle(e, true);
             });
 
             // Drag the needle to the new point only if the point being dragged to is inside the needle
-            document.getElementById("radialgauge").addEventListener("mousemove", function (e) {
-                dragNeedle(e);
+            document.addEventListener("mousemove", function (e) {
+                dragNeedle(e, false);
             });
 
             // Drag the needle to the final new point only if the point being dragged to is inside the needle
-            document.getElementById("radialgauge").addEventListener("mouseup", function (e) {
-                dragNeedle(e);
+            document.addEventListener("mouseup", function (e) {
+                dragNeedle(e, false);
                 isDragging = false;
             });
 
-            // Function that performs the needle drag to the new point
-            function dragNeedle(e) {
-                if (!isDragging) {
+            // Function that performs the needle drag/tap to the new point
+            function dragNeedle(e, isMouseDown) {
+                if (!isMouseDown && !isDragging) {
                     return;
                 }
+
+                e.preventDefault();
                 var pointX = e.pageX - $("#radialgauge").offset().left;
                 var pointY = e.pageY - $("#radialgauge").offset().top;
+                if (isMouseDown) {
+                    var isClickPointValid = $("#radialgauge").igRadialGauge("needleContainsPoint", pointX, pointY);
+                    if (isClickPointValid) {
+                        lastPointX = pointX;
+                        lastPointY = pointY;
+                    } else {
+                        isClickPointValid = $("#radialgauge").igRadialGauge("needleContainsPoint", (pointX + 4 * lastPointX) / 5, (pointY + 4 * lastPointY) / 5);
+                    }
+                    if (isMobile() || isClickPointValid)
+                        isDragging = true;
+                    return;
+                }
+
                 var value = $("#radialgauge").igRadialGauge("getValueForPoint", pointX, pointY);
                 if (isNaN(value))
                     return;
-                value = Math.max(Math.min(value, 100), 0);
-                if (Math.abs(value - lastValue) > 50)
-                    return;
-                lastValue = value;
 
-                var isClickPointValid = true;
-                if (!isMobile())
-                    isClickPointValid = $("#radialgauge").igRadialGauge("needleContainsPoint", pointX, pointY);
-                if (isClickPointValid) {
-                    lastPointX = pointX;
-                    lastPointY = pointY;
-                } else {
-                    isClickPointValid = $("#radialgauge").igRadialGauge("needleContainsPoint", (pointX + 4 * lastPointX) / 5, (pointY + 4 * lastPointY) / 5);
-                }
-                if (isClickPointValid)
-                    $("#radialgauge").igRadialGauge("option", "value", value);
+                // Prevent needle from dragging beyond the scale bounds
+                var minimumValue = $("#radialgauge").igRadialGauge("option", "minimumValue");
+                var maximumValue = $("#radialgauge").igRadialGauge("option", "maximumValue");
+
+                var startValue = minimumValue <= maximumValue ? minimumValue : maximumValue;
+                var endValue = minimumValue > maximumValue ? minimumValue : maximumValue;
+                if (value < startValue || value > endValue)
+                    return;
+
+                $("#radialgauge").igRadialGauge("option", "value", value);
             }
 
-            // Check if the sample is being used in the following mobile devices
+            // Detect if the browser is a mobile one or not (including tablets)
             function isMobile() {
-                return navigator.userAgent.match(/Android/i) ||
-						navigator.userAgent.match(/iPhone|iPad|iPod/i) ||
-						navigator.userAgent.match(/IEMobile/i) ||
-						navigator.userAgent.match(/BlackBerry/i) ||
-						navigator.userAgent.match(/Opera Mini/i) ||
-						navigator.userAgent.match(/webOS/i) ||
-						navigator.userAgent.match(/Windows Phone/i) ||
-						navigator.userAgent.match(/ZuneWP7/i) ? true : false;
+                var mobileDevice = getMobile();
+                return mobileDevice !== "none";
+            }
+
+            // Get the name of the mobile device if possible
+            function getMobile() {
+                if (!_mobile) {
+                    var agent = navigator && navigator.userAgent ? navigator.userAgent.toLowerCase() : "";
+
+                    if (agent.match(/iphone/i)) {
+                        _mobile = "IPhone";
+                    }
+                    else if (agent.match(/ipad/i)) {
+                        _mobile = "tablet";
+                    }
+                    else if (agent.match(/android/i)) {
+                        _mobile = "tablet";
+                        if (agent.match(/mobile/i))
+                            _mobile = "android";
+                    }
+                    else if (agent.match(/mobile/i)) {
+                        _mobile = "unknown";
+                    }
+                    else if (agent.match(/tablet/i)) {
+                        _mobile = "tablet";
+                    }                    
+                    else {
+                        _mobile = "none";
+                    }
+                }
+
+                return _mobile;
             }
         });

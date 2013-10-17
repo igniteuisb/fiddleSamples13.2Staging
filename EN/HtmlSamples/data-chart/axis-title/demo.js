@@ -9,12 +9,12 @@ $(function () {
                     axes: [{
                             name: "xAxis",
                             type: "categoryX",
-                            label: "Year"
+                            label: "Year",
+                            title: "Year"
                         }, {
                             name: "EnergyAxis",
                             type: "numericY",
-                            title: "Quadrillion Btu",
-                            titleAngle: 90
+                            title: "Quadrillion Btu"
                         }],
                     series: [{
                             name: "series1",
@@ -76,7 +76,7 @@ $(function () {
                             showTooltip: true
                         }]
                 });
-            });
+           
         
             //Angle Transiton Duration Slider
             $("#axisAngleSlider").slider({
@@ -87,4 +87,5 @@ $(function () {
                     $("#chart").igDataChart("option", "axes", [{ name: "EnergyAxis", titleAngle: ui.value}]);
                     $("#axisAngleLabel").text(ui.value);
                 }
+            });
             });

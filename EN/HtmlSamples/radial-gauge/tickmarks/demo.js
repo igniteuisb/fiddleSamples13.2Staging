@@ -32,8 +32,8 @@ $(function () {
 
             // Tickmark Stroke Thickness
             $("#tickmarkStrokeThicknessSlider").slider({
-                min: 0,
-                max: 13,
+                min: 1,
+                max: 10,
                 value: 3,
                 slide: function (event, ui) {
                     $("#radialgauge").igRadialGauge("option", "tickStrokeThickness", ui.value);
@@ -78,8 +78,8 @@ $(function () {
 
             // Minor Tickmark Stroke Thickness
             $("#minorTickmarkStrokeThicknessSlider").slider({
-                min: 0,
-                max: 13,
+                min: 1,
+                max: 10,
                 value: 1,
                 slide: function (event, ui) {
                     $("#radialgauge").igRadialGauge("option", "minorTickStrokeThickness", ui.value);

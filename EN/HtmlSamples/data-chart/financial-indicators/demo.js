@@ -35,7 +35,7 @@ $(function () {
                 width: "450px",
                 height: "400px",
                 dataSource: data,
-                title: "Financial Indicator Chart",
+                title: "Financial Chart",
                 axes: [{
                     type: "categoryX",
                     label: "Date",

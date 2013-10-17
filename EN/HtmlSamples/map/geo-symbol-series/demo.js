@@ -37,8 +37,6 @@ $(function () {
             
         function createMap() {
 
-            mapHelper();
-
             $("#map").igMap({
                 width: "700px",
                 height: "500px",
@@ -49,7 +47,7 @@ $(function () {
                 horizontalZoomable: true,
                 backgroundContent: {
                     type: "cloudMade",
-                    key: cloudmadeData,
+                    key: mapHelper.cloudmadeData(),
                     parameter: 2
                 },
                 series: [{

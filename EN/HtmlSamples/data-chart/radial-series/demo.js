@@ -11,6 +11,7 @@ $(function () {
                         name: "angleAxis",
                         type: "categoryAngle",
                         label: "Time",
+                        startAngleOffset: -90,
                         interval: 1
                     }, {
                         name: "radiusAxis",

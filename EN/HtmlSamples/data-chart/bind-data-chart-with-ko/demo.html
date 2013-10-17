@@ -7,6 +7,7 @@
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/infragistics.dv.js"></script>
 <script src="http://staging.igniteui.local/13-2/js/external/knockout-latest.js"></script>
 <script src="http://staging.igniteui.local/13-2/js/external/knockout.mapping-latest.js"></script>
+<script src="http://staging.igniteui.local/13-2/IgniteUI/js/extensions/infragistics.ui.combo.knockout-extensions.js"></script>
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/extensions/infragistics.ui.editors.knockout-extensions.js"></script>
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/extensions/infragistics.ui.datachart.knockout-extensions.js"></script>
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
@@ -14,48 +15,6 @@
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/structure/modules/infragistics.ui.chart.new.css" rel="stylesheet"></link>
 
 <div class="main-container">
-        <div class="editor-container">
-            <label class="labels">Month:</label>
-            <div id="ed-month" data-bind="igTextEditor: { value: currentMonth, width: 100, updateMode: 'immediate' }"></div>
-        </div>
-        <div class="editor-container">
-            <label class="labels">Revenue:</label>
-            <div id="ed-revenue" data-bind="igNumericEditor: {
-                value: currentRevenue,
-                width: 100,
-                minValue: 0,
-                maxValue: 50,
-                button: 'spin',
-                spinDelta: 5,
-                updateMode: 'immediate'
-                }"></div>
-        </div>
-        <div class="editor-container">
-            <label class="labels">Expenses:</label>
-            <div id="ed-expenses" data-bind="igNumericEditor: {
-                value: currentExpenses,
-                width: 100,
-                minValue: 0,
-                maxValue: 50,
-                button: 'spin',
-                spinDelta: 5,
-                updateMode: 'immediate'
-            }"></div>
-        </div>
-        <div class="editor-container">
-            <label class="labels">Profit:</label>
-            <div id="ed-profit" data-bind="igNumericEditor: {
-                value: currentProfit,
-                width: 100,
-                minValue: -50,
-                button: 'spin',
-                spinDelta: 5,
-                maxValue: 50,
-                updateMode: 'immediate'
-            }"></div>
-        </div>
-        <button class="btn-refresh" title="Generate New Chart Data"></button>
-        <div class="clear"></div>
         <div class="eidtors-title">
             Change editor values to update the charts below
             <div class="year-profit" data-bind="igCurrencyEditor: {
@@ -69,16 +28,60 @@
             <span class="year-profit"> Overall Year Profit: </span>
         </div>
         <div class="clear hr"></div>
-        <div class="slider-title">
-            Move slider to select month and view or change its data
-            <div class="number-container"></div>
-        </div>
-        <div class="clear"></div>
         <div class="window-container-1">
-            <div class="slider-container">
-                <div id="slider1"></div>
-            </div>
-            <div class="clear"></div>
+			<button class="btn-refresh" title="Randomize Chart Data"></button>
+			<span data-bind="text: currMonthLong" class="number-container"></span>
+			<div class="editor-container">
+				<label class="labels">Select Month:</label>
+				<div id="combo-month" data-bind="igCombo: {
+					text: currMonth,
+					dataSource: months,
+					enableSelectionChangedUpdate: true,
+					width: 100
+				}"></div>
+			</div>
+			<div class="editor-container">
+				<label class="labels">Month Name:</label>
+				<div id="ed-month" data-bind="igTextEditor: { value: currentMonth, width: 100, updateMode: 'immediate' }"></div>
+			</div>
+			<div class="responsive-clear"></div>
+			<div class="editor-container">
+				<label class="labels">Revenue:</label>
+				<div id="ed-revenue" data-bind="igNumericEditor: {
+					value: currentRevenue,
+					width: 100,
+					minValue: 0,
+					maxValue: 50,
+					button: 'spin',
+					spinDelta: 10,
+					updateMode: 'immediate'
+				}"></div>
+			</div>
+			<div class="editor-container">
+				<label class="labels">Expenses:</label>
+				<div id="ed-expenses" data-bind="igNumericEditor: {
+					value: currentExpenses,
+					width: 100,
+					minValue: 0,
+					maxValue: 50,
+					button: 'spin',
+					spinDelta: 10,
+					updateMode: 'immediate'
+				}"></div>
+			</div>
+			<div class="editor-container">
+				<label class="labels">Profit:</label>
+				<div id="ed-profit" data-bind="igNumericEditor: {
+					value: currentProfit,
+					width: 100,
+					minValue: -50,
+					button: 'spin',
+					spinDelta: 10,
+					maxValue: 50,
+					updateMode: 'immediate'
+				}"></div>
+			</div>
+			<div class="clear"></div>
             <div class="sample-line-chart-holder">
                 <div id="lineChart" data-bind='igDataChart: {
                     dataSource: data,
@@ -107,7 +110,6 @@
                         title: "Revenue",
                         type: "line",
                         isHighlightingEnabled: true,
-                        isTransitionInEnabled: true,
                         thickness: chartThickness,
                         xAxis: "xAxis",
                         yAxis: "yAxis",
@@ -120,7 +122,6 @@
                         title: "Expenses",
                         type: "line",
                         isHighlightingEnabled: true,
-                        isTransitionInEnabled: true,
                         thickness: chartThickness,
                         xAxis: "xAxis",
                         yAxis: "yAxis",
@@ -132,7 +133,6 @@
                         title: "Profit",
                         type: "line",
                         isHighlightingEnabled: true,
-                        isTransitionInEnabled: true,
                         thickness: chartThickness,
                         xAxis: "xAxis",
                         yAxis: "yAxis",
@@ -264,42 +264,33 @@
                         name: "column1",
                         type: "column",
                         isHighlightingEnabled: true,
-                        isTransitionInEnabled: true,
                         title: "Revenue",
-                        thickness: chartThickness,
                         xAxis: "xAxis",
                         yAxis: "yAxis",
                         valueMemberPath: "revenue",
                         transitionDuration: transitionDuration,
-                        brush: revenueColor,
-                        outline: outlineColor
+                        brush: revenueColor
                     },
                     {
                         name: "column2",
                         type: "column",
                         isHighlightingEnabled: true,
-                        isTransitionInEnabled: true,
                         title: "Expenses",
-                        thickness: chartThickness,
                         xAxis: "xAxis",
                         yAxis: "yAxis",
                         valueMemberPath: "expenses",
                         transitionDuration: transitionDuration,
-                        brush: expensesColor,
-                        outline: outlineColor
+                        brush: expensesColor
                     }, {
                         name: "column3",
                         type: "column",
                         isHighlightingEnabled: true,
-                        isTransitionInEnabled: true,
                         title: "Profit",
-                        thickness: chartThickness,
                         xAxis: "xAxis",
                         yAxis: "yAxis",
                         valueMemberPath: "profit",
                         transitionDuration: transitionDuration,
-                        brush: profitColor,
-                        outline: outlineColor
+                        brush: profitColor
                     }]
                 }'></div>
            <div id="legendBarColumnChart"></div>

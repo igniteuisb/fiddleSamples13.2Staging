@@ -3,7 +3,7 @@ $(function () {
                 width: "100%",
                 height: "400px",
                 dataSource: data,
-                title: "Financial Indicator Chart",
+                title: "Financial Chart",
                 axes: [{
                     type: "categoryX",
                     label: "Date",
@@ -15,7 +15,9 @@ $(function () {
                     title: "Price"
                 }],
                 series: [{
-                    type: "absoluteVolumeOscillatorIndicator",
+                    type: "financial",
+                    displayType: "candlestick",
+                    isHighlightingEnabled: true,
                     isTransitionInEnabled: true,
                     closeMemberPath: "Close",
                     highMemberPath: "High",
@@ -37,7 +39,15 @@ $(function () {
             transType = $("#transitionInSpeedTypeSlider").val();
             transEasingFunc = $("#transitionEasingFunctionSlider").val();
             seriesType = $("#seriesType").val();
-            
+            var thickness = 3;
+            if (seriesType == "candlestick" ||
+                   seriesType == "priceChannelOverlay" ||
+                   seriesType == "bollingerBandsOverlay") {
+                thickness = 1;
+            }
+            if (seriesType == "ohlc") {
+                thickness = 2;
+            }
             $("#chart").igDataChart("option", "series", [{name: "indicatorSeries",remove: true}]);
 
             if (seriesType == "ohlc" || seriesType == "candlestick") {
@@ -53,6 +63,7 @@ $(function () {
                     yAxis: "yAxis",
                     name: "indicatorSeries",
                     title: "Financial Indicator Data",
+                    thickness: thickness,
                     transitionInDuration: 1500,
                     transitionInMode: transMode,
                     transitionInType: transType,

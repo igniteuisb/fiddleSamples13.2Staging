@@ -1,6 +1,4 @@
-$(function () {
-            
-            mapHelper();
+$(function () {            
 
             $("#map").igMap({
                 width: "700px",
@@ -11,7 +9,7 @@ $(function () {
                 // specifies imagery tiles from CloudMadeMaps
                 backgroundContent: {
                     type: "cloudMade",
-                    key: cloudmadeData,
+                    key: mapHelper.cloudmadeData(),
                     parameter: 2
                 },
                 series: [{

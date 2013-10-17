@@ -55,6 +55,7 @@ $(function () {
             });
 
             $("#seriesType").change(function (e) {
+                var marker = "none";
                 var thickness = 5,
                     seriesType = $(this).val();
 
@@ -62,10 +63,13 @@ $(function () {
                     seriesType == "splineArea" ||
                     seriesType == "column" ||
                     seriesType == "waterfall" ||
+                    seriesType == "point" ||
                     seriesType == "stepArea") {
                     thickness = 1;
                 }
-
+                if (seriesType == "point") {
+                    marker = "circle";
+                }
                 $("#chart").igDataChart("option", "series", [{ name: "2005Population", remove: true }]);
                 $("#chart").igDataChart("option", "series", [{ name: "1995Population", remove: true }]);
                 $("#chart").igDataChart("option", "series", [{
@@ -75,7 +79,9 @@ $(function () {
                     xAxis: "NameAxis",
                     yAxis: "PopulationAxis",
                     valueMemberPath: "Pop2005",
+                    markerType: marker,
                     isTransitionInEnabled: true,
+                    isHighlightingEnabled: true,
                     thickness: thickness
                 }]);
                 $("#chart").igDataChart("option", "series", [{
@@ -85,7 +91,9 @@ $(function () {
                     xAxis: "NameAxis",
                     yAxis: "PopulationAxis",
                     valueMemberPath: "Pop1995",
+                    markerType: marker,
                     isTransitionInEnabled: true,
+                    isHighlightingEnabled: true,
                     thickness: thickness
                 }]);
             });

@@ -36,6 +36,8 @@ $(function () {
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2005",
+                        isTransitionInEnabled: true,
+                        isHighlightingEnabled: true,
                         showTooltip: true
                     },
                     {
@@ -45,20 +47,24 @@ $(function () {
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995",
+                        isTransitionInEnabled: true,
+                        isHighlightingEnabled: true,
                         showTooltip: true
                     },
                     {
                         name: "categorySeries",
                         type: "categoryToolTipLayer",
-                        useInterpolation: false
+                        useInterpolation: true,
+                        transitionDuration: 150
                     }]
             });
 
-            //Transiton Duration Slider
+            //Transition Duration Slider
             $("#transitionDurationSlider").slider({
                 min: 0,
                 max: 1000,
-                value: 0,
+                value: 150,
+                step: 50,
                 slide: function (event, ui) {
                     $("#chart").igDataChart("option", "series", [{ name: "categorySeries", transitionDuration: ui.value }]);
                     $("#transitionDurationLabel").text(ui.value);

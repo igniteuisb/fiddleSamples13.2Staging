@@ -28,7 +28,8 @@ $(function () {
                         xAxis: "xAxis",
                         yAxis: "yAxis",
                         xMemberPath: "Year",
-                        yMemberPath: "Value"
+                        yMemberPath: "Value",
+                        markerType: "circle"
                     }],
                     horizontalZoomable: true,
                     verticalZoomable: true,

@@ -4,6 +4,9 @@ $(function () {
                 height: "400px",
                 dataSource: data,
                 title: "ロサンゼルスの風データ (12 時間)",
+                horizontalZoomable: true,
+                verticalZoomable: true,
+                windowResponse: "immediate",
                 axes: [{
                     name: "xAxis",
                     type: "categoryX",
@@ -65,10 +68,9 @@ $(function () {
                     type: "splineArea",
                     xAxis: "xAxis",
                     yAxis: "yAxis",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
                     valueMemberPath: "WindSpeed"
                 }],
-                horizontalZoomable: true,
-                verticalZoomable: true,
-                windowResponse: "immediate"
-            });
+             });
         });

@@ -1,8 +1,10 @@
 #chart1 {
             display:inline-block;
+            position: relative;
+            float: left;
             margin-right: 10px;
+            margin-bottom: 10px;
         }
-
         #legend {
             display:inline-block;
         }

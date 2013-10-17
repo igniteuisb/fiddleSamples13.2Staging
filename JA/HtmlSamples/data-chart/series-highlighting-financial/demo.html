@@ -14,7 +14,9 @@
 <div class="selectionOptions">
         シリーズ タイプ:
         <select id="seriesType">
-            <option value="absoluteVolumeOscillatorIndicator" selected="selected">絶対出来高オシレーター</option>
+            <option value="candlestick" selected="selected">ローソク足チャート</option>
+            <option value="ohlc">OHLC</option>
+            <option value="absoluteVolumeOscillatorIndicator">絶対出来高オシレーター</option>
             <option value="averageTrueRangeIndicator">ATR (アベレージ トゥルー レンジ)</option>
             <option value="accumulationDistributionIndicator">蓄積/分配</option>
             <option value="averageDirectionalIndexIndicator">平均方向性指数</option>
@@ -50,9 +52,7 @@
             <option value="ultimateOscillatorIndicator">アルティメット オシレーター</option>
             <option value="weightedCloseIndicator">重み付きクローズ</option>
             <option value="williamsPercentRIndicator">ウィリアム パーセント レンジ</option>
-            <option value="ohlc">OHLC</option>
-            <option value="candlestick">ローソク足チャート</option>
-        </select>
+         </select>
     </div>
     <div id="chart" class="chartElement"></div>
    <div style="float: left">
@@ -62,7 +62,7 @@
                 トランジション期間
                 <br />
                 <div id="transitionDurationSlider" class="sliderBounds"></div>
-                <label id="transitionDurationLabel">2</label>
+                <label id="transitionDurationLabel">1000</label>
             </div>
         </fieldset>    
     </div>

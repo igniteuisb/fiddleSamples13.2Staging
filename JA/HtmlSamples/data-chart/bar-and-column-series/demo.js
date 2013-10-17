@@ -1,7 +1,7 @@
 $(function () {
             $("#columnChart").igDataChart({
                 width: "98%",
-                height: "400px",
+                height: "350px",
                 dataSource: lastFiveYears,
                 legend: { element: "columnLegend" },
                 title: "国別エネルギー生産量",
@@ -68,7 +68,7 @@ $(function () {
 
             $("#barChart").igDataChart({
                 width: "98%",
-                height: "400px",
+                height: "550px",
                 dataSource: lastFiveYears,
                 title: "国別エネルギー生産量",
                 subtitle: "総一次エネルギー生産国トップ 5 ",

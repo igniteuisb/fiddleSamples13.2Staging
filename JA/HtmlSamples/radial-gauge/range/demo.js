@@ -95,4 +95,20 @@ $(function() {
                     $("#transitionDurationLabel").text(ui.value);
                 }
             });
+            
+            // Brush
+            $("#brushDropdown").on({
+                change: function (e) {
+                    var rangeColor = $(this).val();
+                    $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range1", brush: rangeColor }]);
+                }
+            });
+            
+            // Outline Brush
+            $("#outlineBrushDropdown").on({
+                change: function (e) {
+                    var outlineColor = $(this).val();
+                    $("#radialgauge").igRadialGauge("option", "ranges", [{ name: "range1", outline: outlineColor }]);
+                }
+            });
         });

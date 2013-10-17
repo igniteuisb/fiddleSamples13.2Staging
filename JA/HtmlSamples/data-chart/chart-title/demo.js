@@ -5,6 +5,8 @@ $(function () {
                 dataSource: lastFiveYears,
                 title: "国別エネルギー生産量",
                 subtitle: "総一次エネルギー生産国トップ 5 ",
+                horizontalZoomable: true,
+                verticalZoomable: true,
                 legend: { element: "columnLegend" },
                 axes: [{
                     name: "xAxis",

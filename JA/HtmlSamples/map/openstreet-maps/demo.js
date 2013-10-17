@@ -1,6 +1,4 @@
-$(function () {
-            
-            mapHelper();
+$(function () {           
 
             $("#map").igMap({
                 width: "700px",

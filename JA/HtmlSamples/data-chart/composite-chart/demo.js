@@ -10,6 +10,8 @@ $(function () {
                 crosshairVisibility: Modernizr.touch ? "visible" : "collapsed",
                 title: "国別エネルギー生産量",
                 subtitle: "総一次エネルギー生産国トップ 3",
+                horizontalZoomable: true,
+                verticalZoomable: true,
                 axes: [{
                     type: "categoryX",
                     name: "xAxis",

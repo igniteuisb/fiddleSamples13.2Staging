@@ -57,34 +57,34 @@ body {
                         color: #2cbdf9;
                     }
         
-        .ui-tabs .ui-tabs-panel, .ui-tabs-nav, .ui-tabs .ui-tabs-nav li.ui-state-default {
+        #car-tabs.ui-tabs .ui-tabs-panel, #car-tabs.ui-tabs-nav, #car-tabs.ui-tabs .ui-tabs-nav li.ui-state-default {
             border: none;
             padding: 0;
         }
 
-        .ui-tabs .ui-tabs-nav li.ui-state-active a {
+        #car-tabs.ui-tabs .ui-tabs-nav li.ui-state-active a {
             background-color: #2cbdf9!important;
 
         }
 
-        .ui-tabs .ui-tabs-nav li.ui-state-default a {
+        #car-tabs.ui-tabs .ui-tabs-nav li.ui-state-default a {
             background-color: #95defc;
         }
 
-         .ui-tabs .ui-tabs-nav li.ui-state-hover a {
+        #car-tabs.ui-tabs .ui-tabs-nav li.ui-state-hover a {
             background-color: #6bd1fb;
         }
 
-        .ui-tabs-anchor {
+        #car-tabs.ui-tabs-anchor {
             text-shadow: none;
             color: #fff!important;
         }
 
-        .ui-tabs-anchor:hover {
+        #car-tabs.ui-tabs-anchor:hover {
             text-decoration: underline;
         }
 
-        .ui-tabs {
+        #car-tabs.ui-tabs {
             border-radius: 0;
         }
 
@@ -116,12 +116,12 @@ body {
         }
 
         @media all and (max-width: 430px) {
-            .ui-tabs-nav li {
+            #car-tabs.ui-tabs-nav li {
                 font-size: 16px;
             }
 
-            .sample-page #sample {
+            /*.sample-page #sample {
                 margin-left: 0;
                 margin-right: 0;
-            }
+            }*/
         }

@@ -13,8 +13,8 @@ $(function () {
             });
 
             // Initialize buttons for the Modal igDialog with igButton
-            $("#yesModalDialog").igButton({ labelText: "はい", width: 75 });
-            $("#noModalDialog").igButton({ labelText: "いいえ", width: 75 });
+            $("#yesModalDialog").igButton({ labelText: "はい", width: 80 });
+            $("#noModalDialog").igButton({ labelText: "いいえ", width: 80 });
 
             $("#yesModalDialog").on("click", function (e) {
                 if (helperText) {

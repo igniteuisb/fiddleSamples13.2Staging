@@ -191,8 +191,6 @@ $(function () {
             
             function createMap() {
 
-                mapHelper();
-
                 $("#map").igMap({
                     width: "700px",
                     height: "500px",

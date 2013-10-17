@@ -4,6 +4,9 @@ $(function () {
                 height: "500px",
                 title: "Microsoft (MSFT) vs. Adobe (ADBE)",
                 subtitle: "株価の比較",
+                horizontalZoomable: true,
+                verticalZoomable: true,
+                windowResponse: "immediate",
                 axes: [{
                     name: "xAxis",
                     type: "categoryX",
@@ -21,8 +24,9 @@ $(function () {
                     dataSource: data,
                     title: "価格シリーズ",
                     type: "financial",
-                    isTransitionInEnabled: true,
                     displayType: "candlestick",
+                    isTransitionInEnabled: true,
+                    isHighlightingEnabled: true,
                     xAxis: "xAxis",
                     yAxis: "yAxis",
                     openMemberPath: "Open",
@@ -30,7 +34,7 @@ $(function () {
                     lowMemberPath: "Low",
                     closeMemberPath: "Close",
                     showTooltip: true,
-                    thickness: 2,
+                    thickness: 1,
                     trendLineBrush: "rgba(68, 172, 214, .8)",
                     trendLineThickness: 5,
                     trendLineType: "exponentialAverage",
@@ -41,6 +45,7 @@ $(function () {
                     title: "価格シリーズ",
                     type: "financial",
                     isTransitionInEnabled: true,
+                    isHighlightingEnabled: true,
                     displayType: "candlestick",
                     xAxis: "xAxis",
                     yAxis: "yAxis",
@@ -49,16 +54,13 @@ $(function () {
                     lowMemberPath: "Low",
                     closeMemberPath: "Close",
                     showTooltip: true,
-                    thickness: 2,
+                    thickness: 1,
                     trendLineBrush: "rgba(73, 73, 73, .8)",
                     trendLineThickness: 5,
                     trendLineType: "exponentialAverage",
                     negativeBrush: "rgba(198, 45, 54, .8)"
                 }],
-                horizontalZoomable: true,
-                verticalZoomable: true,
-                windowResponse: "immediate"
-            });
+           });
 
             $("#ohlcChart").igDataChart({
                 width: "100%",

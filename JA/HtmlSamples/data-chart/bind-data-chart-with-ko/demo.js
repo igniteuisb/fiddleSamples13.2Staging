@@ -7,14 +7,9 @@ $(function () {
                 
             // KO related functionallity starts here
             function generateData() {
-                var num = 12, data = [], curr = 10, rand1, rand2, rand3;
+                var num = 12, data = [], rand1, rand2, rand3;
                 overallProfit = 0;
                 for (var i = 0; i < num; i++) {
-                    if (Math.random() > .5) {
-                        curr += Math.random() * 2.0;
-                    } else {
-                        curr -= Math.random() * 2.0;
-                    }
                     rand1 = Math.random() * 50.0;
                     rand2 = Math.random() * 40.0;
                     rand3 = rand1 - rand2;
@@ -30,11 +25,22 @@ $(function () {
                 return data;
             }
 
+            function randomizeData() {
+            	var num = 12, rand1, rand2, rand3;
+            	overallProfit = 0;
+            	for (var i = 0; i < num; i++) {
+            		rand1 = Math.random() * 50.0;
+            		rand2 = Math.random() * 40.0;
+            		rand3 = rand1 - rand2;
+            		overallProfit += rand3;
+            		dynamicModel.data[i].revenue(rand1);
+            		dynamicModel.data[i].expenses(rand2);
+            		dynamicModel.data[i].profit(rand3);
+            	}
+            }
+
             function ViewModel(data) {
-                var self = this,
-                    currSelectedChartValue = $("#slider1").data("slider")
-                        ? $("#slider1").slider("value")
-                        : 3;
+            	var self = this;
                 this.data = data;
                 this.chartThickness = 2;
                 this.transitionDuration = 1000;
@@ -43,11 +49,18 @@ $(function () {
                 this.expensesColor = "#d3404b";
                 this.profitColor = "#216EDD";
                 this.outlineColor = "black";
-                this.currentIndex = ko.observable(currSelectedChartValue);
-                this.yearProfit = ko.observable(overallProfit*1000000);
-                this.formatMonth = function (value) {
-                    return MTHS[value];
-                }
+            	this.yearProfit = ko.observable(overallProfit * 1000000);
+            	this.months = MTHS;
+            	this.currMonth = ko.observable(MTHS[3]);
+            	this.currMonthLong = ko.computed(function () {
+            		return MONTHS[MTHS.indexOf(self.currMonth())];
+            	});
+            	this.formatMonth = function (value) {
+            		return MTHS[value];
+            	}
+            	this.currentIndex = ko.computed(function () {
+            		return MTHS.indexOf(self.currMonth());
+            	});
                 this.currentMonth = ko.computed({
                     read: function () {
                         return this.data[this.currentIndex()].month();
@@ -107,26 +120,10 @@ $(function () {
             }
             dynamicModel = new ViewModel(generateData());
             ko.applyBindings(dynamicModel);
-            // KO related functionallity ends here
+        	// KO related functionallity ends here
 
-            $(".number-container").html(MONTHS[dynamicModel.currentIndex()]);
-            $("#slider1").slider({
-                range: "max", min: 0, max: 11, value: dynamicModel.currentIndex(), slide: slideHandler
-            });
-            $("#slider2").slider({
-                range: "max", min: 0, max: 11, value: dynamicModel.currentIndex(), slide: slideHandler
-            });
-            function slideHandler(event, ui) {
-                $("#slider1").slider("value", ui.value);
-                $("#slider2").slider("value", ui.value);
-                $(".number-container").fadeOut(200, function () {
-                    $(".number-container").html(MONTHS[ui.value]).fadeIn(200);
-                });
-                dynamicModel.currentIndex(ui.value);
-            }
             $(".btn-refresh").click(function (e) {
-                dynamicModel = new ViewModel(generateData());
-                ko.applyBindings(dynamicModel);
+            	randomizeData();
             });
             $(".main-container").on("igtexteditortextchanged", "#ed-month", animateMonth);
             $(".main-container").on("ignumericeditortextchanged", "#ed-revenue", animateRevenue);

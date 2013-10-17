@@ -31,23 +31,23 @@ $(function () {
                 series: [
                     {
                         name: "2005Population",
-                        type: "line",
+                        type: "column",
                         title: "2005",
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop2005",
+                        isTransitionInEnabled: true,
                         isHighlightingEnabled: true,
-                        thickness: 5
                     },
                     {
                         name: "1995Population",
-                        type: "line",
+                        type: "column",
                         title: "1995",
                         xAxis: "NameAxis",
                         yAxis: "PopulationAxis",
                         valueMemberPath: "Pop1995",
+                        isTransitionInEnabled: true,
                         isHighlightingEnabled: true,
-                        thickness: 5
                     }
                 ]
             });
@@ -63,6 +63,7 @@ $(function () {
                     seriesType == "stepArea" ||
                     seriesType == "rangeColumn" ||
                     seriesType == "bar" ||
+                    seriesType == "point" ||
                     seriesType == "rangeArea") {
                     thickness = 1;
                 }
@@ -161,14 +162,14 @@ $(function () {
             });
       
             
-            // Transiton Duration Slider
+            // Transition Duration Slider
             $("#transitionDurationSlider").slider({
                 min: 0,
-                max: 5,
-                step: 0.01,
-                value: 2,
+                max: 2000,
+                value: 1000,
+                step: 50,
                 slide: function (event, ui) {
-                    $("#chart").igDataChart("option", "highlightingTransitionDuration", ui.value * 1000 );
+                    $("#chart").igDataChart("option", "highlightingTransitionDuration", ui.value);
                     $("#transitionDurationLabel").text(ui.value);
                 }
             });

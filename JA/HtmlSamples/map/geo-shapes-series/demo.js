@@ -1,6 +1,4 @@
-$(function () {
-             
-             mapHelper();
+$(function () {             
              
             $("#map").igMap({
                 width: "700px",
@@ -12,7 +10,7 @@ $(function () {
                 overviewPlusDetailPaneBackgroundImageUri: "http://jp.staging.igniteui.local/13-2/images/samples/maps/world.png",
                 backgroundContent: {
                     type: "bing",
-                    key: bingData,
+                    key: mapHelper.bingData(),
                     imagerySet: "AerialWithLabels",
                 },
                 series: [{

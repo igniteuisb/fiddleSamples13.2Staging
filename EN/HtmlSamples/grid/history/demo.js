@@ -1,16 +1,47 @@
 $(function () {
-            var gridHistoryJS,
+        	var gridHistoryJS,
                 manualStateChange = false, // true: fired by history go() and back() methods; false: fired when state is added to the history object.
                 reverseState = [],
-                tempParams = "",
-                notBound = true;
+                historyLength = window.History.storedStates.length;
 
 
-            //--> Save igGrid state in the browser history object
+        	//--> Save igGrid state in the browser history object
+        	function addUndoState(feature, column, oldValue, possibleUndo) {
+        		var currState = window.History.getState(), data, undo = false;
+        		pos = previousPosition(feature, column);
+        		if (pos < 0) {
+        			data = { key: feature, value: [column, oldValue] };
+        			undo = possibleUndo !== undefined;
+        		} else if (pos === 0) {
+        			data = null;
+        		} else {
+        			data = pos.data;
+        		}
+        		if (undo !== undefined) {
+        			data = $(data).extend({ undo: undo });
+        		}
+        		$(currState).extend({ undoData: data });
+        	}
+            function previousPosition(feature, column) {
+            	var states = window.History.savedStates,
+                    length = states.length,
+                    index;
+            	for (index = length - 1; index >= 0; index--) {
+            		if (states[index].data.key === feature &&
+                        (column === null || column !== null && states[index].data.value.indexOf(column) > -1)) {
+            			if (index === length - 1) {
+            				return 0;
+            			} else {
+            				return states[index];
+            			}
+            		}
+            	}
+            	return -1;
+            }
             function pushToBrowserHistory(state, title, url) {
-                manualStateChange = false;
-                $(state).extend({ "manualStateChange": false });
-                window.History ? window.History.pushState(state, title, url) : "";
+            	manualStateChange = false;
+            	$(state).extend({ "manualStateChange": false });
+            	window.History ? window.History.pushState(state, title, url) : "";
             }
 
             gridHistoryJS = (function initGrid() {
@@ -40,7 +71,7 @@ $(function () {
                             pageSize: 10,
                             showPageSizeDropDown: false,
                             pageIndexChanging: function (e, args) {
-                                fillReverseState("page", null, args.currentPageIndex);
+                            	addUndoState("page", null, args.currentPageIndex + 1);
                             },
                             pageIndexChanged: function (e, args) {
                                 var pageIndex = args.pageIndex + 1,
@@ -53,7 +84,7 @@ $(function () {
                             type: "local",
                             mode: "multi",
                             columnSorting: function (e, args) {
-                                fillReverseState("sort", args.columnKey, args.direction === "ascending" ? "descending" : "ascending");
+                            	addUndoState("sort", args.columnKey, args.direction === "ascending" ? "descending" : "ascending", "unsort");
                             },
                             columnSorted: function (e, args) {
                                 var columnKey = args.columnKey,
@@ -115,74 +146,58 @@ $(function () {
                         args.owner.element.find("tr td").css("text-align", "center");
                         args.owner.element.find("tr td:first-child").css("text-align", "left");
                         args.owner.element.find("tr td:last-child").css("text-align", "right");
+
+                        setTimeout(function () {
+                        	// Load Grid state from URL
+                        	loadInitialStateFromUrl();
+                        	if (window.location.search === "") {
+                        		// By default "goals" and "assists" columns are sorted
+                        		/*args.owner.element.igGridSorting("sortColumn", "goals", "descending");
+                        		pushToBrowserHistory({ key: "sort", value: ["goals", "descending"] }, null, formURL("sort", ["goals", "descending"]));
+                        		args.owner.element.igGridSorting("sortColumn", "assists", "descending");
+                        		pushToBrowserHistory({ key: "sort", value: ["assists", "descending"] }, null, formURL("sort", ["assists", "descending"]));*/
+                        	}
+                        }, 500);
                     }
             	});
             	return grid;
             })();
-
-            function fillReverseState(feature, column, oldValue) {
-            	var index = window.History.savedStates.length, pos;
-                if (reverseState.length === 0) for (index = 0; index < window.History.savedStates.length; index++) reverseState[index] = null;
-                pos = previousPosition(feature, column);
-                if (pos < 0) {
-                    reverseState[index] = oldValue;
-                } else if (pos === 0) {
-                    reverseState[index] = null;
-                } else {
-                    reverseState[index] = pos.data.value;
-                }
-            }
-
-            function previousPosition(feature, column) {
-                var states = window.History.savedStates,
-                    length = states.length,
-                    index;
-                debugger;
-                for (index = length - 1; index >= 0; index--) {
-                    if (states[index].data.key === feature &&
-                        (column === null || column !== null && states[index].data.value.indexOf(column) > -1)) {
-                        if (index === length - 1) {
-                            return 0;
-                        } else {
-                            return states[index];
-                        }
-                    }
-                }
-                return -1;
-            }
             //<-- Save igGrid state in the browser history object
 
-            //--> Recover igGrid state from the browser history object
-            if (window.History && window.History.Adapter && notBound) {
-            	notBound = false;
-                window.History.Adapter.bind(window, 'statechange', function (e, args) {
-                	var currState, state, prevState, stateOccurances, isBack;
+        	//--> Recover igGrid state from the browser history object
+            if (window.History && window.History.Adapter) {
+            	window.History.Adapter.bind(window, 'statechange', function (e, args) {
+            		var currState, state, prevState, stateOccurances,
+						isBackForward = (window.History.storedStates.length - historyLength) === 1;
 
-                    if (manualStateChange == true) { // Fired only when called externally from browser buttons
+            		if ($("#sample-title")[0] !== undefined && $("#sample-title")[0].textContent.toLowerCase() !== "history.js integration") {
+            			// This check is not related to history.js integaration. It's done to integrate the sample with the Samples Browser.
+                		return;
+            		}
+            		historyLength = window.History.storedStates.length;
+                    if (manualStateChange === true) { // Fired only when called externally from browser buttons
                         currState = window.History.getState()
                         state = currState.data,
                         stateOccurances = getStateOccurances(currState.id);
 
-                        if (!isBack) {
-                            switch (state.key) { // Load current state
-                            	case "page": gridHistoryJS.igGridPaging("pageIndex", state.value - 1); break;
-                            	case "sort": gridHistoryJS.igGridSorting("sortColumn", state.value[0], state.value[1]); break;
-                            	case "resize": gridHistoryJS.igGridResizing("resize", state.value[0], state.value[1]); break;
-                                case "group":
-                                	gridHistoryJS.igGridGroupBy("ungroupAll");
-                                	if (!gridHistoryJS.igGridGroupBy("checkColumnIsGrouped")) gridHistoryJS.igGridGroupBy("groupByColumn", state.value);
-                                    break;
-                                case "hide":
-                                    if (state.value.split("_")[1]) {
-                                    	gridHistoryJS.igGridHiding("hideColumn", state[0]);
-                                    } else {
-                                    	gridHistoryJS.igGridHiding("showColumn", state[0]);
-                                    }
-                                    break;
-                            	case "filter": gridHistoryJS.igGridFiltering("filter", ([{ fieldName: state.value[0], expr: state.value[2], cond: state.value[1] }])); break;
-                            }
-                        } else { // Unload previous state
-                            prevState = window.History.savedStates[window.History.savedStates.length - 2].data;
+                        switch (state.key) { // Load current state
+                            case "page": gridHistoryJS.igGridPaging("pageIndex", state.value - 1); break;
+                            case "sort": gridHistoryJS.igGridSorting("sortColumn", state.value[0], state.value[1]); break;
+                            case "resize": gridHistoryJS.igGridResizing("resize", state.value[0], state.value[1]); break;
+                            case "group":
+                                gridHistoryJS.igGridGroupBy("ungroupAll");
+                                if (!gridHistoryJS.igGridGroupBy("checkColumnIsGrouped")) gridHistoryJS.igGridGroupBy("groupByColumn", state.value);
+                                break;
+                            case "hide":
+                                if (state.value.split("_")[1]) {
+                                    gridHistoryJS.igGridHiding("hideColumn", state[0]);
+                                } else {
+                                    gridHistoryJS.igGridHiding("showColumn", state[0]);
+                                }
+                                break;
+                            case "filter": gridHistoryJS.igGridFiltering("filter", ([{ fieldName: state.value[0], expr: state.value[2], cond: state.value[1] }])); break;
+                        }
+                        if (isBackForward) { // Load/Unload previous state
                             if(prevState.key )
                             switch (prevState.key) {
                             	case "page": gridHistoryJS.igGridPaging("pageIndex", 0);
@@ -192,12 +207,7 @@ $(function () {
                             }
                         }
                     }
-                    manualStateChange = true;
-
-                    if (window.location.search === "" & tempParams !== "") {
-                        window.History.pushState(null, null, tempParams);
-                        tempParams = "";
-                    }
+                    manualStateChange = false;
                 });
             }
 
@@ -331,8 +341,4 @@ $(function () {
                          + "&body=" + escape("Custom List with footballers can be found here: " + window.location);
                 window.location.href = link;
             });
-
-            if ((tempParams = window.location.search) !== "") {
-                loadInitialStateFromUrl();
-            }
         });

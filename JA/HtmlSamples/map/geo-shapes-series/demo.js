@@ -8,11 +8,6 @@ $(function () {
                 horizontalZoomable: true,
                 overviewPlusDetailPaneVisibility: "visible",
                 overviewPlusDetailPaneBackgroundImageUri: "http://jp.staging.igniteui.local/13-2/images/samples/maps/world.png",
-                backgroundContent: {
-                    type: "bing",
-                    key: mapHelper.bingData(),
-                    imagerySet: "AerialWithLabels",
-                },
                 series: [{
                     type: "geographicShape",
                     name: "worldCountries",

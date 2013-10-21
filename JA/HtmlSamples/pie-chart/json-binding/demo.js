@@ -14,7 +14,7 @@ $(function () {
                 dataSource: data, //JSON data defined above
                 valueMemberPath: "Pop2008",
                 labelMemberPath: "CountryName",
-                labelsPosition: "outsideEnd"
+                labelsPosition: "bestFit"
             });
 
         });

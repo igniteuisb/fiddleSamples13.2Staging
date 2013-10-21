@@ -35,7 +35,7 @@ $(function () {
                 dataSource: ds, //$.ig.DataSource defined above
                 valueMemberPath: "Population",
                 labelMemberPath: "Name",
-                labelsPosition: "outsideEnd"
+                labelsPosition: "bestFit"
             });
 
         });

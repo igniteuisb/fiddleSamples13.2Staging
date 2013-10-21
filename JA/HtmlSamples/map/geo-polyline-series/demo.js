@@ -199,10 +199,10 @@ $(function () {
                     verticalZoomable: true,
                     horizontalZoomable: true,
                     windowRect: {
-                        left: 0.2470,
+                        left: 0.180,
                         top: 0.3143,
-                        width: 0.127,
-                        height: 0.127
+                        width: 0.180,
+                        height: 0.180
                     },
                     series: [{
                         type: "geographicPolyline",

@@ -2,7 +2,8 @@ $(function () {
         	var gridHistoryJS,
                 manualStateChange = false, // true: fired by history go() and back() methods; false: fired when state is added to the history object.
                 reverseState = [],
-                historyLength = window.History.storedStates.length;
+                historyLength = window.History.storedStates.length,
+                urlParams = window.location.search;
 
 
         	//--> Save igGrid state in the browser history object
@@ -150,14 +151,14 @@ $(function () {
                         setTimeout(function () {
                         	// Load Grid state from URL
                         	loadInitialStateFromUrl();
-                        	if (window.location.search === "") {
+                        	if (urlParams === "") {
                         		// By default "goals" and "assists" columns are sorted
-                        		/*args.owner.element.igGridSorting("sortColumn", "goals", "descending");
+                        		args.owner.element.igGridSorting("sortColumn", "goals", "descending");
                         		pushToBrowserHistory({ key: "sort", value: ["goals", "descending"] }, null, formURL("sort", ["goals", "descending"]));
                         		args.owner.element.igGridSorting("sortColumn", "assists", "descending");
-                        		pushToBrowserHistory({ key: "sort", value: ["assists", "descending"] }, null, formURL("sort", ["assists", "descending"]));*/
+                        		pushToBrowserHistory({ key: "sort", value: ["assists", "descending"] }, null, formURL("sort", ["assists", "descending"]));
                         	}
-                        }, 500);
+                        }, 200);
                     }
             	});
             	return grid;
@@ -226,13 +227,15 @@ $(function () {
 
             //--> Load igGrid state from the browser URL
             function loadInitialStateFromUrl() {
-                var params = window.location.search, index, arrKeyValue;
+                var params = urlParams, index, arrKeyValue;
                 if (params !== "") {
                     pairs = params.substring(1, params.length).split("&");
                     for (index = 0; index < pairs.length; index++) {
                         arrKeyValue = pairs[index].split("=");
                         loadGridState(arrKeyValue[0], arrKeyValue[1]);
                     }
+					// Recover URL
+                    window.History.pushState({}, null, params);
                 }
             };
             //<-- Load igGrid state from the browser URL

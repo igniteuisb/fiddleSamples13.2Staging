@@ -158,8 +158,7 @@ $(function () {
                 }
 
                 return ret;
-            }
-
+            };
             updateYearOverlay = function () {
                 var chartPos = $("#chart").position();
                 var x = viewport.left + viewport.width * (.5 - wind.left) / wind.width + chartPos.left;
@@ -172,8 +171,7 @@ $(function () {
                 $("#yearContainer").css("top", y - (textHeight / 2.0));
                 $("#yearContainer").css("left", x - (textWidth / 2.0));
                 $("#currentYear").css("font-size", Math.round(30 / wind.width) + "px");
-            }
-
+            };
             currData = getYear(minYear);
             dataSource = new $.ig.DataSource({ dataSource: currData });
 
@@ -233,8 +231,8 @@ $(function () {
 
             updateYearText = function (year) {
                 $("#currentYear").text(year);
-            }
-
+            };
+            
             currentYear = minYear;
             updateYearText(currentYear);
 
@@ -271,8 +269,7 @@ $(function () {
                 updateYearText(year);
                 currentYear = year;
                 $("#timeSlider").slider("option", "value", currentYear);
-            }
-
+            };
             $("#timeSlider").slider({
                 slide: function (event, ui) {
                     changeYear(ui.value);

@@ -8,15 +8,16 @@ $(function () {
 
             // process events of select options
             $("#PageSizeSelect").on({
-                change: function (e) {
-                    $('#grid').igGridPaging('pageSize', parseInt($(e.srcElement).val()));
-                    AddPageOptions(parseInt($(e.srcElement).val()));
+                change: function ( e )
+                {
+                   $( '#grid' ).igGridPaging( 'pageSize', parseInt( $( this ).val()));
+                   AddPageOptions(parseInt( $( this ).val()));
                 }
             });
 
             $("#PageIndexSelect").on({
                 change: function (e) {
-                    $('#grid').igGridPaging('pageIndex', parseInt($(e.srcElement).val()));
+                    $( '#grid' ).igGridPaging( 'pageIndex', parseInt($( this ).val()));
                 }
             });
 
@@ -127,7 +128,7 @@ $(function () {
                 dataSource: northwind,
                 dataSourceType: "json",
                 responseDataKey: "results",
-                height: "500px",
+                height: "100%",
                 width: "100%",
                 tabIndex: 1,
                 features: [

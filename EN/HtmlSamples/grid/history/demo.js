@@ -1,27 +1,29 @@
 $(function () {
         	var gridHistoryJS,
-                manualStateChange = false, // true: fired by history go() and back() methods; false: fired when state is added to the history object.
+                manualStateChange = true, // true: fired by history go() and back() methods; false: fired when state is added to the history object.
                 reverseState = [],
-                historyLength = window.History.storedStates.length,
+                // historyLength = window.History.storedStates.length,
                 urlParams = window.location.search;
 
 
         	//--> Save igGrid state in the browser history object
-        	function addUndoState(feature, column, oldValue, possibleUndo) {
+        	function addUndoState(feature, column, possibleUndo, oldValue) {
         		var currState = window.History.getState(), data, undo = false;
         		pos = previousPosition(feature, column);
         		if (pos < 0) {
-        			data = { key: feature, value: [column, oldValue] };
-        			undo = possibleUndo !== undefined;
+        			data = { key: feature, value: column === null ? oldValue : (!oldValue) ? column : [column, oldValue] };
+        			undo = possibleUndo;
         		} else if (pos === 0) {
         			data = null;
         		} else {
         			data = pos.data;
         		}
-        		if (undo !== undefined) {
-        			data = $(data).extend({ undo: undo });
+        		if (data !== null) {
+        			data.undo = undo;
+        			currState.data.undoData = data;
+        			manualStateChange = false;
+        			window.History.replaceState(currState.data);
         		}
-        		$(currState).extend({ undoData: data });
         	}
             function previousPosition(feature, column) {
             	var states = window.History.savedStates,
@@ -72,7 +74,7 @@ $(function () {
                             pageSize: 10,
                             showPageSizeDropDown: false,
                             pageIndexChanging: function (e, args) {
-                            	addUndoState("page", null, args.currentPageIndex + 1);
+                            	addUndoState("page", null, false, args.currentPageIndex + 1, args.newPageIndex + 1);
                             },
                             pageIndexChanged: function (e, args) {
                                 var pageIndex = args.pageIndex + 1,
@@ -85,7 +87,7 @@ $(function () {
                             type: "local",
                             mode: "multi",
                             columnSorting: function (e, args) {
-                            	addUndoState("sort", args.columnKey, args.direction === "ascending" ? "descending" : "ascending", "unsort");
+                            	addUndoState("sort", args.columnKey, true, args.direction === "ascending" ? "descending" : "ascending");
                             },
                             columnSorted: function (e, args) {
                                 var columnKey = args.columnKey,
@@ -99,6 +101,12 @@ $(function () {
                         {
                             name: "Filtering",
                             type: "local",
+                            dataFiltering: function(e, args) {
+                            	var expr = args.owner.grid.dataSource.settings.filtering.expressions,
+                            		oldValue;
+                            	oldValue = (expr.length > 0) ? expr[expr.length - 1].expr : null;
+                            	addUndoState("filter", args.columnKey, true, oldValue);
+                            },
                             dataFiltered: function (e, args) {
                                 var columnKey = args.columnKey,
                                     expr = args.owner.grid.dataSource.settings.filtering.expressions[0],
@@ -113,35 +121,28 @@ $(function () {
                             }
                         },
                         {
-                            name: "Resizing",
+                        	name: "Resizing",
+                        	columnResizing: function (e, args) {
+                        		addUndoState("resize", args.columnKey, false, args.originalWidth);
+                        	},
                             columnResized: function (e, args) {
                                 var columnKey = args.columnKey,
-                                   width = args.originalWidth,
-                                   state = { key: "resize", value: [columnKey, width] };
+									width = args.originalWidth,
+									state = { key: "resize", value: [columnKey, width] };
                                 pushToBrowserHistory(state, null, formURL("resize", [columnKey, width]));
                             }
                         },
-                        {
-                            name: "Hiding",
-                            columnHidden: function (e, args) {
-                                var columnKey = args.columnKey,
-                                   state = { key: "hide", value: columnKey };
-                                pushToBrowserHistory(state, null, formURL("hide", [columnKey, true]));
-                            },
-                            columnShown: function (e, args) {
-                                var columnKey = args.columnKey,
-                                   state = { key: "hide", value: columnKey };
-                                pushToBrowserHistory(state, null, formURL("hide", [columnKey, false]));
-                            }
-                        },
-                        {
-                            name: "GroupBy",
-                            groupedColumnsChanged: function (e, args) {
-                                var columnKey = args.key;
-                                state = { key: "group", value: columnKey };
-                                pushToBrowserHistory(state, null, formURL("group", columnKey));
-                            }
-                        }
+						{
+							name: "GroupBy",
+							groupedColumnsChanging: function (e, args) {
+								addUndoState("groupby", args.key, true);
+							},
+						    groupedColumnsChanged: function (e, args) {
+						        var columnKey = args.key;
+						        state = { key: "groupby", value: columnKey };
+						        pushToBrowserHistory(state, null, formURL("groupby", columnKey));
+						    }
+						}
                     ],
                     rendered: function (e, args) {
                         args.owner.element.find("tr td").css("text-align", "center");
@@ -153,10 +154,7 @@ $(function () {
                         	loadInitialStateFromUrl();
                         	if (urlParams === "") {
                         		// By default "goals" and "assists" columns are sorted
-                        		args.owner.element.igGridSorting("sortColumn", "goals", "descending");
-                        		pushToBrowserHistory({ key: "sort", value: ["goals", "descending"] }, null, formURL("sort", ["goals", "descending"]));
-                        		args.owner.element.igGridSorting("sortColumn", "assists", "descending");
-                        		pushToBrowserHistory({ key: "sort", value: ["assists", "descending"] }, null, formURL("sort", ["assists", "descending"]));
+                        		manualInitialSort(args);
                         	}
                         }, 200);
                     }
@@ -168,60 +166,40 @@ $(function () {
         	//--> Recover igGrid state from the browser history object
             if (window.History && window.History.Adapter) {
             	window.History.Adapter.bind(window, 'statechange', function (e, args) {
-            		var currState, state, prevState, stateOccurances,
-						isBackForward = (window.History.storedStates.length - historyLength) === 1;
+            		var currState, undoState, state, prevState, stateOccurances;
+						// isBackForward = (window.History.storedStates.length - historyLength) === 1;
 
             		if ($("#sample-title")[0] !== undefined && $("#sample-title")[0].textContent.toLowerCase() !== "history.js integration") {
             			// This check is not related to history.js integaration. It's done to integrate the sample with the Samples Browser.
                 		return;
             		}
-            		historyLength = window.History.storedStates.length;
+            		// historyLength = window.History.storedStates.length;
                     if (manualStateChange === true) { // Fired only when called externally from browser buttons
-                        currState = window.History.getState()
-                        state = currState.data,
-                        stateOccurances = getStateOccurances(currState.id);
-
+                    	currState = window.History.getState();
+                    	state = currState.data;
+                    	undoState = state.undoData;
                         switch (state.key) { // Load current state
-                            case "page": gridHistoryJS.igGridPaging("pageIndex", state.value - 1); break;
-                            case "sort": gridHistoryJS.igGridSorting("sortColumn", state.value[0], state.value[1]); break;
-                            case "resize": gridHistoryJS.igGridResizing("resize", state.value[0], state.value[1]); break;
-                            case "group":
-                                gridHistoryJS.igGridGroupBy("ungroupAll");
-                                if (!gridHistoryJS.igGridGroupBy("checkColumnIsGrouped")) gridHistoryJS.igGridGroupBy("groupByColumn", state.value);
-                                break;
-                            case "hide":
-                                if (state.value.split("_")[1]) {
-                                    gridHistoryJS.igGridHiding("hideColumn", state[0]);
-                                } else {
-                                    gridHistoryJS.igGridHiding("showColumn", state[0]);
-                                }
-                                break;
-                            case "filter": gridHistoryJS.igGridFiltering("filter", ([{ fieldName: state.value[0], expr: state.value[2], cond: state.value[1] }])); break;
+                        	case "page": loadPagingState(state.key, state.value); break;
+                        	case "sort": loadSortingState(state.key, state.value); break;
+                        	case "filter": loadFilteringState(state.key, state.value);  break;
+                        	case "resize": loadResizingState(state.key, state.value); break;
+                        	case "groupby": loadGroupState(state.key, state.value); break;
+                        	default: break;
                         }
-                        if (isBackForward) { // Load/Unload previous state
-                            if(prevState.key )
-                            switch (prevState.key) {
-                            	case "page": gridHistoryJS.igGridPaging("pageIndex", 0);
-                            	case "filter": gridHistoryJS.igGridFiltering("filter", ([])); break;
-                            	case "sort": gridHistoryJS.igGridSorting("unsortColumn", prevState.value[0]); break;
-                                default: break;
-                            }
+                    	// Load/Unload previous state
+                        if (undoState) {
+                        	switch (undoState.key) {
+                        		case "page": loadPagingState(undoState.key, undoState.value);
+                        		case "sort": loadSortingState(undoState.key, undoState.value, undoState.undo); break;
+                        		case "filter": loadFilteringState(undoState.key, undoState.value, undoState.undo); break;
+                        		case "resize": loadResizingState(undoState.key, undoState.value); break;
+                        		case "groupby": loadGroupState(undoState.key, undoState.value, undoState.undo); break;
+                        		default: break;
+                        	}
                         }
                     }
-                    manualStateChange = false;
+                    manualStateChange = true;
                 });
-            }
-
-            function getStateOccurances(id) {
-                var historyStates = window.History.savedStates, index, count = 0;
-                for (index = 0; index < historyStates.length - 1; index++) {
-                    if (historyStates[index].id === id) count++;
-                }
-                return count;
-            }
-
-            function getLastOccurance(state) {
-                var historyStates = window.History.savedStates, index;
             }
             //<-- Recover igGrid state from the browser history object
 
@@ -237,36 +215,80 @@ $(function () {
 					// Recover URL
                     window.History.pushState({}, null, params);
                 }
-            };
+            }
+            function manualInitialSort(args) {
+            	args.owner.element.igGridSorting("sortColumn", "goals", "descending"); manualStateChange = false;
+            	addUndoState("sort", "goals", true, "ascending");
+            	pushToBrowserHistory({ key: "sort", value: ["goals", "descending"] }, null, formURL("sort", ["goals", "descending"]));
+            	args.owner.element.igGridSorting("sortColumn", "assists", "descending"); manualStateChange = false;
+            	addUndoState("sort", "assists", true, "ascending");
+            	pushToBrowserHistory({ key: "sort", value: ["assists", "descending"] }, null, formURL("sort", ["assists", "descending"]));
+            }
             //<-- Load igGrid state from the browser URL
 
             //--> Load individual igGrid features
             function loadGridState(key, value) {
                 switch (key) {
                     case "page": loadPagingState(key, value); break;
-                    case "sort": loadSortingState(key, value); break;
-                	case "resize": gridHistoryJS.igGridResizing("resize", value.split("_")[0], value.split("_")[1]); break;
-                	case "group": gridHistoryJS.igGridGroupBy("groupByColumn", value); break;
-                    case "hide":
-                        if (value.split("_")[1]) {
-                        	gridHistoryJS.igGridHiding("hideColumn", value.split("_")[0]);
-                        } else {
-                        	gridHistoryJS.igGridHiding("showColumn", value.split("_")[0]);
-                        }
-                        break;
-                	case "filter": gridHistoryJS.igGridFiltering("filter", [{ fieldName: value.split("_")[0], expr: value.split("_")[2], cond: value.split("_")[1] }]); break;
+                	case "sort": loadSortingStateArray(key, value); break;
+                	case "filter": loadFilteringStateArray(key, value); break;
+                	case "resize": loadResizingStateArray(key, value); break;
+                	case "groupby": loadGroupStateArray(key, value); break;
+                	default: break;
                 }
             }
-
             function loadPagingState(key, value) {
             	gridHistoryJS.igGridPaging("pageIndex", value - 1);
             }
-
-            function loadSortingState(key, value) {
-                var columns = value.split(";"), i;
-                for (i = 0; i < columns.length; i++) {
-                	gridHistoryJS.igGridSorting("sortColumn", columns[i].split("_")[0], columns[i].split("_")[1]);
+            function loadSortingState(key, descriptor, undo) {
+            	var column = descriptor[0],
+					status = descriptor[1];
+            	if (undo) {
+            		gridHistoryJS.igGridSorting("unsortColumn", column);
+            	} else {
+                	gridHistoryJS.igGridSorting("sortColumn", column, status);
                 }
+            }
+            function loadSortingStateArray(key, value) {
+            	var columns = value.split(";"), i;
+            	for (i = 0; i < columns.length; i++) {
+            		gridHistoryJS.igGridSorting("sortColumn", columns[i].split("_", 1)[0], columns[i].split("_", 2)[1]);
+            	}
+            }
+            function loadFilteringState(key, descriptor, undo) {
+            	if (undo) {
+            		gridHistoryJS.igGridFiltering("filter", []);
+            	} else {
+            		gridHistoryJS.igGridFiltering("filter", [{ fieldName: descriptor[0], expr: descriptor[2], cond: descriptor[1] }]);
+            	}
+            }
+            function loadFilteringStateArray(key, value) {
+            	var columns = value.split(";"), i;
+            	for (i = 0; i < columns.length; i++) {
+            		gridHistoryJS.igGridFiltering("filter", [{ fieldName: columns[i].split("_", 1)[0], expr: columns[i].split("_", 3)[2], cond: columns[i].split("_", 2)[1] }]);
+            	}
+            }
+            function loadResizingState(key, descriptor) {
+            	gridHistoryJS.igGridResizing("resize", descriptor[0], descriptor[1]);
+            }
+            function loadResizingStateArray(key, value) {
+            	var columns = value.split(";"), i;
+            	for (i = 0; i < columns.length; i++) {
+            		gridHistoryJS.igGridResizing("resize", columns[i].split("_", 1)[0], columns[i].split("_", 2)[1]);
+            	}
+            }
+            function loadGroupState(key, value, undo) {
+            	if (undo) {
+            		gridHistoryJS.igGridGroupBy("ungroupByColumn", value);
+            	} else {
+            		if (!gridHistoryJS.igGridGroupBy("checkColumnIsGrouped", value)) gridHistoryJS.igGridGroupBy("groupByColumn", value);
+            	} 
+            }
+            function loadGroupStateArray(key, value) {
+            	var columns = value.split(";"), i;
+            	for (i = 0; i < columns.length; i++) {
+            		gridHistoryJS.igGridGroupBy("groupByColumn", columns[i]);
+            	}
             }
             //<-- Load individual igGrid features
 
@@ -310,7 +332,6 @@ $(function () {
                 }
                 return params;
             }
-
             function extractURLValue(key) {
                 var params = window.location.search,
                     value = "";
@@ -318,7 +339,6 @@ $(function () {
                 value = value.substring(key.length + 1, (value.indexOf("&") > -1) ? value.indexOf("&") : value.length);
                 return value;
             }
-
             function getColumnState(featureUrl, column) {
                 var state, columnStartIndex, columnEndIndex;
                 columnStartIndex = featureUrl.indexOf(column);
@@ -329,12 +349,11 @@ $(function () {
                 state = state.substring(0, columnEndIndex);
                 return state;
             }
-            //<-- Create URL
+        	//<-- Create URL
 
             function isEmptyValue(value) {
                 return value === undefined || value === null || value.length === 0;
             }
-
             $("#back").igButton().click(function () { window.History.back(); });
             $("#forward").igButton().click(function () { window.History.forward(); });
             $("#copy").igButton().click(function () { window.prompt("Copy URL and open it in a new tab or browser", window.location); });

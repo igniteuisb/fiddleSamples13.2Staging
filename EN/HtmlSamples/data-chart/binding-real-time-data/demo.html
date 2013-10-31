@@ -1,6 +1,6 @@
 <script src="http://staging.igniteui.local/13-2/js/modernizr.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/infragistics.core.js"></script>
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/infragistics.dv.js"></script>
 <link href="http://staging.igniteui.local/13-2/IgniteUI/css/themes/infragistics/infragistics.theme.css" rel="stylesheet"></link>
@@ -20,10 +20,11 @@
             <table>
                 <tr>
                     <td>
-                     Data Points: <span id="volumeText">5000</span>
+                        Data Points: <span id="volumeText">5000</span>
                     </td>
+                     <td style="width: 10px; min-width: 10px;"></td>
                   <td>
-                      Refresh Time: <span id="intervalText">10</span>
+                      Refresh time: <span id="intervalText">10</span>
                     </td>
                     <td>
                          Refreshes Per Second: <span id="refreshCount">0</span>
@@ -33,7 +34,8 @@
                     <td>
                       <div id="volumeSlider" class="sliderBounds"></div>
                     </td> 
-                    <td>
+                   <td style="width: 10px; min-width: 10px;"></td>
+                   <td>
                         <div id="intervalSlider" class="sliderBounds"></div>
                     </td> 
                 </tr>
@@ -41,6 +43,7 @@
                     <td>
                         <input type="button" id="addDataPoints" value="Add Data Points"></input> 
                     </td>
+                     <td style="width: 10px; min-width: 10px;"></td>
                     <td>
                         <input type="button" id="startDataFeed" value="Start Data Feed"></input>
                     </td>

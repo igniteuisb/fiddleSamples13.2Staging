@@ -99,7 +99,7 @@ $(function () {
             $("#print").igButton();
 
             $("#htmlEditor").igHtmlEditor({
-                width: "100%"
+                width: "98%"
             });
 
             $("#htmlEditor").igHtmlEditor("setContent", "", "html");

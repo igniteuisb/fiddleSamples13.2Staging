@@ -93,6 +93,7 @@ $(document).ready(function () {
 			});
 			$("#zoom").igZoombar({
 				target: "#chart",
+				zoomWindowMinWidth: 1.2,
 				windowResized: function (evt, ui) {
 					var target = $(evt.originalEvent.target),
 						handle = target.hasClass("ui-igzoombar-window-handle") ?
@@ -129,16 +130,12 @@ $(document).ready(function () {
 					$("#buttonset").buttonset("refresh");
 				}
 			});
-			$("#buttonset").buttonset().click(function (evt) {
-				var target = $(evt.target),
-					button,
+			var lastSelectedButton;
+			function onClick(button, label) {
+				var newWidth,
+					activeCss = "ui-state-active",
 					viewport = chart.igDataChart("option", "gridAreaRect"),
-					leftMostValue = chart.igDataChart("unscaleValue", "xAxis", viewport.left),
-					newWidth;
-				if (!target.is("input")) {
-					return;
-				}
-				button = target.attr("id");
+					leftMostValue = chart.igDataChart("unscaleValue", "xAxis", viewport.left);
 				if (button === "day") {
 					newWidth = 24 * 60 * 60 * 1000;
 				} else if (button === "week") {
@@ -146,8 +143,33 @@ $(document).ready(function () {
 				} else if (button === "month") {
 					newWidth = 30 * 24 * 60 * 60 * 1000;
 				}
+				// do not process same selected button twice
+				if (!newWidth || lastSelectedButton === button)
+					return;
+				lastSelectedButton = button;
 				newWidth = chart.igDataChart("scaleValue", "xAxis", new Date(leftMostValue + newWidth));
 				zoombar.igZoombar("zoom", zoomParams.left * 100, (newWidth * zoomParams.width / viewport.width) * 100);
+				// verify/fix appearance of active button
+				if (label) {
+					setTimeout(function () {
+						// condition when mouse-click of buttonset failed
+						if (label.className.indexOf(activeCss) < 0) {
+							var old = $("#buttonset").find("." + activeCss);
+							old.removeClass(activeCss).removeClass("ui-state-focus");
+							label.className += " " + activeCss;
+						}
+					}, 40);
+				}
+			}
+			// Note: buttonset has a bug with raising click events.
+			// To get around, use mouseup with check for "LABEL.htmlFor"
+			$("#buttonset").buttonset().click(function (evt) {
+				onClick(evt.target.id);
+			}).mouseup(function(evt) {
+				var label = evt.target;
+				if (label.nodeName !== "LABEL")
+					label = label.parentNode;
+				onClick(label.htmlFor, label);
 			});
 			$("#popoverLeft").igPopover({
 				target: $("#zoom_zoombar_mask_left_handle"),

@@ -359,8 +359,8 @@ $(function () {
             $("#copy").igButton().click(function () { window.prompt("Copy URL and open it in a new tab or browser", window.location); });
             $("#mail").igButton().click(function () {
                 var link = "mailto: "
-                         + "&subject=" + escape("List with Footballers")
-                         + "&body=" + escape("Custom List with footballers can be found here: " + window.location);
+                         + "?subject=" + escape("List with Footballers")
+                         + "&body=" + escape("Use the following custom list with footballers: " + window.location);
                 window.location.href = link;
             });
         });

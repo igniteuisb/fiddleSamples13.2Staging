@@ -7,23 +7,26 @@ body { font-family: Arial; }
             margin-left: -225px;
             left: 50%;
         }
-
-        .row { margin: 2px 0px 2px 0px; }
+        .row {
+            margin-top: 5px;
+        }
+        .row-control {
+            height: 18px;
+            padding: 0;
+        }
         .heading-row
         {
             margin: 20px 0px 10px 0px;
             font-size: large;
         }
-        .editor-row { margin: 10px 0px 10px 0px; }
+        
         .heading-label, .row-label, .row-control
         {
             width: 200px;
             margin: 0px 5px 0px 5px;
         }
 
-        .ui-igedit {
-                margin: 0px 5px 0px 5px;
-        }
+
 
         @media all and (max-width: 520px) {
             .ui-datepicker {

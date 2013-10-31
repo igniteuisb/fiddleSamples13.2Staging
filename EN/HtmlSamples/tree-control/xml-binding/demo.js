@@ -41,6 +41,7 @@ $(function () {
 
             $("#tree").igTree({
                 dataSource: ds, //$.ig.DataSource object defined above
+                dataSourceType: 'xml',
                 bindings: {
                     textKey: "Name",
                     childDataProperty: "Employee"

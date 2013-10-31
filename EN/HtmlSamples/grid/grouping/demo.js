@@ -14,7 +14,30 @@ $(function () {
                 dataSource: northwindInvoices,
                 features: [
                     {
-                        name: 'GroupBy'
+                        name: 'GroupBy',
+                        columnSettings: [
+                            {
+                                columnKey: "OrderDate",
+                                summaries: [
+                                    {
+                                        summaryFunction: "custom",
+                                        text: "After 8/1/1996:",
+                                        customSummary: function (data) {
+                                            var count = 0, date = new Date(1996, 7, 1);
+                                            $.map(data, function (d) {
+                                                  if (d > date) {
+                                                      count++;
+                                                  }
+                                              });
+                                              return count.toFixed(0);
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        summarySettings: {
+                            summaryFormat: "#"
+                        }
                     }
                 ]
             });

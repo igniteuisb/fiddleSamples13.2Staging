@@ -31,9 +31,9 @@
         }
 
         #dashboard .ui-igtilemanager-right img {
-            width: 100px;
+            width: 60px;
             height: 80px;
-            margin-left: -50px;
+            margin-left: -30px;
             margin-top: 15px;
         }
 
@@ -43,7 +43,7 @@
         }
 
         .ui-igtile-maximized div {
-            text-align: center;
+            text-align: left;
         }
 
         .linkedIn, .skills {

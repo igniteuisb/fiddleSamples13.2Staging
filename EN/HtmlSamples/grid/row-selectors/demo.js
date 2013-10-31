@@ -33,8 +33,7 @@ $(function () {
                     },
                     {
                         name: "RowSelectors",
-                        enableRowNumbering: false,
-                        rowSelectorColumnWidth: "50px"
+                        enableRowNumbering: false
                     },
                     {
                         name: "Selection"
@@ -70,8 +69,7 @@ $(function () {
                     {
                         name: "RowSelectors",
                         enableCheckBoxes: true,
-                        enableRowNumbering: false,
-                        rowSelectorColumnWidth: "50px"
+                        enableRowNumbering: false
                     },
                     {
                         name: "Selection"
@@ -106,8 +104,7 @@ $(function () {
                     },
                     {
                         name: "RowSelectors",
-                        enableRowNumbering: true,
-                        rowSelectorColumnWidth: "50px"
+                        enableRowNumbering: true
                     },
                     {
                         name: "Selection"

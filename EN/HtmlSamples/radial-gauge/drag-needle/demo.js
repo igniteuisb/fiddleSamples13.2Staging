@@ -66,7 +66,7 @@ $(function () {
                 var mobileDevice = getMobile();
                 return mobileDevice !== "none";
             }
-
+            var _mobile = null;
             // Get the name of the mobile device if possible
             function getMobile() {
                 if (!_mobile) {

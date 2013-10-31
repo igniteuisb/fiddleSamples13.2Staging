@@ -4,40 +4,33 @@ $(function () {
 
             $bulletGraph.igBulletGraph({
                 width: "100%",
-                height: "80px",
-                transitionDuration: 500,
+                height: "80px", 
                 ranges: [
                     {
                         brush:'#803E01',
                         name: 'bad',
                         startValue: 0,
-                        endValue: 5200
+                        endValue: 5000
                     },
                     {
                         brush: '#BA5A05',
                         name: 'acceptable',
-                        startValue: 5200,
-                        endValue: 6400
+                        startValue: 5000,
+                        endValue: 6000
                     },
                     {
                         brush: '#FF7A04',
                         name: 'good',
-                        startValue: 6400,
+                        startValue: 6000,
                         endValue: 10000
                     }
                 ],
                 minimumValue: 0,
                 maximumValue: 10000,
-                value: 6000,
-                valueBrush: 'white',
-                valueOutline: 'transparent',
+                value: 6500, 
                 valueInnerExtent: 0.5,
-                valueOuterExtent: 0.65,
-                targetValue: 5550,
-                targetValueBreadth: 4,
-                targetValueStrokeThickness: 0,
-                targetValueBrush: 'white',
-                targetValueOutline: 'transparent',
+                valueOuterExtent: 0.65, 
+                targetValue: 7000, 
                 formatLabel: function (evt, ui) {
                     ui.label += "K";
                 }
@@ -47,19 +40,18 @@ $(function () {
 
             $bulletGraph2.igBulletGraph({
                 width: "100%",
-                height: "80px",
-                transitionDuration: 500,
+                height: "80px", 
                 ranges: [
                     {
                         brush: '#566509',
                         name: 'bad',
                         startValue: 0,
-                        endValue: 3400
+                        endValue: 3000
                     },
                     {
                         brush: '#7F950C',
                         name: 'acceptable',
-                        startValue: 3400,
+                        startValue: 3000,
                         endValue: 4000
                     },
                     {
@@ -71,16 +63,11 @@ $(function () {
                 ],
                 minimumValue: 0,
                 maximumValue: 10000,
-                value: 5000,
-                valueBrush: 'white',
-                valueOutline: 'transparent',
+                value: 5000, 
                 valueInnerExtent: 0.5,
                 valueOuterExtent: 0.65,
-                targetValue: 4800,
-                targetValueBreadth: 12,
-                targetValueStrokeThickness: 0,
-                targetValueBrush: 'white',
-                targetValueOutline: 'transparent',
+                targetValue: 6000,
+                targetValueBreadth: 12, 
                 formatLabel: function (evt, ui) {
                     ui.label += "K";
                 }
@@ -91,19 +78,18 @@ $(function () {
 
             $bulletGraph3.igBulletGraph({
                 width: "100%",
-                height: "80px",
-                transitionDuration: 500,
+                height: "80px", 
                 ranges: [
                     {
                         brush: '#566509',
                         name: 'bad',
                         startValue: 0,
-                        endValue: 254
+                        endValue: 250
                     },
                     {
                         brush: '#7F950C',
                         name: 'acceptable',
-                        startValue: 254,
+                        startValue: 250,
                         endValue: 300
                     },
                     {
@@ -115,16 +101,10 @@ $(function () {
                 ],
                 minimumValue: 0,
                 maximumValue: 500,
-                value: 350,
-                valueBrush: 'white',
-                valueOutline: 'transparent',
+                value: 350, 
                 valueInnerExtent: 0.35,
                 valueOuterExtent: 0.8,
-                targetValue: 300,
-                targetValueBreadth: 4,
-                targetValueStrokeThickness: 0,
-                targetValueBrush: 'white',
-                targetValueOutline: 'transparent',
+                targetValue: 400, 
                 formatLabel: function (evt, ui) {
                     ui.label += "K";
                 }
@@ -135,19 +115,18 @@ $(function () {
 
             $bulletGraph4.igBulletGraph({
                 width: "100%",
-                height: "80px",
-                transitionDuration: 500,
+                height: "80px", 
                 ranges: [
                     {
                         brush: '#11364D',
                         name: 'bad',
                         startValue: 0,
-                        endValue: 60
+                        endValue: 50
                     },
                     {
                         brush: '#164F6D',
                         name: 'acceptable',
-                        startValue: 60,
+                        startValue: 50,
                         endValue: 70
                     },
                     {
@@ -156,17 +135,13 @@ $(function () {
                         startValue: 70,
                         endValue: 100
                     }
-                ],
-                minimumValue: 0,
+                ], 
                 maximumValue: 100,
-                value: 50,
-                valueBrush: 'white',
-                valueOutline: 'transparent', 
+                value: 55, 
                 targetValue: 73,
-                targetValueBreadth: 4,
-                targetValueStrokeThickness: 0,
-                targetValueBrush: 'white',
-                targetValueOutline: 'transparent',
+                valueBrush:"#B3E0F7",
+                targetValueBrush:"#B3E0F7",
+                targetValueOutline:"#B3E0F7",
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "%";
                 }

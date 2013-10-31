@@ -1,7 +1,7 @@
 $(function () { 
-            var $bulletGraph = $("#bulletgraph");
+            var $linearGauge = $("#linearGauge");
 
-            $bulletGraph.igBulletGraph({
+            $linearGauge.igLinearGauge({
                 width: "100%",
                 height: "90px",
                 targetValueOutline: "transparent",
@@ -10,26 +10,23 @@ $(function () {
             });
 
             function setting1() {
-                $bulletGraph.igBulletGraph({
+                $linearGauge.igLinearGauge({
                     targetValue: 160,
                     value: 180,
                     interval: 40,
                     minimumValue: 0,
                     maximumValue: 200,
                     targetValueBrush: "white",
-                    valueBrush: "white",
-                    majorTickmarkBrush: "white",
-                    tickBrush: "#C1C1C1",
-                    fontBrush: "#C1C1C1"
+                    valueBrush: "white", 
                 });
 
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range1", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range2", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range3", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range4", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range5", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range1", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range2", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range3", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range4", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range5", remove: true }]);
 
-                $bulletGraph.igBulletGraph("option", "ranges", [
+                $linearGauge.igLinearGauge("option", "ranges", [
                     {
                         name: 'range1',
                         startValue: 0,
@@ -55,7 +52,7 @@ $(function () {
             }
 
             function setting2() {
-                $bulletGraph.igBulletGraph({
+                $linearGauge.igLinearGauge({
                     targetValue: 70,
                     value: 80,
                     interval: 50,
@@ -65,13 +62,13 @@ $(function () {
                     valueBrush: "#fff7a3"
                 });
 
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range1", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range2", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range3", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range4", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range5", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range1", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range2", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range3", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range4", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range5", remove: true }]);
 
-                $bulletGraph.igBulletGraph("option", "ranges", [
+                $linearGauge.igLinearGauge("option", "ranges", [
                     {
                         name: 'range1',
                         startValue: 0,
@@ -90,7 +87,7 @@ $(function () {
             }
 
             function setting3() {
-                $bulletGraph.igBulletGraph({
+                $linearGauge.igLinearGauge({
                     targetValue: 800,
                     value: 700,
                     interval: 200,
@@ -101,13 +98,13 @@ $(function () {
                     
                 });
 
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range1", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range2", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range3", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range4", remove: true }]);
-                $bulletGraph.igBulletGraph("option", "ranges", [{ name: "range5", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range1", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range2", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range3", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range4", remove: true }]);
+                $linearGauge.igLinearGauge("option", "ranges", [{ name: "range5", remove: true }]);
 
-                $bulletGraph.igBulletGraph("option", "ranges", [
+                $linearGauge.igLinearGauge("option", "ranges", [
                     {
                         name: 'range1',
                         startValue: 0,
@@ -145,7 +142,7 @@ $(function () {
                 step: 50,
                 value: 1000,
                 slide: function (event, ui) {
-                    $bulletGraph.igBulletGraph("option", "transitionDuration", ui.value);
+                    $linearGauge.igLinearGauge("option", "transitionDuration", ui.value);
                     $("#transitionDurationLabel").text(ui.value);
                 }
             });

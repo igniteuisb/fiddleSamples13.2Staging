@@ -4,8 +4,8 @@ $(function () {
                 height: 500,
                 columns: [
                     { headerText: "Time", key: "Time", dataType: "string", width: 80 },
-                    { headerText: "Wind Speed(mph)", key: "WindSpeed", dataType: "number", width: 160 },
-                    { headerText: "Graph", key: "graph", width: 370 }
+                    { headerText: "Wind Speed (mph)", key: "WindSpeed", dataType: "number", width: 160 },
+                    { headerText: "Wind Speed Gauge (mph)", key: "gauge", width: 370 }
                 ],
                 rowTemplate: "<tr><td>${Time}</td><td>${WindSpeed}</td><td><div class='linear-gauge' ></div></td></tr>",
                 dataSource: data,
@@ -14,7 +14,7 @@ $(function () {
                     $(".linear-gauge").each(function (i) {
                         var item = data[i];
                         $(this).igLinearGauge({
-                            height: "80px", 
+                            height: "60px", 
                             backingBrush: "transparent",
                             backingOutline: "transparent",
                             minimumValue: 0,
@@ -32,11 +32,7 @@ $(function () {
                             ],
                             transitionDuration: 1200, 
                             labelInterval: 2,
-                            interval: 1,
-                            font: "8px Georgia",
-                            formatLabel: function (evt, ui) {
-                                ui.label += "mph";
-                            },
+                            interval: 1
                         });
                     });
                 },
@@ -60,7 +56,7 @@ $(function () {
                                 readOnly: true
                             },
                             {
-                                columnKey: "graph",
+                                columnKey: "gauge",
                                 readOnly: true
                             }
                         ],

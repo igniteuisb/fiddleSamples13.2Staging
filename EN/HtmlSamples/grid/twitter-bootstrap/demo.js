@@ -13,6 +13,7 @@ $(function () {
                 dataSource: nwCustomersWithOrders,
                 width: "100%",
                 height: "400px",
+                autofitLastColumn: false,
                 features: [
                     {
                         name: "Responsive",

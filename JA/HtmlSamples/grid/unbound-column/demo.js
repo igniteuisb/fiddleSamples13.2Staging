@@ -1,6 +1,6 @@
-$(function () {            
+$(function () {
 
-            var _isDataBound = false;            
+            var _isDataBound = false;
 
             /*----------------- Event Examples -------------------------*/
 
@@ -33,8 +33,8 @@ $(function () {
             });
 
             $("#grid10").on("iggridupdatingeditrowended", function (event, ui) {
-                var unitPrice = ui.values['UnitPrice'];
-                var unitsInStock = ui.values['UnitsInStock'];
+                var unitPrice = ui.values["UnitPrice"];
+                var unitsInStock = ui.values["UnitsInStock"];
                 var totalValue = (unitPrice * unitsInStock) || ui.values["Total"];
                 $("#grid10").igGridUpdating("setCellValue", ui.rowID, "Total", totalValue);
 
@@ -50,11 +50,10 @@ $(function () {
 
             $("#grid10").igGrid({
                 primaryKey: "ProductID",
-                width: '100%',
-                height: '700px',
+                width: "100%",
                 autoGenerateColumns: false,
                 autoCommit: true,
-                dataSourceType: 'json',
+                dataSourceType: "json",
                 responseDataKey: "results",
                 columns: [
                     { headerText: "製品 ID", key: "ProductID", dataType: "number" },
@@ -63,7 +62,7 @@ $(function () {
                     { headerText: "単価", key: "UnitPrice", dataType: "number", format: "currency" },
                     {
                         headerText: "プロモーション期限", key: "PromotionExpDate", dataType: "date", unbound: true, format: "date",
-                        unboundValues: [new Date('4/24/2012'), new Date('8/24/2012'), new Date('6/24/2012'), new Date('7/24/2012'), new Date('9/24/2012'), new Date('10/24/2012'), new Date('11/24/2012')]
+                        unboundValues: [new Date("4/24/2012"), new Date("8/24/2012"), new Date("6/24/2012"), new Date("7/24/2012"), new Date("9/24/2012"), new Date("10/24/2012"), new Date("11/24/2012")]
                     },
                     { headerText: "プロモーション", key: "IsPromotion", dataType: "bool", unbound: true, format: "checkbox" },
                     {
@@ -71,73 +70,40 @@ $(function () {
                         formula: function CalculateTotal(data, grid) { return data["UnitPrice"] * data["UnitsInStock"]; }, template: "合計: ${Total}"
                     }
                 ],
-
-                tabIndex: 1,
                 features:
                 [
                     {
-                        name: 'Responsive',
+                        name: "Responsive",
                         enableVerticalRendering: false,
                         columnSettings: [
                             {
-                                columnKey: 'ProductID',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "ProductID",
+                                classes: "ui-hidden-tablet"
                             }
                         ]
                     },
                     {
-                        name: 'Filtering',
-                        mode: 'advanced'
-                    },
-                    {
-                        name: 'MultiColumnHeaders'
-                    },
-                    {
-                        name: 'Sorting',
-                        type: "local"
-                    },
-                    {
-                        name: "Summaries",
-                        type: "local"
-                    },
-                    {
-                        name: "ColumnMoving",
-                    },
-                    {
-                        name: "GroupBy",
-                        type: "local"
-                    },
-                    {
-                        name: 'Paging',
+                        name: "Paging",
                         type: "local",
-                        pageSizeList: [5, 10, 25, 50],
                         pageSize: 5
                     },
                     {
-                        name: "Hiding"
-                    },
-                    {
                         name: "Updating",
-                        editMode: 'row',
+                        editMode: "row",
                         enableAddRow: false,
                         enableDeleteRow: true,
                         columnSettings: [
                             {
                                 columnKey: "Total",
-                                editorType: 'numeric',
+                                editorType: "numeric",
                                 readOnly: true
                             },
                             {
                                 columnKey: "IsPromotion",
-                                editorType: 'bool',
+                                editorType: "bool",
                                 readOnly: true
                             }
                         ]
-                    },
-                    {
-                        name: "Selection",
-                        mode: "row",
-                        multipleSelection: true
                     }
                 ],
                 dataSource: northwindProducts

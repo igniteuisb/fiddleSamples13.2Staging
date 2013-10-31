@@ -79,7 +79,7 @@ var lblCount = 30, timer = 40, interval, isAdding = false;
                     if (!started) {
                         started = true;
                         if (changeButton) {
-                            $("#startDataFeed").igButton({ labelText: 'Stop Data Feed' });
+                            $("#startDataFeed").igButton({ labelText: 'データ フィードの中止' });
                             $("#addDataPoints").attr("disabled", "disabled");
                         }
                         intervalId = window.setInterval(function() {
@@ -88,7 +88,7 @@ var lblCount = 30, timer = 40, interval, isAdding = false;
                     } else {
                         started = false;
                         if (changeButton) {
-                            $("#startDataFeed").igButton({ labelText: 'Start Data Feed' });
+                            $("#startDataFeed").igButton({ labelText: 'データ フィードの開始' });
                             $("#addDataPoints").removeAttr("disabled");
                         }
                         window.clearInterval(intervalId);

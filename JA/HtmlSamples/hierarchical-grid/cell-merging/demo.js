@@ -10,11 +10,9 @@ $(function () {
                 autoCommit: true,
                 autoGenerateColumns: false,
                 dataSource: northwind,
-                initialDataBindDepth: -1,
                 responseDataKey: "results",
                 dataSourceType: "json",
                 autofitLastColumn: false,
-                expandColWidth: "5%",
                 columns: [
                    { key: "EmployeeID", headerText: "社員 ID", dataType: "number", hidden:true },
                    { key: "LastName", headerText: "名前", dataType: "string", width: "15%" },
@@ -64,6 +62,7 @@ $(function () {
                         autoCommit: true,
                         responseDataKey: "results",
                         autoGenerateColumns: false,
+                        autofitLastColumn: false,
                         primaryKey: "OrderID",
                         width: "100%",
                         columns: [

@@ -1,9 +1,9 @@
 $(function () {
 var data = [
-            { month: "1 月", min: 0, max: 750, value: 555, target: 550, ranges: [{ start: 0, end: 500 }, { start: 500, end: 640 }, { start: 640, end: 750 }] },
-            { month: "2 月", min: 0, max: 750, value: 670, target: 620, ranges: [{ start: 0, end: 333 }, { start: 333, end: 567 }, { start: 567, end: 750 }] },
-            { month: "3 月", min: 0, max: 750, value: 670, target: 700, ranges: [{ start: 0, end: 320 }, { start: 320, end: 567 }, { start: 567, end: 750 }] },
-            { month: "4 月", min: 0, max: 750, value: 610, target: 666, ranges: [{ start: 0, end: 320 }, { start: 320, end: 567 }, { start: 567, end: 750 }] }
+            { month: "1 月", min: 0, max: 750, consumption: 555, production: 550, ranges: [{ start: 0, end: 500 }, { start: 500, end: 640 }, { start: 640, end: 750 }] },
+            { month: "2 月", min: 0, max: 750, consumption: 670, production: 620, ranges: [{ start: 0, end: 333 }, { start: 333, end: 567 }, { start: 567, end: 750 }] },
+            { month: "3 月", min: 0, max: 750, consumption: 670, production: 700, ranges: [{ start: 0, end: 320 }, { start: 320, end: 567 }, { start: 567, end: 750 }] },
+            { month: "4 月", min: 0, max: 750, consumption: 610, production: 666, ranges: [{ start: 0, end: 320 }, { start: 320, end: 567 }, { start: 567, end: 750 }] }
         ];
 
         $(function () {
@@ -12,24 +12,25 @@ var data = [
                 //width: 400,
                 columns: [
                     { headerText: "月", key: "month", dataType: "string", width: 100 },
-                    { headerText: "値 (TWh)", key: "value", dataType: "number", width: 120 },
-                    { headerText: "グラフ", key: "graph", width: 470 }
+                    { headerText: "消費 (TWh)", key: "consumption", dataType: "number", width: 130 },
+                    { headerText: "生産 (TWh)", key: "production", dataType: "number", width: 120 },
+                    { headerText: "消費チャート (TWh)", key: "graph", width: 470 }
                 ],
-                rowTemplate: "<tr><td>${month}</td><td>${value}</td><td><div class='bullet-graph'></div></td></tr>",
+                rowTemplate: "<tr><td>${month}</td><td>${consumption}</td><td>${production}</td><td><div class='bullet-graph'></div></td></tr>",
                 dataSource: data,
                 autoGenerateColumns: false,
                 rowsRendered: function (evt, ui) {
                     $(".bullet-graph").each(function (i) {
                         var item = data[i];
                         $(this).igBulletGraph({
-                            height: "80px",
+                            height: "60px",
                             width: "450px",
                             backingBrush: 'transparent',
                             backingOutline: 'transparent',
                             minimumValue: item.min,
                             maximumValue: item.max,
-                            targetValue: item.target,
-                            value: item.value,
+                            targetValue: item.production,
+                            value: item.consumption,
                             interval: 150,
                             minorTickCount: 4,
                             ranges: $.map(item.ranges, function (el, index) {
@@ -38,13 +39,9 @@ var data = [
                                     startValue: el.start,
                                     endValue: el.end
                                 };
-                            }),
-                            font: "8px Georgia",
-                            formatLabel: function (evt, ui) {
-                                ui.label += "TWh";
-                            },
-                            font: "8px Georgia",
-                            scaleEndExtent: 0.9 
+                            }), 
+                            scaleEndExtent: 0.9,
+                            font:"8px Arial"
                         });
                     });
                 },
@@ -58,7 +55,13 @@ var data = [
                         enableDataDirtyException: false,
                         columnSettings: [
                             {
-                                columnKey: "value",
+                                columnKey: "consumption",
+                                editorType: "numeric",
+                                validation: true,
+                                editorOptions: { minValue: 0, maxValue: 750, required: true }
+                            },
+                            {
+                                columnKey: "production",
                                 editorType: "numeric",
                                 validation: true,
                                 editorOptions: { minValue: 0, maxValue: 750, required: true }
@@ -73,7 +76,12 @@ var data = [
                             }
                         ],
                         editCellEnded: function (evt, ui) {
-                            $(".bullet-graph").eq(ui.rowID).igBulletGraph("option", "value", ui.value);
+                            if (ui.columnKey=="consumption") {
+                                $(".bullet-graph").eq(ui.rowID).igBulletGraph("option", "value", ui.value);
+                            }
+                            if (ui.columnKey == "production") {
+                                $(".bullet-graph").eq(ui.rowID).igBulletGraph("option", "targetValue", ui.value);
+                            }
                         }
                     }],
                 caption: "エネルギー源"

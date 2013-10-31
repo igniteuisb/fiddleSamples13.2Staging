@@ -2,33 +2,25 @@ $(function () {
             $("#lineargauge").igLinearGauge({
                 height: "80px",
                 width: "100%",
-                value: 58,
-                minimumValue: -20,
-                maximumValue: 60,
-                ranges: [{
-                    startValue: -20, endValue: 60, name: "target", brush: {
-                        type: "linearGradient",
-                        colorStops: [{
-                            color: "#2788B1",
-                            offset: 0
-                        },
-                        {
-                            color: "#A4BA29",
-                            offset: 0.3
-                        },
-                        {
-                            color: "#FDBD48",
-                            offset: .6
-                        },
-                        {
-                            color: "#D3404B",
-                            offset: .9
-                        }],
-                        // optional:
-                        startPoint: { x: 0, y: .5 },
-                        endPoint: { x: 1, y: .5 }
-                        // if start/endPoint are not specified, the default direction is top-bottom
+                value: -273.15,
+                minimumValue: -275,
+                maximumValue: 0,
+                ranges: [
+                    {
+                        startValue: -275, endValue: -225, name: "range1"
                     },
-                }]
+                    {
+                        startValue: -225, endValue: -175, name: "range2"
+                    },
+                    {
+                        startValue: -175, endValue: -125, name: "range3"
+                    },
+                    {
+                        startValue: -125, endValue: -75, name: "range4"
+                    },
+                    {
+                        startValue: -75, endValue: 0, name: "range5"
+                    },
+                ]
             });
         });

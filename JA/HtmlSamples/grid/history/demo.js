@@ -359,7 +359,7 @@ $(function () {
             $("#copy").igButton().click(function () { window.prompt("URL をコピーして新しいタブまたはブラウザーで開く", window.location); });
             $("#mail").igButton().click(function () {
                 var link = "mailto: "
-                         + "&subject=" + escape("プレーヤーのリスト")
+                         + "?subject=" + escape("プレーヤーのリスト")
                          + "&body=" + escape("プレーヤーのカスタム リストはこちら: " + window.location);
                 window.location.href = link;
             });

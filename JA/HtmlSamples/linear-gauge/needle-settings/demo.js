@@ -3,8 +3,8 @@ $(function () {
             var $linearGauge = $("#lineargauge");
 
             $linearGauge.igLinearGauge({
-                width: "100%",
-                height: "80px",
+                width: '100%',
+                height: '80px',
                 transitionDuration: 500,
                 ranges: [
                     {
@@ -29,9 +29,9 @@ $(function () {
                 minimumValue: 0,
                 maximumValue: 10000,
                 value: 6000,                 
-                needleShape:"rectangle",
-                needleBrush:"orange",
-                needleOutline:"#803e01",
+                needleShape:'rectangle',
+                needleBrush:'orange',
+                needleOutline:'#803e01',
                 needleStrokeThickness: 2,
                 formatLabel: function (evt, ui) {
                     ui.label += "K";
@@ -41,8 +41,8 @@ $(function () {
             var $linearGauge2 = $("#lineargauge2");
 
             $linearGauge2.igLinearGauge({
-                width: "100%",
-                height: "80px",
+                width: '100%',
+                height: '80px',
                 transitionDuration: 500,
                 ranges: [
                     {
@@ -67,9 +67,9 @@ $(function () {
                 minimumValue: 0,
                 maximumValue: 10000,
                 value: 5000,
-                needleShape: "trapezoid",
-                needleBrush: "#fff7a3",
-                needleOutline:"#566509",
+                needleShape: 'trapezoid',
+                needleBrush: '#fff7a3',
+                needleOutline:'#566509',
                 needleStrokeThickness: 2,
                 formatLabel: function (evt, ui) {
                     ui.label += "K";
@@ -80,8 +80,8 @@ $(function () {
             var $linearGauge3 = $("#lineargauge3");
 
             $linearGauge3.igLinearGauge({
-                width: "100%",
-                height: "80px",
+                width: '100%',
+                height: '80px',
                 transitionDuration: 500,
                 ranges: [
                     {
@@ -106,9 +106,9 @@ $(function () {
                 minimumValue: 0,
                 maximumValue: 500,
                 value: 350,
-                needleShape:"triangle",
-                needleBrush:"#fff7a3",
-                needleOutline:"#566509",
+                needleShape:'triangle',
+                needleBrush:'#fff7a3',
+                needleOutline:'#566509',
                 needleStrokeThickness: 2,
                 formatLabel: function (evt, ui) {
                     ui.label += "K";
@@ -119,8 +119,8 @@ $(function () {
             var $linearGauge4 = $("#lineargauge4");
 
             $linearGauge4.igLinearGauge({
-                width: "100%",
-                height: "80px",
+                width: '100%',
+                height: '80px',
                 transitionDuration: 500,
                 ranges: [
                     {
@@ -145,16 +145,17 @@ $(function () {
                 minimumValue: 0,
                 maximumValue: 100,
                 value: 50,
-                needleShape:"custom" ,
-                needleBrush:"#99d4fd",
-                needleOutline:"#11364d",
+                needleShape:'custom' ,
+                needleBrush: '#99D4FD',
+                needleOutline: '#11364D',
+                needleBreadth: 20,
                 needleInnerExtent: 0.3, 
-                needleOuterExtent: .7,
-                needleOuterPointExtent: .9,
+                needleOuterExtent: 0.7,
+                needleOuterPointExtent: 0.9,
                 needleInnerPointExtent: 0.3,
                 needleInnerPointWidth: 0,
-                needleOuterPointWidth: .3, 
-                needleInnerBaseWidth: 0.5, 
+                needleOuterPointWidth: 0.3, 
+                needleInnerBaseWidth: 0, 
                 needleOuterBaseWidth: 0.07,
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "%";

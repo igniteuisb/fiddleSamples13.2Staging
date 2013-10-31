@@ -30,44 +30,44 @@ $(function () {
                     yAxis: "Volume",
                     thickness: .01
                 },
-                    {
-                        showTooltip: true,
-                        name: "China",
-                        title: "中国",
-                        type: "column",
-                        valueMemberPath: "China",
-                        xAxis: "Year",
-                        yAxis: "Volume",
-                        thickness: .01
-                    },
-                    {
-                        showTooltip: true,
-                        name: "Russia",
-                        title: "ロシア",
-                        type: "column",
-                        valueMemberPath: "Russia",
-                        xAxis: "Year",
-                        yAxis: "Volume",
-                        thickness: .01
-                    }, {
-                        showTooltip: true,
-                        name: "Saudi Arabia",
-                        title: "サウジアラビア",
-                        type: "column",
-                        valueMemberPath: "SaudiArabia",
-                        xAxis: "Year",
-                        yAxis: "Volume",
-                        thickness: .01
-                    }, {
-                        showTooltip: true,
-                        name: "Canada",
-                        title: "カナダ",
-                        type: "column",
-                        valueMemberPath: "Canada",
-                        xAxis: "Year",
-                        yAxis: "Volume",
-                        thickness: .01
-                    }],
+                {
+                    showTooltip: true,
+                    name: "China",
+                    title: "中国",
+                    type: "column",
+                    valueMemberPath: "China",
+                    xAxis: "Year",
+                    yAxis: "Volume",
+                    thickness: .01
+                },
+                {
+                    showTooltip: true,
+                    name: "Russia",
+                    title: "ロシア",
+                    type: "column",
+                    valueMemberPath: "Russia",
+                    xAxis: "Year",
+                    yAxis: "Volume",
+                    thickness: .01
+                }, {
+                    showTooltip: true,
+                    name: "Saudi Arabia",
+                    title: "サウジアラビア",
+                    type: "column",
+                    valueMemberPath: "SaudiArabia",
+                    xAxis: "Year",
+                    yAxis: "Volume",
+                    thickness: .01
+                }, {
+                    showTooltip: true,
+                    name: "Canada",
+                    title: "カナダ",
+                    type: "column",
+                    valueMemberPath: "Canada",
+                    xAxis: "Year",
+                    yAxis: "Volume",
+                    thickness: .01
+                }],
                 horizontalZoomable: true,
                 verticalZoomable: true,
                 windowResponse: "immediate"

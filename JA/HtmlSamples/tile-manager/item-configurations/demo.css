@@ -72,15 +72,18 @@
 
 .tile1.ui-igtile-inner-container { /*iglightblue*/
     background-color: #44ACD6;
+    color: #fff;
 }
 
 
 .tile2.ui-igtile-inner-container { /*igdarkgray*/
     background-color: #494949;
+    color: #fff;
 }
 
 .tile3.ui-igtile-inner-container { /*iglightgreen*/
     background-color: #A4BA29;
+    color: #fff;
 }
 
 .tile4.ui-igtile-inner-container { /*iglightyellow*/
@@ -89,18 +92,22 @@
 
 .tile5.ui-igtile-inner-container { /*iglightpink*/
     background-color: #FF6A6F;
+    color: #fff;
 }
 
 .tile7.ui-igtile-inner-container { /*igdarkblue*/
     background-color: #216E99;
+    color: #fff;
 }
 
 .tile6.ui-igtile-inner-container { /*iglightpurple*/
     background-color: #9E73C1;
+    color: #fff;
 }
 
 .tile8.ui-igtile-inner-container { /*iglightgray*/
     background-color: #A8A8A8;
+    color: #fff;
 }
 
 .tile9.ui-igtile-inner-container { /*igdarkgreen*/
@@ -117,6 +124,7 @@
 
 .tile12.ui-igtile-inner-container { /*igdarkpurple*/
     background-color: #793BAC;
+    color: #fff;
 }
 
 @media all and (max-width: 420px) {

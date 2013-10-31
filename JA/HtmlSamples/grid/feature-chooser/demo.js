@@ -16,7 +16,7 @@ $(function () {
                     {
                         name: "Sorting",
                         type: "local",
-                        mode: "advanced"
+                        mode: "multi"
                     },
                     {
                         name: "Filtering",

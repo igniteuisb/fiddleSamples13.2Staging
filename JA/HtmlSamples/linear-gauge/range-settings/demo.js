@@ -1,86 +1,51 @@
 $(function () {
             /*----------------- Instantiation -------------------------*/
-            var $linearGauge = $("#linearGauge");
+            var $lineargauge = $("#lineargauge");
 
-            $linearGauge.igLinearGauge({
-                width: "100%",
-                height: "70px",
+            $lineargauge.igLinearGauge({
+                width: '100%',
+                height: '80px',
                 ranges: [
                    {
-                       name: 'Raw',
+                       name: '寒い',
+                       startValue: -20,
+                       endValue: 0,
+                       brush: '#2788B1',
+                       outerStartExtent: .2,
+                       outerEndExtent: .3
+                   },
+                   {
+                       name: '穏やか',
                        startValue: 0,
-                       endValue: 1,
-                       brush: 'white',
-                       outline: 'white'
+                       endValue: 20,
+                       brush: '#A4BA29',
+                       outerStartExtent: .3,
+                       outerEndExtent: .4
                    },
                    {
-                       name: 'Bleu',
-                       startValue: 1,
-                       endValue: 2,
-                       brush: 'blue',
-                       outline: 'blue'
+                       name: '暖かい',
+                       startValue: 20,
+                       endValue: 40,
+                       brush: '#FDBD48',
+                       outerStartExtent: .4,
+                       outerEndExtent: .5
                    },
                    {
-                       name: 'Rare',
-                       startValue: 2,
-                       endValue: 3,
-                       brush: 'purple',
-                       outline: 'purple'
-                   },
-                   {
-                       name: 'Medium rare',
-                       startValue: 3,
-                       endValue: 4,
-                       brush: '#ff6a00',
-                       outline: '#ff6a00'
-                   },
-                   {
-                       name: 'Medium',
-                       startValue: 4,
-                       endValue: 5,
-                       brush: '#bf6716',
-                       outline: '#bf6716',
-                       innerStartExtent: 0,
-                       innerEndExtent: 0,
-                       outerStartExtent: .8,
-                       outerEndExtent: .8,
-                       strokeThickness: 2,
-                   },
-                   {
-                       name: 'Medium well',
-                       startValue: 5,
-                       endValue: 6,
-                       brush: '#a75733',
-                       outline: '#a75733'
-                   },
-                   {
-                       name: 'Well done',
-                       startValue: 6,
-                       endValue: 7,
-                       brush: '#823d2b',
-                       outline: '#823d2b'
-                   },
-                   {
-                       name: 'Very well done',
-                       startValue: 7,
-                       endValue: 10,
-                       brush: 'black',
-                       outline: 'black'
-                   },
+                       name: '暑い',
+                       startValue: 40,
+                       endValue: 60,
+                       brush: '#D3404B',
+                       outerStartExtent: .5,
+                       outerEndExtent: .6
+                   }
                 ],
                 showToolTip: true,
-                maximumValue: 10,
-
-                valueOutline: 'white',
-                value: 4.5,
-                needleBrush: 'white',
-                needleOutline: 'white',
-                formatLabel: function (evt, ui) {
-                    if (ui.value == ui.actualMinimumValue) {
-                        ui.label = ui.value + "\n分/片面";
-                    }
-                },
-                transitionDuration: 1000
+                minimumValue: -20,
+                maximumValue: 60,
+                value: 58,
+                interval: 10,
+                tickEndExtent:0.2,
+                minorTickEndExtent:0.15 
             });
 
         });

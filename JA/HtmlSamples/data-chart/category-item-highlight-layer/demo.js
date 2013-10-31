@@ -51,7 +51,6 @@ $(function () {
                         type: "categoryItemHighlightLayer",
                         opacity: 0.5,
                         thickness: 1,
-                        useInterpolation: true,
                         transitionDuration: 150
                     }]
             });

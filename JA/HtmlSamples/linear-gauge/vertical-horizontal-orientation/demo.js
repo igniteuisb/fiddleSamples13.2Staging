@@ -5,32 +5,25 @@ $(function () {
             linearGauge.igLinearGauge({
                 height: "300px",
                 width: "60px",
-                orientation: "vertical",
-                minimumValue: 0, // default is 0
-                maximumValue: 30, // default is 100
-                value: 26,
-                targetValue: 22, 
+                orientation: "vertical", 
+                value: 85, 
                 ranges: [
                     {
                         name: 'bad',
                         startValue: 0,
-                        endValue: 14
+                        endValue: 33
                     },
                     {
                         name: 'acceptable',
-                        startValue: 14,
-                        endValue: 25
+                        startValue: 33,
+                        endValue: 70
                     },
                     {
                         name: 'good',
-                        startValue: 25,
-                        endValue: 30
+                        startValue: 70,
+                        endValue: 100
                     }],
-                 
-                formatLabel: function (evt, ui) {
-                    ui.label = ui.label + "K";
-                },
-                transitionDuration: 200
+                transitionDuration: 200,
             });
 
             // Orientation

@@ -1,6 +1,6 @@
 <script src="http://jp.staging.igniteui.local/13-2/js/modernizr.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/infragistics.core.js"></script>
 <script src="http://staging.igniteui.local/13-2/IgniteUI/js/infragistics.lob.js"></script>
 <script src="http://jp.staging.igniteui.local/13-2/js/external/knockout-latest.js"></script>
@@ -21,7 +21,7 @@
             </div>
             <div class="row">
                 
-                <input id="orderDateIG" class="row-control" data-bind="igDateEditor: { value: orderDate }"></input>
+                <input id="orderDateIG" style="margin-top:5px" class="row-control" data-bind="igDateEditor: { value: orderDate }"></input>
                 <input id="orderDate" type="text" class="row-control" data-bind="value: orderDate"></input>
             </div>
         </div>
@@ -32,8 +32,8 @@
             </div>
             <div class="row">
                 
-                <input id="shipDateIG" class="row-control" data-bind="igDatePicker: { value: shipDate, width: '205px' }"></input>
-                <input id="shipDate" class="date-row-control row-control" data-bind="value: shipDate"></input>
+                <div id="shipDateIG" class="gosho row-control" data-bind="igDatePicker: { value: shipDate, width: '205px' }"></div>
+                <div style="display: inline;position: relative; top: -5px;"><input id="shipDate" class="date-row-control row-control" data-bind="value: shipDate"></input></div>
             </div>
         </div>
 

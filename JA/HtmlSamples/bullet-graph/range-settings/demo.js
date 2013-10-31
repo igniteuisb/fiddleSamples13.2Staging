@@ -3,79 +3,42 @@ $(function () {
             var $bulletGraph = $("#bulletgraph");
 
             $bulletGraph.igBulletGraph({
-                width: "100%",
-                height: "70px",
+                width: '100%',
+                height: '80px',
                 ranges: [
                    {
-                       name: 'Raw',
+                       name: 'low',
                        startValue: 0,
-                       endValue: 1,
-                       brush: 'white'
+                       endValue: 1000,
+                       outerStartExtent: .85,
+                       outerEndExtent: .85
                    },
                    {
-                       name: 'Bleu',
-                       startValue: 1,
-                       endValue: 2,
-                       brush: 'blue'
-                   },                 
+                       name: 'medium',
+                       startValue: 1000,
+                       endValue: 2000,
+                       outerStartExtent: .85,
+                       outerEndExtent: .85
+                   } ,
                    {
-                       name: 'Rare',
-                       startValue: 2,
-                       endValue: 3,
-                       brush: 'purple'
-
-                   },
-                   {
-                       name: 'Medium rare',
-                       startValue: 3,
-                       endValue: 4,
-                       brush: '#ff6a00'
-                   },
-                   {
-                       name: 'Medium',
-                       startValue: 4,
-                       endValue: 5,
-                       brush: '#BF6716',
-                       innerStartExtent: 0.1,
-                       innerEndExtent: 0.1,
-                       outerStartExtent: 1,
-                       outerEndExtent: 1,
-                       strokeThickness: 2,
-                       outline:'red'
-                   },
-                   {
-                       name: 'Medium well',
-                       startValue: 5,
-                       endValue: 6,
-                       brush: '#a75733'
-                   },
-                   {
-                       name: 'Well done',
-                       startValue: 6,
-                       endValue: 7,
-                       brush: '#823d2b'
-                   },
-                   {
-                       name: 'Very well done',
-                       startValue: 7,
-                       endValue: 10,
-                       brush: 'black'
-                   },
+                       name: 'high',
+                       startValue: 2000,
+                       endValue: 3000, 
+                       outline: '#F79646',
+                       strokeThickness: 2
+                   }
                 ],
                 showToolTip: true,
-                maximumValue: 10,
-                targetValue: 4.8,
-                targetValueBrush: 'white',
-                targetValueOutline: 'red',
-                valueOutline: 'red',
-                value: 4.5,
-                valueBrush: 'white',
-                formatLabel: function (evt, ui) {
-                    if (ui.value==ui.actualMinimumValue) {
-                        ui.label = ui.value + "\n分/片面";
-                    }                    
-                },
-                transitionDuration: 1000
+                maximumValue: 3000,
+                targetValue: 2700, 
+                value: 2100,
+                valueInnerExtent: 0.45,
+                valueOuterExtent: 0.6,
+                interval:500,
+                formatLabel: function (evt, ui)
+                {
+                    ui.label = "$" + ui.value;
+                }
             });
 
         });

@@ -18,42 +18,42 @@ $(function () {
                 ],
                 features: [
                     {
-                        name: 'Responsive',
+                        name: "Responsive",
                         enableVerticalRendering: false,
                         columnSettings: [
                             {
-                                columnKey: 'EmployeeID',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "EmployeeID",
+                                classes: "ui-hidden-phone"
                             },
                             {
-                                columnKey: 'Address',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "Address",
+                                classes: "ui-hidden-phone"
                             },
                             {
-                                columnKey: 'LastName',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "LastName",
+                                classes: "ui-hidden-phone"
                             },
                             {
-                                columnKey: 'Region',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "Region",
+                                classes: "ui-hidden-phone"
                             },
                             {
-                                columnKey: 'Country',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "Country",
+                                classes: "ui-hidden-phone"
                             },
                             {
-                                columnKey: 'PostalCode',
-                                classes: 'ui-visible-phone'
+                                columnKey: "PostalCode",
+                                classes: "ui-visible-phone"
                             }
                         ]
                     },
                     {
-                        name: 'CellMerging',
-                        initialState: 'merged'
+                        name: "CellMerging",
+                        initialState: "merged"
                     },
                     {
-                        name: 'Sorting',
-                        type: 'local',
+                        name: "Sorting",
+                        type: "local",
                         applySortedColumnCss: false
                     }
                 ]

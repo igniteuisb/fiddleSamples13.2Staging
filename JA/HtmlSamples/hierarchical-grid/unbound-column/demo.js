@@ -22,71 +22,59 @@ $(function () {
                         data[i]["IsUSA"] = false;
                     }
                 }
-            });           
+            });
 
             /*----------------- Instantiation -------------------------*/
 
             $("#grid3").igHierarchicalGrid({
                 features: [
                     {
-                        name: 'Responsive',
+                        name: "Responsive",
                         enableVerticalRendering: false,
                         columnSettings: [
                             {
-                                columnKey: 'Title',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "Title",
+                                classes: "ui-hidden-phone"
                             },
                             {
-                                columnKey: 'Region',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "Region",
+                                classes: "ui-hidden-phone"
+                            },
+                            {
+                                columnKey: "City",
+                                classes: "ui-hidden-phone"
                             }
                         ]
-                    },
-                    {
-                        name: "Sorting",
-                        type: 'local',
-                        inherit: true
-                    },
-                    {
-                        name: 'Filtering',
-                        mode: 'advanced',
-                        type: 'local',
-                        inherit: false
-                    },
-                    {
-                        name: "Selection",
-                        inherit: true
                     }
                 ],
                 width: "100%",
-                initialDataBindDepth: -1,
-                loadOnDemand: false,
                 dataSource: northwind,
                 dataSourceType: "json",
                 responseDataKey: "results",
                 autoGenerateColumns: false,
+                autofitLastColumn: false,
                 primaryKey: "EmployeeID",
                 columns: [
-                    { key: "EmployeeID", headerText: "社員 ID", dataType: "number", hidden: true },
-                    { key: "LastName", headerText: "名字", dataType: "string", width: "15%" },
-                    { key: "FirstName", headerText: "名前", dataType: "string", width: "15%" },
+                    { key: "EmployeeID", headerText: "社員 ID", dataType: "number", width: "0%", hidden: true },
+                    { key: "LastName", headerText: "名字", dataType: "string", width: "20%" },
+                    { key: "FirstName", headerText: "名前", dataType: "string", width: "20%" },
                     { key: "Title", headerText: "役職", dataType: "string", width: "20%" },
-                    { key: "City", headerText: "市", dataType: "string", width: "10%" },
+                    { key: "City", headerText: "市", dataType: "string", width: "15%" },
                     { key: "IsUSA", headerText: "米国内", unbound: true, dataType: "bool", width: "15%", format: "checkbox" },
                     { key: "Region", headerText: "領域", dataType: "string", width: "10%" },
-                    { key: "Country", headerText: "国名", dataType: "string", hidden: true }
+                    { key: "Country", headerText: "国名", dataType: "string", width: "0%", hidden: true }
                 ],
-                childrenDataProperty: "Orders",
                 autoGenerateLayouts: false,
                 columnLayouts: [
                     {
                         key: "Orders",
                         responseDataKey: "results",
                         autoGenerateColumns: false,
+                        autofitLastColumn: false,
                         primaryKey: "OrderID",
                         width: "100%",
                         columns: [
-                            { key: "OrderID", headerText: "注文 ID", dataType: "number", width: "10%", hidden: true },
+                            { key: "OrderID", headerText: "注文 ID", dataType: "number", width: "0%", hidden: true },
                             { key: "CustomerID", headerText: "顧客 ID", dataType: "string", width: "15%" },
                             { key: "Freight", headerText: "輸送", dataType: "number", format:"0.00", width: "15%" },
                             { key: "FreightExpence", headerText: "輸送費", unbound: true, dataType: "number", format: "0.00", width: "20%", formula: "CalculateFreightExpence" },
@@ -95,26 +83,26 @@ $(function () {
                         ],
                         features: [
                             {
-                                name: 'Responsive',
+                                name: "Responsive",
                                 enableVerticalRendering: false,
                                 columnSettings: [
                                     {
-                                        columnKey: 'Freight',
-                                        classes: 'ui-hidden-phone'
+                                        columnKey: "Freight",
+                                        classes: "ui-hidden-phone"
                                     },
                                     {
-                                        columnKey: 'CustomerID',
-                                        classes: 'ui-hidden-phone'
+                                        columnKey: "CustomerID",
+                                        classes: "ui-hidden-phone"
                                     },
                                     {
-                                        columnKey: 'ShipName',
-                                        classes: 'ui-hidden-phone'
+                                        columnKey: "ShipName",
+                                        classes: "ui-hidden-phone"
                                     }
                                 ]
                             },
                             {
                                 name: "Paging",
-                                type: 'local',
+                                type: "local",
                                 pageSize: 5
                             }
                         ]

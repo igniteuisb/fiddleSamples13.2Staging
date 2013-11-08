@@ -12,74 +12,43 @@
 <table id="grid">
     </table>
 
-    <div class="api-explorer">
-        <fieldset id="gridOptions">
+    <div>
+        <fieldset id="gridOptions" class="explorer">
             <legend>Grid api settings</legend>
-            <input type="button" id="igButtonDataBind" value="Databind" style="margin-bottom: 20px;"></input>
-            <br />
-            <label for="rows">Select Row:  </label>
-            <select id="rows"></select>
-            <input type="button" id="igButtonGetRowIndex" value="Get Row Index"></input>
-
-            <label for="columns" style="margin-left: 20px;">Select Column:  </label>
-            <select id="columns"></select>
-            <input type="button" id="igButtonGetCellText" value="Get Cell Text"></input>
+            <input type="button" id="buttonDataBind" value="Databind"></input>
         </fieldset>
-        <br />
-        <fieldset id="filteringOptions">
+
+        <fieldset id="filteringOptions" class="explorer">
             <legend>Filtering settings</legend>
-            <select id="filterColumn">
-            </select>
-
-            <select id="cond_list">
-                <option class="numberCondition" value='equals'>equals</option>
-                <option class="numberCondition" value='doesNotEqual'>doesNotEqual</option>
-                <option class="numberCondition" value='lessThan'>lessThan</option>
-                <option class="numberCondition" value='greaterThan'>greaterThan</option>
-                <option class="stringCondition" value='startsWith'>startsWith</option>
-                <option class="stringCondition" value='endsWith'>endsWith</option>
-                <option class="stringCondition" value='contains'>contains</option>
-                <option class="stringCondition" value='doesNotContain'>doesNotContain</option>
-                <option class="stringCondition" value='empty'>empty</option>
-                <option class="stringCondition" value='notEmpty'>notEmpty</option>
-                <option class="dateCondition" value='on'>on</option>
-                <option class="dateCondition" value='notOn'>notOn</option>
-                <option class="dateCondition" value='before'>before</option>
-                <option class="dateCondition" value='after'>after</option>
-                <option class="dateCondition" value='today'>today</option>
-                <option class="dateCondition" value='yesterday'>yesterday</option>
-                <option class="dateCondition" value='lastMonth'>lastMonth</option>
-                <option class="dateCondition" value='nextMonth'>nextMonth</option>
-                <option class="dateCondition" value='thisMonth'>thisMonth</option>
-                <option class="dateCondition" value='lastYear'>lastYear</option>
-                <option class="dateCondition" value='thisYear'>thisYear</option>
-                <option class="dateCondition" value='nextYear'>nextYear</option>
-            </select>
-
-            <input style="width: 100px" id="filterExpr"></input>
-            <input type="button" id="igButtonFilter" value="Filter"></input>
+            <div id="filterColumn"></div>
+            <div id="conditionList"></div>
+            <div id="exprTextEditor"></div>
+            <div id="exprNumericEditor"></div>
+            <div id="exprDateEditor"></div>
+            <br />
+            <input type="button" id="buttonFilter" value="Filter"></input>
         </fieldset>
-        <br />
-        <fieldset id="selectionOptions">
+        
+        <div style="clear:both;"></div>
+
+        <fieldset id="pagingOptions" class="explorer">
+            <legend>Paging settings</legend>
+            <label for="pageIndexList">Select Page Index:</label>
+            <div id="pageIndexList"></div>
+            <label for="PageSizeSelect">Select Page Size:</label>
+            <div id="pageSizeList"></div>
+        </fieldset>
+        
+        <fieldset id="selectionOptions" class="explorer">
             <legend>Selection settings</legend>
             <label for="RowSelect">Select Row Index:  </label>
-            <select id="RowSelect"></select>
-            <input type="button" id="SelectRow" value="Select Row"></input>
-            <input type="button" id="GetSelectedRows" value="Get Selected Rows"></input>
+            <div id="rowNumberEditor"></div>
+            <br />
+            <input type="button" id="buttonSelectRow" value="Select Row"></input>
+            <input type="button" id="buttonSelectedRows" value="Get Selected Rows"></input>
         </fieldset>
-        <br />
-        <fieldset id="pagingOptions">
-            <legend>Paging settings</legend>
-            <label for="PageIndexSelect">Select Page Index:</label>
-            <select id="PageIndexSelect">
-            </select>
-            <label for="PageSizeSelect" style="margin-left: 20px;">Select Page Size:</label>
-            <select id="PageSizeSelect">
-                <option>2</option>
-                <option selected="selected">5</option>
-                <option>10</option>
-            </select>
-        </fieldset>
+
+        <div style="clear:both;"></div>
     </div>
 
     <div class="api-viewer"></div>

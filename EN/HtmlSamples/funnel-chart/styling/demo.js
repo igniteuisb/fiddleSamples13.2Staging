@@ -37,17 +37,6 @@ var data = [
                 innerLabelMemberPath: "Budget",
                 innerLabelVisibility: "visible",
                 outerLabelMemberPath: "Department",
-                formatOuterLabel: function (value, index, funnelChart) {
-                    return (value && value.length > 5) ? value.substring(0, 3) + "..." : value;
-					 },
-                formatInnerLabel: function (value, index, funnelChart) {
-                    var elem = funnelChart.element, width = elem ? elem[0].offsetWidth : 500, item = "Item ";
-                    if (value < 25 || width < 120 || (width < 150 && value < 55))
-                        return value;
-                    if (width < 180 || value < 40 || (width < 300 && value < 50))
-                        item = "#";
-						  return item + (index + 1) + " [" + value + "]";
-					 },
                 outerLabelVisibility: "visible"
             });
         });

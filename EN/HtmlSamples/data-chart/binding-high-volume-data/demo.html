@@ -16,32 +16,27 @@
     </script>
 
 <div>
-        <div style="padding: 5px;">
-            <label>Refresh time: </label><span id="timeText"></span>
-        </div>
+      
 
-        <div style="max-width: 150px; padding: 5px;">
-            <div id="slider"></div>    
-        </div>
-        Data Points: <label id="sliderLabel">50000</label>
-        
         <table>
             <tr>
-               <td>
-                   <button type="button" onclick="refresh()">Refresh</button>
-         
-               </td> 
-               <td>
-               </td> 
+                <td>
+                    <label>Data Points: </label> 
+                </td> 
+                <td style="width: 110px; padding: 5px; margin: 10px 5px 5px 10px;">
+                    <div id="slider" style="margin: 10px 5px 5px 10px;"></div>    
+                </td> 
+                <td style="width: 45px; padding: 5px;">
+                    <label id="sliderLabel">50000</label>
+                </td> 
+                <td>
+                    <button type="button" style="margin: 10px 5px 5px 10px;" onclick="refresh()">Refresh</button>
+                </td> 
+                <td>
+                    <label>Refresh time: </label><span id="timeText"></span>
+                </td> 
+               
             </tr>
-            <tr>
-               <td>
-               </td> 
-               <td>
-               </td> 
-              
-            </tr>
-
         </table>
          
     </div>

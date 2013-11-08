@@ -1,7 +1,7 @@
 $(function () {
 
-            // Used to show output in the API Viewer at runtime, 
-            // defined in external script 'apiviewer.js'    
+            // Used to show output in the API Viewer at runtime,
+            // defined in external script "apiviewer.js"
             var apiViewer = new $.ig.apiViewer();
 
             var titles = ["Sales Representative", "Sales Manager", "Inside Sales Coordinator", "Vice President, Sales"];
@@ -29,36 +29,49 @@ $(function () {
             });
 
             // process events of select options
-            $("#editMode").on({
-                change: function (e) {
-                    var editMode = $(this).val();
-                    $("#grid").igGridUpdating("option", "editMode", editMode);
+            $("#editMode").igCombo({
+                mode: "dropdown",
+                height: 23,
+                enableClearButton: false,
+                enableActiveItem: false,
+                selectionChanged: function (evt, ui) {
+                    if (ui.items.length == 1) {
+                        var editMode = ui.items[0].value;
+                        $("#grid").igGridUpdating("option", "editMode", editMode);
+                    }
                 }
             });
 
-            $("#startEditTriggers").on({
-                change: function (e) {
-                    var startEditTriggers = $(this).val();
-                    $("#grid").igGridUpdating("option", "startEditTriggers", startEditTriggers);
+            $("#startEditTriggers").igCombo({
+                mode: "dropdown",
+                height: 23,
+                enableClearButton: false,
+                enableActiveItem: false,
+                selectionChanged: function (evt, ui) {
+                    if (ui.items.length == 1) {
+                        var startEditTriggers = ui.items[0].value;
+                        $("#grid").igGridUpdating("option", "startEditTriggers", startEditTriggers);
+                    }
                 }
             });
 
             // process events of buttons
 
-            $("#deleteRow").on({
+            $("#deleteRow").igButton({
+                labelText: $("#deleteRow").val(),
                 click: function (e) {
                     var rowIndex = $("#rowSelect").igNumericEditor("option", "value"),
-                        tr = $("#grid").igGrid("rowAt", parseInt(rowIndex));
+                        tr = $("#grid").igGrid("rowAt", parseInt(rowIndex-1));
                     if (!tr) return;
 
-                    $("#grid").igGridUpdating("deleteRow", rowIndex, tr);
+                    $("#grid").igGridUpdating("deleteRow", rowIndex-1, tr);
                 }
             });
 
-            $("#addRow").bind({
+            $("#addRow").igButton({
+                labelText: $("#addRow").val(),
                 click: function (e) {
                     var rowObj = {
-                        "EmployeeID": $("#employeeID").val(),
                         "FirstName": $("#firstName").val(),
                         "LastName": $("#lastName").val(),
                         "Title": $("#title").val(),
@@ -125,25 +138,24 @@ $(function () {
                 dataSource: northwind,
                 dataSourceType: "json",
                 responseDataKey: "results",
-                height: "500px",
+                height: "350px",
                 width:"100%",
-                tabIndex: 1,
                 features: [
                     {
-                        name: 'Responsive',
+                        name: "Responsive",
                         enableVerticalRendering: false,
                         columnSettings: [
                             {
-                                columnKey: 'EmployeeID',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "EmployeeID",
+                                classes: "ui-hidden-phone"
                             },
                             {
-                                columnKey: 'PostalCode',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "PostalCode",
+                                classes: "ui-hidden-phone"
                             },
                             {
-                                columnKey: 'BirthDate',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "BirthDate",
+                                classes: "ui-hidden-phone"
                             }
                         ]
                     },
@@ -167,13 +179,19 @@ $(function () {
                             editorType: "text"
                         }, {
                             columnKey: "Country",
-                            editorType: "text"
+                            editorType: "combo",
+                            editorOptions: {
+                                dataSource: countries
+                            }
                         },
                         {
                             columnKey: "BirthDate",
                             editorType: "datepicker",
                             validation: true,
-                            editorOptions: { minValue: new Date(1955, 1, 19), maxValue: new Date(), required: true }
+                            editorOptions: {
+                                maxValue: new Date(),
+                                required: true
+                            }
                         }]
                     }]
             });
@@ -183,44 +201,49 @@ $(function () {
             $("#rowSelect").igNumericEditor({
                 dataMode: "sbyte",
                 button: "spin",
-                value: 0,
-                minValue: 0,
+                value: 1,
+                minValue: 1,
                 maxValue: 29,
-                width: 150
+                width: 150,
+                height: 23
             });
 
-
-            $("#employeeID").igEditor({
+            $("#firstName").igTextEditor({
                 width: 100,
-                type: "numeric",
-                value: $("#grid").data("igGrid").element.find("tr").length + 1,
-                disabled: true
+                height: 23
+            });
+
+            $("#lastName").igTextEditor({
+                width: 100,
+                height: 23
             });
 
             $("#birthDate").igDatePicker({
                 width: 120,
-                minValue: new Date(2009, 6, 26),
+                height: 23,
                 maxValue: new Date(),
                 required: true
             });
 
             $("#country").igEditor({
                 width: 80,
+                height: 23,
                 button: "dropdown",
                 listItems: countries,
                 value: countries[1]
             });
 
             $("#title").igEditor({
-                width: 130,
+                width: 150,
+                height: 23,
                 button: "dropdown",
                 listItems: titles,
                 value: titles[1]
             });
 
-            $("#postCode").igEditor({
+            $("#postCode").igMaskEditor({
                 width: 100,
-                type: "mask",
+                height: 23,
                 inputMask: ">00000",
                 dataMode: "rawtext"
             });

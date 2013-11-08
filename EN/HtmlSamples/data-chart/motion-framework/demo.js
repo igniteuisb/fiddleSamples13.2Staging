@@ -166,8 +166,7 @@ $(function () {
 
                 var textHeight = 40 / wind.width;
                 var textWidth = 60 / wind.width;
-
-
+                
                 $("#yearContainer").css("top", y - (textHeight / 2.0));
                 $("#yearContainer").css("left", x - (textWidth / 2.0));
                 $("#currentYear").css("font-size", Math.round(30 / wind.width) + "px");
@@ -176,7 +175,7 @@ $(function () {
             dataSource = new $.ig.DataSource({ dataSource: currData });
 
             $("#chart").igDataChart({
-                width: "500px",
+                width: "600px",
                 height: "500px",
                 dataSource: dataSource,
                 axes: [{
@@ -191,6 +190,7 @@ $(function () {
                     name: "radiusAxis",
                     type: "numericRadius",
                     strip: "rgba(0,0,0,.1)",
+                    minimumValue: 0,
                     maximumValue: 400,
                     innerRadiusExtentScale: .2
                 }],
@@ -315,7 +315,6 @@ $(function () {
                     $("#chart").igDataChart("option", "axes", [{
                         name: "xAxis",
                         type: "categoryX",
-                        strip: "rgba(0,0,0,.1)",
                         label: "Genre",
                         interval: 1,
                         labelExtent: 115,
@@ -324,7 +323,6 @@ $(function () {
                     {
                         name: "yAxis",
                         type: "numericY",
-                        strip: "rgba(0,0,0,.1)",
                         maximumValue: maxValue
                     }]);
                     $("#chart").igDataChart("option", "series", [{

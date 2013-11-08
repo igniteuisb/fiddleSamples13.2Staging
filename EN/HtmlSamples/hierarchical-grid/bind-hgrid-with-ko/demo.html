@@ -17,41 +17,96 @@
             <td style="width:50%"> 
                 <fieldset>
                     <legend>Parent first row</legend>
-                    <label><b>Employee ID:</b> </label>
-                    <span id="idEditor" data-bind="text: Records()[0].EmployeeID, valueUpdate: 'afterkeydown'"></span>
-                    <br />
-                    <label><b>First Name:</b> </label>
-                    <input id="fnameEditor" type="text" data-bind="value: Records()[0].FirstName, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>Last Name:</b> </label>
-                    <input id="lnameEditor" type="text" data-bind="value: Records()[0].LastName, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>City:</b> </label>
-                    <input id="cityEditor" type="text" data-bind="value: Records()[0].City, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>Country:</b> </label>
-                    <input id="countryEditor" type="text" data-bind="value: Records()[0].Country, valueUpdate: 'afterkeydown'"></input>
-                    <br />
+                    
+                    <table class="config-tbl">
+                        <tr>
+                            <td>
+                                <b>Employee ID:</b>
+                            </td>
+                            <td>
+                                <span id="idEditor" data-bind="text: Records()[0].EmployeeID, valueUpdate: 'afterkeydown'"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>First Name:</b>
+                            </td>
+                            <td>
+                                <input id="fnameEditor" type="text" data-bind="value: Records()[0].FirstName, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Last Name:</b>
+                            </td>
+                            <td>
+                                <input id="lnameEditor" type="text" data-bind="value: Records()[0].LastName, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>City:</b>
+                            </td>
+                            <td>
+                                <input id="cityEditor" type="text" data-bind="value: Records()[0].City, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Country:</b>
+                            </td>
+                            <td>
+                                <input id="countryEditor" type="text" data-bind="value: Records()[0].Country, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                    </table>
                 </fieldset>
             </td>
             <td style="width:50%">
                 <fieldset>
                     <legend>First child's first row</legend>
-                    <label><b>Order ID:</b> </label>
-                    <span id="orderID" data-bind="text: Records()[0].Orders()[0].OrderID, valueUpdate: 'afterkeydown'"></span>
-                    <br />
-                    <label><b>Ship Name:</b> </label>
-                    <input id="shipperName" type="text" data-bind="value: Records()[0].Orders()[0].ShipName, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>Freight:</b> </label>
-                    <input id="totalItems" type="text" data-bind="value: Records()[0].Orders()[0].Freight, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>Postal Code:</b> </label>
-                    <input id="totalPrice" type="text" data-bind="value: Records()[0].Orders()[0].ShipPostalCode, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>Order Date:</b> </label>
-                    <input id="orderDate" type="date" data-bind="igDatePicker: { value: Records()[0].Orders()[0].OrderDate, valueUpdate: 'afterkeydown'}"></input>
-                    <br />
+                    <table class="config-tbl">
+                        <tr>
+                            <td>
+                                <b>Order ID:</b>
+                            </td>
+                            <td>
+                                <span id="Span1" data-bind="text: Records()[0].Orders()[0].OrderID, valueUpdate: 'afterkeydown'"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Ship Name:</b>
+                            </td>
+                            <td>
+                                <input id="Text1" type="text" data-bind="value: Records()[0].Orders()[0].ShipName, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Freight:</b>
+                            </td>
+                            <td>
+                                <input id="Text2" type="text" data-bind="value: Records()[0].Orders()[0].Freight, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Postal Code:</b>
+                            </td>
+                            <td>
+                                <input id="Text3" type="text" data-bind="value: Records()[0].Orders()[0].ShipPostalCode, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Order Date:</b>
+                            </td>
+                            <td>
+                                <input id="Date1" type="date" data-bind="igDatePicker: { value: Records()[0].Orders()[0].OrderDate, valueUpdate: 'afterkeydown'}"></input>
+                            </td>
+                        </tr>
+                    </table>
                 </fieldset>
             </td>
         </tr>

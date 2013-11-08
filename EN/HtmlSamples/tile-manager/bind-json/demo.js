@@ -1,5 +1,4 @@
 $(function () {
-$(document).ready(function () {
             var options, optionsWide, optionsPhone;
 
             optionsWide = {
@@ -39,4 +38,3 @@ $(document).ready(function () {
             }
             $('#dashboard').igTileManager(options);
         });
-});

@@ -2,19 +2,22 @@ $(function () {
 
             $("#grid").igGrid({
                 height: 500,
+                primaryKey:"id",
                 columns: [
+                    { headerText: "id", key: "id", dataType: "number", hidden: true},
                     { headerText: "Time", key: "Time", dataType: "string", width: 80 },
                     { headerText: "Wind Speed (mph)", key: "WindSpeed", dataType: "number", width: 160 },
                     { headerText: "Wind Speed Gauge (mph)", key: "gauge", width: 370 }
                 ],
-                rowTemplate: "<tr><td>${Time}</td><td>${WindSpeed}</td><td><div class='linear-gauge' ></div></td></tr>",
+                rowTemplate: "<tr><td>${id}</td><td>${Time}</td><td>${WindSpeed}</td><td><div class='linear-gauge' ></div></td></tr>",
                 dataSource: data,
                 autoGenerateColumns: false,
                 rowsRendered: function (evt, ui) {
                     $(".linear-gauge").each(function (i) {
                         var item = data[i];
                         $(this).igLinearGauge({
-                            height: "60px", 
+                            height: "60px",
+                            width: "100%",
                             backingBrush: "transparent",
                             backingOutline: "transparent",
                             minimumValue: 0,
@@ -28,7 +31,7 @@ $(function () {
                                 { name: "calm", startValue: 0, endValue: 1 },
                                 { name: "lightAir", startValue: 1, endValue: 4 },
                                 { name: "lightBreeze", startValue: 4, endValue: 7 },
-                                { name: "gentleBreeze", startValue: 7, endValue: 9, brush: "gray" }
+                                { name: "gentleBreeze", startValue: 7, endValue: 9 }
                             ],
                             transitionDuration: 1200, 
                             labelInterval: 2,
@@ -49,7 +52,7 @@ $(function () {
                                 columnKey: "WindSpeed",
                                 editorType: "numeric",
                                 validation: true,
-                                editorOptions: { minValue: 0, maxValue: 10, required: true }
+                                editorOptions: { minValue: 0, maxValue: 9, required: true }
                             },
                             {
                                 columnKey: "Time",

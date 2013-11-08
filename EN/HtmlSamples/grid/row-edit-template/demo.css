@@ -1,7 +1,4 @@
-.tableBackGround {
-            background-color: #CCC;
-        }
-
-        .labelBackGround {
-            background-color: #FFE96D;
+.labelBackGround {
+            text-align: right;
+            margin-right: 10px;
         }

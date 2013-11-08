@@ -104,13 +104,9 @@ $(function () {
             });
 
             $("#enablePane").click(function (e) {
-                if ($(this).is(":checked")) {
-                    $("#chart").igDataChart("option", "overviewPlusDetailPaneVisibility", "visible");
-                } else {
-                    $("#chart").igDataChart("option", "overviewPlusDetailPaneVisibility", "collapsed");
-                    //workaround
-                    $("#chart").igDataChart("styleUpdated");
-                }
+                var visibility = ($(this).is(":checked")) ? "visible" : "collapsed";
+                $("#chart").igDataChart("option", "overviewPlusDetailPaneVisibility", visibility);
+                $("#chart").igDataChart("styleUpdated");
             });
 
             $("#verticalZoomSlider").slider({

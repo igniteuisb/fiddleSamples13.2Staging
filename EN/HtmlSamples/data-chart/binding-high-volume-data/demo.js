@@ -73,7 +73,7 @@ var currData, currDataSource, doGeneration, startTime = null;
 	        $(document).on("igdatachartrefreshcompleted", "#chart", function () {
 	            if (startTime) {
 	                var time = new Date().getTime() - startTime;
-	                $("#timeText").text(time.toString() + "ms");
+	                $("#timeText").text(time.toString() + " ms");
 	                startTime = null;
 	            }
 	        });

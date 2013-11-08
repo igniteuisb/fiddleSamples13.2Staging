@@ -1,5 +1,4 @@
-$(function () {            
-
+$(function () {
             $("#map").igMap({
                 width: "700px",
                 height: "500px",
@@ -24,9 +23,6 @@ $(function () {
                     markerBrush: "#b51c1c",
                     showTooltip: true,
                     tooltipTemplate: "tooltipTemplate"
-                }],
-                
-                
+                }],            
             });
-
         });

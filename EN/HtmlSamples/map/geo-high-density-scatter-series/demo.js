@@ -15,8 +15,6 @@ $(function () {
                     longitudeMemberPath: "lon",
                     heatMinimum: 0,
                     heatMaximum: 5,
-                    heatMinimumColor: "black",
-                    heatMaximumColor: "orange",
                     mouseOverEnabled: true,
                     showTooltip: true,
                     tooltipTemplate: "cityTemplate"

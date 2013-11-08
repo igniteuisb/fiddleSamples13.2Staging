@@ -18,41 +18,96 @@
             <td style="width:50%"> 
                 <fieldset>
                     <legend>親の最初の行</legend>
-                    <label><b>社員 ID:</b> </label>
-                    <span id="idEditor" data-bind="text: Records()[0].EmployeeID, valueUpdate: 'afterkeydown'"></span>
-                    <br />
-                    <label><b>名前:</b> </label>
-                    <input id="fnameEditor" type="text" data-bind="value: Records()[0].FirstName, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>名字:</b> </label>
-                    <input id="lnameEditor" type="text" data-bind="value: Records()[0].LastName, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>市:</b> </label>
-                    <input id="cityEditor" type="text" data-bind="value: Records()[0].City, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>国名:</b> </label>
-                    <input id="countryEditor" type="text" data-bind="value: Records()[0].Country, valueUpdate: 'afterkeydown'"></input>
-                    <br />
+                    
+                    <table class="config-tbl">
+                        <tr>
+                            <td>
+                                <b>社員 ID:</b>
+                            </td>
+                            <td>
+                                <span id="idEditor" data-bind="text: Records()[0].EmployeeID, valueUpdate: 'afterkeydown'"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>名前:</b>
+                            </td>
+                            <td>
+                                <input id="fnameEditor" type="text" data-bind="value: Records()[0].FirstName, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>名字:</b>
+                            </td>
+                            <td>
+                                <input id="lnameEditor" type="text" data-bind="value: Records()[0].LastName, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>市:</b>
+                            </td>
+                            <td>
+                                <input id="cityEditor" type="text" data-bind="value: Records()[0].City, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>国名:</b>
+                            </td>
+                            <td>
+                                <input id="countryEditor" type="text" data-bind="value: Records()[0].Country, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                    </table>
                 </fieldset>
             </td>
             <td style="width:50%">
                 <fieldset>
                     <legend>最初の子の最初の行</legend>
-                    <label><b>注文 ID:</b> </label>
-                    <span id="orderID" data-bind="text: Records()[0].Orders()[0].OrderID, valueUpdate: 'afterkeydown'"></span>
-                    <br />
-                    <label><b>出荷名:</b> </label>
-                    <input id="shipperName" type="text" data-bind="value: Records()[0].Orders()[0].ShipName, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>輸送:</b> </label>
-                    <input id="totalItems" type="text" data-bind="value: Records()[0].Orders()[0].Freight, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>郵便番号:</b> </label>
-                    <input id="totalPrice" type="text" data-bind="value: Records()[0].Orders()[0].ShipPostalCode, valueUpdate: 'afterkeydown'"></input>
-                    <br />
-                    <label><b>注文日:</b> </label>
-                    <input id="orderDate" type="date" data-bind="igDatePicker: { value: Records()[0].Orders()[0].OrderDate, valueUpdate: 'afterkeydown'}"></input>
-                    <br />
+                    <table class="config-tbl">
+                        <tr>
+                            <td>
+                                <b>注文 ID:</b>
+                            </td>
+                            <td>
+                                <span id="Span1" data-bind="text: Records()[0].Orders()[0].OrderID, valueUpdate: 'afterkeydown'"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>出荷名:</b>
+                            </td>
+                            <td>
+                                <input id="Text1" type="text" data-bind="value: Records()[0].Orders()[0].ShipName, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>輸送:</b>
+                            </td>
+                            <td>
+                                <input id="Text2" type="text" data-bind="value: Records()[0].Orders()[0].Freight, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>郵便番号:</b>
+                            </td>
+                            <td>
+                                <input id="Text3" type="text" data-bind="value: Records()[0].Orders()[0].ShipPostalCode, valueUpdate: 'afterkeydown'"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>注文日:</b>
+                            </td>
+                            <td>
+                                <input id="Date1" type="date" data-bind="igDatePicker: { value: Records()[0].Orders()[0].OrderDate, valueUpdate: 'afterkeydown'}"></input>
+                            </td>
+                        </tr>
+                    </table>
                 </fieldset>
             </td>
         </tr>

@@ -32,8 +32,8 @@ var lblCount = 30, timer = 40, interval, isAdding = false;
 
                 doGeneration();
                 $("#chart").igDataChart({
-                    width: "500px",
-                    height: "400px",
+                    width: "90%",
+                    height: "500px",
                     horizontalZoomable: true,
                     verticalZoomable: true,
                     windowResponse: "immediate",

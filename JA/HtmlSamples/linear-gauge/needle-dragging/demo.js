@@ -6,80 +6,86 @@ $(function () {
                 maximumValue: 10, 
                 value: 1,
                 needleBrush: "white",
-                needleOutline: "#2582a9",
-                labelExtent: 0.6,
-                tickEndExtent: 0.8,
-                tickStartExtent: 0.75,
-                tinorTickStartExtent: 0.78,
-                tinorTickEndExtent: 0.75,
+                needleOutline: "#2582a9", 
                 ranges: [
                    {
                        name: 'first',
                        startValue: 0,
-                       endValue: 3,
-                       outerStartExtent: .55,
-                       outerEndExtent: .5
+                       endValue: 3, 
                    },
                    {
                        name: 'second',
                        startValue: 3,
-                       endValue: 7,
-                       outerStartExtent: .5,
-                       outerEndExtent: .4
+                       endValue: 7, 
                    },
                    {
                        name: 'third',
                        startValue: 7,
-                       endValue: 10,
-                       outerStartExtent: .4,
-                       outerEndExtent: .3
+                       endValue: 10, 
                    }
                 ], 
             });
 
             var lastPointX = 0, lastPointY = 0, lastValue = 0, isDragging = false;
+
             // Start the needle drag only on a mousedown on the needle
             document.getElementById("lineargauge").addEventListener("mousedown", function (e) {
-                isDragging = true;
+                dragNeedle(e, true);
             });
 
             // Drag the needle to the new point only if the point being dragged to is inside the needle
-            document.getElementById("lineargauge").addEventListener("mousemove", function (e) {
-                dragNeedle(e);
+            document.addEventListener("mousemove", function (e) {
+                dragNeedle(e, false);
             });
 
             // Drag the needle to the final new point only if the point being dragged to is inside the needle
-            document.getElementById("lineargauge").addEventListener("mouseup", function (e) {
-                dragNeedle(e);
+            document.addEventListener("mouseup", function (e) {
                 isDragging = false;
+                dragNeedle(e, false);
             });
 
-            // Function that performs the needle drag to the new point
-            function dragNeedle(e) {
-                if (!isDragging) {
+            // Function that performs the needle drag/tap to the new point
+            function dragNeedle(e, isMouseDown) {
+                if (!isMouseDown && !isDragging) {
                     return;
                 }
+
+                e.preventDefault();
                 var pointX = e.pageX - $("#lineargauge").offset().left;
                 var pointY = e.pageY - $("#lineargauge").offset().top;
+                if (isMouseDown) {
+                    var isClickPointValid = $("#lineargauge").igLinearGauge("needleContainsPoint", pointX, pointY);
+                    if (isClickPointValid) {
+                        lastPointX = pointX;
+                        lastPointY = pointY;
+                    } else {
+                        isClickPointValid = $("#lineargauge").igLinearGauge("needleContainsPoint", (pointX + 4 * lastPointX) / 5, (pointY + 4 * lastPointY) / 5);
+                    }
+                        isDragging = true;
+                        if (isMobile() || !isClickPointValid) {
+                            isDragging = false;
+                            return;
+                        }
+                    
+                }
+
                 var value = $("#lineargauge").igLinearGauge("getValueForPoint", pointX, pointY);
                 if (isNaN(value))
                     return;
-                value = Math.max(Math.min(value, 10), 0);
-                if (Math.abs(value - lastValue) > 50)
-                    return;
-                lastValue = value;
 
-                var isClickPointValid = true;
-                if (!isMobile())
-                    isClickPointValid = $("#lineargauge").igLinearGauge("needleContainsPoint", pointX, pointY);
-                if (isClickPointValid) {
-                    lastPointX = pointX;
-                    lastPointY = pointY;
-                } else {
-                    isClickPointValid = $("#lineargauge").igLinearGauge("needleContainsPoint", (pointX + 4 * lastPointX) / 5, (pointY + 4 * lastPointY) / 5);
-                }
-                if (isClickPointValid)
+                // Prevent needle from dragging beyond the scale bounds
+                var minimumValue = $("#lineargauge").igLinearGauge("option", "minimumValue");
+                var maximumValue = $("#lineargauge").igLinearGauge("option", "maximumValue");
+
+                var startValue = minimumValue <= maximumValue ? minimumValue : maximumValue;
+                var endValue = minimumValue > maximumValue ? minimumValue : maximumValue;
+                
+                if (value > startValue && value < endValue) {
                     $("#lineargauge").igLinearGauge("option", "value", value);
+                } else {
+                    value = value >=endValue ? endValue:startValue;
+                    $("#lineargauge").igLinearGauge("option", "value", value);
+                }
             }
 
             // Check if the sample is being used in the following mobile devices

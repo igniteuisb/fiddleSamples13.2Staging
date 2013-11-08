@@ -8,8 +8,8 @@ $(function() {
                     brush: "rgba(164, 189, 41, 1)",
                     startValue: "70",
                     endValue: "100",
-                    outerStartExtent: "0.72",
-                    outerEndExtent: "0.78"
+                    outerStartExtent: "0.55",
+                    outerEndExtent: "0.65"
                 }]
             });
 

@@ -1,5 +1,5 @@
 $(function () {
 
-            $("#dialog").igDialog();
+        	$("#dialog").igDialog({ height: 250 });
 
         });

@@ -94,7 +94,7 @@ $(function () {
             $("#transitionDurationSlider").slider({
                 min: 0,
                 max: 1000,
-                value: 0,
+                value: 500,
                 slide: function (event, ui) {
                     $("#chart").igDataChart("option", "series", [{ name: "crosshairLayer", transitionDuration: ui.value }]);
                     $("#transitionDurationLabel").text(ui.value);

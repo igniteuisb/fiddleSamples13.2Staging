@@ -12,18 +12,19 @@
 
 <table id="grid">
     </table>
-
-    <div class="api-explorer">
-        <fieldset id="editOptions">
+    <div>
+        <fieldset id="editOptions" class="explorer">
             <legend>設定の編集</legend>
+            <input type="checkbox" id="showButtons" checked="checked"></input><label for="showButtons">完了/キャンセル ボタンの表示</label>
+            <label for="editMode">編集モード</label>
             <select id="editMode">
                 <option selected="selected">row</option>
                 <option>cell</option>
                 <option>rowedittemplate</option>
                 <option>none</option>
             </select>
-            <br />
-            <select id="startEditTriggers">
+            <label for="startEditTriggers">編集の開始トリガー</label>
+            <select id="startEditTriggers" class="explorer">
                 <option value="click,F2,enter" selected="selected">click,F2,enter</option>
                 <option value="dblclick,F2,enter">dblclick,F2,enter</option>
                 <option value="dblclick">dblclick</option>
@@ -31,63 +32,48 @@
                 <option value="click,F2">click,F2</option>
                 <option value="F2,enter">F2,enter</option>
             </select>
-            <br />
-            <input type="checkbox" id="showButtons" checked="checked"></input><label for="showButtons">完了/キャンセル ボタンの表示</label>
         </fieldset>
 
-        <fieldset id="deletingOptions">
+        <fieldset id="deletingOptions" class="explorer">
             <legend>設定の削除</legend>
-            <input type="checkbox" id="enableDelete" checked="checked"></input><label for="enableDelete">行の削除を有効にする</label>
+            <input type="checkbox" id="enableDelete" checked="checked"></input>
+            <label for="enableDelete">行の削除を有効にする</label>
             <br />
-            行インデックスの選択<span id="rowSelect"></span>
+            <label for="rowSelect">行インデックスの選択</label>
+            <span id="rowSelect"></span>
             <br />
             <input type="button" id="deleteRow" value="行の削除"></input>
         </fieldset>
-
+        <div style="clear:both;"></div>
         <fieldset id="addingOptions">
             <legend>設定の追加</legend>
 
             <input type="checkbox" id="enableAddRow" checked="checked"></input><label for="enableAddRow">行の追加を有効にする</label>
-            <br />
-            <table class="standard-grid">
-                <tr>
-                    <td>従業員 ID
-                            <br />
-                        <input id="employeeID" type="text" readonly="readonly"></input>
-                    </td>
-                    <td>名前
-                            <br />
+            
+                <ul class="addNewRow">
+                    <li><label for="firstName">名前</label>
                         <input id="firstName" type="text"></input>
-                    </td>
-                    <td>名字
-                            <br />
+                    </li>
+                    <li><label for="lastName">名字</label>
                         <input id="lastName" type="text"></input>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>役職
-                            <br />
+                    </li>
+                    <li><label for="title">役職</label>
                         <input id="title" type="text"></input>
-                    </td>
-                    <td>生年月日
-                            <br />
+                    </li>
+                    <li>
+                        <label for="birthDate">生年月日</label>
                         <input id="birthDate" type="text"></input>
-                    </td>
-                    <td>郵便番号 
-                            <br />
+                    </li>
+                    <li><label for="postCode">郵便番号</label>
                         <input id="postCode" type="text"></input>
-                    </td>
-                    <td>国
-                            <br />
+                    </li>
+                    <li>
+                        <label for="country">国</label>
                         <input id="country" type="text"></input>
-                    </td>
-                </tr>
-            </table>
-           
-            <input id="addRow" type="button" value="行の追加"></input>
-
+                    </li>
+                    <li> <label>&nbsp;</label><input id="addRow" type="button" value="行の追加"></input></li>
+                </ul>
         </fieldset>
+        <div style="clear:both;"></div>
     </div>
-
     <div class="api-viewer"></div>

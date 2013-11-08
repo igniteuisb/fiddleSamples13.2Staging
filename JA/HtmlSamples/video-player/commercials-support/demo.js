@@ -33,7 +33,7 @@ $(function () {
 					    link: 'http://quince.infragistics.com/'
 					}],
                     adMessage: {
-                        hideDelay: 3000
+                        hideDelay: 13000
                     }
                 }
             });

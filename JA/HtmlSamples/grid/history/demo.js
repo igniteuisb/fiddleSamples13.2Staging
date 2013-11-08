@@ -5,6 +5,10 @@ $(function () {
                 // historyLength = window.History.storedStates.length,
                 urlParams = window.location.search;
 
+        	if (window.History === undefined || window.History.getState === undefined) {
+        		alert("history.js ライブラリのスクリプト参照をコメント インしてください。");
+        		return;
+        	}
 
         	//--> Save igGrid state in the browser history object
         	function addUndoState(feature, column, possibleUndo, oldValue) {
@@ -131,18 +135,7 @@ $(function () {
 									state = { key: "resize", value: [columnKey, width] };
                                 pushToBrowserHistory(state, null, formURL("resize", [columnKey, width]));
                             }
-                        },
-						{
-							name: "GroupBy",
-							groupedColumnsChanging: function (e, args) {
-								addUndoState("groupby", args.key, true);
-							},
-						    groupedColumnsChanged: function (e, args) {
-						        var columnKey = args.key;
-						        state = { key: "groupby", value: columnKey };
-						        pushToBrowserHistory(state, null, formURL("groupby", columnKey));
-						    }
-						}
+                        }
                     ],
                     rendered: function (e, args) {
                         args.owner.element.find("tr td").css("text-align", "center");
@@ -183,7 +176,6 @@ $(function () {
                         	case "sort": loadSortingState(state.key, state.value); break;
                         	case "filter": loadFilteringState(state.key, state.value);  break;
                         	case "resize": loadResizingState(state.key, state.value); break;
-                        	case "groupby": loadGroupState(state.key, state.value); break;
                         	default: break;
                         }
                     	// Load/Unload previous state
@@ -193,7 +185,6 @@ $(function () {
                         		case "sort": loadSortingState(undoState.key, undoState.value, undoState.undo); break;
                         		case "filter": loadFilteringState(undoState.key, undoState.value, undoState.undo); break;
                         		case "resize": loadResizingState(undoState.key, undoState.value); break;
-                        		case "groupby": loadGroupState(undoState.key, undoState.value, undoState.undo); break;
                         		default: break;
                         	}
                         }
@@ -233,7 +224,6 @@ $(function () {
                 	case "sort": loadSortingStateArray(key, value); break;
                 	case "filter": loadFilteringStateArray(key, value); break;
                 	case "resize": loadResizingStateArray(key, value); break;
-                	case "groupby": loadGroupStateArray(key, value); break;
                 	default: break;
                 }
             }
@@ -275,19 +265,6 @@ $(function () {
             	var columns = value.split(";"), i;
             	for (i = 0; i < columns.length; i++) {
             		gridHistoryJS.igGridResizing("resize", columns[i].split("_", 1)[0], columns[i].split("_", 2)[1]);
-            	}
-            }
-            function loadGroupState(key, value, undo) {
-            	if (undo) {
-            		gridHistoryJS.igGridGroupBy("ungroupByColumn", value);
-            	} else {
-            		if (!gridHistoryJS.igGridGroupBy("checkColumnIsGrouped", value)) gridHistoryJS.igGridGroupBy("groupByColumn", value);
-            	} 
-            }
-            function loadGroupStateArray(key, value) {
-            	var columns = value.split(";"), i;
-            	for (i = 0; i < columns.length; i++) {
-            		gridHistoryJS.igGridGroupBy("groupByColumn", columns[i]);
             	}
             }
             //<-- Load individual igGrid features

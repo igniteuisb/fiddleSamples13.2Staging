@@ -6,72 +6,181 @@ $(function () {
 
             /*----------------- Method & Option Examples -------------------------*/
 
-            // process events of select options
-            $("#PageSizeSelect").on({
-                change: function ( e )
-                {
-                   $( '#grid' ).igGridPaging( 'pageSize', parseInt( $( this ).val()));
-                   AddPageOptions(parseInt( $( this ).val()));
+            // process events of buttons and editors
+            $("#buttonDataBind").igButton({
+                labelText: $("#buttonDataBind").val(),
+                click: function (e) {
+                    $("#grid").igGrid("dataBind");
                 }
             });
 
-            $("#PageIndexSelect").on({
-                change: function (e) {
-                    $( '#grid' ).igGridPaging( 'pageIndex', parseInt($( this ).val()));
-                }
-            });
-
-            $("#filterColumn").on({
-                change: function (e) {
-                    SetFilterConditions();
-                }
-            });
-
-            // process events of buttons
-            $('#igButtonFilter').on({
+            $("#buttonFilter").igButton({
+                labelText: $("#buttonFilter").val(),
                 click: function (event) {
-                    var expr = $("#filterExpr").val(),
-                        condition = $("#cond_list").val(),
-                        filterColumn = $("#filterColumn").val();
+                    var expr = $("#exprTextEditor").igTextEditor("value") ||
+                            $("#exprNumericEditor").igNumericEditor("value") ||
+                            $("#exprDateEditor").igDateEditor("value"),
+                        condition = $("#conditionList").igCombo("option", "selectedItems")[0].value,
+                        columnDataSource = $("#filterColumn").igCombo("option", "dataSource"),
+                        filterColumn = columnDataSource[$("#filterColumn").igCombo("option", "selectedItems")[0].index].column;
                     $("#grid").igGridFiltering("filter", ([{ fieldName: filterColumn, expr: expr, cond: condition }]));
                 }
             });
 
-            $('#SelectRow').on({
-                click: function (event) {
-                    $('#grid').igGridSelection('selectRow', parseInt($('#RowSelect').val()));
+            $("#filterColumn").igCombo({
+                width: "120px",
+                textKey: "text",
+                valueKey: "type",
+                dataSource: [
+                    { text: "従業員 ID", column: "EmployeeID", type: "number" },
+                    { text: "名前", column: "FirstName", type: "string" },
+                    { text: "名字", column: "LastName", type: "string" },
+                    { text: "役職", column: "Title", type: "string" },
+                    { text: "生年月日", column: "BirthDate", type: "date" },
+                    { text: "郵便番号", column: "PostalCode", type: "number" },
+                    { text: "国", column: "Country", type: "string" }
+                ],
+                mode: "dropdown",
+                enableClearButton: false,
+                selectedItems: [{ index: 0 }],
+                selectionChanged: function (e, args) {
+                    var selText,
+                        nEditor = $("#exprNumericEditor"),
+                        dEditor = $("#exprDateEditor"),
+                        tEditor = $("#exprTextEditor");
+                    switch (args.items[0].value) {
+                        case "number":
+                            nEditor.igNumericEditor("show");
+                            tEditor.igTextEditor("hide");
+                            dEditor.igDateEditor("hide");
+                            break;
+                        case "date":
+                            nEditor.igNumericEditor("hide");
+                            tEditor.igTextEditor("hide");
+                            dEditor.igDateEditor("show");
+                            break;
+                        case "string":
+                            nEditor.igNumericEditor("hide");
+                            tEditor.igTextEditor("show");
+                            dEditor.igDateEditor("hide");
+                            break;
+                    }
+                    // reset the editors
+                    nEditor.igNumericEditor("value", null);
+                    tEditor.igTextEditor("value", null);
+                    dEditor.igDateEditor("value", null);
+                    // select default condition
+                    $("#conditionList").igCombo("option", "selectedItems", [{ index: 0 }]);
+                    selText = $("#conditionList").igCombo("option", "selectedItems")[0].text;
+                    nEditor.igNumericEditor("option", "nullText", selText);
+                    tEditor.igTextEditor("option", "nullText", selText);
+                    dEditor.igDateEditor("option", "nullText", selText);
                 }
             });
 
-            $('#GetSelectedRows').on({
+            $("#conditionList").igCombo({
+                width: "140px",
+                textKey: "text",
+                valueKey: "cond",
+                cascadingDataSources: {
+                    "number": [
+                        { cond: "equals", text: $.ig.GridFiltering.locale.equalsLabel },
+                        { cond: "doesNotEqual", text: $.ig.GridFiltering.locale.doesNotEqualLabel },
+                        { cond: "lessThan", text: $.ig.GridFiltering.locale.lessThanLabel },
+                        { cond: "greaterThan", text: $.ig.GridFiltering.locale.greaterThanLabel }
+                    ],
+                    "string": [
+                        { cond: "startsWith", text: $.ig.GridFiltering.locale.startsWithLabel },
+                        { cond: "endsWith", text: $.ig.GridFiltering.locale.endsWithLabel },
+                        { cond: "contains", text: $.ig.GridFiltering.locale.containsLabel },
+                        { cond: "doesNotContain", text: $.ig.GridFiltering.locale.doesNotContainLabel },
+                        { cond: "empty", text: $.ig.GridFiltering.locale.emptyNullText },
+                        { cond: "notEmpty", text: $.ig.GridFiltering.locale.notEmptyNullText }
+                    ],
+                    "date": [
+                        { cond: "on", text: $.ig.GridFiltering.locale.onLabel },
+                        { cond: "notOn", text: $.ig.GridFiltering.locale.notOnLabel },
+                        { cond: "before", text: $.ig.GridFiltering.locale.beforeLabel },
+                        { cond: "after", text: $.ig.GridFiltering.locale.afterLabel },
+                        { cond: "today", text: $.ig.GridFiltering.locale.todayLabel },
+                        { cond: "yesterday", text: $.ig.GridFiltering.locale.yesterdayLabel },
+                        { cond: "lastMonth", text: $.ig.GridFiltering.locale.lastMonthLabel },
+                        { cond: "nextMonth", text: $.ig.GridFiltering.locale.nextMonthLabel },
+                        { cond: "thisMonth", text: $.ig.GridFiltering.locale.thisMonthLabel },
+                        { cond: "lastYear", text: $.ig.GridFiltering.locale.lastYearLabel },
+                        { cond: "thisYear", text: $.ig.GridFiltering.locale.thisYearLabel },
+                        { cond: "nextYear", text: $.ig.GridFiltering.locale.nextYearLabel }
+                    ]
+                },
+                parentCombo: "#filterColumn",
+                mode: "dropdown",
+                enableClearButton: false,
+                selectedItems: [{ index: 0 }],
+                selectionChanged: function (e, args) {
+                    $("#exprTextEditor").igTextEditor("option", "nullText", args.items[0].text);
+                    $("#exprNumericEditor").igNumericEditor("option", "nullText", args.items[0].text);
+                    $("#exprDateEditor").igDateEditor("option", "nullText", args.items[0].text);
+                }
+            });
+            
+            $("#exprTextEditor").igTextEditor().css("height", "21px").hide().children().first().css("height", "19px");
+            $("#exprNumericEditor").igNumericEditor({ nullText: $.ig.GridFiltering.locale.equalsLabel }).css("height", "21px").children().first().css("height", "19px");
+            $("#exprDateEditor").igDateEditor().css("height", "21px").hide().children().first().css("height", "19px");
+
+            $("#pageIndexList").igCombo({
+                width: "120px",
+                valueKey: "pIndex",
+                dataSource: [
+                    { pIndex: 1 },
+                    { pIndex: 2 }
+                ],
+                mode: "dropdown",
+                enableClearButton: false,
+                selectedItems: [{ index: 0 }],
+                selectionChanged: function (e, args) {
+                    $("#grid").igGridPaging("pageIndex", parseInt(args.items[0].value - 1));
+                }
+            });
+
+            $("#pageSizeList").igCombo({
+                width: "120px",
+                valueKey: "size",
+                dataSource: [
+                    { size: 2 },
+                    { size: 5 },
+                    { size: 10 }
+                ],
+                mode: "dropdown",
+                enableClearButton: false,
+                selectedItems: [{ index: 1 }],
+                selectionChanged: function (e, args) {
+                    var npc = 10 / args.items[0].value, i, nds = [];
+                    $("#grid").igGridPaging("pageSize", parseInt(args.items[0].value));
+                    for (i = 0; i < npc; i++) {
+                        nds.push({ pIndex: i + 1 });
+                    }
+                    $("#pageIndexList").igCombo("option", "dataSource", nds);
+                    $("#pageIndexList").igCombo("option", "selectedItems", [{ index: 0 }]);
+                }
+            });
+
+            $("#rowNumberEditor").igNumericEditor();
+
+            $("#buttonSelectRow").igButton({
+                labelText: $("#buttonSelectRow").val(),
+                click: function (event) {
+                    $("#grid").igGridSelection("selectRow", $("#rowNumberEditor").igNumericEditor("value"));
+                }
+            });
+
+            $("#buttonSelectedRows").igButton({
+                labelText: $("#buttonSelectedRows").val(),
                 click: function (event) {
                     var rows = $("#grid").igGridSelection("selectedRows");
-                    apiViewer.log('選択された行数:' + rows.length);
+                    apiViewer.log("選択された行数: " + rows.length);
                     $.each(rows, function (i, val) {
-                        apiViewer.log('インデックス ' + val.index + ' 行が選択されました');
+                        apiViewer.log("インデックス " + val.index + " 行が選択されました");
                     });
-                }
-            });
-
-            $("#igButtonDataBind").on({
-                click: function (e) {
-                    $("#grid").igGrid('dataBind');
-                }
-            });
-
-            $("#igButtonGetRowIndex").on({
-                click: function (e) {
-                    var rowIndex = parseInt($('#rows').val()) - 1,
-                         row = $("#grid").igGrid('rowAt', rowIndex);
-                    if ($(row).length)
-                        apiViewer.log('Row Index: ' + rowIndex);
-                }
-            });
-
-            $("#igButtonGetCellText").on({
-                click: function (e) {
-                    var cell = $("#grid").igGrid('cellAt', parseInt($('#columns').val()) - 1, parseInt($('#rows').val()) - 1);
-                    apiViewer.log('セルのテキスト: ' + $(cell).text());
                 }
             });
 
@@ -133,20 +242,20 @@ $(function () {
                 tabIndex: 1,
                 features: [
                     {
-                        name: 'Responsive',
+                        name: "Responsive",
                         enableVerticalRendering: false,
                         columnSettings: [
                             {
-                                columnKey: 'EmployeeID',
-                                classes: 'ui-hidden-tablet ui-hidden-phone'
+                                columnKey: "EmployeeID",
+                                classes: "ui-hidden-tablet ui-hidden-phone"
                             },
                             {
-                                columnKey: 'PostalCode',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "PostalCode",
+                                classes: "ui-hidden-phone"
                             },
                             {
-                                columnKey: 'BirthDate',
-                                classes: 'ui-hidden-phone'
+                                columnKey: "BirthDate",
+                                classes: "ui-hidden-phone"
                             }
                         ]
                     },
@@ -165,47 +274,4 @@ $(function () {
                     }
                 ]
             });
-
-            var gridPageSize = $('#grid').igGridPaging('pageSize');
-            AddPageOptions(gridPageSize);
-            AddOptions();
-            SetFilterConditions();
         });
-
-        function AddOptions() {
-            $("#rows").empty();
-            $("#columns").empty();
-
-            var rows = $("#grid").igGrid("rows");
-            for (var i = 0; i < rows.length; i++) {
-                $('#RowSelect').append('<option>' + i + '</option>');
-                $("#rows").append("<option>" + (i + 1) + "</option>");
-            }
-
-            var columns = $("#grid").igGrid("option", "columns");
-            for (var i = 0; i < columns.length; i++) {
-                $("#columns").append("<option>" + (i + 1) + "</option>");
-                $("#filterColumn").append("<option>" + columns[i].key + "</option>");
-            }
-        }
-
-        function AddPageOptions(pageSize) {
-            var pageSelect = $('#PageIndexSelect');
-            $(pageSelect).empty();
-            for (var i = 0; i < northwind.results.length / pageSize; i++) {
-                $(pageSelect).append('<option>' + i + '</option>');
-            }
-        }
-
-        function SetFilterConditions() {
-            var filterColumn = $("#filterColumn").val();
-            $("#cond_list option:selected").removeAttr("selected");
-            if (filterColumn === "EmployeeID" || filterColumn === "PostalCode") {
-                $("#cond_list .stringCondition").attr("disabled", "disabled");
-                $("#cond_list .numberCondition").removeAttr("disabled").eq(0).attr("selected", "selected");
-            }
-            else {
-                $("#cond_list .stringCondition").removeAttr("disabled").eq(0).attr("selected", "selected");
-                $("#cond_list .numberCondition").attr("disabled", "disabled");
-            }
-        }

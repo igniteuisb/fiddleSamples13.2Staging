@@ -1,8 +1,8 @@
-$(function () {            
+$(function () {
             $("#bulletgraph_task1").igBulletGraph({
                 height: "80px",
                 width: "100%",
-                showToolTip: true, 
+                showToolTip: true,
                 ranges: [
                     {
                         name: '低',
@@ -25,9 +25,10 @@ $(function () {
                 ],
                 formatLabel: function (evt, ui) {
                     ui.label = ui.value + "h";
-                }, 
+                },
                 value: 60,
-                targetValue: 80, 
+                targetValue: 80,
+                targetValueBreadth: 6,
                 transitionDuration: 500
             });
 
@@ -35,9 +36,9 @@ $(function () {
                 height: "80px",
                 width: "100%",
                 showToolTip: true,
-                rangeToolTipTemplate: 'rangeToolTipTemplateNew',
-                valueToolTipTemplate: 'valueToolTipTemplateNew',
-                targetValueToolTipTemplate: 'targetValueToolTipTemplateNew',
+                rangeToolTipTemplate: 'rangeToolTipTemplate',
+                valueToolTipTemplate: 'valueToolTipTemplate',
+                targetValueToolTipTemplate: 'targetValueToolTipTemplate',
                 ranges: [
                      {
                          name: '低',
@@ -64,7 +65,8 @@ $(function () {
                 valueName: "消費時間",
                 maximumValue: 50,
                 value: 23,
-                targetValue: 40, 
+                targetValue: 40,
+                targetValueBreadth: 6,
                 transitionDuration: 500
             });
         });

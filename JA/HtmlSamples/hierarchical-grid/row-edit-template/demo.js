@@ -20,6 +20,8 @@ $(function () {
                         name: "Updating",
                         editMode: "rowedittemplate",
                         rowEditDialogContainment: "window",
+                        rowEditDialogHeight: "280px",
+                        rowEditDialogWidth: "300px",
                         columnSettings:
                             [
                             {
@@ -86,6 +88,8 @@ $(function () {
                                 name: "Updating",
                                 enableAddRow: false,
                                 editMode: "rowedittemplate",
+                                rowEditDialogHeight: "280px",
+                                rowEditDialogWidth: "300px",
                                 rowEditDialogContainment: "window",
                                 columnSettings:
                                 [

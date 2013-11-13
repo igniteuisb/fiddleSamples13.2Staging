@@ -16,15 +16,15 @@ $( function ()
                     headerText: "従業員 ID", key: "EmployeeID", dataType: "number"
                 },
                     {
-                    headerText: "名前", key: "FirstName"
+                        headerText: "名前", key: "FirstName", dataType: "string"
                 }, {
-                    headerText: "名字", key: "LastName"
+                    headerText: "名字", key: "LastName", dataType: "string"
                 }, {
-                    headerText: "役職", key: "Title"
+                    headerText: "役職", key: "Title", dataType: "string"
                 }, {
                     headerText: "生年月日", key: "BirthDate", dataType: "date"
                 }, {
-                    headerText: "郵便番号", key: "PostalCode", dataType: "number"
+                    headerText: "郵便番号", key: "PostalCode", dataType: "string"
                 }, {
                     headerText: "国", key: "Country", dataType: "string"
                 }
@@ -33,7 +33,6 @@ $( function ()
                 dataSourceType: "json",
                 responseDataKey: "results",
                 width: "100%",
-                height: "100%",
                 tabIndex: 1,
                 features: [
                     {
@@ -62,11 +61,10 @@ $( function ()
                         name: "Updating",
                         enableAddRow: false,
                         editMode: "rowedittemplate",
-                        rowEditDialogWidth: 320,
-                        rowEditDialogHeight: '430',
+                        rowEditDialogWidth: 280,
+                        rowEditDialogHeight: '280',
                         rowEditDialogContentHeight: 300,
                         rowEditDialogFieldWidth: 150,
-                        rowEditDialogOkCancelButtonWidth: 110,
                         rowEditDialogContainment: "window",
                         rowEditDialogRowTemplateID: "rowEditDialogRowTemplate1",
                         enableDeleteRow: false,

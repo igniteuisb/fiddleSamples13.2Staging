@@ -16,15 +16,15 @@ $( function ()
                     headerText: "Employee ID", key: "EmployeeID", dataType: "number"
                 },
                     {
-                    headerText: "First Name", key: "FirstName"
+                        headerText: "First Name", key: "FirstName", dataType: "string"
                 }, {
-                    headerText: "Last Name", key: "LastName"
+                    headerText: "Last Name", key: "LastName", dataType: "string"
                 }, {
-                    headerText: "Title", key: "Title"
+                    headerText: "Title", key: "Title", dataType: "string"
                 }, {
                     headerText: "Birth Date", key: "BirthDate", dataType: "date"
                 }, {
-                    headerText: "Postal Code", key: "PostalCode", dataType: "number"
+                    headerText: "Postal Code", key: "PostalCode", dataType: "string"
                 }, {
                     headerText: "Country", key: "Country", dataType: "string"
                 }
@@ -33,7 +33,6 @@ $( function ()
                 dataSourceType: "json",
                 responseDataKey: "results",
                 width: "100%",
-                height: "100%",
                 tabIndex: 1,
                 features: [
                     {
@@ -62,11 +61,10 @@ $( function ()
                         name: "Updating",
                         enableAddRow: false,
                         editMode: "rowedittemplate",
-                        rowEditDialogWidth: 320,
-                        rowEditDialogHeight: '430',
+                        rowEditDialogWidth: 280,
+                        rowEditDialogHeight: '280',
                         rowEditDialogContentHeight: 300,
                         rowEditDialogFieldWidth: 150,
-                        rowEditDialogOkCancelButtonWidth: 110,
                         rowEditDialogContainment: "window",
                         rowEditDialogRowTemplateID: "rowEditDialogRowTemplate1",
                         enableDeleteRow: false,

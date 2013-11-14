@@ -90,6 +90,7 @@ $(function () {
                             name: "Sorting",
                             type: "local",
                             mode: "multi",
+                        	modalDialogSortOnClick: true,
                             columnSorting: function (e, args) {
                             	addUndoState("sort", args.columnKey, true, args.direction === "ascending" ? "descending" : "ascending");
                             },
@@ -181,7 +182,7 @@ $(function () {
                     	// Load/Unload previous state
                         if (undoState) {
                         	switch (undoState.key) {
-                        		case "page": loadPagingState(undoState.key, undoState.value);
+                        		case "page": loadPagingState(undoState.key, undoState.value); break;
                         		case "sort": loadSortingState(undoState.key, undoState.value, undoState.undo); break;
                         		case "filter": loadFilteringState(undoState.key, undoState.value, undoState.undo); break;
                         		case "resize": loadResizingState(undoState.key, undoState.value); break;
@@ -331,8 +332,8 @@ $(function () {
             function isEmptyValue(value) {
                 return value === undefined || value === null || value.length === 0;
             }
-            $("#back").igButton().click(function () { window.History.back(); });
-            $("#forward").igButton().click(function () { window.History.forward(); });
+            $("#back").igButton().click(function () { window.history.back(); });
+            $("#forward").igButton().click(function () { window.history.forward(); });
             $("#copy").igButton().click(function () { window.prompt("Copy URL and open it in a new tab or browser", window.location); });
             $("#mail").igButton().click(function () {
                 var link = "mailto: "

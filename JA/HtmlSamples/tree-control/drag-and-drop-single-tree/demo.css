@@ -60,4 +60,6 @@
     		.containerModalDialog { 
 				width: 160px;
     		}
+    		.containerModalDialog #leftYes, .containerModalDialog #rightNo { width: 70px; }
+    		#yesModalDialog, #noModalDialog { width: 65px!important; }
         }

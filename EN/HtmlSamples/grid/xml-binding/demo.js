@@ -25,6 +25,8 @@ $(function () {
                     ]
                 }
             );
+			
+			
 
             //This creates an Infragistics datasource from the XML 
             //and the Schema which can be consumed by the grid.
